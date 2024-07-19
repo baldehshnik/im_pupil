@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.sparkfusion.im_pupil"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {
         applicationId = "com.sparkfusion.im_pupil"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = libs.versions.minSDK.get().toInt()
+        targetSdk = libs.versions.targetSDK.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
