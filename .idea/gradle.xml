@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/admin" />
+            <option value="$PROJECT_DIR$/navigation/pupil" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

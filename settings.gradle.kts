@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "I'm pupil"
 include(":app")
 include(":navigation:admin")
+include(":navigation:pupil")
