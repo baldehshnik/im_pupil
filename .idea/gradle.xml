@@ -28,6 +28,7 @@
             <option value="$PROJECT_DIR$/features/common/about" />
             <option value="$PROJECT_DIR$/features/common/filters" />
             <option value="$PROJECT_DIR$/features/common/news" />
+            <option value="$PROJECT_DIR$/features/common/password_recovery" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/admin" />
             <option value="$PROJECT_DIR$/navigation/common" />
