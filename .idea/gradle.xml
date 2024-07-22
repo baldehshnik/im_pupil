@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/features/admin/account" />
             <option value="$PROJECT_DIR$/features/admin/admin_details" />
             <option value="$PROJECT_DIR$/features/admin/home" />
+            <option value="$PROJECT_DIR$/features/admin/notifications" />
             <option value="$PROJECT_DIR$/features/admin/services" />
             <option value="$PROJECT_DIR$/features/common" />
             <option value="$PROJECT_DIR$/features/common/about" />
