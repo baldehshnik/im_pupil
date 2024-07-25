@@ -47,3 +47,4 @@ include(":features:common:filters")
 
 include(":services:admin:practice")
 include(":services:common:widgets")
+include(":services:admin:sections")
