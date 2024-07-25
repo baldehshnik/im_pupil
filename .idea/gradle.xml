@@ -39,6 +39,7 @@
             <option value="$PROJECT_DIR$/services/admin/about" />
             <option value="$PROJECT_DIR$/services/admin/magazine" />
             <option value="$PROJECT_DIR$/services/admin/practice" />
+            <option value="$PROJECT_DIR$/services/admin/schedule" />
             <option value="$PROJECT_DIR$/services/admin/sections" />
             <option value="$PROJECT_DIR$/services/admin/session" />
             <option value="$PROJECT_DIR$/services/admin/statistics" />
