@@ -36,6 +36,7 @@
             <option value="$PROJECT_DIR$/navigation/pupil" />
             <option value="$PROJECT_DIR$/services" />
             <option value="$PROJECT_DIR$/services/admin" />
+            <option value="$PROJECT_DIR$/services/admin/about" />
             <option value="$PROJECT_DIR$/services/admin/magazine" />
             <option value="$PROJECT_DIR$/services/admin/practice" />
             <option value="$PROJECT_DIR$/services/admin/sections" />
