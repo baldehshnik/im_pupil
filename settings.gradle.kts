@@ -54,3 +54,4 @@ include(":services:admin:session")
 
 include(":services:common:widgets")
 include(":services:common:settings")
+include(":services:admin:statistics")

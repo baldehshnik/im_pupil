@@ -41,6 +41,7 @@
             <option value="$PROJECT_DIR$/services/admin/practice" />
             <option value="$PROJECT_DIR$/services/admin/sections" />
             <option value="$PROJECT_DIR$/services/admin/session" />
+            <option value="$PROJECT_DIR$/services/admin/statistics" />
             <option value="$PROJECT_DIR$/services/admin/students" />
             <option value="$PROJECT_DIR$/services/common" />
             <option value="$PROJECT_DIR$/services/common/settings" />
