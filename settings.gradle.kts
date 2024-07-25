@@ -46,8 +46,10 @@ include(":features:common:about")
 include(":features:common:filters")
 
 include(":services:admin:practice")
-include(":services:common:widgets")
 include(":services:admin:sections")
 include(":services:admin:magazine")
 include(":services:admin:students")
 include(":services:admin:about")
+
+include(":services:common:widgets")
+include(":services:common:settings")
