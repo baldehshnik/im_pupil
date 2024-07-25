@@ -50,6 +50,7 @@ include(":services:admin:sections")
 include(":services:admin:magazine")
 include(":services:admin:students")
 include(":services:admin:about")
+include(":services:admin:session")
 
 include(":services:common:widgets")
 include(":services:common:settings")
