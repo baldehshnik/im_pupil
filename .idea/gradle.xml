@@ -34,6 +34,11 @@
             <option value="$PROJECT_DIR$/navigation/admin" />
             <option value="$PROJECT_DIR$/navigation/common" />
             <option value="$PROJECT_DIR$/navigation/pupil" />
+            <option value="$PROJECT_DIR$/services" />
+            <option value="$PROJECT_DIR$/services/admin" />
+            <option value="$PROJECT_DIR$/services/admin/practice" />
+            <option value="$PROJECT_DIR$/services/common" />
+            <option value="$PROJECT_DIR$/services/common/widgets" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
