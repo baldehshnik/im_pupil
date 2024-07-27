@@ -30,9 +30,11 @@
             <option value="$PROJECT_DIR$/features/common/news" />
             <option value="$PROJECT_DIR$/features/common/password_recovery" />
             <option value="$PROJECT_DIR$/features/common/sign_in" />
+            <option value="$PROJECT_DIR$/features/common/welcome" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/admin" />
             <option value="$PROJECT_DIR$/navigation/common" />
+            <option value="$PROJECT_DIR$/navigation/core" />
             <option value="$PROJECT_DIR$/navigation/pupil" />
             <option value="$PROJECT_DIR$/services" />
             <option value="$PROJECT_DIR$/services/admin" />

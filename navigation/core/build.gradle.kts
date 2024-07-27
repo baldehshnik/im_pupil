@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.sparkfusion.navigation.common"
+    namespace = "com.sparkfusion.navigation.core"
     compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {
@@ -31,21 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
 }
 
 dependencies {
-
-    implementation(project(":navigation:core"))
-    implementation(project(":features:common:welcome"))
-
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.navigation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
