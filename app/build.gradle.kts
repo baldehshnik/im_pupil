@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -40,9 +42,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -57,6 +56,9 @@ dependencies {
     implementation(project(":navigation:pupil"))
     implementation(project(":navigation:core"))
     implementation(project(":features:common:welcome"))
+
+    implementation(libs.google.hilt)
+    ksp(libs.google.hilt.compiler)
 
     implementation(libs.androidx.navigation)
 

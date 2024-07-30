@@ -42,6 +42,9 @@ android {
 dependencies {
 
     implementation(project(":navigation:core"))
+    implementation(project(":navigation:admin"))
+    implementation(project(":navigation:pupil"))
+
     implementation(project(":features:common:welcome"))
 
     implementation(libs.androidx.activity.compose)

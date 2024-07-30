@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.sparkfusion.navigation.pupil"
+    namespace = "com.sparkfusion.navigation.adminfeaturesport"
     compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {
@@ -31,17 +30,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
 
-    implementation(project(":navigation:core"))
+    implementation(project(":features:admin:home"))
+    implementation(project(":features:admin:account"))
+    implementation(project(":features:admin:services"))
+    implementation(project(":features:admin:admin_details"))
+    implementation(project(":features:admin:notifications"))
+    implementation(project(":features:admin:post"))
+    implementation(project(":features:admin:sign_up"))
 
-    implementation(libs.androidx.activity.compose)
+    implementation(project(":navigation:adminCorePort"))
+    implementation(project(":navigation:admin"))
+
     implementation(libs.androidx.navigation)
+    implementation(libs.androidx.activity.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
