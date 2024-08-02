@@ -4,19 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import com.sparkfusion.features.common.welcome.WelcomeScreen
-import com.sparkfusion.navigation.admin.AdminNavHost
-import com.sparkfusion.navigation.admin.destination.AdminHomeDestination
-import com.sparkfusion.navigation.common.destination.WelcomeScreenDestination
-import com.sparkfusion.navigation.core.Destination
-import com.sparkfusion.navigation.pupil.PupilNavHost
-import com.sparkfusion.navigation.pupil.destination.PupilHomeDestination
+import com.sparkfusion.navigation.admin.host.adminNavHost
+import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
+import com.sparkfusion.navigation.common.type.AccountType
 
 @Composable
-fun AppNavHost(navController: NavHostController, startDestination: Destination) {
-    NavHost(navController = navController, startDestination = startDestination.route) {
-        composable(WelcomeScreenDestination.route) { WelcomeScreen() }
-        composable(AdminHomeDestination.route) { AdminNavHost(navController = navController) }
-        composable(PupilHomeDestination.route) { PupilNavHost(navController = navController) }
+fun AppNavHost(navController: NavHostController, accountType: AccountType) {
+    NavHost(navController = navController, startDestination = accountType.type) {
+        composable(AccountType.Welcome.type) { WelcomeScreen() }
+        navigation(AdminHomeDestination.route, AccountType.Admin.type) {
+            adminNavHost(navController)
+        }
+//        composable(AccountType.Admin.type) { AdminNavHost(navController = navController) }
+//        composable(AccountType.Pupil.type) { PupilNavHost(navController = navController) }
     }
 }

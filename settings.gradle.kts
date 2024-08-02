@@ -26,7 +26,6 @@ include(":navigation:admin")
 include(":navigation:pupil")
 include(":navigation:common")
 include(":navigation:core")
-include(":navigation:adminFeaturesPort")
 include(":navigation:adminServicesPort")
 include(":navigation:adminCorePort")
 

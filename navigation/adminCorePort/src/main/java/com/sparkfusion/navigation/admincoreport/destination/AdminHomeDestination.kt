@@ -1,8 +1,8 @@
-package com.sparkfusion.navigation.admin.destination
+package com.sparkfusion.navigation.admincoreport.destination
 
 import com.sparkfusion.navigation.core.Destination
 
 object AdminHomeDestination : Destination() {
     override val route: String
-        get() = "admin_home"
+        get() = "admin home"
 }

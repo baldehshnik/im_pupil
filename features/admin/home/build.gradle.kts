@@ -38,6 +38,9 @@ android {
 
 dependencies {
 
+    implementation(project(":navigation:core"))
+    implementation(project(":navigation:adminCorePort"))
+
     implementation(libs.androidx.navigation)
 
     implementation(libs.androidx.core.ktx)

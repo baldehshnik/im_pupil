@@ -34,7 +34,6 @@
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation/admin" />
             <option value="$PROJECT_DIR$/navigation/adminCorePort" />
-            <option value="$PROJECT_DIR$/navigation/adminFeaturesPort" />
             <option value="$PROJECT_DIR$/navigation/adminServicesPort" />
             <option value="$PROJECT_DIR$/navigation/common" />
             <option value="$PROJECT_DIR$/navigation/core" />

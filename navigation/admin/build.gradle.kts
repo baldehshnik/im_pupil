@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -39,6 +41,13 @@ android {
 dependencies {
 
     implementation(project(":navigation:core"))
+    implementation(project(":navigation:adminCorePort"))
+
+    implementation(project(":features:admin:home"))
+    implementation(project(":features:admin:account"))
+
+    implementation(libs.google.hilt)
+    ksp(libs.google.hilt.compiler)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation)

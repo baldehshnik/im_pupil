@@ -4,11 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.sparkfusion.im_pupil.login.checkLogin
 import com.sparkfusion.im_pupil.ui.theme.ImPupilTheme
 import com.sparkfusion.navigation.common.AppNavHost
+import com.sparkfusion.navigation.common.type.AccountType
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -16,7 +19,7 @@ class MainActivity : ComponentActivity() {
             ImPupilTheme {
                 AppNavHost(
                     navController = navController,
-                    startDestination = checkLogin()
+                    accountType = AccountType.Admin
                 )
             }
         }

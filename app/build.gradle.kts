@@ -57,6 +57,8 @@ dependencies {
     implementation(project(":navigation:core"))
     implementation(project(":features:common:welcome"))
 
+    implementation(libs.androidx.lifecycle)
+
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)
 
