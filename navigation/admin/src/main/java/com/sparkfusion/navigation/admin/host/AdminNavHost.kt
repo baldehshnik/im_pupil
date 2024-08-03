@@ -2,23 +2,18 @@ package com.sparkfusion.navigation.admin.host
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import com.sparkfusion.features.admin.account.destination.AdminAccountDestination
-import com.sparkfusion.features.admin.account.screen.AccountScreen
-import com.sparkfusion.features.admin.admin_details.destination.AdminDetailsDestination
-import com.sparkfusion.features.admin.admin_details.screen.AdminDetailsScreen
-import com.sparkfusion.features.admin.home.screen.HomeScreen
-import com.sparkfusion.features.admin.notifications.destination.AdminNotificationsDestination
-import com.sparkfusion.features.admin.notifications.screen.NotificationsScreen
+import com.sparkfusion.features.admin.post.destination.AdminPostViewingDestination
 import com.sparkfusion.features.admin.services.destination.AdminServicesDestination
-import com.sparkfusion.features.admin.services.screen.ServicesScreen
-import com.sparkfusion.navigation.admin.bottombar.ScreenWithBottomAppBar
-import com.sparkfusion.navigation.admin.navigator.AccountNavigator
+import com.sparkfusion.navigation.admin.host.baritems.adminBottomBarDestinations
+import com.sparkfusion.navigation.admin.host.post.adminPostScreensDestinations
+import com.sparkfusion.navigation.admin.host.screens.adminDetails
+import com.sparkfusion.navigation.admin.host.screens.adminNotifications
 import com.sparkfusion.navigation.admin.navigator.AdminDetailsNavigator
 import com.sparkfusion.navigation.admin.navigator.FeaturesNavigator
-import com.sparkfusion.navigation.admin.navigator.HomeNavigator
 import com.sparkfusion.navigation.admin.navigator.NotificationsNavigator
-import com.sparkfusion.navigation.admin.navigator.ServicesNavigator
+import com.sparkfusion.navigation.admin.navigator.post.POST_ROUTE
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 
 fun NavGraphBuilder.adminNavHost(navController: NavHostController) {
@@ -29,25 +24,16 @@ fun NavGraphBuilder.adminNavHost(navController: NavHostController) {
         AdminServicesDestination.route
     )
 
-    composable(AdminHomeDestination.route) {
-        ScreenWithBottomAppBar(navController, bottomNavDestinations) {
-            HomeScreen(HomeNavigator(featuresNavigator))
-        }
-    }
-    composable(AdminServicesDestination.route) {
-        ScreenWithBottomAppBar(navController, bottomNavDestinations) {
-            ServicesScreen(ServicesNavigator(featuresNavigator))
-        }
-    }
-    composable(AdminAccountDestination.route) {
-        ScreenWithBottomAppBar(navController, bottomNavDestinations) {
-            AccountScreen(AccountNavigator(featuresNavigator))
-        }
-    }
-    composable(AdminDetailsDestination.route) {
-        AdminDetailsScreen(AdminDetailsNavigator(featuresNavigator))
-    }
-    composable(AdminNotificationsDestination.route) {
-        NotificationsScreen(NotificationsNavigator(featuresNavigator))
+    adminBottomBarDestinations(navController, featuresNavigator, bottomNavDestinations)
+
+    val adminDetailsNavigator = AdminDetailsNavigator(featuresNavigator)
+    adminDetails(adminDetailsNavigator)
+
+    val notificationsNavigator = NotificationsNavigator(featuresNavigator)
+    adminNotifications(notificationsNavigator)
+
+    val postViewingRoute = AdminPostViewingDestination.route
+    navigation(postViewingRoute, POST_ROUTE) {
+        adminPostScreensDestinations(featuresNavigator)
     }
 }

@@ -15,7 +15,10 @@ fun AccountScreen(
     Column(modifier = modifier) {
         Text(text = "Account Screen")
         Button(onClick = navigator::navigateToAdminDetailsScreen) {
-            Text(text = "Button")
+            Text(text = "Admin Details")
+        }
+        Button(onClick = navigator::navigateToPostViewingScreen) {
+            Text(text = "Admin Post Viewing")
         }
     }
 }

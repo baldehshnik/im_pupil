@@ -17,5 +17,11 @@ fun HomeScreen(
         Button(onClick = { navigator.navigateToNotificationsScreen() }) {
             Text(text = "Notifications")
         }
+        Button(onClick = navigator::navigateToPostAddingScreen) {
+            Text(text = "Post Adding")
+        }
+        Button(onClick = navigator::navigateToPostViewingScreen) {
+            Text(text = "Post Viewing")
+        }
     }
 }
