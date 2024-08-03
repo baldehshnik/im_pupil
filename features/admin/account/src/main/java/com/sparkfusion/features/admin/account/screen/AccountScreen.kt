@@ -1,5 +1,7 @@
 package com.sparkfusion.features.admin.account.screen
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,5 +12,10 @@ fun AccountScreen(
     navigator: IAccountNavigator,
     modifier: Modifier = Modifier
 ) {
-    Text(text = "Account Screen")
+    Column(modifier = modifier) {
+        Text(text = "Account Screen")
+        Button(onClick = navigator::navigateToAdminDetailsScreen) {
+            Text(text = "Button")
+        }
+    }
 }

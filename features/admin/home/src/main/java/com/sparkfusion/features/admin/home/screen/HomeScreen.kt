@@ -12,10 +12,10 @@ fun HomeScreen(
     navigator: IHomeNavigator,
     modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(modifier = modifier) {
         Text(text = "Admin Home Screen")
-        Button(onClick = { navigator.navigateToAccount() }) {
-            Text(text = "My button")
+        Button(onClick = { navigator.navigateToNotificationsScreen() }) {
+            Text(text = "Notifications")
         }
     }
 }

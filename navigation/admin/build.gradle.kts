@@ -45,6 +45,19 @@ dependencies {
 
     implementation(project(":features:admin:home"))
     implementation(project(":features:admin:account"))
+    implementation(project(":features:admin:admin_details"))
+    implementation(project(":features:admin:notifications"))
+    implementation(project(":features:admin:post"))
+    implementation(project(":features:admin:services"))
+    implementation(project(":features:admin:sign_up"))
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)
