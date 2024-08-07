@@ -34,14 +34,15 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
 }
 
 dependencies {
 
+    implementation(project(":core:widget"))
+
     implementation(libs.androidx.navigation)
+
+    implementation(libs.androidx.appcompat)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

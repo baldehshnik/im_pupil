@@ -16,16 +16,16 @@ import com.sparkfusion.navigation.admin.navigator.AccountNavigator
 import com.sparkfusion.navigation.admin.navigator.HomeNavigator
 import com.sparkfusion.navigation.admin.navigator.ServicesNavigator
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
-import com.sparkfusion.navigation.admincoreport.navigator.IFeaturesNavigator
+import com.sparkfusion.navigation.core.navigator.INavigator
 
 fun NavGraphBuilder.adminBottomBarDestinations(
     navController: NavHostController,
-    featuresNavigator: IFeaturesNavigator,
+    navigator: INavigator,
     bottomNavDestinations: List<String>
 ) {
-    val homeNavigator = HomeNavigator(featuresNavigator)
-    val servicesNavigator = ServicesNavigator(featuresNavigator)
-    val accountNavigator = AccountNavigator(featuresNavigator)
+    val homeNavigator = HomeNavigator(navigator)
+    val servicesNavigator = ServicesNavigator(navigator)
+    val accountNavigator = AccountNavigator(navigator)
 
     adminHome(navController, homeNavigator, bottomNavDestinations)
     adminServices(navController, servicesNavigator, bottomNavDestinations)

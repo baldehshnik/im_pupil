@@ -4,9 +4,10 @@ import com.sparkfusion.features.admin.home.navigator.IHomeNavigator
 import com.sparkfusion.features.admin.notifications.destination.AdminNotificationsDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostAddingDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostViewingDestination
-import com.sparkfusion.navigation.admincoreport.navigator.IFeaturesNavigator
+import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
+import com.sparkfusion.navigation.core.navigator.INavigator
 
-class HomeNavigator(private val navigator: IFeaturesNavigator): IHomeNavigator {
+class HomeNavigator(private val navigator: INavigator): IHomeNavigator {
 
     override fun navigateToNotificationsScreen() {
         navigator.navigateTo(AdminNotificationsDestination)
@@ -18,5 +19,9 @@ class HomeNavigator(private val navigator: IFeaturesNavigator): IHomeNavigator {
 
     override fun navigateToPostViewingScreen() {
         navigator.navigateTo(AdminPostViewingDestination)
+    }
+
+    override fun navigateToFiltersScreen() {
+        navigator.navigateTo(FiltersDestination)
     }
 }

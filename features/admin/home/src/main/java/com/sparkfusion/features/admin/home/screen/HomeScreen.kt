@@ -23,5 +23,8 @@ fun HomeScreen(
         Button(onClick = navigator::navigateToPostViewingScreen) {
             Text(text = "Post Viewing")
         }
+        Button(onClick = navigator::navigateToFiltersScreen) {
+            Text(text = "Filters")
+        }
     }
 }

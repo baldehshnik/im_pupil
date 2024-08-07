@@ -18,13 +18,13 @@ import com.sparkfusion.navigation.admin.navigator.post.PostAddingNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostEditingNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostPreviewNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostViewingNavigator
-import com.sparkfusion.navigation.admincoreport.navigator.IFeaturesNavigator
+import com.sparkfusion.navigation.core.navigator.INavigator
 
-fun NavGraphBuilder.adminPostScreensDestinations(featuresNavigator: IFeaturesNavigator) {
-    val postViewingNavigator = PostViewingNavigator(featuresNavigator)
-    val postPreviewNavigator = PostPreviewNavigator(featuresNavigator)
-    val postAddingNavigator = PostAddingNavigator(featuresNavigator)
-    val postEditingNavigator = PostEditingNavigator(featuresNavigator)
+fun NavGraphBuilder.adminPostScreensDestinations(navigator: INavigator) {
+    val postViewingNavigator = PostViewingNavigator(navigator)
+    val postPreviewNavigator = PostPreviewNavigator(navigator)
+    val postAddingNavigator = PostAddingNavigator(navigator)
+    val postEditingNavigator = PostEditingNavigator(navigator)
 
     postViewing(postViewingNavigator)
     postPreview(postPreviewNavigator)

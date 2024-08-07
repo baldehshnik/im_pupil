@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.sparkfusion.im_pupil.ui.theme.ImPupilTheme
-import com.sparkfusion.navigation.common.AppNavHost
+import com.sparkfusion.navigation.common.host.AppNavHost
 import com.sparkfusion.navigation.common.type.AccountType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             ImPupilTheme {
                 AppNavHost(
                     navController = navController,
-                    accountType = AccountType.Admin
+                    accountType = AccountType.Common
                 )
             }
         }

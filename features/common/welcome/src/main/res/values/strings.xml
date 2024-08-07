@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="welcome">Welcome!</string>
+    <string name="select_your_role">Select your role, please</string>
+    <string name="administrator">Administrator</string>
+    <string name="pupil">Pupil</string>
+    <string name="or">Or</string>
+
+</resources>

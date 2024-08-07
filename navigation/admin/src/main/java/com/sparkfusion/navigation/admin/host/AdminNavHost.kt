@@ -10,30 +10,34 @@ import com.sparkfusion.navigation.admin.host.baritems.adminBottomBarDestinations
 import com.sparkfusion.navigation.admin.host.post.adminPostScreensDestinations
 import com.sparkfusion.navigation.admin.host.screens.adminDetails
 import com.sparkfusion.navigation.admin.host.screens.adminNotifications
+import com.sparkfusion.navigation.admin.host.screens.adminSignUp
 import com.sparkfusion.navigation.admin.navigator.AdminDetailsNavigator
-import com.sparkfusion.navigation.admin.navigator.FeaturesNavigator
+import com.sparkfusion.navigation.admin.navigator.Navigator
 import com.sparkfusion.navigation.admin.navigator.NotificationsNavigator
+import com.sparkfusion.navigation.admin.navigator.SignUpNavigator
 import com.sparkfusion.navigation.admin.navigator.post.POST_ROUTE
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 
 fun NavGraphBuilder.adminNavHost(navController: NavHostController) {
-    val featuresNavigator = FeaturesNavigator(navController)
+    val navigator = Navigator(navController)
     val bottomNavDestinations = listOf(
         AdminHomeDestination.route,
         AdminAccountDestination.route,
         AdminServicesDestination.route
     )
 
-    adminBottomBarDestinations(navController, featuresNavigator, bottomNavDestinations)
+    adminBottomBarDestinations(navController, navigator, bottomNavDestinations)
 
-    val adminDetailsNavigator = AdminDetailsNavigator(featuresNavigator)
+    val adminDetailsNavigator = AdminDetailsNavigator(navigator)
     adminDetails(adminDetailsNavigator)
 
-    val notificationsNavigator = NotificationsNavigator(featuresNavigator)
+    val notificationsNavigator = NotificationsNavigator(navigator)
     adminNotifications(notificationsNavigator)
 
-    val postViewingRoute = AdminPostViewingDestination.route
-    navigation(postViewingRoute, POST_ROUTE) {
-        adminPostScreensDestinations(featuresNavigator)
+    val signUpNavigator = SignUpNavigator(navigator)
+    adminSignUp(signUpNavigator)
+
+    navigation(AdminPostViewingDestination.route, POST_ROUTE) {
+        adminPostScreensDestinations(navigator)
     }
 }

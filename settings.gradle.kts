@@ -28,6 +28,7 @@ include(":navigation:common")
 include(":navigation:core")
 include(":navigation:adminServicesPort")
 include(":navigation:adminCorePort")
+include(":navigation:commonCorePort")
 
 include(":data:common")
 include(":data:accounts")
@@ -60,3 +61,6 @@ include(":services:admin:schedule")
 
 include(":services:common:widgets")
 include(":services:common:settings")
+
+include(":core:resource")
+include(":core:widget")

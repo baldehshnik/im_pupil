@@ -45,8 +45,14 @@ dependencies {
     implementation(project(":navigation:admin"))
     implementation(project(":navigation:pupil"))
     implementation(project(":navigation:adminCorePort"))
+    implementation(project(":navigation:commonCorePort"))
 
     implementation(project(":features:common:welcome"))
+    implementation(project(":features:common:sign_in"))
+    implementation(project(":features:common:password_recovery"))
+    implementation(project(":features:common:news"))
+    implementation(project(":features:common:about"))
+    implementation(project(":features:common:filters"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation)

@@ -1,7 +1,7 @@
 package com.sparkfusion.navigation.admin.navigator
 
 import com.sparkfusion.features.admin.admin_details.navigator.IAdminDetailsNavigator
-import com.sparkfusion.navigation.admincoreport.navigator.IFeaturesNavigator
+import com.sparkfusion.navigation.core.navigator.INavigator
 
-class AdminDetailsNavigator(private val navigator: IFeaturesNavigator) : IAdminDetailsNavigator {
+class AdminDetailsNavigator(private val navigator: INavigator) : IAdminDetailsNavigator {
 }
