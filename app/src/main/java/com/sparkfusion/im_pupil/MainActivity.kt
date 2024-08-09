@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.sparkfusion.im_pupil.ui.theme.ImPupilTheme
+import com.sparkfusion.core.resource.theme.ImPupilTheme
 import com.sparkfusion.navigation.common.host.AppNavHost
 import com.sparkfusion.navigation.common.type.AccountType
 import dagger.hilt.android.AndroidEntryPoint
