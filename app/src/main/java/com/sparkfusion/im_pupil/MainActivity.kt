@@ -3,6 +3,7 @@ package com.sparkfusion.im_pupil
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
 import com.sparkfusion.core.resource.theme.ImPupilTheme
 import com.sparkfusion.navigation.common.host.AppNavHost
@@ -17,10 +18,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             ImPupilTheme {
-                AppNavHost(
-                    navController = navController,
-                    accountType = AccountType.Common
-                )
+                Surface {
+                    AppNavHost(
+                        navController = navController,
+                        accountType = AccountType.Common
+                    )
+                }
             }
         }
     }

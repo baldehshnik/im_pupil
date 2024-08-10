@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email_icon_description">Leading email icon of text field</string>
+    <string name="code_icon_description">Leading code icon of text field</string>
+    <string name="password_visibility_icon_description">Trailing new password icon of text field</string>
+    <string name="confirm_password_visibility_icon_description">Trailing confirm password icon of text field</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password_recovery">Password recovery</string>
+    <string name="email">Email</string>
+    <string name="enter_here">Enter here…</string>
+    <string name="email_enter_description_info">A code will be sent to this email, which is necessary to confirm account ownership.</string>
+    <string name="request_code">Request code</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirmation_code">Confirmation code</string>
+    <string name="code_enter_description_info">If the code did not arrive or an error occurred. Return to the previous page and repeat the operation!</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="restore">Restore</string>
+</resources>

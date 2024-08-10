@@ -11,6 +11,6 @@ class CommonNavigator(private val navController: NavHostController) : INavigator
     }
 
     override fun popBackStack() {
-
+        navController.popBackStack()
     }
 }

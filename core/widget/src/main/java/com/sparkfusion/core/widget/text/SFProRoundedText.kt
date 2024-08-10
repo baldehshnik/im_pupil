@@ -4,6 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
@@ -23,6 +24,7 @@ fun SFProRoundedText(
         fontWeight = fontWeight,
         fontSize = fontSize,
         color = color,
-        modifier = modifier
+        modifier = modifier,
+        style = TextStyle(lineHeight = 16.sp)
     )
 }

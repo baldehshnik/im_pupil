@@ -11,4 +11,8 @@ class PassRecoveryEmailEnterNavigator(
     override fun navigateToCodeEnterScreen() {
         navigator.navigateTo(PasswordRecoveryCodeEnterDestination)
     }
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }

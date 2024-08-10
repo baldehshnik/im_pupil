@@ -11,4 +11,8 @@ class PassRecoveryNewPasswordNavigator(
     override fun navigateToSignInScreen() {
         navigator.navigateTo(SignInDestination)
     }
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }
