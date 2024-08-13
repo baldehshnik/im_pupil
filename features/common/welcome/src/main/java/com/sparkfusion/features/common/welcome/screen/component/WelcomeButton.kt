@@ -22,11 +22,11 @@ fun WelcomeButton(
     onClick: () -> Unit
 ) {
     val containerColor = when {
-        isSystemInDarkTheme() -> MaterialTheme.colorScheme.surfaceContainerHighest
+        isSystemInDarkTheme() -> MaterialTheme.colorScheme.primary
         else -> Color.Black
     }
     val textColor = when {
-        isSystemInDarkTheme() -> MaterialTheme.colorScheme.onSurface
+        isSystemInDarkTheme() -> MaterialTheme.colorScheme.onPrimary
         else -> Color.White
     }
 
@@ -39,6 +39,7 @@ fun WelcomeButton(
         onClick = onClick
     ) {
         SFProRoundedText(
+            modifier = Modifier.padding(vertical = 4.dp),
             content = information,
             fontWeight = FontWeight.Bold,
             fontSize = 18.sp,

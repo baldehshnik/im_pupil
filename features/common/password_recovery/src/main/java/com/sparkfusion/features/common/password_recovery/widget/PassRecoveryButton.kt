@@ -18,11 +18,11 @@ fun PassRecoveryButton(
     onClick: () -> Unit
 ) {
     val containerColor = when {
-        isSystemInDarkTheme() -> MaterialTheme.colorScheme.surfaceContainerHighest
+        isSystemInDarkTheme() -> MaterialTheme.colorScheme.primary
         else -> Color.Black
     }
     val textColor = when {
-        isSystemInDarkTheme() -> MaterialTheme.colorScheme.onSurface
+        isSystemInDarkTheme() -> MaterialTheme.colorScheme.onPrimary
         else -> Color.White
     }
 

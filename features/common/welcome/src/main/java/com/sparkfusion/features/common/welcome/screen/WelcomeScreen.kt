@@ -60,7 +60,7 @@ fun WelcomeScreen(
             onClick = navigator::navigateToSignInScreen
         )
 
-        WelcomeButtonsSeparator(modifier = Modifier.padding(top = 10.dp, bottom = 14.dp))
+        WelcomeButtonsSeparator(modifier = Modifier.padding(top = 20.dp, bottom = 24.dp))
 
         WelcomeButton(
             information = stringResource(R.string.pupil),

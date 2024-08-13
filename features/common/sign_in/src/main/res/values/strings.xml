@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="enter_login_details">Enter login details</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="enter">Enter</string>
+    <string name="register_new_account">Register new account</string>
+    <string name="save_login">Save login</string>
+</resources>

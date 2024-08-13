@@ -4,4 +4,5 @@ interface ISignInNavigator {
 
     fun navigateToPasswordRecoveryScreen()
     fun navigateToAdminRegistrationScreen()
+    fun popBackStack()
 }

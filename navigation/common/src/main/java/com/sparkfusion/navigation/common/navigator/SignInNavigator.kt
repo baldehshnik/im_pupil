@@ -14,4 +14,8 @@ class SignInNavigator(private val navigator: INavigator): ISignInNavigator {
     override fun navigateToAdminRegistrationScreen() {
         navigator.navigateTo(AdminSignUpDestination)
     }
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }
