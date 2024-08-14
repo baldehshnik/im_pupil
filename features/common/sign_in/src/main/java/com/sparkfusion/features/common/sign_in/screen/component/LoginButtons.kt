@@ -25,7 +25,8 @@ import com.sparkfusion.features.common.sign_in.R
 fun LoginButtons(
     modifier: Modifier = Modifier,
     onPasswordRecoveryClick: () -> Unit,
-    onRegisterClick: () -> Unit
+    onRegisterClick: () -> Unit,
+    onLoginClick: () -> Unit
 ) {
     val containerColor = when {
         isSystemInDarkTheme() -> MaterialTheme.colorScheme.primary
@@ -46,7 +47,7 @@ fun LoginButtons(
     ) {
         Button(
             modifier = Modifier.padding(top = 14.dp),
-            onClick = { },
+            onClick = onLoginClick,
             colors = ButtonDefaults.buttonColors(
                 containerColor = containerColor
             )
@@ -94,6 +95,7 @@ private fun LoginButtonsPreview() {
     LoginButtons(
         modifier = Modifier.fillMaxSize(),
         onPasswordRecoveryClick = {  },
-        onRegisterClick = {  }
+        onRegisterClick = {  },
+        onLoginClick = {  }
     )
 }

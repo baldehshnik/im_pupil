@@ -21,11 +21,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sparkfusion.core.widget.button.BlackButton
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.features.common.password_recovery.R
 import com.sparkfusion.features.common.password_recovery.navigator.IPasswordRecoveryNewPasswordNavigator
 import com.sparkfusion.features.common.password_recovery.screen.component.EnterComponent
-import com.sparkfusion.features.common.password_recovery.widget.PassRecoveryButton
 
 @Composable
 fun PassRecoveryNewPasswordScreen(
@@ -92,7 +92,7 @@ fun PassRecoveryNewPasswordScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        PassRecoveryButton(
+        BlackButton(
             text = stringResource(R.string.restore),
             onClick = navigator::navigateToSignInScreen,
             modifier = Modifier

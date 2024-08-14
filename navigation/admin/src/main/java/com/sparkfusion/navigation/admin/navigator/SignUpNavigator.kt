@@ -4,4 +4,12 @@ import com.sparkfusion.features.admin.sign_up.navigator.ISignUpNavigator
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class SignUpNavigator(private val navigator: INavigator) : ISignUpNavigator {
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
+
+    override fun navigateToSignInScreen() {
+        popBackStack()
+    }
 }

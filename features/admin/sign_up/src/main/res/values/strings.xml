@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="access_mode">Access mode</string>
+    <string name="login_details">Login details</string>
+    <string name="personal_information">Personal information</string>
+    <string name="enter_name_here">Enter name here…</string>
+    <string name="enter">Enter…</string>
+    <string name="place_of_administration">Place of administration</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="patronymic">Patronymic</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="after_submit_info">After submitting a registration request, the request must be processed by an administrator to verify your identity. You will receive the result of successful registration by email indicated above.</string>
+</resources>

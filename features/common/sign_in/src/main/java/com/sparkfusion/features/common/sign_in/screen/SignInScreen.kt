@@ -125,7 +125,8 @@ fun SignInScreen(
         LoginButtons(
             modifier = Modifier.fillMaxSize(),
             onPasswordRecoveryClick = navigator::navigateToPasswordRecoveryScreen,
-            onRegisterClick = navigator::navigateToAdminRegistrationScreen
+            onRegisterClick = navigator::navigateToAdminRegistrationScreen,
+            onLoginClick = navigator::navigateToAdminHomeScreen
         )
     }
 }
@@ -137,6 +138,7 @@ private fun SignInScreenPreview() {
         navigator = object : ISignInNavigator {
             override fun navigateToPasswordRecoveryScreen() {}
             override fun navigateToAdminRegistrationScreen() {}
+            override fun navigateToAdminHomeScreen() {}
             override fun popBackStack() {}
         }
     )
