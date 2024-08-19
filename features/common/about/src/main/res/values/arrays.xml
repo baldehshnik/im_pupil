@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="goals">
+        <item>•  Efficiently manage academic tasks and schedules.</item>
+        <item>•  Receive important notifications and reminders.</item>
+        <item>•  Easily interact with their educational institution and dormitory.</item>
+        <item>•  Maintain communication with classmates and teachers.</item>
+    </string-array>
+
+    <string-array name="purposes">
+        <item>•  Educational institutions (schools, lyceums, universities, etc.).</item>
+        <item>•  Dormitories, so students can promptly receive information and alerts.</item>
+    </string-array>
+
+    <string-array name="features">
+        <item>1.  Linking to an educational institution and/or dormitory: Receive up-to-date notifications and news.</item>
+        <item>2.  Tasks and schedule: View and create tasks, plan schedules for classes and events.</item>
+        <item>3.  Reminder settings: Set reminders for important events and deadlines.</item>
+        <item>4.  Statistics and analytics: Track your progress and results.</item>
+        <item>5.  Communication and interaction: Communicate with other students and teachers through built-in chats and forums.</item>
+    </string-array>
+
+</resources>

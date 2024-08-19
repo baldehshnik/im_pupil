@@ -7,4 +7,6 @@ interface INavigator {
     fun navigateTo(destination: Destination)
 
     fun popBackStack()
+
+    fun popBackStackInclusive(destination: Destination)
 }

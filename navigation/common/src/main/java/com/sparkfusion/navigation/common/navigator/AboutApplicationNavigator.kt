@@ -6,4 +6,8 @@ import com.sparkfusion.navigation.core.navigator.INavigator
 class AboutApplicationNavigator(
     private val navigator: INavigator
 ): IAboutApplicationNavigator {
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }

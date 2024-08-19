@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="about_application">About Application</string>
+    <string name="welcome_to_mobile_app">Welcome to our mobile app, specifically designed for educational institutions and dormitories! We aim to simplify and enhance the lives of students, teachers, and everyone involved in the educational process.</string>
+    <string name="development_goals">Development Goals</string>
+    <string name="our_goal_is">Our goal is to create a convenient and functional tool that helps users:</string>
+    <string name="purpose">Purpose</string>
+    <string name="app_is_designed_for">The app is designed for:</string>
+    <string name="app_features">App Features</string>
+    <string name="about_developer">About the Developer</string>
+    <string name="app_created_by">
+        This app is created by a team of enthusiasts dedicated to making the educational process more convenient and productive. We believe that modern technology can significantly improve the quality of education and everyday life for students.
+
+        Thank you for choosing our app! We hope it becomes your indispensable assistant in studying and living in a dormitory.
+    </string>
+    
+</resources>
