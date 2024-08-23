@@ -1,29 +1,56 @@
 package com.sparkfusion.navigation.core.bottombar
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.compose.material3.BottomAppBar as ComposeAppBar
+import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
 fun BottomAppBar(
     navController: NavHostController,
-    items: List<BottomBarItem>
+    items: List<BottomBarItem>,
+    currentRoute: String?
 ) {
-    ComposeAppBar {
-        items.forEach { item ->
-            IconButton(onClick = {
-                navController.navigate(item.destination.route) {
-                    launchSingleTop = true
-                    restoreState = true
-                    popUpTo(navController.graph.startDestinationId) {
-                        saveState = true
+    val rememberedItems = remember { items }
+
+    NavigationBar {
+        rememberedItems.forEach { item ->
+            val selection = currentRoute == item.destination.route
+
+            NavigationBarItem(
+                selected = selection,
+                alwaysShowLabel = false,
+                onClick = {
+                    navController.navigate(item.destination.route) {
+                        launchSingleTop = true
+                        restoreState = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                    }
+                },
+                icon = {
+                    Icon(
+                        painter = painterResource(if (selection) item.icons.filled else item.icons.outlined),
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    AnimatedVisibility(visible = selection) {
+                        SFProRoundedText(
+                            content = item.title,
+                            fontWeight = FontWeight.Medium
+                        )
                     }
                 }
-            }) {
-                Icon(imageVector = item.icon, contentDescription = item.route)
-            }
+            )
         }
     }
 }

@@ -3,9 +3,7 @@ package com.sparkfusion.navigation.admin.host
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigation
-import com.sparkfusion.features.admin.account.destination.AdminAccountDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostViewingDestination
-import com.sparkfusion.features.admin.services.destination.AdminServicesDestination
 import com.sparkfusion.navigation.admin.host.baritems.adminBottomBarDestinations
 import com.sparkfusion.navigation.admin.host.post.adminPostScreensDestinations
 import com.sparkfusion.navigation.admin.host.screens.adminDetails
@@ -16,17 +14,12 @@ import com.sparkfusion.navigation.admin.navigator.Navigator
 import com.sparkfusion.navigation.admin.navigator.NotificationsNavigator
 import com.sparkfusion.navigation.admin.navigator.SignUpNavigator
 import com.sparkfusion.navigation.admin.navigator.post.POST_ROUTE
-import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 
-fun NavGraphBuilder.adminNavHost(navController: NavHostController) {
+fun NavGraphBuilder.adminNavHost(
+    navController: NavHostController
+) {
     val navigator = Navigator(navController)
-    val bottomNavDestinations = listOf(
-        AdminHomeDestination.route,
-        AdminAccountDestination.route,
-        AdminServicesDestination.route
-    )
-
-    adminBottomBarDestinations(navController, navigator, bottomNavDestinations)
+    adminBottomBarDestinations(navigator)
 
     val adminDetailsNavigator = AdminDetailsNavigator(navigator)
     adminDetails(adminDetailsNavigator)
