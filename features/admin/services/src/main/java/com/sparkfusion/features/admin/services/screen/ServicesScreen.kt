@@ -15,7 +15,7 @@ fun ServicesScreen(
     Column(modifier = modifier) {
         Text(text = "services screen")
         Button(onClick = navigator::navigateToNewsScreen) {
-            Text(text = "Screen Screen")
+            Text(text = "News Screen")
         }
         Button(onClick = navigator::navigateToAboutApplicationScreen) {
             Text(text = "About Application Screen")

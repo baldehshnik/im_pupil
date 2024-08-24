@@ -1,4 +1,4 @@
-package com.sparkfusion.features.admin.admin_details.widget
+package com.sparkfusion.core.widget.text
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.AnimatedVisibilityScope

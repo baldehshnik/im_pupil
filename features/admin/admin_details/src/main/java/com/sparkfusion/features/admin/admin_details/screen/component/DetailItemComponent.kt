@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.features.admin.admin_details.widget.ShimmerTextBox
+import com.sparkfusion.core.widget.text.ShimmerTextBox
 
 @Composable
 fun DetailItemComponent(

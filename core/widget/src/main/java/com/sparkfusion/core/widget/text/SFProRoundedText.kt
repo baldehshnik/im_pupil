@@ -25,6 +25,6 @@ fun SFProRoundedText(
         fontSize = fontSize,
         color = color,
         modifier = modifier,
-        style = TextStyle(lineHeight = 16.sp)
+        style = TextStyle(lineHeight = fontSize)
     )
 }

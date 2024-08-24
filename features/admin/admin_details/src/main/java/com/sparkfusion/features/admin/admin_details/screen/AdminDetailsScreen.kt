@@ -31,8 +31,8 @@ import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.features.admin.admin_details.R
 import com.sparkfusion.features.admin.admin_details.navigator.IAdminDetailsNavigator
 import com.sparkfusion.features.admin.admin_details.screen.component.DetailItemComponent
-import com.sparkfusion.features.admin.admin_details.widget.ShimmerImageBox
-import com.sparkfusion.features.admin.admin_details.widget.ShimmerTextBox
+import com.sparkfusion.core.widget.image.ShimmerImageBox
+import com.sparkfusion.core.widget.text.ShimmerTextBox
 
 const val link =
     "https://media.springernature.com/lw703/springer-static/image/art%3A10.1038%2F528452a/MediaObjects/41586_2015_Article_BF528452a_Figg_HTML.jpg"
