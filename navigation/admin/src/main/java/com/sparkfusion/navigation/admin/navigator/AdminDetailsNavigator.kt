@@ -4,4 +4,8 @@ import com.sparkfusion.features.admin.admin_details.navigator.IAdminDetailsNavig
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class AdminDetailsNavigator(private val navigator: INavigator) : IAdminDetailsNavigator {
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }

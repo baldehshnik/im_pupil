@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shimmer_loading_transition">Shimmer loading transition</string>
+    <string name="shimmer_loading_animation">Shimmer loading animation</string>
+</resources>
