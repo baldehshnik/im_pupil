@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="apply_filters_description">Apply filters button icon</string>
+    <string name="arrow_drop_down_description">Arrow drop down icon to show popular ages list</string>
+    <string name="arrow_drop_up_description">Arrow drop up icon to show hide popular ages list</string>
+    <string name="girls_icon_description">Girls icon of gender filter</string>
+    <string name="boys_icon_description">Boys icon of gender filter</string>
+    <string name="any_icon_description">"Any" icon of gender filter</string>
+    <string name="max_amount_icon_description">Trailing icon of maximum amount text field</string>
+</resources>

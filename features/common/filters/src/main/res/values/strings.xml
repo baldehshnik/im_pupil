@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filters">Filters</string>
+    <string name="gender">Gender</string>
+    <string name="girls">Girls</string>
+    <string name="boys">Boys</string>
+    <string name="any">Any</string>
+    <string name="age_restrictions">Age restrictions</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="select">Select</string>
+    <string name="maximum_amount">Maximum amount</string>
+    <string name="enter_here">Enter here</string>
+    <string name="apply_filters">Apply filters</string>
+    <string name="years">years</string>
+    <string name="default_age_restrictions_description">To leave the default age restrictions, drag the sliders at the edges*</string>
+    <string name="default_max_amount_description">To use the default value and ignore the quantity of this value, enter 0*</string>
+    <string name="default_word">default</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+</resources>
