@@ -3,4 +3,5 @@
     <string name="empty_sign_in_image_description">Image that is displayed when accounts list is empty</string>
     <string name="email_enter_icon_description">Email icon of text field</string>
     <string name="password_enter_icon_description">Password icon of text field</string>
+    <string name="saved_account_icon_description">Icon of saved account</string>
 </resources>

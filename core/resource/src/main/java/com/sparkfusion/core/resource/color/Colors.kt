@@ -42,7 +42,13 @@ fun blackButtonTextColor(): Color {
     }
 }
 
-
+@Composable
+fun textColor(): Color {
+    return when {
+        isSystemInDarkTheme() -> Color.White
+        else -> Color.Black
+    }
+}
 
 
 

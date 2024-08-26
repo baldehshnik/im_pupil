@@ -8,4 +8,6 @@
     <string name="enter">Enter</string>
     <string name="register_new_account">Register new account</string>
     <string name="save_login">Save login</string>
+    <string name="saved_accounts">Saved Accounts</string>
+    <string name="or">Or</string>
 </resources>

@@ -3,6 +3,7 @@ package com.sparkfusion.features.common.sign_in.screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,12 +12,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -36,6 +39,7 @@ import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.features.common.sign_in.R
 import com.sparkfusion.features.common.sign_in.navigator.ISignInNavigator
 import com.sparkfusion.features.common.sign_in.screen.component.LoginButtons
+import com.sparkfusion.features.common.sign_in.screen.component.SavedAccountsComponent
 import com.sparkfusion.features.common.sign_in.widget.CheckButtonWidget
 import com.sparkfusion.features.common.sign_in.widget.LoginTextField
 
@@ -54,6 +58,13 @@ fun SignInScreen(
 
     val saveLogin = rememberSaveable { mutableStateOf(false) }
 
+    val pagesCount = rememberSaveable { mutableIntStateOf(3) }
+    val pagerState = rememberPagerState { pagesCount.intValue }
+    val pages = listOf("Image 16546546456", "Image 2", "Image 6546543")
+    val isDataLoadingCompleted = rememberSaveable { mutableStateOf(false) }
+
+    val isSystemInDark = isSystemInDarkTheme()
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -65,15 +76,28 @@ fun SignInScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Image(
-            modifier = Modifier.size(156.dp),
-            painter = painterResource(R.drawable.empty_sign_in_list),
-            contentDescription = stringResource(R.string.empty_sign_in_image_description)
-        )
+        if (pagesCount.intValue != 0) {
+            SavedAccountsComponent(
+                pagerState = pagerState,
+                pages = pages,
+                isSystemInDark = isSystemInDark,
+                isDataLoadingCompleted = isDataLoadingCompleted.value
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+        } else {
+            Image(
+                modifier = Modifier.size(156.dp),
+                painter = painterResource(R.drawable.empty_sign_in_list),
+                contentDescription = stringResource(R.string.empty_sign_in_image_description)
+            )
+        }
 
         SFProRoundedText(
             modifier = Modifier.padding(top = 10.dp, bottom = 10.dp),
-            content = stringResource(R.string.enter_login_details),
+            content = stringResource(
+                if (pagesCount.intValue == 0) R.string.enter_login_details else R.string.or
+            ),
             fontSize = 20.sp,
             fontWeight = FontWeight.Medium
         )

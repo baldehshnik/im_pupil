@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -13,6 +15,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+    }
+
+    tasks.withType<KotlinJvmCompile>().configureEach {
+        compilerOptions {
+            freeCompilerArgs.add("-opt-in=androidx.compose.foundation.ExperimentalFoundationApi")
+        }
     }
 
     buildTypes {
@@ -39,8 +47,11 @@ android {
 dependencies {
 
     implementation(project(":navigation:core"))
+
     implementation(project(":core:resource"))
     implementation(project(":core:widget"))
+
+    implementation(libs.coil)
 
     implementation(libs.androidx.navigation)
 
