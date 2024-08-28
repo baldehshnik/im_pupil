@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_not_found">Notifications not found</string>
+    <string name="do_not_any_notifications">You don\'t have any notifications at this time. Once you receive a notification, it will be displayed here.</string>
+    <string name="try_again">Try again</string>
+    <string name="read">Read</string>
+    <string name="new_word">New</string>
+</resources>

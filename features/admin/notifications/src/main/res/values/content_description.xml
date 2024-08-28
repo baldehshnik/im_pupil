@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="try_again_button_icon">Icon of button to reload notifications</string>
+    <string name="no_notifications_icon_description">Icon that shows there are no notifications yet</string>
+    <string name="notification_item_icon_description">Icon of notification</string>
+</resources>

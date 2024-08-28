@@ -5,4 +5,7 @@ import com.sparkfusion.navigation.core.navigator.INavigator
 
 class NotificationsNavigator(private val navigator: INavigator): INotificationsNavigator {
 
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }
