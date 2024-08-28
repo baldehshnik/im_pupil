@@ -39,7 +39,7 @@ android {
 dependencies {
 
     implementation(project(":core:resource"))
-
+    
     implementation(libs.coil)
 
     implementation(libs.androidx.core.ktx)

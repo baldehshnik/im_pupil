@@ -64,3 +64,4 @@ include(":services:common:settings")
 
 include(":core:resource")
 include(":core:widget")
+include(":core:image_crop")

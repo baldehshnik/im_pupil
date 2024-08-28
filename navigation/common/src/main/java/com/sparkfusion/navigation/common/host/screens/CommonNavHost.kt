@@ -1,12 +1,15 @@
 package com.sparkfusion.navigation.common.host.screens
 
+import android.graphics.Bitmap
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.sparkfusion.core.image_crop.screen.CircleCropScreen
+import com.sparkfusion.core.image_crop.screen.FailedOpenImageScreen
+import com.sparkfusion.core.resource.bundle.IMAGE_CROP_KEY
 import com.sparkfusion.features.common.about.screen.AboutApplicationScreen
 import com.sparkfusion.features.common.filters.screen.FiltersScreen
-import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
 import com.sparkfusion.features.common.news.screen.NewsScreen
 import com.sparkfusion.features.common.password_recovery.destination.PasswordRecoveryEmailEnterDestination
 import com.sparkfusion.features.common.sign_in.destination.SignInDestination
@@ -20,8 +23,11 @@ import com.sparkfusion.navigation.common.navigator.FiltersNavigator
 import com.sparkfusion.navigation.common.navigator.NewsNavigator
 import com.sparkfusion.navigation.common.navigator.SignInNavigator
 import com.sparkfusion.navigation.common.navigator.WelcomeNavigator
+import com.sparkfusion.navigation.common.navigator.crop.ImageCropNavigator
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
+import com.sparkfusion.navigation.commoncoreport.destination.CircleImageCropDestination
 import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
+import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
 
 fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
@@ -42,7 +48,36 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
     val aboutApplicationNavigator = AboutApplicationNavigator(commonNavigator)
     composable(AboutApplicationDestination.route) { AboutApplicationScreen(aboutApplicationNavigator) }
 
+    val imageCropNavigator = ImageCropNavigator(commonNavigator)
+    composable(CircleImageCropDestination.route) {
+        val bitmap: Bitmap? = navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
+        if (bitmap != null) {
+            CircleCropScreen(imageCropNavigator, bitmap)
+        } else {
+            FailedOpenImageScreen(imageCropNavigator)
+        }
+    }
+
     navigation(PasswordRecoveryEmailEnterDestination.route, PASSWORD_RECOVERY_ROUTE) {
         passwordRecoveryNavHost(commonNavigator)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

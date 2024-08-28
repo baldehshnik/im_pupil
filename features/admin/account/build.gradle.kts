@@ -39,6 +39,10 @@ android {
 dependencies {
 
     implementation(project(":navigation:core"))
+    implementation(project(":navigation:commonCorePort"))
+
+    implementation(project(":core:resource"))
+    implementation(project(":core:widget"))
 
     implementation(libs.androidx.navigation)
 

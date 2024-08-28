@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/image_crop" />
             <option value="$PROJECT_DIR$/core/resource" />
             <option value="$PROJECT_DIR$/core/widget" />
             <option value="$PROJECT_DIR$/data" />

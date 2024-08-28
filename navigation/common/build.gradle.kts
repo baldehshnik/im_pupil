@@ -54,6 +54,9 @@ dependencies {
     implementation(project(":features:common:about"))
     implementation(project(":features:common:filters"))
 
+    implementation(project(":core:image_crop"))
+    implementation(project(":core:resource"))
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
