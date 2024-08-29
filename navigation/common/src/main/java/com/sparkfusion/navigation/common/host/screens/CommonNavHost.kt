@@ -5,8 +5,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import com.sparkfusion.core.image_crop.screen.CircleCropScreen
 import com.sparkfusion.core.image_crop.screen.FailedOpenImageScreen
+import com.sparkfusion.core.image_crop.screen.ImageCropScreen
+import com.sparkfusion.core.image_crop.type.ImageCropType
 import com.sparkfusion.core.resource.bundle.IMAGE_CROP_KEY
 import com.sparkfusion.features.common.about.screen.AboutApplicationScreen
 import com.sparkfusion.features.common.filters.screen.FiltersScreen
@@ -52,7 +53,7 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
     composable(CircleImageCropDestination.route) {
         val bitmap: Bitmap? = navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
         if (bitmap != null) {
-            CircleCropScreen(imageCropNavigator, bitmap)
+            ImageCropScreen(imageCropNavigator, ImageCropType.RectangleCrop, bitmap)
         } else {
             FailedOpenImageScreen(imageCropNavigator)
         }
