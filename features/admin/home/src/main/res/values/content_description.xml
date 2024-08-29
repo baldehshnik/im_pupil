@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_post_icon_description">Icon of add floating button</string>
+    <string name="filters_icon_description">Icon of filters button</string>
+    <string name="notifications_icon_description">Icon of notifications button</string>
+    <string name="app_logo_description">Logo of application</string>
+    <string name="balloons_image_description">Balloons image used for beautiful design</string>
+    <string name="more_vert_icon_description">Icon of button to show spinner menu of post behavior</string>
+    <string name="post_image_description">Image of post item</string>
+    <string name="like_button_icon_description">Icon of like button</string>
+</resources>
