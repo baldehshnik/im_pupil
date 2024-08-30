@@ -38,7 +38,12 @@ android {
 
 dependencies {
 
+    implementation(project(":core:resource"))
+    implementation(project(":core:widget"))
+
     implementation(project(":navigation:core"))
+
+    implementation(libs.coil)
 
     implementation(libs.androidx.navigation)
 
