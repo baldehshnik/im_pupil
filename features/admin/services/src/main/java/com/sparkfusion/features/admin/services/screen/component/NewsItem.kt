@@ -67,7 +67,7 @@ fun NewsItem(
                     )
                     .clip(shape)
                     .size(100.dp),
-                painter = painterResource(R.drawable.sections_service_icon),
+                painter = painterResource(R.drawable.settings_icon),
                 contentDescription = stringResource(R.string.news_image_description)
             )
 

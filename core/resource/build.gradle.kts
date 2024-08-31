@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sparkfusion.resource"
+    namespace = "com.sparkfusion.core.resource"
     compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {

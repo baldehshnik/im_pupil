@@ -25,7 +25,7 @@ fun AboutApplicationBlock(
         title = stringResource(R.string.about_application)
     ) {
         Card(
-            modifier = Modifier.padding(top = 12.dp),
+            modifier = Modifier.padding(top = 8.dp),
             onClick = onReadMoreClick,
             shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(

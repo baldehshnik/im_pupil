@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -33,6 +35,15 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:common"))
+
+    implementation(project(":dataPort:admin:portServices"))
+
+    implementation(project(":data:base"))
+
+    implementation(libs.google.hilt)
+    ksp(libs.google.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

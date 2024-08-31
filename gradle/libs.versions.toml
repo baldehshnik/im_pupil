@@ -15,6 +15,8 @@ hilt = "2.51.1"
 ksp = "2.0.0-1.0.23"
 lifecycle = "2.8.4"
 coil = "2.7.0"
+hiltNavigation = "1.2.0"
+room = "2.6.1"
 
 compileSDK = "34"
 minSDK = "26"
@@ -42,6 +44,10 @@ google-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref 
 google-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

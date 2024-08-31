@@ -40,7 +40,7 @@ fun TopComponent(
                 .clip(CircleShape)
                 .size(40.dp),
             contentScale = ContentScale.Crop,
-            painter = painterResource(R.drawable.schedule_service_icon),
+            painter = painterResource(R.drawable.settings_icon),
             contentDescription = stringResource(R.string.account_image_description)
         )
 

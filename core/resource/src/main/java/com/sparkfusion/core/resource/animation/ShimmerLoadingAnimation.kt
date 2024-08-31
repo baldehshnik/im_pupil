@@ -13,7 +13,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import com.sparkfusion.core.resource.color.ShimmerAnimationModeColors
-import com.sparkfusion.resource.R
+import com.sparkfusion.core.resource.R
 
 fun Modifier.shimmerLoadingAnimation(
     isLoadingCompleted: Boolean = true,

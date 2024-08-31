@@ -34,6 +34,7 @@ include(":data:common")
 include(":data:accounts")
 include(":data:admin")
 include(":data:pupil")
+include(":data:base")
 
 include(":features:admin:home")
 include(":features:admin:account")
@@ -65,3 +66,10 @@ include(":services:common:settings")
 include(":core:resource")
 include(":core:widget")
 include(":core:image_crop")
+include(":core:common")
+include(":core:hilt_core")
+
+include(":domain:admin:services")
+include(":domain:admin:port:portServices")
+
+include(":dataPort:admin:portServices")

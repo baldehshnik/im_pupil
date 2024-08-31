@@ -55,10 +55,9 @@ dependencies {
     implementation(project(":navigation:admin"))
     implementation(project(":navigation:pupil"))
     implementation(project(":navigation:core"))
-
-    implementation(project(":features:common:welcome"))
     
     implementation(project(":core:resource"))
+    implementation(project(":core:hilt_core"))
 
     implementation(libs.androidx.lifecycle)
 

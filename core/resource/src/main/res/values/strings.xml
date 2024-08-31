@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="magazine">Magazine</string>
+    <string name="notifications">Notifications</string>
+    <string name="schedule">Schedule</string>
+    <string name="statistics">Statistics</string>
+    <string name="messenger">Messenger</string>
+    <string name="sections">Sections</string>
+    <string name="session">Session</string>
+    <string name="practice">Practice</string>
+    <string name="about">About</string>
+    <string name="students">Students</string>
+    <string name="settings">Settings</string>
+</resources>

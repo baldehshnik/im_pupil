@@ -3,7 +3,7 @@ package com.sparkfusion.core.resource.font
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.sparkfusion.resource.R
+import com.sparkfusion.core.resource.R
 
 val sfProRoundedFontFamily = FontFamily(
     Font(R.font.sf_pro_rounded_black, FontWeight.Black),
