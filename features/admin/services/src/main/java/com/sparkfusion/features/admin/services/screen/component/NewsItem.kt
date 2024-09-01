@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.services.R
 import com.sparkfusion.features.admin.services.entity.NewsEntity
+import com.sparkfusion.core.resource.R as CoreResource
 
 @Composable
 fun NewsItem(
@@ -67,7 +68,7 @@ fun NewsItem(
                     )
                     .clip(shape)
                     .size(100.dp),
-                painter = painterResource(R.drawable.settings_icon),
+                painter = painterResource(CoreResource.drawable.settings_icon),
                 contentDescription = stringResource(R.string.news_image_description)
             )
 

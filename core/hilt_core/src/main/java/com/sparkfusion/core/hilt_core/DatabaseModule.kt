@@ -39,9 +39,10 @@ object DatabaseModule {
     @Provides
     fun provideServicesTableInitializer(
         @IODispatcher ioDispatcher: CoroutineDispatcher,
-        provider: Provider<ServiceDao>
+        provider: Provider<ServiceDao>,
+        @ApplicationContext context: Context
     ): ServicesTableInitializer {
-        return ServicesTableInitializer(ioDispatcher, provider)
+        return ServicesTableInitializer(ioDispatcher, provider, context)
     }
 
     @Provides

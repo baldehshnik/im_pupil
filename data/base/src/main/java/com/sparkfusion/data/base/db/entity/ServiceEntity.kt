@@ -1,6 +1,5 @@
 package com.sparkfusion.data.base.db.entity
 
-import androidx.annotation.DrawableRes
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
@@ -12,7 +11,7 @@ const val SERVICES_TABLE = "services"
     tableName = SERVICES_TABLE,
     indices = [
         Index("title", unique = true),
-        Index("image_id", unique = true)
+        Index("image_path", unique = true)
     ]
 )
 data class ServiceEntity(
@@ -24,9 +23,8 @@ data class ServiceEntity(
     @ColumnInfo("title")
     val title: String,
 
-    @ColumnInfo("image_id")
-    @DrawableRes
-    val imageId: Int,
+    @ColumnInfo("image_path")
+    val imagePath: String,
 
     @ColumnInfo("position")
     val position: Int,

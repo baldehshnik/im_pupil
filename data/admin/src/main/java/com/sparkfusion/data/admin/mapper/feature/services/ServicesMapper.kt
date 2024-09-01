@@ -9,7 +9,7 @@ class ServicesMapper @Inject constructor() : Mapper<ServiceDataEntity, ServiceDa
 
     override suspend fun map(input: ServiceDataEntity): ServiceDataPortEntity {
         return with(input) {
-            ServiceDataPortEntity(id, title, imageId, position, isEnabled)
+            ServiceDataPortEntity(id, title, imagePath, position, isEnabled)
         }
     }
 }

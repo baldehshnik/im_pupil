@@ -22,6 +22,7 @@ import com.sparkfusion.core.widget.text.ShimmerTextBox
 import com.sparkfusion.domain.admin.port.portservices.ServiceEntity
 import com.sparkfusion.features.admin.services.R
 import com.sparkfusion.features.admin.services.entity.EmptyServiceEntity
+import com.sparkfusion.features.admin.services.utils.getServiceImageId
 
 @Composable
 fun ServiceItem(
@@ -31,7 +32,7 @@ fun ServiceItem(
 ) {
     var isImageLoadingCompleted by remember { mutableStateOf(false) }
     val painter = rememberAsyncImagePainter(
-        model = service.imageId,
+        model = if (service.imagePath.isNotBlank()) getServiceImageId(service.imagePath) else service.imagePath,
         onSuccess = { isImageLoadingCompleted = true },
         onLoading = { isImageLoadingCompleted = false }
     )

@@ -1,9 +1,11 @@
 package com.sparkfusion.data.base.db.initializer
 
+import android.content.Context
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.data.base.db.dao.ServiceDao
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -13,7 +15,8 @@ import javax.inject.Provider
 
 class ServicesTableInitializer @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val provider: Provider<ServiceDao>
+    private val provider: Provider<ServiceDao>,
+    @ApplicationContext private val context: Context
 ) : RoomDatabase.Callback() {
 
     private val ioScope = CoroutineScope(ioDispatcher + SupervisorJob())
@@ -21,7 +24,7 @@ class ServicesTableInitializer @Inject constructor(
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
 
-        val services = getInitializeServicesList()
+        val services = getInitializeServicesList(context)
         ioScope.launch {
             provider.get().insertServices(*services.toTypedArray())
         }

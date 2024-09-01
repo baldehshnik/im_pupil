@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.services.R
+import com.sparkfusion.core.resource.R as CoreResource
 
 @Composable
 fun TopComponent(
@@ -40,7 +41,7 @@ fun TopComponent(
                 .clip(CircleShape)
                 .size(40.dp),
             contentScale = ContentScale.Crop,
-            painter = painterResource(R.drawable.settings_icon),
+            painter = painterResource(CoreResource.drawable.settings_icon),
             contentDescription = stringResource(R.string.account_image_description)
         )
 
@@ -57,7 +58,7 @@ fun TopComponent(
         IconButton(onClick = onSettingsClick) {
             Icon(
                 tint = MaterialTheme.colorScheme.primary,
-                painter = painterResource(R.drawable.settings_icon),
+                painter = painterResource(CoreResource.drawable.settings_icon),
                 contentDescription = stringResource(R.string.settings_icon_description)
             )
         }

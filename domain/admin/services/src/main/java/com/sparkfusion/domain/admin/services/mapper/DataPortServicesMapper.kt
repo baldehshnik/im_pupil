@@ -9,7 +9,7 @@ class DataPortServicesMapper @Inject constructor() : Mapper<DataPortServiceEntit
 
     override suspend fun map(input: DataPortServiceEntity): DomainPortServiceEntity {
         return with(input) {
-            DomainPortServiceEntity(id, title, imageId, position, isEnabled)
+            DomainPortServiceEntity(id, title, imagePath, position, isEnabled)
         }
     }
 }
