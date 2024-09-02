@@ -1,6 +1,5 @@
 package com.sparkfusion.features.admin.home.screen.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -9,11 +8,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.home.R
@@ -31,12 +30,12 @@ fun HelloComponent() {
             fontSize = 30.sp
         )
 
-        Image(
+        AsyncImage(
             modifier = Modifier
                 .padding(start = 6.dp)
                 .size(38.dp)
                 .rotate(10f),
-            painter = painterResource(R.drawable.balloons_icon),
+            model = R.drawable.balloons_icon,
             contentDescription = stringResource(R.string.balloons_image_description)
         )
     }

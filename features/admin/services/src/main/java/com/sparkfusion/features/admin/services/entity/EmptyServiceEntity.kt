@@ -10,4 +10,4 @@ val EmptyServiceEntity = ServiceEntity(
     isEnabled = true
 )
 
-val emptyServices = List(11) { EmptyServiceEntity }
+val emptyServices = List(4) { EmptyServiceEntity }

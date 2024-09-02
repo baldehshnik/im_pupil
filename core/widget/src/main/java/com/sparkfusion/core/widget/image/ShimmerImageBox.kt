@@ -1,8 +1,6 @@
 package com.sparkfusion.core.widget.image
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -26,26 +24,23 @@ fun ShimmerImageBox(
     isDarkModeEnabled: Boolean,
     isImageAnimationCompleted: Boolean
 ) {
-    Box(
-        modifier = modifier,
+    ShimmerAnimationBox(
+        modifier = modifier
+            .size(size)
+            .clip(shape),
+        isLoadingCompleted = isImageAnimationCompleted,
+        size = size,
+        isDarkModeEnabled = isDarkModeEnabled,
+        shape = shape,
         contentAlignment = contentAlignment
     ) {
-        AnimatedVisibility(visible = !isImageAnimationCompleted) {
-            ShimmerAnimationBox(
-                isLoadingCompleted = isImageAnimationCompleted,
-                size = size,
-                isDarkModeEnabled = isDarkModeEnabled,
-                shape = shape
-            )
-        }
-
         Image(
             modifier = Modifier
                 .size(size)
                 .clip(shape),
             painter = painter,
             contentDescription = contentDescription,
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Crop
         )
     }
 }

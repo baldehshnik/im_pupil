@@ -43,6 +43,8 @@ dependencies {
     implementation(project(":core:resource"))
     implementation(project(":core:widget"))
 
+    implementation(libs.coil)
+
     implementation(libs.androidx.navigation)
 
     implementation(libs.androidx.core.ktx)

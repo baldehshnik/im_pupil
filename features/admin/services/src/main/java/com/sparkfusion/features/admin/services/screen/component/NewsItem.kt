@@ -1,7 +1,6 @@
 package com.sparkfusion.features.admin.services.screen.component
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -18,12 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.services.R
 import com.sparkfusion.features.admin.services.entity.NewsEntity
@@ -59,7 +58,7 @@ fun NewsItem(
                     shape = RoundedCornerShape(10.dp)
                 )
         ) {
-            Image(
+            AsyncImage(
                 modifier = Modifier
                     .padding(top = 12.dp, start = 12.dp)
                     .border(
@@ -68,7 +67,7 @@ fun NewsItem(
                     )
                     .clip(shape)
                     .size(100.dp),
-                painter = painterResource(CoreResource.drawable.settings_icon),
+                model = CoreResource.drawable.settings_icon,
                 contentDescription = stringResource(R.string.news_image_description)
             )
 

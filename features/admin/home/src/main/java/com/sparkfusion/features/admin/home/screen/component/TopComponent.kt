@@ -1,6 +1,5 @@
 package com.sparkfusion.features.admin.home.screen.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -9,11 +8,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.home.R
 import com.sparkfusion.features.admin.home.widget.TopIconButton
@@ -29,9 +28,9 @@ fun TopComponent(
         modifier = modifier.padding(vertical = 12.dp, horizontal = 20.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Image(
+        AsyncImage(
             modifier = Modifier.size(40.dp),
-            painter = painterResource(R.drawable.app_logo),
+            model = R.drawable.app_logo,
             contentDescription = stringResource(R.string.app_logo_description)
         )
 

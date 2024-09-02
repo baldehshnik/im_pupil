@@ -1,6 +1,5 @@
 package com.sparkfusion.features.admin.services.screen.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.services.R
 import com.sparkfusion.core.resource.R as CoreResource
@@ -36,12 +36,12 @@ fun TopComponent(
             .padding(vertical = 12.dp, horizontal = 24.dp)
             .fillMaxWidth()
     ) {
-        Image(
+        AsyncImage(
             modifier = Modifier
                 .clip(CircleShape)
                 .size(40.dp),
             contentScale = ContentScale.Crop,
-            painter = painterResource(CoreResource.drawable.settings_icon),
+            model = CoreResource.drawable.settings_icon,
             contentDescription = stringResource(R.string.account_image_description)
         )
 

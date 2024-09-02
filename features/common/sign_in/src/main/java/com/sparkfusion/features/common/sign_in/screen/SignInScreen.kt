@@ -1,6 +1,5 @@
 package com.sparkfusion.features.common.sign_in.screen
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.features.common.sign_in.R
@@ -86,9 +86,9 @@ fun SignInScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
         } else {
-            Image(
+            AsyncImage(
                 modifier = Modifier.size(156.dp),
-                painter = painterResource(R.drawable.empty_sign_in_list),
+                model = R.drawable.round_email,
                 contentDescription = stringResource(R.string.empty_sign_in_image_description)
             )
         }
@@ -147,7 +147,6 @@ fun SignInScreen(
         )
 
         LoginButtons(
-            modifier = Modifier.fillMaxSize(),
             onPasswordRecoveryClick = navigator::navigateToPasswordRecoveryScreen,
             onRegisterClick = navigator::navigateToAdminRegistrationScreen,
             onLoginClick = navigator::navigateToAdminHomeScreen

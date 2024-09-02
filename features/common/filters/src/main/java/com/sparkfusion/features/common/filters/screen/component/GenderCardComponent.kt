@@ -2,7 +2,6 @@ package com.sparkfusion.features.common.filters.screen.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,9 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.resource.theme.surfaceContainerHighestDark
 import com.sparkfusion.core.widget.text.SFProRoundedText
 
@@ -46,8 +45,8 @@ fun GenderCardComponent(
                 .fillMaxSize()
                 .padding(start = 8.dp)
         ) {
-            Image(
-                painter = painterResource(drawableId),
+            AsyncImage(
+                model = drawableId,
                 contentDescription = drawableDescription,
                 modifier = Modifier
                     .size(40.dp)

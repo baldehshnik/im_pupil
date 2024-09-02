@@ -1,6 +1,7 @@
 package com.sparkfusion.features.admin.home.screen
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,12 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sparkfusion.core.resource.animation.bubbleAnimation
 import com.sparkfusion.features.admin.home.R
 import com.sparkfusion.features.admin.home.navigator.IHomeNavigator
 import com.sparkfusion.features.admin.home.screen.component.HelloComponent
@@ -34,6 +38,9 @@ fun HomeScreen(
     navigator: IHomeNavigator,
     modifier: Modifier = Modifier
 ) {
+    val floatingButtonScale by remember { mutableStateOf(Animatable(1f)) }
+
+    val coroutineScope = rememberCoroutineScope()
     val isDarkModeEnabled = isSystemInDarkTheme()
 
     val listState = rememberLazyListState()
@@ -82,7 +89,11 @@ fun HomeScreen(
             visible = !listState.isScrollInProgress
         ) {
             LargeFloatingActionButton(
-                onClick = navigator::navigateToPostAddingScreen
+                modifier = Modifier.scale(floatingButtonScale.value),
+                onClick = {
+                    floatingButtonScale.bubbleAnimation(coroutineScope)
+                    navigator.navigateToPostAddingScreen()
+                }
             ) {
                 Icon(
                     painter = painterResource(R.drawable.round_add),
