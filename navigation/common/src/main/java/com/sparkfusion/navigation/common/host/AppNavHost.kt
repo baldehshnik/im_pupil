@@ -14,6 +14,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
+import com.sparkfusion.core.resource.animation.enterTransition
+import com.sparkfusion.core.resource.animation.exitTransition
+import com.sparkfusion.core.resource.animation.popEnterTransition
+import com.sparkfusion.core.resource.animation.popExitTransition
 import com.sparkfusion.navigation.admin.bottombar.AdminBottomAppBar
 import com.sparkfusion.navigation.admin.host.adminNavHost
 import com.sparkfusion.navigation.admin.host.baritems.getAdminBottomBarItemRoutes
@@ -25,15 +29,14 @@ import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestin
 
 @Composable
 fun AppNavHost(navController: NavHostController, accountType: AccountType) {
-    val adminBottomBarItemRoutes = remember { getAdminBottomBarItemRoutes() }
+    val adminBottomBarItemRoutes = getAdminBottomBarItemRoutes()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute by remember(backStackEntry) {
         derivedStateOf { backStackEntry?.destination?.route }
     }
 
-    val showBottomBar by remember(currentRoute) {
-        derivedStateOf { currentRoute in adminBottomBarItemRoutes }
-    }
+    val showBottomBar = currentRoute in adminBottomBarItemRoutes
+
     ChangeNavigationBarColor(showBottomBar)
 
     Scaffold(
@@ -43,14 +46,18 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
                 enter = slideInVertically(initialOffsetY = { it }),
                 exit = slideOutVertically(targetOffsetY = { it })
             ) {
-                AdminBottomAppBar(navController, currentRoute)
+                AdminBottomAppBar(navController, AdminHomeDestination.route)
             }
         }
     ) { paddingValues ->
         NavHost(
             modifier = Modifier.padding(paddingValues),
             navController = navController,
-            startDestination = accountType.type
+            startDestination = accountType.type,
+            enterTransition = { enterTransition() },
+            exitTransition = { exitTransition() },
+            popEnterTransition = { popEnterTransition() },
+            popExitTransition = { popExitTransition() }
         ) {
             navigation(WelcomeScreenDestination.route, AccountType.Common.type) {
                 commonNavHost(navController)

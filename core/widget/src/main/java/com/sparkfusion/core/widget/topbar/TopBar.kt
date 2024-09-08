@@ -1,5 +1,6 @@
 package com.sparkfusion.core.widget.topbar
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,13 +26,15 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 fun TopBar(
     modifier: Modifier = Modifier,
     title: String,
+    buttons: @Composable (() -> Unit)? = null,
     onBackClick: () -> Unit
 ) {
     Row(
         modifier = modifier
             .height(90.dp)
             .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         IconButton(
             onClick = onBackClick,
@@ -48,13 +51,15 @@ fun TopBar(
         Spacer(modifier = Modifier.weight(1f))
 
         SFProRoundedText(
+            modifier = Modifier.padding(end = if (buttons != null) 0.dp else 48.dp),
             content = title,
-            modifier = Modifier.padding(end = 48.dp),
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp
         )
 
         Spacer(modifier = Modifier.weight(1f))
+
+        buttons?.let { it() }
     }
 }
 

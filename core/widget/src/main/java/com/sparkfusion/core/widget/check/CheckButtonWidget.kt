@@ -1,4 +1,4 @@
-package com.sparkfusion.features.common.sign_in.widget
+package com.sparkfusion.core.widget.check
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -9,16 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.features.common.sign_in.R
 
 @Composable
 fun CheckButtonWidget(
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    leftAlignment: Boolean = true,
+    content: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit
 ) {
@@ -32,16 +31,24 @@ fun CheckButtonWidget(
         horizontalArrangement = horizontalArrangement,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        SFProRoundedText(
-            content = stringResource(R.string.save_login),
-            fontSize = 18.sp,
-            color = textColor
-        )
+        if (leftAlignment) {
+            SFProRoundedText(
+                content = content,
+                color = textColor
+            )
+        }
 
         Checkbox(
             checked = checked,
             onCheckedChange = onCheckedChange
         )
+
+        if (!leftAlignment) {
+            SFProRoundedText(
+                content = content,
+                color = textColor
+            )
+        }
     }
 }
 
@@ -52,6 +59,7 @@ private fun CheckButtonWidgetPreview() {
         modifier = Modifier,
         horizontalArrangement = Arrangement.End,
         checked = false,
+        content = "Save login",
         onCheckedChange = {  }
     )
 }

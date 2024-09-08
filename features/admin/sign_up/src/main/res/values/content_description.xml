@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="drop_menu_icon_description">Icon shows if drop menu expanded or not</string>
     <string name="text_field_email_icon_description">Icon shows text field for email</string>
     <string name="text_field_password_icon_description">Icon shows password visibility in text field</string>
 </resources>

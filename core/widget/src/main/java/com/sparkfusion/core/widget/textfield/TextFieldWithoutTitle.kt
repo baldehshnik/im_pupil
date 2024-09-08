@@ -1,4 +1,4 @@
-package com.sparkfusion.features.admin.sign_up.widget
+package com.sparkfusion.core.widget.textfield
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -32,6 +32,7 @@ fun TextFieldWithoutTitle(
     modifier: Modifier = Modifier,
     value: String = "",
     placeholder: String,
+    singleLine: Boolean = true,
     onValueChange: (String) -> Unit,
     keyboardType: KeyboardType = KeyboardType.Text,
     visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -60,7 +61,7 @@ fun TextFieldWithoutTitle(
             )
             .fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        singleLine = true,
+        singleLine = singleLine,
         textStyle = TextStyle(
             fontFamily = sfProRoundedFontFamily,
             fontSize = 16.sp

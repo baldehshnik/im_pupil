@@ -28,7 +28,7 @@ fun PostImageIcon(
     var isImageLoadingAnimationCompleted by remember { mutableStateOf(false) }
 
     val painter = rememberAsyncImagePainter(
-        model = R.drawable.balloons_icon,
+        model = R.drawable.notification_icon,
         onLoading = { isImageLoadingAnimationCompleted = false },
         onSuccess = { isImageLoadingAnimationCompleted = true }
     )

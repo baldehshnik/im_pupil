@@ -28,8 +28,8 @@ import com.sparkfusion.features.admin.sign_up.R
 import com.sparkfusion.features.admin.sign_up.navigator.ISignUpNavigator
 import com.sparkfusion.features.admin.sign_up.screen.component.LoginDetailsBlock
 import com.sparkfusion.features.admin.sign_up.screen.component.PersonalInformationBlock
-import com.sparkfusion.features.admin.sign_up.widget.OutlinedDropDownMenu
-import com.sparkfusion.features.admin.sign_up.widget.TextFieldWithoutTitle
+import com.sparkfusion.core.widget.spinner.OutlinedDropDownMenu
+import com.sparkfusion.core.widget.textfield.TextFieldWithoutTitle
 
 @Composable
 fun SignUpScreen(

@@ -13,12 +13,26 @@ import com.sparkfusion.navigation.admin.navigator.ServicesNavigator
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 import com.sparkfusion.navigation.core.navigator.INavigator
 
-fun NavGraphBuilder.adminBottomBarDestinations(navigator: INavigator) {
+fun NavGraphBuilder.adminBottomBarDestinations(
+    navigator: INavigator
+) {
     val homeNavigator = HomeNavigator(navigator)
     val servicesNavigator = ServicesNavigator(navigator)
     val accountNavigator = AccountNavigator(navigator)
 
-    composable(AdminAccountDestination.route) { AccountScreen(accountNavigator) }
-    composable(AdminHomeDestination.route) { HomeScreen(homeNavigator) }
-    composable(AdminServicesDestination.route) { ServicesScreen(servicesNavigator) }
+    composable(
+        AdminAccountDestination.route
+    ) {
+        AccountScreen(accountNavigator)
+    }
+    composable(
+        AdminHomeDestination.route
+    ) {
+        HomeScreen(homeNavigator)
+    }
+    composable(
+        AdminServicesDestination.route
+    ) {
+        ServicesScreen(servicesNavigator)
+    }
 }

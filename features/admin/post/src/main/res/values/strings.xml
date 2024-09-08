@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="adding">Adding</string>
+    <string name="information_image">Information image</string>
+    <string name="change">Change</string>
+    <string name="title">Title*</string>
+    <string name="description">Description*</string>
+    <string name="type">Type*</string>
+    <string name="enter_here">Enter here</string>
+    <string name="enter_here_max_32">Enter here (max 32 symbols)</string>
+    <string name="date">Date</string>
+    <string name="place">Place</string>
+    <string name="reward">Reward</string>
+    <string name="sorting">Sorting</string>
+    <string name="event_date">Event date</string>
+    <string name="event_time">Event time</string>
+    <string name="meeting_time">Meeting time</string>
+    <string name="no_date_selected">No date selected</string>
+    <string name="no_time_selected">No time selected</string>
+    <string name="only_selected_will_be_displayed">Only what is selected will be displayed</string>
+    <string name="duration">Duration*</string>
+    <string name="post_on_behalf_of_the_institution">Post on behalf of the institution</string>
+    <string name="address">Address</string>
+    <string name="enter_address_here">Enter address here</string>
+    <string name="enter_place_here">Enter place here</string>
+    <string name="public_hours">Public hours</string>
+    <string name="work_hours">Work hours</string>
+    <string name="gender">Gender</string>
+    <string name="age_restrictions">Age restrictions</string>
+    <string name="maximum_amount">Maximum amount</string>
+    <string name="add">Add</string>
+</resources>

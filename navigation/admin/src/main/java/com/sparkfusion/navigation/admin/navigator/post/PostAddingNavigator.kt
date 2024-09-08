@@ -9,4 +9,8 @@ class PostAddingNavigator(private val navigator: INavigator) : IPostAddingNaviga
     override fun navigateToPostPreviewScreen() {
         navigator.navigateTo(AdminPostPreviewDestination)
     }
+
+    override fun popBackStack() {
+        navigator.popBackStack()
+    }
 }

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.sign_up.R
-import com.sparkfusion.features.admin.sign_up.widget.TextFieldWithoutTitle
+import com.sparkfusion.core.widget.textfield.TextFieldWithoutTitle
 
 @Composable
 fun PersonalInformationBlock(

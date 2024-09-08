@@ -1,4 +1,4 @@
-package com.sparkfusion.features.admin.sign_up.widget
+package com.sparkfusion.core.widget.spinner
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import com.sparkfusion.core.resource.color.fieldBorderColor
+import com.sparkfusion.core.widget.R
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.features.admin.sign_up.R
 
 @Composable
 fun OutlinedDropDownMenu(

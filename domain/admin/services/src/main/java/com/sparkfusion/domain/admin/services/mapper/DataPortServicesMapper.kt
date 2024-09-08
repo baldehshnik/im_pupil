@@ -1,15 +1,21 @@
 package com.sparkfusion.domain.admin.services.mapper
 
+import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.core.common.mapper.Mapper
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import com.sparkfusion.domain.admin.port.portservices.ServiceEntity as DomainPortServiceEntity
 import com.sparkfusion.portservices.ServiceEntity as DataPortServiceEntity
 
-class DataPortServicesMapper @Inject constructor() : Mapper<DataPortServiceEntity, DomainPortServiceEntity> {
+class DataPortServicesMapper @Inject constructor(
+    @IODispatcher private val ioDispatcher: CoroutineDispatcher
+) : Mapper<DataPortServiceEntity, DomainPortServiceEntity> {
 
-    override suspend fun map(input: DataPortServiceEntity): DomainPortServiceEntity {
-        return with(input) {
-            DomainPortServiceEntity(id, title, imagePath, position, isEnabled)
+    override suspend fun map(input: DataPortServiceEntity): DomainPortServiceEntity =
+        withContext(ioDispatcher) {
+            return@withContext with(input) {
+                DomainPortServiceEntity(id, title, imagePath, position, isEnabled)
+            }
         }
-    }
 }
