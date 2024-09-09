@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.devtools.ksp)
-    alias(libs.plugins.google.hilt)
 }
 
 android {
-    namespace = "com.sparkfusion.data.common"
+    namespace = "com.sparkfusion.domain.admin.news"
     compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {
@@ -35,14 +33,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":data:commonEntity"))
-
-    implementation(libs.squareup.retrofit)
-    implementation(libs.squareup.retrofit.converter.gson)
-
-    implementation(libs.google.hilt)
-    ksp(libs.google.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

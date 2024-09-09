@@ -1,7 +1,7 @@
 package com.sparkfusion.data.admin.di
 
 import com.sparkfusion.data.admin.repository.feature.AdminServicesRepository
-import com.sparkfusion.portservices.IAdminServicesRepository
+import com.sparkfusion.dataport.admin.portservices.IAdminServicesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

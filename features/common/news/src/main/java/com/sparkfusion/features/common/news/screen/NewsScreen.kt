@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.sparkfusion.core.widget.image.ShimmerImageBox
 import com.sparkfusion.core.widget.text.SFProRoundedText
@@ -31,11 +32,13 @@ import com.sparkfusion.features.common.news.R
 import com.sparkfusion.features.common.news.entity.StepEntity
 import com.sparkfusion.features.common.news.navigator.INewsNavigator
 import com.sparkfusion.features.common.news.screen.component.StepComponent
+import com.sparkfusion.features.common.news.viewmodel.NewsViewModel
 
 @Composable
 fun NewsScreen(
     navigator: INewsNavigator,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: NewsViewModel = hiltViewModel()
 ) {
     val isDarkModeEnabled = isSystemInDarkTheme()
 

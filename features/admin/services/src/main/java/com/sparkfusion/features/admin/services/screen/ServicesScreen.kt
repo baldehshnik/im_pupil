@@ -46,6 +46,7 @@ fun ServicesScreen(
     viewModel: AdminServicesViewModel = hiltViewModel()
 ) {
     val services by viewModel.enabledServices.collectAsState(emptyList())
+    val news by viewModel.news.collectAsState()
 
     val screenState = rememberLazyListState()
     val servicesHeight = ceil(services.size.toDouble() / 4).toInt() * 110
@@ -54,6 +55,7 @@ fun ServicesScreen(
 
     var isScreenVisible by remember { mutableStateOf(false) }
     LaunchedEffect(key1 = Unit) {
+        viewModel.loadNews()
         delay(DefaultAnimationNavigationScreenDelay)
         isScreenVisible = true
     }

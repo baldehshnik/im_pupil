@@ -73,3 +73,5 @@ include(":domain:admin:services")
 include(":domain:admin:port:portServices")
 
 include(":dataPort:admin:portServices")
+include(":domain:admin:news")
+include(":data:commonEntity")

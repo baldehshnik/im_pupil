@@ -39,6 +39,9 @@ dependencies {
     implementation(project(":core:common"))
 
     implementation(project(":dataPort:admin:portServices"))
+
+    implementation(project(":data:commonEntity"))
+
     implementation(project(":domain:admin:port:portServices"))
 
     implementation(libs.google.hilt)

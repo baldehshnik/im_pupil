@@ -21,12 +21,14 @@
             <option value="$PROJECT_DIR$/data/admin" />
             <option value="$PROJECT_DIR$/data/base" />
             <option value="$PROJECT_DIR$/data/common" />
+            <option value="$PROJECT_DIR$/data/commonEntity" />
             <option value="$PROJECT_DIR$/data/pupil" />
             <option value="$PROJECT_DIR$/dataPort" />
             <option value="$PROJECT_DIR$/dataPort/admin" />
             <option value="$PROJECT_DIR$/dataPort/admin/portServices" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/admin" />
+            <option value="$PROJECT_DIR$/domain/admin/news" />
             <option value="$PROJECT_DIR$/domain/admin/port" />
             <option value="$PROJECT_DIR$/domain/admin/port/portServices" />
             <option value="$PROJECT_DIR$/domain/admin/services" />

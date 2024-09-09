@@ -38,9 +38,14 @@ dependencies {
 
     implementation(project(":core:common"))
 
+    implementation(project(":data:commonEntity"))
+
     implementation(project(":dataPort:admin:portServices"))
 
     implementation(project(":data:base"))
+    implementation(project(":data:common"))
+
+    implementation(libs.squareup.retrofit)
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

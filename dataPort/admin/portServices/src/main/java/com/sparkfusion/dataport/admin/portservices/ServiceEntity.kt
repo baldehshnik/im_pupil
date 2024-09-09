@@ -1,4 +1,4 @@
-package com.sparkfusion.portservices
+package com.sparkfusion.dataport.admin.portservices
 
 data class ServiceEntity(
     val id: Long,

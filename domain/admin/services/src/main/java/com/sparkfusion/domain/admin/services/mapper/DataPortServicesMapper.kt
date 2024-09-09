@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import com.sparkfusion.domain.admin.port.portservices.ServiceEntity as DomainPortServiceEntity
-import com.sparkfusion.portservices.ServiceEntity as DataPortServiceEntity
+import com.sparkfusion.dataport.admin.portservices.ServiceEntity as DataPortServiceEntity
 
 class DataPortServicesMapper @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher

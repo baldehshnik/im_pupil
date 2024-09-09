@@ -36,6 +36,8 @@ android {
 
 dependencies {
 
+    implementation(libs.squareup.retrofit)
+
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)
 

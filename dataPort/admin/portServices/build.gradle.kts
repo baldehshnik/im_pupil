@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sparkfusion.portservices"
+    namespace = "com.sparkfusion.dataport.admin.portservices"
     compileSdk = libs.versions.compileSDK.get().toInt()
 
     defaultConfig {
@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":data:commonEntity"))
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

@@ -1,8 +1,16 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.google.hilt)
+}
+
+val localPropertiesFile = rootProject.file("local.properties")
+val localProperties = Properties().apply {
+    load(FileInputStream(localPropertiesFile))
 }
 
 android {
@@ -14,6 +22,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val urlProperty = localProperties.getProperty(
+            "api_url", null
+        ) ?: throw GradleException("API_URL is not defined")
+        buildConfigField("String", "API_URL", "\"$urlProperty\"")
     }
 
     buildTypes {
@@ -25,6 +38,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -42,6 +60,12 @@ dependencies {
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
+    implementation(project(":data:common"))
+
+    implementation(libs.squareup.okhttp)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.converter.gson)
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
