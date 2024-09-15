@@ -55,7 +55,7 @@ fun ServicesScreen(
 
     var isScreenVisible by remember { mutableStateOf(false) }
     LaunchedEffect(key1 = Unit) {
-        viewModel.loadNews()
+        viewModel.loadNewsAnswer()
         delay(DefaultAnimationNavigationScreenDelay)
         isScreenVisible = true
     }

@@ -37,6 +37,19 @@ class AdminServicesViewModel @Inject constructor(
     private val _news = MutableStateFlow<NewsEntities>(emptyList())
     val news: StateFlow<NewsEntities> = _news.asStateFlow()
 
+    fun loadNewsAnswer() {
+        viewModelScope.launch(ioDispatcher) {
+            readNewsUseCase.loadNewsAnswer()
+                .onSuccess {
+                    Log.i("TTTTT", it.joinToString())
+                    withContext(mainDispatcher) { _news.value = it }
+                }
+                .onFailure {
+                    Log.i("TTTTT", it.message.toString())
+                }
+        }
+    }
+
     fun loadNews() {
         viewModelScope.launch(ioDispatcher) {
             try {

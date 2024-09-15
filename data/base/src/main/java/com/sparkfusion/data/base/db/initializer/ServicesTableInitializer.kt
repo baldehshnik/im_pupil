@@ -12,7 +12,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Provider
+import javax.inject.Singleton
 
+@Singleton
 class ServicesTableInitializer @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val provider: Provider<ServiceDao>,
