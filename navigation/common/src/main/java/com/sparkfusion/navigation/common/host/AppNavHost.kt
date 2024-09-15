@@ -1,6 +1,9 @@
 package com.sparkfusion.navigation.common.host
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.padding
@@ -14,10 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
-import com.sparkfusion.core.resource.animation.enterTransition
-import com.sparkfusion.core.resource.animation.exitTransition
-import com.sparkfusion.core.resource.animation.popEnterTransition
-import com.sparkfusion.core.resource.animation.popExitTransition
+import com.sparkfusion.core.resource.animation.NavigationAnimationDurationMillis
 import com.sparkfusion.navigation.admin.bottombar.AdminBottomAppBar
 import com.sparkfusion.navigation.admin.host.adminNavHost
 import com.sparkfusion.navigation.admin.host.baritems.getAdminBottomBarItemRoutes
@@ -46,7 +46,7 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
                 enter = slideInVertically(initialOffsetY = { it }),
                 exit = slideOutVertically(targetOffsetY = { it })
             ) {
-                AdminBottomAppBar(navController, AdminHomeDestination.route)
+                AdminBottomAppBar(navController, currentRoute)
             }
         }
     ) { paddingValues ->
@@ -54,10 +54,8 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
             modifier = Modifier.padding(paddingValues),
             navController = navController,
             startDestination = accountType.type,
-            enterTransition = { enterTransition() },
-            exitTransition = { exitTransition() },
-            popEnterTransition = { popEnterTransition() },
-            popExitTransition = { popExitTransition() }
+            enterTransition = { fadeIn(tween(NavigationAnimationDurationMillis)) },
+            exitTransition = { fadeOut(tween(NavigationAnimationDurationMillis)) }
         ) {
             navigation(WelcomeScreenDestination.route, AccountType.Common.type) {
                 commonNavHost(navController)

@@ -1,5 +1,6 @@
 package com.sparkfusion.navigation.admin.host.baritems
 
+import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.sparkfusion.features.admin.account.destination.AdminAccountDestination
@@ -16,23 +17,22 @@ import com.sparkfusion.navigation.core.navigator.INavigator
 fun NavGraphBuilder.adminBottomBarDestinations(
     navigator: INavigator
 ) {
-    val homeNavigator = HomeNavigator(navigator)
-    val servicesNavigator = ServicesNavigator(navigator)
-    val accountNavigator = AccountNavigator(navigator)
-
     composable(
         AdminAccountDestination.route
     ) {
+        val accountNavigator = remember { AccountNavigator(navigator) }
         AccountScreen(accountNavigator)
     }
     composable(
         AdminHomeDestination.route
     ) {
+        val homeNavigator = remember { HomeNavigator(navigator) }
         HomeScreen(homeNavigator)
     }
     composable(
         AdminServicesDestination.route
     ) {
+        val servicesNavigator = remember { ServicesNavigator(navigator) }
         ServicesScreen(servicesNavigator)
     }
 }

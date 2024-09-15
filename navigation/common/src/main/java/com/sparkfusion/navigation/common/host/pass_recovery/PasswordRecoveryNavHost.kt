@@ -1,5 +1,6 @@
 package com.sparkfusion.navigation.common.host.pass_recovery
 
+import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.sparkfusion.features.common.password_recovery.destination.PasswordRecoveryCodeEnterDestination
@@ -14,18 +15,16 @@ import com.sparkfusion.navigation.common.navigator.pass_recovery.PassRecoveryNew
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 fun NavGraphBuilder.passwordRecoveryNavHost(navigator: INavigator) {
-    val passRecoveryEmailEnterNavigator = PassRecoveryEmailEnterNavigator(navigator)
     composable(PasswordRecoveryEmailEnterDestination.route) {
+        val passRecoveryEmailEnterNavigator = remember { PassRecoveryEmailEnterNavigator(navigator) }
         PassRecoveryEmailEnterScreen(passRecoveryEmailEnterNavigator)
     }
-
-    val passRecoveryCodeEnterNavigator = PassRecoveryCodeEnterNavigator(navigator)
     composable(PasswordRecoveryCodeEnterDestination.route) {
+        val passRecoveryCodeEnterNavigator = remember { PassRecoveryCodeEnterNavigator(navigator) }
         PassRecoveryCodeEnterScreen(passRecoveryCodeEnterNavigator)
     }
-
-    val passRecoveryNewPasswordNavigator = PassRecoveryNewPasswordNavigator(navigator)
     composable(PasswordRecoveryNewPasswordDestination.route) {
+        val passRecoveryNewPasswordNavigator = remember { PassRecoveryNewPasswordNavigator(navigator) }
         PassRecoveryNewPasswordScreen(passRecoveryNewPasswordNavigator)
     }
 }

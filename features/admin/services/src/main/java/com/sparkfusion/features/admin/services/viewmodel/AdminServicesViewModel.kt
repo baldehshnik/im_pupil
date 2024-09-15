@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.core.common.dispatchers.MainDispatcher
 import com.sparkfusion.core.common.viewmodel.DefaultViewModel
+import com.sparkfusion.core.resource.animation.AfterNavigationAnimationDelayMillis
 import com.sparkfusion.domain.admin.port.portservices.IReadNewsUseCase
 import com.sparkfusion.domain.admin.port.portservices.IReadServicesUseCase
 import com.sparkfusion.domain.admin.port.portservices.NewsEntity
@@ -12,11 +13,13 @@ import com.sparkfusion.domain.admin.port.portservices.ServiceEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.MainCoroutineDispatcher
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -32,7 +35,9 @@ class AdminServicesViewModel @Inject constructor(
 ) : DefaultViewModel() {
 
     val enabledServices: Flow<List<ServiceEntity>>
-        get() = readServicesUseCase.enabledServices.flowOn(ioDispatcher)
+        get() = readServicesUseCase.enabledServices
+            .onStart { delay(AfterNavigationAnimationDelayMillis.toLong()) }
+            .flowOn(ioDispatcher)
 
     private val _news = MutableStateFlow<NewsEntities>(emptyList())
     val news: StateFlow<NewsEntities> = _news.asStateFlow()

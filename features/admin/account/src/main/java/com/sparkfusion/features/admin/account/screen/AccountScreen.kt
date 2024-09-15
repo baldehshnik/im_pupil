@@ -9,7 +9,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,7 +32,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sparkfusion.core.resource.animation.DefaultAnimationNavigationScreenDelay
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.account.R
 import com.sparkfusion.features.admin.account.entity.AdministratorEntity
@@ -47,7 +44,6 @@ import com.sparkfusion.features.admin.account.screen.component.ManagementCompone
 import com.sparkfusion.features.admin.account.screen.component.PostItem
 import com.sparkfusion.features.admin.account.screen.component.PresentationComponent
 import com.sparkfusion.features.admin.account.screen.component.TopComponent
-import kotlinx.coroutines.delay
 
 val tempFavoritePostEntities = listOf(
     FavoritePostEntity(
@@ -108,16 +104,9 @@ fun AccountScreen(
 
     var showAllAdministrators by remember { mutableStateOf(false) }
 
-    var isScreenVisible by remember { mutableStateOf(false) }
-    LaunchedEffect(key1 = Unit) {
-        delay(DefaultAnimationNavigationScreenDelay)
-        isScreenVisible = true
-    }
-
     LazyColumn(
         modifier = modifier
             .nestedScroll(rememberNestedScrollInteropConnection())
-            .fillMaxSize()
             .background(Color(0xFFF3F9FF)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -154,77 +143,75 @@ fun AccountScreen(
                 isDarkModeEnabled = isDarkModeEnabled
             )
 
-            if (isScreenVisible) {
-                ManagementComponent(
-                    name = "Brest State Technical University",
-                    address = "Brest city, Moskovskaya street 267",
-                    phone = "+375 (33) 340-56-49"
-                )
+            ManagementComponent(
+                name = "Brest State Technical University",
+                address = "Brest city, Moskovskaya street 267",
+                phone = "+375 (33) 340-56-49"
+            )
 
-                val administratorsListHeight =
-                    64 * tempAdministratorsList.size + if (tempAdministratorsList.size > 2) 80 else 92
-                AccountScreenBlock(
-                    modifier = Modifier.height(administratorsListHeight.dp),
-                    title = stringResource(R.string.administrators)
+            val administratorsListHeight =
+                64 * tempAdministratorsList.size + if (tempAdministratorsList.size > 2) 80 else 92
+            AccountScreenBlock(
+                modifier = Modifier.height(administratorsListHeight.dp),
+                title = stringResource(R.string.administrators)
+            ) {
+                LazyColumn(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(administratorsListHeight.dp)
+                        .padding(vertical = 12.dp)
                 ) {
-                    LazyColumn(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(administratorsListHeight.dp)
-                            .padding(vertical = 12.dp)
+                    items(
+                        if (tempAdministratorsList.size > 2 && !showAllAdministrators) 2 else tempAdministratorsList.size
                     ) {
-                        items(
-                            if (tempAdministratorsList.size > 2 && !showAllAdministrators) 2 else tempAdministratorsList.size
-                        ) {
-                            AdministratorItem(
-                                onMoreInfoClick =
-                                navigator::navigateToAdminDetailsScreen,
-                                isDarkModeEnabled = isDarkModeEnabled
-                            )
-                        }
+                        AdministratorItem(
+                            onMoreInfoClick =
+                            navigator::navigateToAdminDetailsScreen,
+                            isDarkModeEnabled = isDarkModeEnabled
+                        )
+                    }
 
-                        item {
-                            AnimatedVisibility(visible = tempAdministratorsList.size > 2) {
-                                TextButton(
-                                    modifier = Modifier.padding(top = 4.dp),
-                                    onClick = { showAllAdministrators = !showAllAdministrators }
-                                ) {
-                                    SFProRoundedText(
-                                        content = if (showAllAdministrators) stringResource(R.string.hide)
-                                        else stringResource(R.string.show_more),
-                                        color = MaterialTheme.colorScheme.primary,
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Medium
-                                    )
-                                }
+                    item {
+                        AnimatedVisibility(visible = tempAdministratorsList.size > 2) {
+                            TextButton(
+                                modifier = Modifier.padding(top = 4.dp),
+                                onClick = { showAllAdministrators = !showAllAdministrators }
+                            ) {
+                                SFProRoundedText(
+                                    content = if (showAllAdministrators) stringResource(R.string.hide)
+                                    else stringResource(R.string.show_more),
+                                    color = MaterialTheme.colorScheme.primary,
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
                             }
                         }
                     }
                 }
+            }
 
-                val favoritePostsHeight = 342 * tempFavoritePostEntities.size + 8
-                AccountScreenBlock(
-                    title = stringResource(R.string.favorites),
-                    shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)
+            val favoritePostsHeight = 342 * tempFavoritePostEntities.size + 8
+            AccountScreenBlock(
+                title = stringResource(R.string.favorites),
+                shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)
+            ) {
+                LazyColumn(
+                    modifier = Modifier
+                        .height(favoritePostsHeight.dp)
+                        .fillMaxWidth()
                 ) {
-                    LazyColumn(
-                        modifier = Modifier
-                            .height(favoritePostsHeight.dp)
-                            .fillMaxWidth()
-                    ) {
-                        item {
-                            Spacer(modifier = Modifier.height(8.dp))
-                        }
+                    item {
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
 
-                        items(tempFavoritePostEntities.size) {
-                            PostItem(
-                                post = tempFavoritePostEntities[it],
-                                isDarkModeEnabled = isDarkModeEnabled
-                            )
+                    items(tempFavoritePostEntities.size) {
+                        PostItem(
+                            post = tempFavoritePostEntities[it],
+                            isDarkModeEnabled = isDarkModeEnabled
+                        )
 
-                            Spacer(modifier = Modifier.height(12.dp))
-                        }
+                        Spacer(modifier = Modifier.height(12.dp))
                     }
                 }
             }

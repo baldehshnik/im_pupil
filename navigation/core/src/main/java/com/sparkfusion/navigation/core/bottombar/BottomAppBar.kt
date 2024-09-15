@@ -6,7 +6,6 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.sparkfusion.core.widget.text.SFProRoundedText
 
@@ -23,12 +22,13 @@ fun BottomAppBar(
             NavigationBarItem(
                 selected = false,
                 onClick = {
+                    if (selection) return@NavigationBarItem
                     navController.navigate(item.destination.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
                         launchSingleTop = true
                         restoreState = true
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
                     }
                 },
                 icon = {
