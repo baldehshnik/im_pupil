@@ -8,7 +8,5 @@ interface IAdminServicesRepository {
 
     val enabledServices: Flow<List<ServiceEntity>>
 
-    suspend fun loadNews(): List<CommonNewsDataEntity>
-
-    suspend fun temp(): Answer<List<CommonNewsDataEntity>>
+    suspend fun loadNews(): Answer<List<CommonNewsDataEntity>>
 }

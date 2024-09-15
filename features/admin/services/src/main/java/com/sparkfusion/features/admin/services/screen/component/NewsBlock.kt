@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sparkfusion.domain.admin.port.portservices.NewsEntity
 import com.sparkfusion.features.admin.services.R
-import com.sparkfusion.features.admin.services.entity.NewsEntity
 import kotlin.math.ceil
 
 @Composable

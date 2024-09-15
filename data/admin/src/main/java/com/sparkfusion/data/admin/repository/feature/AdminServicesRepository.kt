@@ -13,7 +13,6 @@ import com.sparkfusion.dataport.admin.portservices.ServiceEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,18 +24,13 @@ class AdminServicesRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher
 ) : IAdminServicesRepository {
 
-    override suspend fun temp(): Answer<List<CommonNewsDataEntity>> = safeApiCall(ioDispatcher) {
-        val executor = ApiListResponseHandler(newsService.loadNews())
-        executor.handleFetchedDataAnswer()
-    }
-
     override val enabledServices: Flow<List<ServiceEntity>>
         get() = serviceDao.readEnabledServices().map { services ->
             services.map { servicesMapper.map(it) }
         }
 
-    override suspend fun loadNews(): List<CommonNewsDataEntity> = withContext(ioDispatcher) {
+    override suspend fun loadNews(): Answer<List<CommonNewsDataEntity>> = safeApiCall(ioDispatcher) {
         val executor = ApiListResponseHandler(newsService.loadNews())
-        return@withContext executor.handleFetchedData() ?: emptyList()
+        executor.handleFetchedData()
     }
 }

@@ -30,13 +30,13 @@ fun WelcomeScreen(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(60.dp))
         AsyncImage(
             model = R.drawable.welcome,
             contentDescription = stringResource(R.string.welcome_image),
             modifier = Modifier
-                .width(300.dp)
-                .height(320.dp)
+                .width(260.dp)
+                .height(280.dp)
                 .padding(bottom = 40.dp)
         )
 

@@ -18,13 +18,9 @@ class ReadNewsUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher
 ) : IReadNewsUseCase {
 
-    override suspend fun loadNewsAnswer(): Answer<List<NewsEntity>> = withContext(ioDispatcher) {
-        return@withContext repository.temp().suspendMap { entities ->
+    override suspend fun loadNews(): Answer<List<NewsEntity>> = withContext(ioDispatcher) {
+        return@withContext repository.loadNews().suspendMap { entities ->
             entities.map { mapper.map(it) }
         }
-    }
-
-    override suspend fun loadNews(): List<NewsEntity> = withContext(ioDispatcher) {
-        return@withContext repository.loadNews().map { mapper.map(it) }
     }
 }

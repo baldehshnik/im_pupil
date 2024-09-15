@@ -8,16 +8,7 @@ import retrofit2.Response
 
 class ApiListResponseHandler<R>(private val response: Response<List<R>>) {
 
-    fun handleFetchedData(): List<R>? {
-        if (response.isSuccessful) {
-            return response.body()
-        } else {
-            // error handler
-        }
-        TODO()
-    }
-
-    fun handleFetchedDataAnswer(): Answer<List<R>> {
+    fun handleFetchedData(): Answer<List<R>> {
         return if (response.isSuccessful) {
             Answer.Success(response.body() ?: emptyList())
         } else {

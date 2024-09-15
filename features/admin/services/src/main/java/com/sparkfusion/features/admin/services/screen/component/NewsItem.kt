@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.domain.admin.port.portservices.NewsEntity
 import com.sparkfusion.features.admin.services.R
-import com.sparkfusion.features.admin.services.entity.NewsEntity
 import com.sparkfusion.core.resource.R as CoreResource
 
 @Composable
@@ -51,7 +51,8 @@ fun NewsItem(
                     brush = Brush.verticalGradient(
                         colors = listOf(
                             MaterialTheme.colorScheme.background,
-                            news.color
+                            Color.LightGray
+//                            news.color
                         ),
                         endY = 1200f
                     ),
@@ -62,7 +63,11 @@ fun NewsItem(
                 modifier = Modifier
                     .padding(top = 12.dp, start = 12.dp)
                     .border(
-                        border = BorderStroke(1.dp, news.color),
+                        border = BorderStroke(
+                            1.dp,
+                            Color.LightGray
+//                            news.color
+                        ),
                         shape = shape
                     )
                     .clip(shape)
@@ -86,7 +91,11 @@ fun NewsItem(
 @Composable
 private fun NewsItemPreview() {
     NewsItem(
-        news = NewsEntity(Color.Gray, "Some title of the first news itemhgjghj"),
+        news = NewsEntity(
+            "Some title of the first news itemhgjghj",
+            "",
+            "Some description of the first news itemhgjghj"
+        ),
         onClick = {}
     )
 }
