@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":navigation:core"))
     implementation(project(":navigation:adminCorePort"))
     implementation(project(":navigation:commonCorePort"))
+    implementation(project(":navigation:adminServicesPort"))
 
     implementation(project(":features:admin:home"))
     implementation(project(":features:admin:account"))

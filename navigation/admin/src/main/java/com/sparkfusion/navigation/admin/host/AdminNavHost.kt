@@ -14,10 +14,13 @@ import com.sparkfusion.navigation.admin.navigator.Navigator
 import com.sparkfusion.navigation.admin.navigator.NotificationsNavigator
 import com.sparkfusion.navigation.admin.navigator.SignUpNavigator
 import com.sparkfusion.navigation.admin.navigator.post.POST_ROUTE
+import com.sparkfusion.navigation.adminservicesport.adminServicesNavHost
 
 fun NavGraphBuilder.adminNavHost(
     navController: NavHostController
 ) {
+    adminServicesNavHost(navController)
+
     val navigator = Navigator(navController)
     adminBottomBarDestinations(navigator)
 
@@ -33,4 +36,5 @@ fun NavGraphBuilder.adminNavHost(
     navigation(AdminPostViewingDestination.route, POST_ROUTE) {
         adminPostScreensDestinations(navigator)
     }
+
 }

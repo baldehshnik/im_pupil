@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/common" />
+            <option value="$PROJECT_DIR$/core/design" />
             <option value="$PROJECT_DIR$/core/hilt_core" />
             <option value="$PROJECT_DIR$/core/image_crop" />
             <option value="$PROJECT_DIR$/core/resource" />
@@ -26,12 +27,17 @@
             <option value="$PROJECT_DIR$/dataPort" />
             <option value="$PROJECT_DIR$/dataPort/admin" />
             <option value="$PROJECT_DIR$/dataPort/admin/portServices" />
+            <option value="$PROJECT_DIR$/dataPort/common" />
+            <option value="$PROJECT_DIR$/dataPort/common/faculty" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/admin" />
             <option value="$PROJECT_DIR$/domain/admin/news" />
             <option value="$PROJECT_DIR$/domain/admin/port" />
             <option value="$PROJECT_DIR$/domain/admin/port/portServices" />
             <option value="$PROJECT_DIR$/domain/admin/services" />
+            <option value="$PROJECT_DIR$/domain/common" />
+            <option value="$PROJECT_DIR$/domain/common/faculty" />
+            <option value="$PROJECT_DIR$/domain/common/portFaculty" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/admin" />
             <option value="$PROJECT_DIR$/features/admin/account" />
