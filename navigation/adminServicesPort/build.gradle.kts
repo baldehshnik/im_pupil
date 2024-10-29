@@ -43,6 +43,8 @@ dependencies {
     implementation(project(":navigation:core"))
 
     implementation(project(":services:admin:students"))
+    implementation(project(":services:admin:statistics"))
+    implementation(project(":services:admin:about"))
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

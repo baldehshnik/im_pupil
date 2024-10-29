@@ -8,4 +8,8 @@ fun NavGraphBuilder.adminStudentsService(
 ) {
     studentsFacultyScreen(navController)
     studentsGroupScreen(navController)
+    studentsListScreen(navController)
+    studentsAddGroupScreen(navController)
+    studentsEditGroupScreen(navController)
+    studentsAccountScreen(navController)
 }
