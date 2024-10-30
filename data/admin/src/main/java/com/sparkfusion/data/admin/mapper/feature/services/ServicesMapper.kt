@@ -15,7 +15,7 @@ class ServicesMapper @Inject constructor(
     override suspend fun map(input: ServiceDataEntity): ServiceDataPortEntity =
         withContext(ioDispatcher) {
             return@withContext with(input) {
-                ServiceDataPortEntity(id, title, imagePath, position, isEnabled)
+                ServiceDataPortEntity(id, title, imagePath, position, isEnabled, destination)
             }
         }
 }

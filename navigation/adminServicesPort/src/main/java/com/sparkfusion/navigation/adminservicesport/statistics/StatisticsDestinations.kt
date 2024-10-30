@@ -3,7 +3,6 @@ package com.sparkfusion.navigation.adminservicesport.statistics
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.sparkfusion.services.admin.statistics.destination.StatisticsFacultiesDestination
 import com.sparkfusion.services.admin.statistics.destination.StatisticsGroupDestination
 import com.sparkfusion.services.admin.statistics.destination.StatisticsGroupSearchDestination
 import com.sparkfusion.services.admin.statistics.destination.StatisticsTypeDestination
@@ -19,7 +18,7 @@ fun NavGraphBuilder.statisticsStudentScreen(
 ) {
     composable(StudentStatisticsDestination.route) {
         StudentStatisticsScreen(
-
+            onBackClick = { navController.popBackStack() }
         )
     }
 }
@@ -29,7 +28,8 @@ fun NavGraphBuilder.statisticsTypeScreen(
 ) {
     composable(StatisticsTypeDestination.route) {
         StatisticTypeScreen(
-
+            onTypeClick = { navController.navigate(StatisticsFacultiesDestination.route) },
+            onBackClick = { navController.popBackStack() }
         )
     }
 }
@@ -39,7 +39,10 @@ fun NavGraphBuilder.statisticsGroupSearchScreen(
 ) {
     composable(StatisticsGroupSearchDestination.route) {
         StatisticGroupSearchScreen(
-
+            onBackClick = { navController.popBackStack() },
+            onNextClick = {
+                navController.navigate(StatisticsGroupDestination.route)
+            }
         )
     }
 }
@@ -49,7 +52,10 @@ fun NavGraphBuilder.statisticsGroupScreen(
 ) {
     composable(StatisticsGroupDestination.route) {
         StatisticGroupScreen(
-
+            onBackClick = { navController.popBackStack() },
+            onStudentClick = {
+                navController.navigate(StudentStatisticsDestination.route)
+            }
         )
     }
 }
@@ -59,7 +65,10 @@ fun NavGraphBuilder.statisticsFacultiesScreen(
 ) {
     composable(StatisticsFacultiesDestination.route) {
         StatisticsFacultiesScreen(
-
+            onBackClick = { navController.popBackStack() },
+            onFacultyClick = {
+                navController.navigate(StatisticsGroupSearchDestination.route)
+            }
         )
     }
 }

@@ -26,7 +26,8 @@ import com.sparkfusion.services.admin.students.list_item.AddStudentItem
 
 @Composable
 fun AddGroupScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         FloatingButtonComponent(
@@ -38,7 +39,7 @@ fun AddGroupScreen(
             item {
                 TopBar(
                     title = "Adding",
-                    onBackClick = {}
+                    onBackClick = onBackClick
                 )
 
                 SpinnerWithTitleComponent(
@@ -107,7 +108,7 @@ fun AddGroupScreen(
 @Composable
 private fun AddGroupScreenPreview() {
     AddGroupScreen(
-
+        onBackClick = {}
     )
 }
 

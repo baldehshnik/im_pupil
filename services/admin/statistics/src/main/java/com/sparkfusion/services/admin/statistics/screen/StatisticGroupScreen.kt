@@ -1,6 +1,7 @@
 package com.sparkfusion.services.admin.statistics.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,7 +28,9 @@ import com.sparkfusion.core.widget.topbar.TopBar
 
 @Composable
 fun StatisticGroupScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onStudentClick: () -> Unit
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -35,15 +39,15 @@ fun StatisticGroupScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             item {
-                TopBar(title = "Group") {
-
-                }
+                TopBar(title = "Group", onBackClick = onBackClick)
             }
 
             items(5) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clip(RoundedCornerShape(20.dp))
+                        .clickable { onStudentClick() }
                         .padding(horizontal = 24.dp, vertical = 6.dp)
                 ) {
                     Box(
@@ -95,7 +99,8 @@ fun StatisticGroupScreen(
 @Composable
 private fun StatisticGroupScreenPreview() {
     StatisticGroupScreen(
-
+        onBackClick = {},
+        onStudentClick = {}
     )
 }
 

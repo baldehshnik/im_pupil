@@ -1,6 +1,7 @@
 package com.sparkfusion.services.admin.students.list_item
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,8 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
 fun GroupItem(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onItemClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -29,6 +31,7 @@ fun GroupItem(
             .background(MaterialTheme.colorScheme.primaryContainer)
             .fillMaxWidth()
             .padding(horizontal = 12.dp, vertical = 10.dp)
+            .clickable { onItemClick() }
     ) {
 
         Row(

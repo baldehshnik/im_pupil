@@ -25,7 +25,8 @@ import com.sparkfusion.services.admin.about.model.AboutBlockModel
 
 @Composable
 fun AdminEditAboutServiceScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
     val items = listOf(
         AboutBlockModel("", "Desctifjshfbdjhg b sgh sdg dskhfkjdshf hkdsh fhsdjkhf jkhsjdkfkjs d"),
@@ -40,9 +41,7 @@ fun AdminEditAboutServiceScreen(
     ) {
         LazyColumn {
             item {
-                TopBar(title = "Edit") {
-
-                }
+                TopBar(title = "Edit", onBackClick = onBackClick)
 
                 SFProRoundedText(
                     modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 12.dp),
@@ -93,7 +92,7 @@ fun AdminEditAboutServiceScreen(
 @Composable
 private fun AdminEditAboutServiceScreenPreview() {
     AdminEditAboutServiceScreen(
-
+        onBackClick = {}
     )
 }
 

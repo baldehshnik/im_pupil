@@ -17,6 +17,6 @@ class ReadServicesUseCase @Inject constructor(
 
     override val enabledServices: Flow<List<ServiceEntity>>
         get() = repository.enabledServices.map { services ->
-            services.map { dataPortServicesMapper.map(it) }
+            services.mapNotNull { dataPortServicesMapper.map(it) }
         }
 }

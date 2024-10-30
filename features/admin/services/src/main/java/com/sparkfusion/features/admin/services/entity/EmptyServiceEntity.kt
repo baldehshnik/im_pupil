@@ -1,5 +1,6 @@
 package com.sparkfusion.features.admin.services.entity
 
+import com.sparkfusion.domain.admin.port.portservices.ServiceDestination
 import com.sparkfusion.domain.admin.port.portservices.ServiceEntity
 
 val EmptyServiceEntity = ServiceEntity(
@@ -7,7 +8,8 @@ val EmptyServiceEntity = ServiceEntity(
     title = "",
     imagePath = "",
     position = -1,
-    isEnabled = true
+    isEnabled = true,
+    destination = ServiceDestination.MAGAZINE
 )
 
 val emptyServices = List(4) { EmptyServiceEntity }

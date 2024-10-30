@@ -8,7 +8,9 @@ import com.sparkfusion.core.widget.topbar.TopBar
 
 @Composable
 fun FacultySelectionScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onFacultyClick: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
@@ -16,16 +18,14 @@ fun FacultySelectionScreen(
         item {
             TopBar(
                 title = "Faculty",
-                onBackClick = {
-
-                }
+                onBackClick = onBackClick
             )
         }
 
         items(4) {
             FacultyItem(
                 content = "Brest State Technical University",
-                onItemClick = {  }
+                onItemClick = { onFacultyClick(1) }
             )
         }
     }
@@ -35,6 +35,7 @@ fun FacultySelectionScreen(
 @Composable
 private fun FacultySelectionScreenPreview() {
     FacultySelectionScreen(
-
+        onBackClick = {},
+        onFacultyClick = {}
     )
 }

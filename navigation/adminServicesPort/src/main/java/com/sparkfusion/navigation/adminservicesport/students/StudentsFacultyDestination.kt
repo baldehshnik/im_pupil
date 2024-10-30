@@ -1,4 +1,4 @@
-package com.sparkfusion.services.admin.students.destination
+package com.sparkfusion.navigation.adminservicesport.students
 
 import com.sparkfusion.navigation.core.Destination
 

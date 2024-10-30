@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.sparkfusion.domain.admin.port.portservices.ServiceDestination
 import com.sparkfusion.features.admin.services.navigator.IServicesNavigator
 import com.sparkfusion.features.admin.services.screen.component.AboutApplicationBlock
 import com.sparkfusion.features.admin.services.screen.component.NewsBlock
@@ -71,7 +72,22 @@ fun ServicesScreen(
                         items(uiState.servicesState.data) { item ->
                             ServiceItem(
                                 service = item,
-                                isDarkModeEnabled = isDarkModeEnabled
+                                isDarkModeEnabled = isDarkModeEnabled,
+                                onItemClick = {
+                                    when(item.destination) {
+                                        ServiceDestination.MAGAZINE -> {}
+                                        ServiceDestination.NOTIFICATIONS -> {}
+                                        ServiceDestination.SCHEDULE -> {}
+                                        ServiceDestination.STATISTICS -> navigator.navigateToStatisticsService()
+                                        ServiceDestination.MESSENGER -> {}
+                                        ServiceDestination.SECTIONS -> {}
+                                        ServiceDestination.SESSION -> {}
+                                        ServiceDestination.PRACTICE -> {}
+                                        ServiceDestination.ABOUT -> navigator.navigateToAboutService()
+                                        ServiceDestination.STUDENTS -> navigator.navigateToStudentsService()
+                                        ServiceDestination.SETTINGS -> {}
+                                    }
+                                }
                             )
                         }
                     }
@@ -109,6 +125,9 @@ private fun ServicesScreenPreview() {
         navigator = object : IServicesNavigator {
             override fun navigateToNewsScreen() {}
             override fun navigateToAboutApplicationScreen() {}
+            override fun navigateToStudentsService() {}
+            override fun navigateToStatisticsService() {}
+            override fun navigateToAboutService() {}
         }
     )
 }

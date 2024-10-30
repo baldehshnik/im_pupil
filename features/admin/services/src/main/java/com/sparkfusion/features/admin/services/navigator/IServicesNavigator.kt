@@ -4,4 +4,8 @@ interface IServicesNavigator {
 
     fun navigateToNewsScreen()
     fun navigateToAboutApplicationScreen()
+
+    fun navigateToStudentsService()
+    fun navigateToStatisticsService()
+    fun navigateToAboutService()
 }

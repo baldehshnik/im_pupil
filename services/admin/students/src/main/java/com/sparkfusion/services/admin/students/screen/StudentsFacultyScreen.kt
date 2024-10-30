@@ -6,20 +6,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.sparkfusion.core.design.screen.faculty.FacultySelectionScreen
 
 @Composable
-fun FacultyScreen(
+fun StudentsFacultyScreen(
     modifier: Modifier = Modifier,
-    onGroupScreenNavigate: (Int) -> Unit
+    onGroupScreenNavigate: (Int) -> Unit,
+    onBackClick: () -> Unit
 ) {
     FacultySelectionScreen(
-        modifier = modifier
+        modifier = modifier,
+        onBackClick = onBackClick,
+        onFacultyClick = onGroupScreenNavigate
     )
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun FacultyScreenPreview() {
-    FacultyScreen(
-        onGroupScreenNavigate = {}
+    StudentsFacultyScreen(
+        onGroupScreenNavigate = {},
+        onBackClick = {}
     )
 }
 

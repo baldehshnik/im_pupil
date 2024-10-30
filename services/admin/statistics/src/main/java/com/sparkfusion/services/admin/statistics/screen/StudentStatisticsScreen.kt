@@ -23,14 +23,13 @@ import com.sparkfusion.services.admin.statistics.component.PassesPerComponent
 
 @Composable
 fun StudentStatisticsScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxWidth()
     ) {
-        TopBar(title = "Student statistics") {
-
-        }
+        TopBar(title = "Student statistics", onBackClick = onBackClick)
 
         Row(
             modifier = Modifier
@@ -80,7 +79,7 @@ fun StudentStatisticsScreen(
 @Composable
 private fun StudentStatisticsScreenPreview() {
     StudentStatisticsScreen(
-
+        onBackClick = {}
     )
 }
 

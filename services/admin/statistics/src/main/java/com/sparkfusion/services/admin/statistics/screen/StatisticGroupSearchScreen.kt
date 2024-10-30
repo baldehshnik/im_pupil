@@ -28,7 +28,9 @@ import com.sparkfusion.core.widget.R as CoreResource
 
 @Composable
 fun StatisticGroupSearchScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onNextClick: () -> Unit
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -36,9 +38,7 @@ fun StatisticGroupSearchScreen(
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            TopBar(title = "Group") {
-
-            }
+            TopBar(title = "Group", onBackClick = onBackClick)
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -85,7 +85,7 @@ fun StatisticGroupSearchScreen(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = 30.dp),
-                onClick = { }
+                onClick = { onNextClick() }
             ) {
                 SFProRoundedText(
                     modifier = Modifier.padding(horizontal = 20.dp, vertical = 2.dp),
@@ -117,7 +117,8 @@ fun StatisticGroupSearchScreen(
 @Composable
 private fun StatisticGroupSearchScreenPreview() {
     StatisticGroupSearchScreen(
-
+        onBackClick = {},
+        onNextClick = {}
     )
 }
 

@@ -26,7 +26,8 @@ import com.sparkfusion.services.admin.students.list_item.AddStudentItem
 @Composable
 fun EditGroupScreen(
     modifier: Modifier = Modifier,
-    groupId: Int
+    groupId: Int,
+    onBackClick: () -> Unit
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -40,7 +41,7 @@ fun EditGroupScreen(
             item {
                 TopBar(
                     title = "Students",
-                    onBackClick = {},
+                    onBackClick = onBackClick,
                     buttons = {
                         IconButton(onClick = { }) {
                             Icon(
@@ -97,7 +98,8 @@ fun EditGroupScreen(
 @Composable
 private fun EditGroupScreenPreview() {
     EditGroupScreen(
-        groupId = 1
+        groupId = 1,
+        onBackClick = {}
     )
 }
 

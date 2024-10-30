@@ -1,6 +1,7 @@
 package com.sparkfusion.services.admin.students.list_item
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,12 +22,15 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
 fun StudentItem(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onItemClick: () -> Unit
 ) {
     Row(
         modifier = modifier
             .padding(vertical = 6.dp, horizontal = 12.dp)
             .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .clickable { onItemClick() }
     ) {
         Box(
             modifier = Modifier

@@ -25,7 +25,8 @@ import com.sparkfusion.services.admin.students.component.AccountInfoComponent
 @Composable
 fun AccountScreen(
     modifier: Modifier = Modifier,
-    studentId: Int
+    studentId: Int,
+    onBackClick: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -36,7 +37,7 @@ fun AccountScreen(
         ) {
             TopBar(
                 title = "Students",
-                onBackClick = {}
+                onBackClick = onBackClick
             )
 
             AccountComponent(
@@ -85,7 +86,8 @@ fun AccountScreen(
 @Composable
 private fun AccountScreenPreview() {
     AccountScreen(
-        studentId = 1
+        studentId = 1,
+        onBackClick = {}
     )
 }
 

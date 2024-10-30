@@ -5,5 +5,6 @@ data class ServiceEntity(
     val title: String,
     val imagePath: String,
     val position: Int,
-    val isEnabled: Boolean
+    val isEnabled: Boolean,
+    val destination: Int
 )

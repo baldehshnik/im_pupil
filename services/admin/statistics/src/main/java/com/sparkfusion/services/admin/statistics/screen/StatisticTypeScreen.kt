@@ -29,15 +29,15 @@ import com.sparkfusion.services.admin.statistics.R
 
 @Composable
 fun StatisticTypeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onTypeClick: () -> Unit,
+    onBackClick: () -> Unit
 ) {
     LazyColumn(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         item {
-            TopBar(title = "Statistic") {
-
-            }
+            TopBar(title = "Statistic", onBackClick = onBackClick)
 
             Spacer(modifier = Modifier.height(20.dp))
         }
@@ -65,7 +65,7 @@ fun StatisticTypeScreen(
 
                 IconButton(
                     modifier = Modifier.padding(end = 12.dp),
-                    onClick = { }
+                    onClick = onTypeClick
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.angle_right),
@@ -81,7 +81,8 @@ fun StatisticTypeScreen(
 @Composable
 private fun StatisticTypeScreenPreview() {
     StatisticTypeScreen(
-
+        onBackClick = {},
+        onTypeClick = {}
     )
 }
 

@@ -1,4 +1,4 @@
-package com.sparkfusion.services.admin.about.destination
+package com.sparkfusion.navigation.adminservicesport.about
 
 import com.sparkfusion.navigation.core.Destination
 

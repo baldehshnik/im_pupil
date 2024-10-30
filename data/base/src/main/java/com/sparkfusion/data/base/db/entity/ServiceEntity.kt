@@ -30,5 +30,8 @@ data class ServiceEntity(
     val position: Int,
 
     @ColumnInfo("enabled")
-    val isEnabled: Boolean
+    val isEnabled: Boolean,
+
+    @ColumnInfo("destination")
+    val destination: Int
 )

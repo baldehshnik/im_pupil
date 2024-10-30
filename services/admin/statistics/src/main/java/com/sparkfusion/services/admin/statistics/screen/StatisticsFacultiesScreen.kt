@@ -7,10 +7,14 @@ import com.sparkfusion.core.design.screen.faculty.FacultySelectionScreen
 
 @Composable
 fun StatisticsFacultiesScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onFacultyClick: (Int) -> Unit
 ) {
     FacultySelectionScreen(
-        modifier = modifier
+        modifier = modifier,
+        onBackClick = onBackClick,
+        onFacultyClick = onFacultyClick
     )
 }
 
@@ -18,7 +22,8 @@ fun StatisticsFacultiesScreen(
 @Composable
 private fun FacultiesScreenPreview() {
     StatisticsFacultiesScreen(
-
+        onBackClick = {},
+        onFacultyClick = {}
     )
 }
 

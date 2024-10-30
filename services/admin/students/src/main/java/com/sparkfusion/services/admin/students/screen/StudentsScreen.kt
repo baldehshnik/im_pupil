@@ -14,15 +14,20 @@ import com.sparkfusion.services.admin.students.list_item.StudentItem
 @Composable
 fun StudentsScreen(
     modifier: Modifier = Modifier,
-    groupId: Int
+    groupId: Int,
+    onBackClick: () -> Unit,
+    onStudentClick: () -> Unit,
+    onEditClick: () -> Unit
 ) {
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier
+    ) {
         item {
             TopBar(
                 title = "Students",
-                onBackClick = {},
+                onBackClick = onBackClick,
                 buttons = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = onEditClick) {
                         Icon(
                             painter = painterResource(id = R.drawable.round_edit),
                             contentDescription = null
@@ -33,7 +38,9 @@ fun StudentsScreen(
         }
 
         items(10) {
-            StudentItem()
+            StudentItem(
+                onItemClick = onStudentClick
+            )
         }
     }
 }
@@ -42,7 +49,10 @@ fun StudentsScreen(
 @Composable
 private fun StudentsScreenPreview() {
     StudentsScreen(
-        groupId = 1
+        groupId = 1,
+        onBackClick = {},
+        onStudentClick = {},
+        onEditClick = {}
     )
 }
 

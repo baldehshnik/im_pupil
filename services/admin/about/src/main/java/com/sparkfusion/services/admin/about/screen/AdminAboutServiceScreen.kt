@@ -19,7 +19,9 @@ import com.sparkfusion.services.admin.about.model.AboutBlockModel
 
 @Composable
 fun AdminAboutServiceScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onBackClick: () -> Unit,
+    onEditClick: () -> Unit
 ) {
     val items = listOf(
         AboutBlockModel("", "Desctifjshfbdjhg b sgh sdg dskhfkjdshf hkdsh fhsdjkhf jkhsjdkfkjs d"),
@@ -34,9 +36,7 @@ fun AdminAboutServiceScreen(
     ) {
         LazyColumn {
             item {
-                TopBar(title = "About") {
-
-                }
+                TopBar(title = "About", onBackClick = onBackClick)
             }
 
             items(items.size) { index ->
@@ -48,7 +48,7 @@ fun AdminAboutServiceScreen(
             modifier = Modifier
                 .padding(16.dp)
                 .align(Alignment.BottomEnd),
-            onClick = { }
+            onClick = onEditClick
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.pencil_icon),
@@ -62,7 +62,8 @@ fun AdminAboutServiceScreen(
 @Composable
 private fun AdminAboutServiceScreenPreview() {
     AdminAboutServiceScreen(
-
+        onEditClick = {},
+        onBackClick = {}
     )
 }
 

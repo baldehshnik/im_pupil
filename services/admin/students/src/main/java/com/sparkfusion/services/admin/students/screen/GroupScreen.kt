@@ -23,14 +23,17 @@ import com.sparkfusion.services.admin.students.list_item.GroupItem
 @Composable
 fun GroupScreen(
     modifier: Modifier = Modifier,
-    facultyId: Int
+    facultyId: Int,
+    onBackClick: () -> Unit,
+    onAddGroupClick: () -> Unit,
+    onGroupClick: () -> Unit
 ) {
     Box(
         modifier = modifier.fillMaxSize()
     ) {
         FloatingButtonComponent(
             painter = painterResource(id = R.drawable.round_add),
-            onClick = {}
+            onClick = onAddGroupClick
         )
 
         LazyColumn(
@@ -39,7 +42,7 @@ fun GroupScreen(
             item {
                 TopBar(
                     title = "Group",
-                    onBackClick = {}
+                    onBackClick = onBackClick
                 )
 
                 SpinnerWithTitleComponent(
@@ -64,7 +67,9 @@ fun GroupScreen(
             }
 
             items(3) {
-                GroupItem()
+                GroupItem(
+                    onItemClick = onGroupClick
+                )
             }
         }
     }
@@ -75,7 +80,10 @@ fun GroupScreen(
 @Composable
 private fun GroupScreenPreview() {
     GroupScreen(
-        facultyId = 1
+        facultyId = 1,
+        onBackClick = {},
+        onGroupClick = {},
+        onAddGroupClick = {}
     )
 }
 
