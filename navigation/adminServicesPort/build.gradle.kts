@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":services:admin:statistics"))
     implementation(project(":services:admin:about"))
     implementation(project(":services:admin:session"))
+    implementation(project(":services:admin:practice"))
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

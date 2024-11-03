@@ -2,6 +2,8 @@ package com.sparkfusion.navigation.admin.navigator
 
 import com.sparkfusion.features.admin.services.navigator.IServicesNavigator
 import com.sparkfusion.navigation.adminservicesport.about.AboutDestination
+import com.sparkfusion.navigation.adminservicesport.practice.PracticeListDestination
+import com.sparkfusion.navigation.adminservicesport.session.SessionFacultiesDestination
 import com.sparkfusion.navigation.adminservicesport.statistics.StatisticsFacultiesDestination
 import com.sparkfusion.navigation.adminservicesport.students.StudentsFacultyDestination
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
@@ -28,5 +30,13 @@ class ServicesNavigator(private val navigator: INavigator) : IServicesNavigator 
 
     override fun navigateToAboutService() {
         navigator.navigateTo(AboutDestination)
+    }
+
+    override fun navigateToSessionService() {
+        navigator.navigateTo(SessionFacultiesDestination)
+    }
+
+    override fun navigateToPracticeService() {
+        navigator.navigateTo(PracticeListDestination)
     }
 }

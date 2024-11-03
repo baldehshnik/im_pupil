@@ -8,4 +8,6 @@ interface IServicesNavigator {
     fun navigateToStudentsService()
     fun navigateToStatisticsService()
     fun navigateToAboutService()
+    fun navigateToSessionService()
+    fun navigateToPracticeService()
 }

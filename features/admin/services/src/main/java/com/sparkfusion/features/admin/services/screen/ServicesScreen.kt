@@ -81,8 +81,8 @@ fun ServicesScreen(
                                         ServiceDestination.STATISTICS -> navigator.navigateToStatisticsService()
                                         ServiceDestination.MESSENGER -> {}
                                         ServiceDestination.SECTIONS -> {}
-                                        ServiceDestination.SESSION -> {}
-                                        ServiceDestination.PRACTICE -> {}
+                                        ServiceDestination.SESSION -> navigator.navigateToSessionService()
+                                        ServiceDestination.PRACTICE -> navigator.navigateToPracticeService()
                                         ServiceDestination.ABOUT -> navigator.navigateToAboutService()
                                         ServiceDestination.STUDENTS -> navigator.navigateToStudentsService()
                                         ServiceDestination.SETTINGS -> {}
@@ -128,6 +128,8 @@ private fun ServicesScreenPreview() {
             override fun navigateToStudentsService() {}
             override fun navigateToStatisticsService() {}
             override fun navigateToAboutService() {}
+            override fun navigateToSessionService() {}
+            override fun navigateToPracticeService() {}
         }
     )
 }
