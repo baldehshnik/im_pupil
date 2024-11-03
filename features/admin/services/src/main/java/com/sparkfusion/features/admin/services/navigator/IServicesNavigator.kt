@@ -10,4 +10,5 @@ interface IServicesNavigator {
     fun navigateToAboutService()
     fun navigateToSessionService()
     fun navigateToPracticeService()
+    fun navigateToSectionsService()
 }
