@@ -3,6 +3,7 @@ package com.sparkfusion.navigation.adminservicesport
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import com.sparkfusion.navigation.adminservicesport.about.adminAboutService
+import com.sparkfusion.navigation.adminservicesport.magazine.adminMagazineService
 import com.sparkfusion.navigation.adminservicesport.practice.adminPracticeService
 import com.sparkfusion.navigation.adminservicesport.sections.adminSectionsService
 import com.sparkfusion.navigation.adminservicesport.session.adminSessionService
@@ -18,4 +19,5 @@ fun NavGraphBuilder.adminServicesNavHost(
     adminSessionService(navController)
     adminPracticeService(navController)
     adminSectionsService(navController)
+    adminMagazineService(navController)
 }
