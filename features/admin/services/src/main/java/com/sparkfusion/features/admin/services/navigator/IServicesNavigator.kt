@@ -11,4 +11,6 @@ interface IServicesNavigator {
     fun navigateToSessionService()
     fun navigateToPracticeService()
     fun navigateToSectionsService()
+    fun navigateToMagazineService()
+    fun navigateToScheduleService()
 }

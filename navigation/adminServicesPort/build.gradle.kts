@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":services:admin:practice"))
     implementation(project(":services:admin:sections"))
     implementation(project(":services:admin:magazine"))
+    implementation(project(":services:admin:schedule"))
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

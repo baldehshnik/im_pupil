@@ -1,0 +1,81 @@
+package com.sparkfusion.services.admin.schedule.list_item
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.sparkfusion.core.resource.color.descriptionColor
+import com.sparkfusion.core.widget.text.SFProRoundedText
+
+@Composable
+fun LessonInfoItem(
+    color: Color
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 24.dp, end = 24.dp, top = 8.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .width(3.dp)
+                .height(110.dp)
+                .background(color, RoundedCornerShape(20.dp))
+        )
+
+        Spacer(modifier = Modifier.width(16.dp))
+
+        Column(
+            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.Start
+        ) {
+            SFProRoundedText(
+                modifier = Modifier.padding(top = 2.dp),
+                content = "8:30 - 9:50",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+
+            SFProRoundedText(
+                modifier = Modifier.padding(top = 4.dp),
+                content = "TRPO (Lection)",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium
+            )
+
+            SFProRoundedText(
+                modifier = Modifier.padding(top = 4.dp),
+                content = "Kostyuk D. A.",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium,
+                color = descriptionColor()
+            )
+
+            SFProRoundedText(
+                modifier = Modifier.padding(top = 4.dp, bottom = 2.dp),
+                content = "Audience: 2/402",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal,
+                color = descriptionColor()
+            )
+        }
+    }
+}
+

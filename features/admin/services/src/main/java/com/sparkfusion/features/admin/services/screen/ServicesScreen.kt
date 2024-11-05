@@ -75,9 +75,9 @@ fun ServicesScreen(
                                 isDarkModeEnabled = isDarkModeEnabled,
                                 onItemClick = {
                                     when(item.destination) {
-                                        ServiceDestination.MAGAZINE -> {}
+                                        ServiceDestination.MAGAZINE -> navigator.navigateToMagazineService()
                                         ServiceDestination.NOTIFICATIONS -> {}
-                                        ServiceDestination.SCHEDULE -> {}
+                                        ServiceDestination.SCHEDULE -> navigator.navigateToScheduleService()
                                         ServiceDestination.STATISTICS -> navigator.navigateToStatisticsService()
                                         ServiceDestination.MESSENGER -> {}
                                         ServiceDestination.SECTIONS -> navigator.navigateToSectionsService()
@@ -131,6 +131,8 @@ private fun ServicesScreenPreview() {
             override fun navigateToSessionService() {}
             override fun navigateToPracticeService() {}
             override fun navigateToSectionsService() {}
+            override fun navigateToMagazineService() {}
+            override fun navigateToScheduleService() {}
         }
     )
 }
