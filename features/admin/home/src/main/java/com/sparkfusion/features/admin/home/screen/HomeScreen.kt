@@ -59,7 +59,7 @@ fun HomeScreen(
 
                 )
 
-                    HelloComponent()
+                HelloComponent()
             }
 
 //            items(10) {
@@ -78,8 +78,7 @@ fun HomeScreen(
             LargeFloatingActionButton(
                 modifier = Modifier
                     .padding(16.dp)
-                    .align(Alignment.BottomEnd)
-                ,
+                    .align(Alignment.BottomEnd),
                 onClick = {
                     viewModel.onFabClick(navigator, coroutineScope)
                 }

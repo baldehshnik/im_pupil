@@ -11,11 +11,13 @@ import com.sparkfusion.navigation.adminservicesport.statistics.StatisticsFaculti
 import com.sparkfusion.navigation.adminservicesport.students.StudentsFacultyDestination
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
 import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
+import com.sparkfusion.navigation.core.keys.NEWS_ID_KEY
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class ServicesNavigator(private val navigator: INavigator) : IServicesNavigator {
 
-    override fun navigateToNewsScreen() {
+    override fun navigateToNewsScreen(id: Int) {
+        navigator.currentBackStackEntry?.savedStateHandle?.set(NEWS_ID_KEY, id)
         navigator.navigateTo(NewsDestination)
     }
 

@@ -2,7 +2,7 @@ package com.sparkfusion.features.admin.services.navigator
 
 interface IServicesNavigator {
 
-    fun navigateToNewsScreen()
+    fun navigateToNewsScreen(id: Int)
     fun navigateToAboutApplicationScreen()
 
     fun navigateToStudentsService()

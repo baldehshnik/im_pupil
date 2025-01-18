@@ -5,6 +5,9 @@ import com.sparkfusion.data.commonentity.CommonNewsDataEntity
 
 data class NewsEntity(
 
+    @SerializedName("id")
+    override val id: Int,
+
     @SerializedName("title")
     override val title: String,
 
@@ -15,3 +18,18 @@ data class NewsEntity(
     override val description: String?
 
 ): CommonNewsDataEntity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

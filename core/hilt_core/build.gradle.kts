@@ -58,6 +58,7 @@ dependencies {
 
     implementation(project(":domain:admin:services"))
     implementation(project(":domain:admin:auth"))
+    implementation(project(":domain:common:news"))
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))

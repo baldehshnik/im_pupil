@@ -13,6 +13,22 @@ class NewsDataEntityToNewsEntityMapper @Inject constructor(
 ) : Mapper<CommonNewsDataEntity, NewsEntity> {
 
     override suspend fun map(input: CommonNewsDataEntity): NewsEntity = withContext(ioDispatcher) {
-        return@withContext NewsEntity(input.title, input.imageUrl, input.description)
+        return@withContext NewsEntity(input.id, input.title, input.imageUrl, input.description)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

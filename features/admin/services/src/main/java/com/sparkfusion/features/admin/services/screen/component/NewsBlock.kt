@@ -20,7 +20,7 @@ import kotlin.math.ceil
 fun NewsBlock(
     modifier: Modifier = Modifier,
     news: List<NewsEntity>,
-    onItemClick: () -> Unit
+    onItemClick: (id: Int) -> Unit
 ) {
     val newsListState = rememberLazyGridState()
     val newsListHeight = remember {
@@ -43,7 +43,7 @@ fun NewsBlock(
             items(news) { item ->
                 NewsItem(
                     news = item,
-                    onClick = onItemClick
+                    onClick = { onItemClick(item.id) }
                 )
             }
         }

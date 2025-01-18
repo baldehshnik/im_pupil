@@ -31,7 +31,7 @@ fun ShimmerTextBox(
         }
 
         AnimatedVisibility(
-            visible = !isLoadingAnimationCompleted,
+            visible = isLoadingAnimationCompleted,
             content = textContent
         )
     }

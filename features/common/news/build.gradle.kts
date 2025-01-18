@@ -46,6 +46,8 @@ dependencies {
     implementation(project(":core:resource"))
     implementation(project(":core:widget"))
 
+    implementation(project(":domain:common:portNews"))
+
     implementation(libs.androidx.hilt.navigation)
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

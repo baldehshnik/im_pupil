@@ -30,6 +30,7 @@ import com.sparkfusion.navigation.commoncoreport.destination.CircleImageCropDest
 import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
 import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
+import com.sparkfusion.navigation.core.keys.NEWS_ID_KEY
 
 fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
     val commonNavigator = CommonNavigator(navController)
@@ -44,7 +45,15 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
     composable(FiltersDestination.route) { FiltersScreen(filtersNavigator) }
 
     val newsNavigator = NewsNavigator(commonNavigator)
-    composable(NewsDestination.route) { NewsScreen(newsNavigator) }
+    composable(NewsDestination.route) {
+        val newsId = navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NEWS_ID_KEY)
+        newsId?.let {
+            NewsScreen(
+                navigator = newsNavigator,
+                newsId = it
+            )
+        }
+    }
 
     val aboutApplicationNavigator = AboutApplicationNavigator(commonNavigator)
     composable(AboutApplicationDestination.route) { AboutApplicationScreen(aboutApplicationNavigator) }

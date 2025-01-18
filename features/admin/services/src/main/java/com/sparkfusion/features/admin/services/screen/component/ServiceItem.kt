@@ -60,7 +60,7 @@ fun ServiceItem(
             modifier = Modifier.padding(top = 4.dp),
             size = DpSize(66.dp, 20.dp),
             isDarkModeEnabled = isDarkModeEnabled,
-            isLoadingAnimationCompleted = service == EmptyServiceEntity
+            isLoadingAnimationCompleted = service != EmptyServiceEntity
         ) {
             SFProRoundedText(
                 content = service.title,

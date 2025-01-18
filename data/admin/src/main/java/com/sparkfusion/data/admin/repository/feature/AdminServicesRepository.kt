@@ -29,8 +29,31 @@ class AdminServicesRepository @Inject constructor(
             services.map { servicesMapper.map(it) }
         }
 
-    override suspend fun loadNews(): Answer<List<CommonNewsDataEntity>> = safeApiCall(ioDispatcher) {
-        val executor = ApiListResponseHandler(newsService.loadNews())
-        executor.handleFetchedData()
-    }
+    override suspend fun loadNews(): Answer<List<CommonNewsDataEntity>> =
+        safeApiCall(ioDispatcher) {
+            val executor = ApiListResponseHandler(newsService.loadNews())
+            executor.handleFetchedData()
+        }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

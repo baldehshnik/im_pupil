@@ -36,7 +36,11 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
+
     implementation(project(":data:commonEntity"))
+
+    implementation(project(":dataPort:common:portNews"))
 
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.converter.gson)

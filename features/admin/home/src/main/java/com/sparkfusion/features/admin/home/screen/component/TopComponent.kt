@@ -44,11 +44,11 @@ fun TopComponent(
 
         Spacer(modifier = Modifier.weight(1f))
 
-        TopIconButton(
-            onClick = onFilterIconClick,
-            iconId = R.drawable.filter_icon,
-            contentDescription = stringResource(R.string.filters_icon_description)
-        )
+//        TopIconButton(
+//            onClick = onFilterIconClick,
+//            iconId = R.drawable.filter_icon,
+//            contentDescription = stringResource(R.string.filters_icon_description)
+//        )
 
         TopIconButton(
             onClick = onNotificationsIconClick,
