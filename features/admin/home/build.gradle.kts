@@ -47,6 +47,8 @@ dependencies {
     implementation(project(":navigation:core"))
     implementation(project(":navigation:adminCorePort"))
 
+    implementation(project(":domain:admin:port:portHome"))
+
     implementation(libs.androidx.hilt.navigation)
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

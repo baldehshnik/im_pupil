@@ -12,18 +12,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.core.widget.text.ShimmerTextBox
+import com.sparkfusion.domain.admin.port.porthome.InstitutionEventModel
 
 @Composable
 fun PostItem(
     modifier: Modifier = Modifier,
-    isDarkModeEnabled: Boolean,
-    isPlaceholder: Boolean = false
+    post: InstitutionEventModel
 ) {
     Column(
         modifier = modifier
@@ -31,8 +29,8 @@ fun PostItem(
             .fillMaxWidth()
     ) {
         PostImageIcon(
-            isDarkModeEnabled = isDarkModeEnabled,
-            onMoreVertButtonClick = {  }
+            imageUrl = post.image,
+            onMoreVertButtonClick = { }
         )
 
         Column(
@@ -41,46 +39,32 @@ fun PostItem(
                 .background(Color(0xFFEEF7FF))
                 .fillMaxWidth()
         ) {
-            ShimmerTextBox(
+            SFProRoundedText(
                 modifier = Modifier.padding(top = 12.dp, start = 20.dp, end = 32.dp),
-                size = DpSize(260.dp, 28.dp),
-                isDarkModeEnabled = isDarkModeEnabled,
-                isLoadingAnimationCompleted = !isPlaceholder
-            ) {
-                SFProRoundedText(
-                    content = "Some short title about post",
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-
-            ShimmerTextBox(
-                modifier = Modifier
-                    .padding(start = 20.dp, top = 2.dp)
-                    .width(240.dp),
-                size = DpSize(220.dp, 24.dp),
-                isDarkModeEnabled = isDarkModeEnabled,
-                isLoadingAnimationCompleted = !isPlaceholder
-            ) {
-                SFProRoundedText(
-                    content = "Some show description content",
-                    fontWeight = FontWeight.Medium,
-                    color = descriptionColor(),
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
-                )
-            }
-
-            DateLikeItem(
-                modifier = Modifier
-                    .padding(start = 20.dp, bottom = 18.dp)
-                    .fillMaxWidth(),
-                isDarkModeEnabled = isDarkModeEnabled,
-                isPlaceholder = isPlaceholder,
-                onLikeClick = {  }
+                content = post.title,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
+
+            SFProRoundedText(
+                modifier = Modifier
+                    .padding(start = 20.dp, top = 2.dp, bottom = 8.dp)
+                    .width(240.dp),
+                content = post.description,
+                fontWeight = FontWeight.Medium,
+                color = descriptionColor(),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1
+            )
+
+//            DateLikeItem(
+//                modifier = Modifier
+//                    .padding(start = 20.dp, bottom = 18.dp)
+//                    .fillMaxWidth(),
+//                onLikeClick = { }
+//            )
         }
     }
 }

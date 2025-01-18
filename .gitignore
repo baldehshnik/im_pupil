@@ -3,6 +3,8 @@
 .gradle
 /local.properties
 /.idea
+/.idea/gradle.xml
+/.idea/other.xml
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml

@@ -13,6 +13,7 @@ class ApiListResponseHandler<R>(private val response: Response<List<R>>) {
         return if (response.isSuccessful) {
             Answer.Success(response.body() ?: emptyList())
         } else {
+            Log.i("TAGTAG", "" + response.code() + " - " + response.errorBody()?.string().toString())
             Answer.Failure(handleExceptionCode(response.code()))
         }
     }

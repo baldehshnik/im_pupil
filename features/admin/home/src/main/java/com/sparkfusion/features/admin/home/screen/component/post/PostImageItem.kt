@@ -1,5 +1,6 @@
 package com.sparkfusion.features.admin.home.screen.component.post
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -22,13 +23,12 @@ import com.sparkfusion.features.admin.home.widget.MoreVertButton
 @Composable
 fun PostImageIcon(
     modifier: Modifier = Modifier,
-    isDarkModeEnabled: Boolean,
+    imageUrl: String,
     onMoreVertButtonClick: () -> Unit
 ) {
     var isImageLoadingAnimationCompleted by remember { mutableStateOf(false) }
-
     val painter = rememberAsyncImagePainter(
-        model = R.drawable.notification_icon,
+        model = imageUrl,
         onLoading = { isImageLoadingAnimationCompleted = false },
         onSuccess = { isImageLoadingAnimationCompleted = true }
     )
@@ -39,7 +39,7 @@ fun PostImageIcon(
             contentDescription = stringResource(R.string.post_image_description),
             size = DpSize((LocalConfiguration.current.screenWidthDp - 48).dp, 180.dp),
             painter = painter,
-            isDarkModeEnabled = isDarkModeEnabled,
+            isDarkModeEnabled = isSystemInDarkTheme(),
             isImageAnimationCompleted = isImageLoadingAnimationCompleted
         )
 
