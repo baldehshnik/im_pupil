@@ -50,6 +50,8 @@ dependencies {
 
     implementation(project(":navigation:core"))
 
+    implementation(project(":domain:admin:port:portAuth"))
+
     implementation(project(":core:common"))
     implementation(project(":core:resource"))
     implementation(project(":core:widget"))

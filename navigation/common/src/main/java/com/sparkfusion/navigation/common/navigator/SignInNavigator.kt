@@ -4,6 +4,7 @@ import com.sparkfusion.features.common.password_recovery.destination.PasswordRec
 import com.sparkfusion.features.common.sign_in.navigator.ISignInNavigator
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 import com.sparkfusion.navigation.admincoreport.destination.AdminSignUpDestination
+import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class SignInNavigator(private val navigator: INavigator): ISignInNavigator {
@@ -17,6 +18,7 @@ class SignInNavigator(private val navigator: INavigator): ISignInNavigator {
     }
 
     override fun navigateToAdminHomeScreen() {
+        navigator.popBackStackInclusive(WelcomeScreenDestination)
         navigator.navigateTo(AdminHomeDestination)
     }
 

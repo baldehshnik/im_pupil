@@ -26,13 +26,16 @@
             <option value="$PROJECT_DIR$/data/pupil" />
             <option value="$PROJECT_DIR$/dataPort" />
             <option value="$PROJECT_DIR$/dataPort/admin" />
+            <option value="$PROJECT_DIR$/dataPort/admin/portAuth" />
             <option value="$PROJECT_DIR$/dataPort/admin/portServices" />
             <option value="$PROJECT_DIR$/dataPort/common" />
             <option value="$PROJECT_DIR$/dataPort/common/faculty" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/admin" />
+            <option value="$PROJECT_DIR$/domain/admin/auth" />
             <option value="$PROJECT_DIR$/domain/admin/news" />
             <option value="$PROJECT_DIR$/domain/admin/port" />
+            <option value="$PROJECT_DIR$/domain/admin/port/portAuth" />
             <option value="$PROJECT_DIR$/domain/admin/port/portServices" />
             <option value="$PROJECT_DIR$/domain/admin/services" />
             <option value="$PROJECT_DIR$/domain/common" />

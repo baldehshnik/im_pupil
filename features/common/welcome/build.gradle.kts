@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -38,12 +40,19 @@ android {
 
 dependencies {
 
+    implementation(project(":domain:admin:port:portAuth"))
+
+    implementation(project(":core:common"))
     implementation(project(":core:widget"))
     implementation(project(":core:resource"))
 
     implementation(libs.coil)
 
     implementation(libs.androidx.navigation)
+
+    implementation(libs.androidx.hilt.navigation)
+    implementation(libs.google.hilt)
+    ksp(libs.google.hilt.compiler)
 
     implementation(libs.androidx.appcompat)
 

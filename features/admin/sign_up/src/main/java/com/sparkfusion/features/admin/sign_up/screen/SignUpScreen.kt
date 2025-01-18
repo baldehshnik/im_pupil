@@ -9,48 +9,66 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.button.BlackButton
 import com.sparkfusion.core.widget.text.DescriptionText
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.features.admin.sign_up.R
 import com.sparkfusion.features.admin.sign_up.navigator.ISignUpNavigator
 import com.sparkfusion.features.admin.sign_up.screen.component.LoginDetailsBlock
+import com.sparkfusion.features.admin.sign_up.screen.component.OutlinedDropDownMenu
 import com.sparkfusion.features.admin.sign_up.screen.component.PersonalInformationBlock
-import com.sparkfusion.core.widget.spinner.OutlinedDropDownMenu
-import com.sparkfusion.core.widget.textfield.TextFieldWithoutTitle
+import com.sparkfusion.features.admin.sign_up.viewmodel.SingUpViewModel
 
 @Composable
 fun SignUpScreen(
     navigator: ISignUpNavigator,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: SingUpViewModel = hiltViewModel()
 ) {
-    val administrationPlaces = stringArrayResource(R.array.administration_place)
-    val administrationPlaceSelectedItem = rememberSaveable { mutableStateOf(administrationPlaces[0]) }
-
-    val accessModes = stringArrayResource(R.array.access_mode)
-    val accessModeSelectedItem = rememberSaveable { mutableStateOf(accessModes[0]) }
-
-    val educationalInstitutionValue = remember { mutableStateOf("") }
-    val firstnameValue = remember { mutableStateOf("") }
-    val lastnameValue = remember { mutableStateOf("") }
-    val patronymicValue = remember { mutableStateOf("") }
-
-    val emailValue = remember { mutableStateOf("") }
-    val passwordValue = remember { mutableStateOf("") }
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val institutionState by viewModel.institutionState.collectAsStateWithLifecycle()
+    val signUpState by viewModel.singUpState.collectAsStateWithLifecycle()
+    val signUpDataState by viewModel.singUpDataState.collectAsStateWithLifecycle()
 
     val verticalScroll = rememberScrollState()
+
+    when (signUpDataState) {
+        is SingUpViewModel.SignUpDataState.Failure -> {
+            ShowToast(value = (signUpDataState as SingUpViewModel.SignUpDataState.Failure).value)
+            viewModel.clearSignUpDataState()
+        }
+
+        SingUpViewModel.SignUpDataState.Initial -> {}
+    }
+
+    when (signUpState) {
+        SingUpViewModel.SignUpState.Error -> {
+            ShowToast(value = "Error")
+            viewModel.clearSignUpState()
+        }
+
+        SingUpViewModel.SignUpState.Initial -> {}
+        SingUpViewModel.SignUpState.Progress -> {
+            ShowToast(value = "Registration...")
+            viewModel.clearSignUpState()
+        }
+
+        SingUpViewModel.SignUpState.Success -> {
+            navigator.navigateToSignInScreen()
+        }
+    }
 
     Column(
         modifier = modifier
@@ -69,70 +87,47 @@ fun SignUpScreen(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .align(Alignment.Start),
-            content = stringResource(R.string.place_of_administration),
+            content = "University",
             fontWeight = FontWeight.Medium,
             fontSize = 20.sp
         )
 
         OutlinedDropDownMenu(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp),
-            items = administrationPlaces,
-            selectedItem = administrationPlaceSelectedItem
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        SFProRoundedText(
-            modifier = Modifier
-                .padding(horizontal = 24.dp)
-                .align(Alignment.Start),
-            content = administrationPlaceSelectedItem.value,
-            fontWeight = FontWeight.Medium,
-            fontSize = 20.sp
-        )
-
-        TextFieldWithoutTitle(
-            placeholder = stringResource(R.string.enter_name_here),
-            value = educationalInstitutionValue.value,
-            onValueChange = { educationalInstitutionValue.value = it }
+            items = institutionState,
+            selectedItem = if (institutionState.isEmpty()) null else institutionState[0],
+            onItemSelected = {
+                viewModel.setInstitution(it.abbreviation)
+            },
+            onValueChange = {
+                viewModel.readInstitutionByNamePart(it)
+            }
         )
 
         Spacer(modifier = Modifier.padding(top = 24.dp))
 
         PersonalInformationBlock(
-            firstnameValue = firstnameValue,
-            lastnameValue = lastnameValue,
-            patronymicValue = patronymicValue
+            firstname = state.firstname,
+            lastname = state.lastname,
+            patronymic = state.patronymic,
+            onLastnameChange = viewModel::updateLastname,
+            onFirstnameChange = viewModel::updateFirstname,
+            onPatronymicChange = viewModel::updatePatronymic
         )
 
         Spacer(modifier = Modifier.padding(top = 24.dp))
 
         LoginDetailsBlock(
-            emailValue = emailValue,
-            passwordValue = passwordValue
+            email = state.email,
+            password = state.password,
+            onEmailChange = viewModel::updateEmail,
+            onPasswordChange = viewModel::updatePassword
         )
 
         Spacer(modifier = Modifier.padding(top = 24.dp))
 
-        SFProRoundedText(
-            modifier = Modifier
-                .padding(horizontal = 24.dp)
-                .align(Alignment.Start),
-            content = stringResource(R.string.access_mode),
-            fontWeight = FontWeight.Medium,
-            fontSize = 20.sp
-        )
-
-        Spacer(modifier = Modifier.padding(top = 10.dp))
-
-        OutlinedDropDownMenu(
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp),
-            items = accessModes,
-            selectedItem = accessModeSelectedItem
-        )
-
         DescriptionText(
-            modifier = Modifier.padding(top = 10.dp),
+            modifier = Modifier,
             content = stringResource(R.string.after_submit_info)
         )
 
@@ -141,7 +136,7 @@ fun SignUpScreen(
                 .padding(top = 10.dp, bottom = 24.dp)
                 .size(width = 240.dp, height = 48.dp),
             text = stringResource(R.string.register),
-            onClick = navigator::navigateToSignInScreen
+            onClick = viewModel::signUp
         )
     }
 }

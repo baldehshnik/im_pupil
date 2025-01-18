@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":data:commonEntity"))
 
     implementation(project(":dataPort:admin:portServices"))
+    implementation(project(":dataPort:admin:portAuth"))
 
     implementation(project(":data:base"))
     implementation(project(":data:common"))
