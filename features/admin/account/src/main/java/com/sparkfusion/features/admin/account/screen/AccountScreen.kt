@@ -1,10 +1,6 @@
 package com.sparkfusion.features.admin.account.screen
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -13,10 +9,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,82 +22,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.features.admin.account.R
-import com.sparkfusion.features.admin.account.entity.AdministratorEntity
-import com.sparkfusion.features.admin.account.entity.FavoritePostEntity
-import com.sparkfusion.features.admin.account.entity.PostAuthor
 import com.sparkfusion.features.admin.account.navigator.IAccountNavigator
 import com.sparkfusion.features.admin.account.screen.component.AccountScreenBlock
 import com.sparkfusion.features.admin.account.screen.component.AdministratorItem
 import com.sparkfusion.features.admin.account.screen.component.ManagementComponent
-import com.sparkfusion.features.admin.account.screen.component.PostItem
 import com.sparkfusion.features.admin.account.screen.component.PresentationComponent
 import com.sparkfusion.features.admin.account.screen.component.TopComponent
-
-val tempFavoritePostEntities = listOf(
-    FavoritePostEntity(
-        "First title",
-        "description of the first favorite post",
-        PostAuthor("Brest State Technical University")
-    ),
-    FavoritePostEntity(
-        "Second title",
-        "description of the second favorite post",
-        PostAuthor("Brest State Technical University")
-    ),
-    FavoritePostEntity(
-        "Four title",
-        "description of the four favorite post",
-        PostAuthor("Brest State Technical University")
-    )
-)
+import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 
 @Composable
 fun AccountScreen(
     navigator: IAccountNavigator,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: AccountViewModel = hiltViewModel()
 ) {
-    val tempAdministratorsList = remember {
-        mutableListOf(
-            AdministratorEntity("Kulaga", "Dmitriy"),
-            AdministratorEntity("Kulaga", "Dmitriy"),
-            AdministratorEntity("Kulaga", "Dmitriy")
-        )
+    LaunchedEffect(Unit) {
+        viewModel.readAccountInfo()
+        viewModel.readAdmins()
+        viewModel.readInstitutionInfo()
     }
 
-    val isDarkModeEnabled = isSystemInDarkTheme()
-//    val croppedImageValue = navigator.getCroppedImageBitmap()
-    var showCroppedImage by remember { mutableStateOf(false) }
-
-    val context = LocalContext.current
-    var bitmap by remember { mutableStateOf<Bitmap?>(null) }
-
-    val galleryLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        uri?.let {
-            val inputStream = context.contentResolver.openInputStream(it)
-            bitmap = BitmapFactory.decodeStream(inputStream)
-        }
-    }
-
-//    LaunchedEffect(croppedImageValue) {
-//        showCroppedImage = croppedImageValue != null
-//    }
-//
-//    LaunchedEffect(bitmap) {
-//        if (bitmap != null) {
-//            navigator.navigateToCircleImageCropScreen(IMAGE_CROP_KEY, bitmap)
-//        }
-//    }
+    val accountState by viewModel.accountState.collectAsStateWithLifecycle()
+    val adminsState by viewModel.adminsState.collectAsStateWithLifecycle()
+    val institutionState by viewModel.institutionState.collectAsStateWithLifecycle()
 
     var showAllAdministrators by remember { mutableStateOf(false) }
 
@@ -110,109 +65,93 @@ fun AccountScreen(
             .background(Color(0xFFF3F9FF)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        if (showCroppedImage) {
-//            Box(
-//                modifier = Modifier.background(
-//                    color = Color.White,
-//                    shape = MaterialTheme.shapes.medium
-//                )
-//            ) {
-//                croppedImageValue?.let {
-//                    Image(
-//                        modifier = Modifier
-//                            .clip(CircleShape)
-//                            .fillMaxWidth()
-//                            .height(180.dp)
-//                            .size(128.dp)
-//                            .padding(8.dp),
-//                        bitmap = it.asImageBitmap(),
-//                        contentDescription = "Cropped Image"
-//                    )
-//                }
-//            }
-//        }
-
         item {
             TopComponent(
-                content = "BSTU",
+                state = institutionState,
                 onSettingsClick = { }
             )
 
             PresentationComponent(
                 modifier = Modifier.fillMaxWidth(),
-                isDarkModeEnabled = isDarkModeEnabled
+                state = accountState
             )
 
-            ManagementComponent(
-                name = "Brest State Technical University",
-                address = "Brest city, Moskovskaya street 267",
-                phone = "+375 (33) 340-56-49"
-            )
+            when (institutionState) {
+                AccountViewModel.InstitutionState.Error -> {
+                    ShowToast(value = "Error")
+                }
 
-            val administratorsListHeight =
-                64 * tempAdministratorsList.size + if (tempAdministratorsList.size > 2) 80 else 92
-            AccountScreenBlock(
-                modifier = Modifier.height(administratorsListHeight.dp),
-                title = stringResource(R.string.administrators)
-            ) {
-                LazyColumn(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(administratorsListHeight.dp)
-                        .padding(vertical = 12.dp)
-                ) {
-                    items(
-                        if (tempAdministratorsList.size > 2 && !showAllAdministrators) 2 else tempAdministratorsList.size
-                    ) {
-                        AdministratorItem(
-                            onMoreInfoClick =
-                            navigator::navigateToAdminDetailsScreen,
-                            isDarkModeEnabled = isDarkModeEnabled
-                        )
-                    }
+                AccountViewModel.InstitutionState.Initial -> {}
+                AccountViewModel.InstitutionState.Progress -> {
+                    CircularProgressIndicator()
+                }
 
-                    item {
-                        AnimatedVisibility(visible = tempAdministratorsList.size > 2) {
-                            TextButton(
-                                modifier = Modifier.padding(top = 4.dp),
-                                onClick = { showAllAdministrators = !showAllAdministrators }
-                            ) {
-                                SFProRoundedText(
-                                    content = if (showAllAdministrators) stringResource(R.string.hide)
-                                    else stringResource(R.string.show_more),
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.Medium
-                                )
-                            }
-                        }
-                    }
+                is AccountViewModel.InstitutionState.Success -> {
+                    val data = (institutionState as AccountViewModel.InstitutionState.Success).data
+                    ManagementComponent(
+                        name = data.name,
+                        address = data.address ?: "Not found",
+                        phone = data.phone ?: "Not found"
+                    )
                 }
             }
 
-            val favoritePostsHeight = 342 * tempFavoritePostEntities.size + 8
-            AccountScreenBlock(
-                title = stringResource(R.string.favorites),
-                shape = RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp)
-            ) {
-                LazyColumn(
-                    modifier = Modifier
-                        .height(favoritePostsHeight.dp)
-                        .fillMaxWidth()
-                ) {
-                    item {
-                        Spacer(modifier = Modifier.height(8.dp))
+            when (adminsState) {
+                AccountViewModel.AdminsState.Error -> {
+                    ShowToast(value = "Error")
+                }
+
+                AccountViewModel.AdminsState.Initial -> {}
+                AccountViewModel.AdminsState.Progress -> {
+                    CircularProgressIndicator()
+                }
+
+                is AccountViewModel.AdminsState.Success -> {
+                    val data = (adminsState as AccountViewModel.AdminsState.Success).data
+                    val administratorsListHeight =
+                        68.dp * if (showAllAdministrators) data.size else { 2 } + 32.dp + 40.dp
+                    AccountScreenBlock(
+                        modifier = Modifier,
+                        title = stringResource(R.string.administrators)
+                    ) {
+                        LazyColumn(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(administratorsListHeight)
+                                .padding(vertical = 12.dp)
+                        ) {
+                            items(
+                                if (data.size > 2 && !showAllAdministrators) 2 else data.size
+                            ) {
+                                val item = data[it]
+                                AdministratorItem(
+                                    onMoreInfoClick = { navigator.navigateToAdminDetailsScreen(item.id) },
+                                    isDarkModeEnabled = isSystemInDarkTheme(),
+                                    admin = item
+                                )
+                            }
+
+                            item {
+                                AnimatedVisibility(visible = data.size > 2) {
+                                    TextButton(
+                                        modifier = Modifier.padding(top = 4.dp),
+                                        onClick = { showAllAdministrators = !showAllAdministrators }
+                                    ) {
+                                        SFProRoundedText(
+                                            content = if (showAllAdministrators) stringResource(R.string.hide)
+                                            else stringResource(R.string.show_more),
+                                            color = MaterialTheme.colorScheme.primary,
+                                            fontSize = 14.sp,
+                                            fontWeight = FontWeight.Medium
+                                        )
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    items(tempFavoritePostEntities.size) {
-                        PostItem(
-                            post = tempFavoritePostEntities[it],
-                            isDarkModeEnabled = isDarkModeEnabled
-                        )
-
-                        Spacer(modifier = Modifier.height(12.dp))
-                    }
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }
@@ -224,7 +163,7 @@ fun AccountScreen(
 private fun AccountScreenPreview() {
     AccountScreen(
         navigator = object : IAccountNavigator {
-            override fun navigateToAdminDetailsScreen() {}
+            override fun navigateToAdminDetailsScreen(id: Int) {}
             override fun navigateToPostViewingScreen() {}
             override fun <T> navigateToCircleImageCropScreen(key: String, value: T) {}
             override fun getCroppedImageBitmap(): Bitmap? {
@@ -233,3 +172,16 @@ private fun AccountScreenPreview() {
         }
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

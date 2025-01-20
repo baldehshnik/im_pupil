@@ -6,11 +6,13 @@ import com.sparkfusion.features.admin.account.navigator.IAccountNavigator
 import com.sparkfusion.features.admin.admin_details.destination.AdminDetailsDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostViewingDestination
 import com.sparkfusion.navigation.commoncoreport.destination.CircleImageCropDestination
+import com.sparkfusion.navigation.core.keys.ADMIN_ID_KEY
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class AccountNavigator(private val navigator: INavigator) : IAccountNavigator {
 
-    override fun navigateToAdminDetailsScreen() {
+    override fun navigateToAdminDetailsScreen(id: Int) {
+        navigator.currentBackStackEntry?.savedStateHandle?.set(ADMIN_ID_KEY, id)
         navigator.navigateTo(AdminDetailsDestination)
     }
 

@@ -4,5 +4,7 @@ data class InstitutionEntity(
     val id: Int,
     val name: String,
     val abbreviation: String,
-    val type: Int
+    val type: Int,
+    val address: String?,
+    val phone: String?
 )

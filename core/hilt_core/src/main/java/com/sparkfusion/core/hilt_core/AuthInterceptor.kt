@@ -15,7 +15,9 @@ class AuthInterceptor @Inject constructor(
     private val pathsWithAuth: Set<String> = HashSet(
         mutableListOf(
             "/auth/check-token",
-            "/education/institution/ofAdmin"
+            "/education/institution/ofAdmin",
+            "/admin/account/search",
+            "/admin/all"
         )
     )
 

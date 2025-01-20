@@ -24,17 +24,19 @@ import coil.compose.rememberAsyncImagePainter
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.image.ShimmerImageBox
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.domain.admin.port.portaccount.InstitutionAdminModel
 import com.sparkfusion.features.admin.account.R
 
 @Composable
 fun AdministratorItem(
     modifier: Modifier = Modifier,
     isDarkModeEnabled: Boolean,
-    onMoreInfoClick: () -> Unit
+    onMoreInfoClick: () -> Unit,
+    admin: InstitutionAdminModel
 ) {
     var isImageLoadingCompleted by remember { mutableStateOf(false) }
     val painter = rememberAsyncImagePainter(
-        model = com.sparkfusion.core.resource.R.drawable.magazine_service_icon,
+        model = admin.icon,
         onSuccess = { isImageLoadingCompleted = true },
         onLoading = { isImageLoadingCompleted = false }
     )
@@ -57,12 +59,16 @@ fun AdministratorItem(
                 .align(Alignment.Top)
         ) {
             SFProRoundedText(
-                content = "Kulaga Dmitriy",
+                content = admin.lastname + " " + admin.firstname,
                 fontWeight = FontWeight.SemiBold,
             )
 
             SFProRoundedText(
-                content = "Administrator",
+                content = when (admin.accessMode) {
+                    1 -> "Assistant"
+                    2 -> "Teacher"
+                    else -> "Administrator"
+                },
                 fontWeight = FontWeight.Medium,
                 fontSize = 14.sp,
                 color = descriptionColor()

@@ -15,12 +15,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.features.admin.home.R
+import com.sparkfusion.features.admin.home.viewmodel.HomeViewModel
 import com.sparkfusion.features.admin.home.widget.TopIconButton
 
 @Composable
 fun TopComponent(
     modifier: Modifier = Modifier,
-    name: String,
+    state: HomeViewModel.AccountInfoState,
     onFilterIconClick: () -> Unit,
     onNotificationsIconClick: () -> Unit
 ) {
@@ -37,7 +38,10 @@ fun TopComponent(
         Spacer(modifier = Modifier.width(6.dp))
 
         SFProRoundedText(
-            content = stringResource(R.string.hi_with_name, name),
+            content = stringResource(
+                R.string.hi_with_name,
+                if (state is HomeViewModel.AccountInfoState.Success) state.name else ""
+            ),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 22.sp
         )

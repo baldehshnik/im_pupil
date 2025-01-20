@@ -38,9 +38,11 @@ fun HomeScreen(
 ) {
     LaunchedEffect(Unit) {
         viewModel.readEvents()
+        viewModel.readAccountInfo()
     }
 
     val institutionEventState by viewModel.institutionEventState.collectAsStateWithLifecycle()
+    val accountInfoState by viewModel.accountInfoState.collectAsStateWithLifecycle()
 
     Box(modifier = modifier.fillMaxSize()) {
         LazyColumn(
@@ -48,7 +50,7 @@ fun HomeScreen(
         ) {
             item {
                 TopComponent(
-                    name = "Vladislav",
+                    state = accountInfoState,
                     onFilterIconClick =
                     navigator::navigateToFiltersScreen,
                     onNotificationsIconClick =

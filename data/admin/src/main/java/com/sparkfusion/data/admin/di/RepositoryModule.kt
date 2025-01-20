@@ -1,8 +1,10 @@
 package com.sparkfusion.data.admin.di
 
 import com.sparkfusion.data.admin.repository.auth.AdminAuthRepository
+import com.sparkfusion.data.admin.repository.institution.AdminAccountRepository
 import com.sparkfusion.data.admin.repository.institution.AdminInstitutionRepository
 import com.sparkfusion.dataPort.admin.portAuth.repository.IAdminAuthRepository
+import com.sparkfusion.dataPort.admin.portaccount.IAdminAccountRepository
 import com.sparkfusion.dataPort.admin.portinstitution.IAdminInstitutionRepository
 import dagger.Binds
 import dagger.Module
@@ -18,6 +20,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindAdminInstitutionRepositoryToIAdminInstitutionRepository(adminInstitutionRepository: AdminInstitutionRepository): IAdminInstitutionRepository
+
+    @Binds
+    fun bindAdminAccountRepositoryToIAdminAccountRepository(adminAccountRepository: AdminAccountRepository): IAdminAccountRepository
 }
 
 

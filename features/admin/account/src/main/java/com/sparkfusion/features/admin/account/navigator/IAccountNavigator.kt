@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 
 interface IAccountNavigator {
 
-    fun navigateToAdminDetailsScreen()
+    fun navigateToAdminDetailsScreen(id: Int)
     fun navigateToPostViewingScreen()
     fun <T> navigateToCircleImageCropScreen(key: String, value: T)
     fun getCroppedImageBitmap(): Bitmap?

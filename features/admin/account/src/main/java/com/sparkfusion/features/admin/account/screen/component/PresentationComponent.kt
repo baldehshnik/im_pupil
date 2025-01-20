@@ -1,11 +1,13 @@
 package com.sparkfusion.features.admin.account.screen.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,65 +24,104 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.sparkfusion.core.widget.image.ShimmerImageBox
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.core.widget.text.ShimmerTextBox
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.features.admin.account.R
+import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 
 @Composable
 fun PresentationComponent(
     modifier: Modifier = Modifier,
-    isDarkModeEnabled: Boolean
+    state: AccountViewModel.AccountState
 ) {
-    val isNameLoadingCompleted by remember { mutableStateOf(false) }
-    var isAccountImageLoadingCompleted by remember { mutableStateOf(false) }
-    val accountImagePainter = rememberAsyncImagePainter(
-        model = com.sparkfusion.core.resource.R.drawable.settings_icon,
-        onSuccess = { isAccountImageLoadingCompleted = true },
-        onLoading = { isAccountImageLoadingCompleted = false }
-    )
-
-    Column(
-        modifier = modifier.background(
-            color = Color.White,
-            shape = RoundedCornerShape(0.dp, 0.dp, 30.dp, 30.dp)
-        ),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.height(20.dp))
-
-        ShimmerImageBox(
-            contentDescription = stringResource(R.string.account_image_description),
-            size = DpSize(124.dp, 124.dp),
-            painter = accountImagePainter,
-            isDarkModeEnabled = isDarkModeEnabled,
-            isImageAnimationCompleted = isAccountImageLoadingCompleted
-        )
-
-        ShimmerTextBox(
-            modifier = Modifier.padding(top = 10.dp),
-            contentAlignment = Alignment.Center,
-            size = DpSize(160.dp, 24.dp),
-            isDarkModeEnabled = isDarkModeEnabled,
-            isLoadingAnimationCompleted = isNameLoadingCompleted
-        ) {
-            SFProRoundedText(
-                content = "Shcherba",
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 20.sp
-            )
+    when (state) {
+        AccountViewModel.AccountState.Error -> {
+            ShowToast(value = "Error")
         }
 
-        ShimmerTextBox(
-            modifier = Modifier.padding(top = 2.dp, bottom = 20.dp),
-            contentAlignment = Alignment.Center,
-            size = DpSize(230.dp, 24.dp),
-            isDarkModeEnabled = isDarkModeEnabled,
-            isLoadingAnimationCompleted = isNameLoadingCompleted
-        ) {
-            SFProRoundedText(
-                content = "Vladislav Dmitrievich",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium
+        AccountViewModel.AccountState.Initial -> {}
+        AccountViewModel.AccountState.Progress -> {
+            CircularProgressIndicator()
+        }
+
+        is AccountViewModel.AccountState.Success -> {
+            var isAccountImageLoadingCompleted by remember { mutableStateOf(false) }
+            val accountImagePainter = rememberAsyncImagePainter(
+                model = state.data.icon,
+                onSuccess = { isAccountImageLoadingCompleted = true },
+                onLoading = { isAccountImageLoadingCompleted = false }
             )
+
+            Column(
+                modifier = modifier.background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(0.dp, 0.dp, 30.dp, 30.dp)
+                ),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(20.dp))
+
+                ShimmerImageBox(
+                    contentDescription = stringResource(R.string.account_image_description),
+                    size = DpSize(124.dp, 124.dp),
+                    painter = accountImagePainter,
+                    isDarkModeEnabled = isSystemInDarkTheme(),
+                    isImageAnimationCompleted = isAccountImageLoadingCompleted
+                )
+
+                SFProRoundedText(
+                    modifier = Modifier.padding(top = 10.dp),
+                    content = state.data.lastname,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 20.sp
+                )
+
+                SFProRoundedText(
+                    modifier = Modifier.padding(top = 2.dp, bottom = 20.dp),
+                    content = state.data.firstname + " " + state.data.patronymic,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

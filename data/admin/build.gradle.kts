@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(":dataPort:admin:portServices"))
     implementation(project(":dataPort:admin:portAuth"))
+    implementation(project(":dataPort:admin:portAccount"))
     implementation(project(":dataPort:admin:portInstitution"))
 
     implementation(project(":data:base"))

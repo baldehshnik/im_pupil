@@ -40,6 +40,7 @@ dependencies {
 
     implementation(project(":dataPort:common:portInstitutionEvent"))
     implementation(project(":dataPort:admin:portInstitution"))
+    implementation(project(":dataPort:admin:portAccount"))
 
     implementation(project(":domain:admin:port:portHome"))
 

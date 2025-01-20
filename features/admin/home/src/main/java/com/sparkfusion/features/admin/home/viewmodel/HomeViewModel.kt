@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sparkfusion.core.common.dispatchers.IODispatcher
+import com.sparkfusion.domain.admin.port.porthome.IReadAccountUseCase
 import com.sparkfusion.domain.admin.port.porthome.IReadInstitutionEventsUseCase
 import com.sparkfusion.domain.admin.port.porthome.InstitutionEventModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,13 +19,17 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val readInstitutionEventsUseCase: IReadInstitutionEventsUseCase
+    private val readInstitutionEventsUseCase: IReadInstitutionEventsUseCase,
+    private val readAccountUseCase: IReadAccountUseCase
 ) : ViewModel() {
 
     private val _institutionEventState =
         MutableStateFlow<InstitutionEventState>(InstitutionEventState.Initial)
     val institutionEventState: StateFlow<InstitutionEventState> =
         _institutionEventState.asStateFlow()
+
+    private val _accountInfoState = MutableStateFlow<AccountInfoState>(AccountInfoState.Initial)
+    val accountInfoState: StateFlow<AccountInfoState> = _accountInfoState.asStateFlow()
 
     fun readEvents() {
         _institutionEventState.update { InstitutionEventState.Progress }
@@ -39,6 +44,23 @@ class HomeViewModel @Inject constructor(
                     _institutionEventState.update { InstitutionEventState.Error }
                 }
         }
+    }
+
+    fun readAccountInfo() {
+        viewModelScope.launch(ioDispatcher) {
+            readAccountUseCase.readAccount()
+                .onSuccess { model ->
+                    _accountInfoState.update { AccountInfoState.Success(model.firstname) }
+                }
+                .onFailure {
+                    _accountInfoState.update { AccountInfoState.Success("") }
+                }
+        }
+    }
+
+    sealed interface AccountInfoState {
+        data object Initial : AccountInfoState
+        data class Success(val name: String) : AccountInfoState
     }
 
     sealed interface InstitutionEventState {
