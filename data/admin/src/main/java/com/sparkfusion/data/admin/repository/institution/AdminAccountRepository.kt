@@ -35,7 +35,7 @@ class AdminAccountRepository @Inject constructor(
     }
 
     override suspend fun updateAccountImage(image: File): Answer<AdminNewImageEntity> = safeApiCall(ioDispatcher) {
-        val body = RequestBody.create(MediaType.parse("image/png"), image)
+        val body = RequestBody.create(MediaType.parse("image/jpeg"), image)
         val part = MultipartBody.Part.createFormData("image", image.name, body)
         ApiResponseHandler(accountApiService.updateAccountImage(part))
             .handleFetchedData()

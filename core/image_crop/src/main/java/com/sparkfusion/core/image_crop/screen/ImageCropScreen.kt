@@ -25,9 +25,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.sparkfusion.core.image_crop.R
-import com.sparkfusion.core.image_crop.space.CircleCropSpace
+import com.sparkfusion.core.image_crop.crop.BitmapSizeReducer
 import com.sparkfusion.core.image_crop.crop.ImageCropper
 import com.sparkfusion.core.image_crop.navigator.IImageCropNavigator
+import com.sparkfusion.core.image_crop.space.CircleCropSpace
 import com.sparkfusion.core.image_crop.space.RectangleCropSpace
 import com.sparkfusion.core.image_crop.type.ImageCropType
 import com.sparkfusion.core.resource.theme.backgroundDark
@@ -54,7 +55,12 @@ fun ImageCropScreen(
     var transform by remember { mutableStateOf(Offset(0f, 0f)) }
 
     LaunchedEffect(croppedImage) {
-        croppedImage?.let { navController.navigateToPreviousScreen(it.asAndroidBitmap()) }
+        croppedImage?.let {
+            val reducer = BitmapSizeReducer(it.asAndroidBitmap())
+            navController.navigateToPreviousScreen(
+                reducer.compressImageToTargetSize() ?: return@let
+            )
+        }
     }
 
     Box(

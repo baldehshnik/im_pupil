@@ -19,8 +19,8 @@ class BitmapToFileWorker @Inject constructor(
     suspend operator fun invoke(
         bitmap: Bitmap,
         child: ImageChildren,
-        quality: Int = 100,
-        format: Bitmap.CompressFormat = Bitmap.CompressFormat.PNG
+        quality: Int = 80,
+        format: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG
     ): File = withContext(ioDispatcher) {
         try {
             val file = File(cacheDirectory, child.value).apply { createNewFile() }
