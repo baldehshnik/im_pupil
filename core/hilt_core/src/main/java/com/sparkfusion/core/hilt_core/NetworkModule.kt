@@ -31,6 +31,7 @@ object NetworkModule {
     fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(NetworkTimeout.CONNECTION.value, NetworkTimeout.CONNECTION.type)
+            .writeTimeout(NetworkTimeout.WRITE.value, NetworkTimeout.WRITE.type)
             .addInterceptor(authInterceptor)
             .build()
     }

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sparkfusion.core.common.dispatchers.IODispatcher
+import com.sparkfusion.domain.admin.port.porthome.IDeleteInstitutionEventUseCase
 import com.sparkfusion.domain.admin.port.porthome.IReadAccountUseCase
 import com.sparkfusion.domain.admin.port.porthome.IReadInstitutionEventsUseCase
 import com.sparkfusion.domain.admin.port.porthome.InstitutionEventModel
@@ -20,7 +21,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val readInstitutionEventsUseCase: IReadInstitutionEventsUseCase,
-    private val readAccountUseCase: IReadAccountUseCase
+    private val readAccountUseCase: IReadAccountUseCase,
+    private val deleteInstitutionEventUseCase: IDeleteInstitutionEventUseCase
 ) : ViewModel() {
 
     private val _institutionEventState =
@@ -30,6 +32,33 @@ class HomeViewModel @Inject constructor(
 
     private val _accountInfoState = MutableStateFlow<AccountInfoState>(AccountInfoState.Initial)
     val accountInfoState: StateFlow<AccountInfoState> = _accountInfoState.asStateFlow()
+
+    private val _deleteEventState = MutableStateFlow<DeleteEventState>(DeleteEventState.Initial)
+    val deleteEventState: StateFlow<DeleteEventState> = _deleteEventState.asStateFlow()
+
+    fun deleteInstitutionEvent(id: Int) {
+        if (deleteEventState.value == DeleteEventState.Progress) return
+
+        _deleteEventState.update { DeleteEventState.Progress }
+        viewModelScope.launch {
+            deleteInstitutionEventUseCase.deleteById(id)
+                .onSuccess {
+                    val eventState = institutionEventState.value
+                    if (eventState is InstitutionEventState.Success) {
+                        val data = eventState.data.toMutableList()
+                        val element = data.find { it.id == id }
+                        data.remove(element)
+                        _institutionEventState.update {
+                            InstitutionEventState.Success(data.toList())
+                        }
+                    }
+                    _deleteEventState.update { DeleteEventState.Success }
+                }
+                .onFailure {
+                    _deleteEventState.update { DeleteEventState.Error }
+                }
+        }
+    }
 
     fun readEvents() {
         _institutionEventState.update { InstitutionEventState.Progress }
@@ -56,6 +85,13 @@ class HomeViewModel @Inject constructor(
                     _accountInfoState.update { AccountInfoState.Success("") }
                 }
         }
+    }
+
+    sealed interface DeleteEventState {
+        data object Initial : DeleteEventState
+        data object Progress : DeleteEventState
+        data object Error : DeleteEventState
+        data object Success : DeleteEventState
     }
 
     sealed interface AccountInfoState {

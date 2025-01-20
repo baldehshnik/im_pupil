@@ -1,7 +1,9 @@
 package com.sparkfusion.domain.admin.home.di
 
+import com.sparkfusion.domain.admin.home.usecase.DeleteInstitutionEventUseCase
 import com.sparkfusion.domain.admin.home.usecase.ReadInstitutionEventsUseCase
 import com.sparkfusion.domain.admin.home.usecase.ReadAccountUseCase
+import com.sparkfusion.domain.admin.port.porthome.IDeleteInstitutionEventUseCase
 import com.sparkfusion.domain.admin.port.porthome.IReadAccountUseCase
 import com.sparkfusion.domain.admin.port.porthome.IReadInstitutionEventsUseCase
 import dagger.Binds
@@ -18,6 +20,9 @@ interface UseCaseModule {
 
     @Binds
     fun bindReadAccountUseCaseToIReadAccountUseCase(readAccountUseCase: ReadAccountUseCase): IReadAccountUseCase
+
+    @Binds
+    fun bindDeleteInstitutionEventUseCaseToIDeleteInstitutionEventUseCase(deleteInstitutionEventUseCase: DeleteInstitutionEventUseCase): IDeleteInstitutionEventUseCase
 }
 
 

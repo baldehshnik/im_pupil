@@ -18,7 +18,9 @@ class AuthInterceptor @Inject constructor(
         "/admin/account/search",
         "/admin/all",
         "/admin/account/update/access",
-        "/admin/account/delete"
+        "/admin/account/delete",
+        "/admin/icon/change",
+        "/education/event/delete/"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {

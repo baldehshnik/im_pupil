@@ -3,6 +3,7 @@ package com.sparkfusion.navigation.admin.host.baritems
 import androidx.compose.runtime.remember
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.sparkfusion.core.image_crop.common.CROPPED_KEY
 import com.sparkfusion.features.admin.account.destination.AdminAccountDestination
 import com.sparkfusion.features.admin.account.screen.AccountScreen
 import com.sparkfusion.features.admin.home.screen.HomeScreen
@@ -21,7 +22,12 @@ fun NavGraphBuilder.adminBottomBarDestinations(
         AdminAccountDestination.route
     ) {
         val accountNavigator = remember { AccountNavigator(navigator) }
-        AccountScreen(accountNavigator)
+        AccountScreen(
+            navigator = accountNavigator,
+            getCroppedImageBitmap = {
+                navigator.currentBackStackEntry?.savedStateHandle?.get(CROPPED_KEY)
+            }
+        )
     }
     composable(
         AdminHomeDestination.route

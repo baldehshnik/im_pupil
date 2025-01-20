@@ -52,7 +52,7 @@ fun ServiceItem(
             size = DpSize(66.dp, 66.dp),
             painter = painter,
             isDarkModeEnabled = isDarkModeEnabled,
-            isImageAnimationCompleted = isImageLoadingCompleted
+            isImageAnimationCompleted = isImageLoadingCompleted,
         )
 
         ShimmerTextBox(

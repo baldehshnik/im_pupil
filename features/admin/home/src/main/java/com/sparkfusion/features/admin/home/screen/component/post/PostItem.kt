@@ -21,7 +21,8 @@ import com.sparkfusion.domain.admin.port.porthome.InstitutionEventModel
 @Composable
 fun PostItem(
     modifier: Modifier = Modifier,
-    post: InstitutionEventModel
+    post: InstitutionEventModel,
+    onDeleteClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -30,7 +31,7 @@ fun PostItem(
     ) {
         PostImageIcon(
             imageUrl = post.image,
-            onMoreVertButtonClick = { }
+            onMoreVertButtonClick = onDeleteClick
         )
 
         Column(

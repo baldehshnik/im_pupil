@@ -41,6 +41,7 @@ android {
 dependencies {
 
     implementation(project(":core:resource"))
+    implementation(project(":core:image_crop"))
 
     implementation(project(":navigation:core"))
     implementation(project(":navigation:adminCorePort"))

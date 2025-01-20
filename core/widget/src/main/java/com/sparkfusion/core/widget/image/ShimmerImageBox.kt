@@ -1,6 +1,9 @@
 package com.sparkfusion.core.widget.image
 
+import android.net.Uri
+import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -40,7 +43,7 @@ fun ShimmerImageBox(
                 .clip(shape),
             painter = painter,
             contentDescription = contentDescription,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
 }

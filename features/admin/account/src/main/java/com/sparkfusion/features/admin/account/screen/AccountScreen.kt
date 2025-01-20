@@ -22,14 +22,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.sparkfusion.core.image_crop.common.IMAGE_CROP_KEY
+import com.sparkfusion.core.image_crop.launcher.rememberLauncherForImageCropping
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.features.admin.account.R
@@ -45,19 +47,32 @@ import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 fun AccountScreen(
     navigator: IAccountNavigator,
     modifier: Modifier = Modifier,
-    viewModel: AccountViewModel = hiltViewModel()
+    viewModel: AccountViewModel = hiltViewModel(),
+    getCroppedImageBitmap: () -> Bitmap?
 ) {
     LaunchedEffect(Unit) {
         viewModel.readAccountInfo()
         viewModel.readAdmins()
         viewModel.readInstitutionInfo()
+        viewModel.updateAccountImage(getCroppedImageBitmap())
     }
 
     val accountState by viewModel.accountState.collectAsStateWithLifecycle()
     val adminsState by viewModel.adminsState.collectAsStateWithLifecycle()
     val institutionState by viewModel.institutionState.collectAsStateWithLifecycle()
+    val imageState by viewModel.imageState.collectAsStateWithLifecycle()
 
     var showAllAdministrators by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val galleryLauncher = rememberLauncherForImageCropping(
+        context = context,
+        navigateToImageCrop = { navigator.navigateToCircleImageCropScreen(IMAGE_CROP_KEY, it) }
+    )
+
+    if (imageState == AccountViewModel.ImageState.Error) {
+        ShowToast(value = "Failed image updating...")
+    }
 
     LazyColumn(
         modifier = modifier
@@ -73,7 +88,8 @@ fun AccountScreen(
 
             PresentationComponent(
                 modifier = Modifier.fillMaxWidth(),
-                state = accountState
+                state = accountState,
+                launcher = galleryLauncher
             )
 
             when (institutionState) {
@@ -167,23 +183,6 @@ fun AccountScreen(
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun AccountScreenPreview() {
-    AccountScreen(
-        navigator = object : IAccountNavigator {
-            override fun navigateToAdminDetailsScreen(id: Int, accessMode: Int) {
-
-            }
-
-            override fun navigateToPostViewingScreen() {}
-            override fun <T> navigateToCircleImageCropScreen(key: String, value: T) {}
-            override fun getCroppedImageBitmap(): Bitmap? {
-                return null
-            }
-        }
-    )
-}
 
 
 

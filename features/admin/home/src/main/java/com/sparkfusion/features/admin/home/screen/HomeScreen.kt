@@ -43,6 +43,22 @@ fun HomeScreen(
 
     val institutionEventState by viewModel.institutionEventState.collectAsStateWithLifecycle()
     val accountInfoState by viewModel.accountInfoState.collectAsStateWithLifecycle()
+    val deleteEventState by viewModel.deleteEventState.collectAsStateWithLifecycle()
+
+    when (deleteEventState) {
+        HomeViewModel.DeleteEventState.Error -> {
+            ShowToast(value = "Error")
+        }
+
+        HomeViewModel.DeleteEventState.Initial -> {}
+        HomeViewModel.DeleteEventState.Progress -> {
+            ShowToast(value = "Deleting...")
+        }
+
+        HomeViewModel.DeleteEventState.Success -> {
+            ShowToast(value = "Event deleted")
+        }
+    }
 
     Box(modifier = modifier.fillMaxSize()) {
         LazyColumn(
@@ -77,7 +93,10 @@ fun HomeScreen(
                     val state =
                         (institutionEventState as HomeViewModel.InstitutionEventState.Success).data
                     items(state) {
-                        PostItem(post = it)
+                        PostItem(
+                            post = it,
+                            onDeleteClick = { viewModel.deleteInstitutionEvent(it.id) }
+                        )
                     }
                 }
             }

@@ -39,6 +39,8 @@ dependencies {
     implementation(project(":core:common"))
 
     implementation(project(":dataPort:common:portInstitutionEvent"))
+
+    implementation(project(":dataPort:admin:portInstitutionEvent"))
     implementation(project(":dataPort:admin:portInstitution"))
     implementation(project(":dataPort:admin:portAccount"))
 

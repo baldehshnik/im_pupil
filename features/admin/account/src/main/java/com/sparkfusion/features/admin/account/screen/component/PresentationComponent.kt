@@ -1,11 +1,16 @@
 package com.sparkfusion.features.admin.account.screen.component
 
+import android.net.Uri
+import android.util.Log
+import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
@@ -15,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,7 +37,8 @@ import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 @Composable
 fun PresentationComponent(
     modifier: Modifier = Modifier,
-    state: AccountViewModel.AccountState
+    state: AccountViewModel.AccountState,
+    launcher: ManagedActivityResultLauncher<String, Uri?>
 ) {
     when (state) {
         AccountViewModel.AccountState.Error -> {
@@ -44,11 +51,13 @@ fun PresentationComponent(
         }
 
         is AccountViewModel.AccountState.Success -> {
+            Log.i("TAGTAG", state.data.icon.toString())
             var isAccountImageLoadingCompleted by remember { mutableStateOf(false) }
             val accountImagePainter = rememberAsyncImagePainter(
                 model = state.data.icon,
                 onSuccess = { isAccountImageLoadingCompleted = true },
-                onLoading = { isAccountImageLoadingCompleted = false }
+                onLoading = { isAccountImageLoadingCompleted = false },
+                onError = { isAccountImageLoadingCompleted = true }
             )
 
             Column(
@@ -61,11 +70,16 @@ fun PresentationComponent(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 ShimmerImageBox(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .clickable {
+                            if (isAccountImageLoadingCompleted) launcher.launch("image/*")
+                        },
                     contentDescription = stringResource(R.string.account_image_description),
                     size = DpSize(124.dp, 124.dp),
                     painter = accountImagePainter,
                     isDarkModeEnabled = isSystemInDarkTheme(),
-                    isImageAnimationCompleted = isAccountImageLoadingCompleted
+                    isImageAnimationCompleted = isAccountImageLoadingCompleted,
                 )
 
                 SFProRoundedText(
