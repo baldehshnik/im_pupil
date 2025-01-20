@@ -10,6 +10,9 @@ class CommonNavigator(private val navController: NavHostController) : INavigator
     override val currentBackStackEntry: NavBackStackEntry?
         get() = navController.currentBackStackEntry
 
+    override val previousBackStackEntry: NavBackStackEntry?
+        get() = navController.previousBackStackEntry
+
     override fun navigateTo(destination: Destination) {
         navController.navigate(destination.route)
     }

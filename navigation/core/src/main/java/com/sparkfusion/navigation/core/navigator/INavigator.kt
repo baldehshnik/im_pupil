@@ -6,6 +6,7 @@ import com.sparkfusion.navigation.core.Destination
 interface INavigator {
 
     val currentBackStackEntry: NavBackStackEntry?
+    val previousBackStackEntry: NavBackStackEntry?
 
     fun navigateTo(destination: Destination)
 

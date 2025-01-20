@@ -109,7 +109,9 @@ fun AccountScreen(
                 is AccountViewModel.AdminsState.Success -> {
                     val data = (adminsState as AccountViewModel.AdminsState.Success).data
                     val administratorsListHeight =
-                        68.dp * if (showAllAdministrators) data.size else { 2 } + 32.dp + 40.dp
+                        68.dp * if (showAllAdministrators) data.size else {
+                            2
+                        } + 32.dp + 40.dp
                     AccountScreenBlock(
                         modifier = Modifier,
                         title = stringResource(R.string.administrators)
@@ -126,7 +128,14 @@ fun AccountScreen(
                             ) {
                                 val item = data[it]
                                 AdministratorItem(
-                                    onMoreInfoClick = { navigator.navigateToAdminDetailsScreen(item.id) },
+                                    onMoreInfoClick = {
+                                        if (accountState is AccountViewModel.AccountState.Success) {
+                                            navigator.navigateToAdminDetailsScreen(
+                                                item.id,
+                                                (accountState as AccountViewModel.AccountState.Success).data.accessMode
+                                            )
+                                        }
+                                    },
                                     isDarkModeEnabled = isSystemInDarkTheme(),
                                     admin = item
                                 )
@@ -163,7 +172,10 @@ fun AccountScreen(
 private fun AccountScreenPreview() {
     AccountScreen(
         navigator = object : IAccountNavigator {
-            override fun navigateToAdminDetailsScreen(id: Int) {}
+            override fun navigateToAdminDetailsScreen(id: Int, accessMode: Int) {
+
+            }
+
             override fun navigateToPostViewingScreen() {}
             override fun <T> navigateToCircleImageCropScreen(key: String, value: T) {}
             override fun getCroppedImageBitmap(): Bitmap? {

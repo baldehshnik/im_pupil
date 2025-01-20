@@ -11,6 +11,8 @@ import com.sparkfusion.features.admin.notifications.screen.NotificationsScreen
 import com.sparkfusion.features.admin.sign_up.navigator.ISignUpNavigator
 import com.sparkfusion.features.admin.sign_up.screen.SignUpScreen
 import com.sparkfusion.navigation.admincoreport.destination.AdminSignUpDestination
+import com.sparkfusion.navigation.core.keys.ADMIN_ACCESS_KEY
+import com.sparkfusion.navigation.core.keys.ADMIN_ID_KEY
 
 fun NavGraphBuilder.adminNotifications(navigator: INotificationsNavigator) {
     composable(AdminNotificationsDestination.route) {
@@ -18,9 +20,19 @@ fun NavGraphBuilder.adminNotifications(navigator: INotificationsNavigator) {
     }
 }
 
-fun NavGraphBuilder.adminDetails(navigator: IAdminDetailsNavigator) {
+fun NavGraphBuilder.adminDetails(
+    navigator: IAdminDetailsNavigator
+) {
     composable(AdminDetailsDestination.route) {
-        AdminDetailsScreen(navigator)
+        val id = navigator.previousNavBackStackEntry?.savedStateHandle?.get<Int>(ADMIN_ID_KEY)
+        val accessMode =
+            navigator.previousNavBackStackEntry?.savedStateHandle?.get<Int>(ADMIN_ACCESS_KEY)
+        if (id != null && accessMode != null)
+            AdminDetailsScreen(
+                navigator = navigator,
+                id = id,
+                accessMode = accessMode
+            )
     }
 }
 
@@ -29,3 +41,24 @@ fun NavGraphBuilder.adminSignUp(navigator: ISignUpNavigator) {
         SignUpScreen(navigator)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,13 +12,13 @@ class AuthInterceptor @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) : Interceptor {
 
-    private val pathsWithAuth: Set<String> = HashSet(
-        mutableListOf(
-            "/auth/check-token",
-            "/education/institution/ofAdmin",
-            "/admin/account/search",
-            "/admin/all"
-        )
+    private val pathsWithAuth: Set<String> = setOf(
+        "/auth/check-token",
+        "/education/institution/ofAdmin",
+        "/admin/account/search",
+        "/admin/all",
+        "/admin/account/update/access",
+        "/admin/account/delete"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -26,9 +26,9 @@ class AuthInterceptor @Inject constructor(
         val builder = originalRequest.newBuilder()
 
         val path: String = originalRequest.url.encodedPath
-        if (pathsWithAuth.contains(path)) {
+        if (pathsWithAuth.any { path.startsWith(it) }) {
             val token = sharedPreferences.getString(ACCESS_TOKEN_KEY, null)
-            token.let { builder.addHeader("Authorization", "Bearer $it") }
+            token?.let { builder.addHeader("Authorization", "Bearer $it") }
         }
 
         val requestWithToken = builder

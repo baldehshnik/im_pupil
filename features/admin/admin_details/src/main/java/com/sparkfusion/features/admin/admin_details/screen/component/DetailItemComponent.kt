@@ -15,23 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.core.widget.text.ShimmerTextBox
 
 @Composable
 fun DetailItemComponent(
     modifier: Modifier = Modifier,
-    isDarkModeEnabled: Boolean,
-    isAnimationLoadingCompleted: Boolean,
     title: String,
     textContent: String,
     @DrawableRes imageId: Int,
-    width: Dp = 100.dp,
     detailButton: @Composable (() -> Unit)? = null
 ) {
     Row(
@@ -60,18 +54,12 @@ fun DetailItemComponent(
                 fontSize = 18.sp
             )
 
-            ShimmerTextBox(
+            SFProRoundedText(
                 modifier = Modifier.padding(top = 2.dp),
-                size = DpSize(width, 24.dp),
-                isDarkModeEnabled = isDarkModeEnabled,
-                isLoadingAnimationCompleted = isAnimationLoadingCompleted,
-            ) {
-                SFProRoundedText(
-                    content = textContent,
-                    fontWeight = FontWeight.SemiBold,
-                    color = descriptionColor()
-                )
-            }
+                content = textContent,
+                fontWeight = FontWeight.SemiBold,
+                color = descriptionColor()
+            )
         }
 
         Spacer(modifier = Modifier.weight(1f))
