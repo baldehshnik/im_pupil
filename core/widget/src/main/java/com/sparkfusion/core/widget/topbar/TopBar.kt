@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.R
@@ -27,7 +28,8 @@ fun TopBar(
     modifier: Modifier = Modifier,
     title: String,
     buttons: @Composable (() -> Unit)? = null,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    backButtonStartPadding: Dp = 24.dp
 ) {
     Row(
         modifier = modifier
@@ -39,7 +41,7 @@ fun TopBar(
         IconButton(
             onClick = onBackClick,
             modifier = Modifier
-                .padding(start = 24.dp)
+                .padding(start = backButtonStartPadding)
                 .size(24.dp)
         ) {
             Icon(
@@ -51,7 +53,7 @@ fun TopBar(
         Spacer(modifier = Modifier.weight(1f))
 
         SFProRoundedText(
-            modifier = Modifier.padding(end = if (buttons != null) 0.dp else 48.dp),
+            modifier = Modifier.padding(end = if (buttons != null) 0.dp else 24.dp + backButtonStartPadding),
             content = title,
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp

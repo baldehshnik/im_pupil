@@ -23,6 +23,8 @@ class AuthInterceptor @Inject constructor(
         "/education/event/delete/",
         "/education/event/create",
         "/education/event/update",
+        "/notifications/admin/update",
+        "/notifications/admin"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {

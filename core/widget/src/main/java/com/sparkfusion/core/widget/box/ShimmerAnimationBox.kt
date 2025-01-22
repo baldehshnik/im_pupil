@@ -29,7 +29,8 @@ fun ShimmerAnimationBox(
         modifier = modifier
             .clip(shape)
             .background(
-                color = if (isLoadingCompleted) Color.Transparent else if (isDarkModeEnabled) backgroundColor.darkModeColor else backgroundColor.lightModeColor,
+                color = if (isLoadingCompleted) Color.Transparent
+                else if (isDarkModeEnabled) backgroundColor.darkModeColor else backgroundColor.lightModeColor,
                 shape = shape
             )
             .size(size)

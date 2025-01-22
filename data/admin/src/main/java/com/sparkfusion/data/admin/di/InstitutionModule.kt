@@ -2,6 +2,7 @@ package com.sparkfusion.data.admin.di
 
 import com.sparkfusion.data.admin.source.AdminInstitutionEventApiService
 import com.sparkfusion.data.admin.source.InstitutionApiService
+import com.sparkfusion.data.admin.source.NotificationApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +24,12 @@ object InstitutionModule {
     @Singleton
     fun provideAdminInstitutionEventApiService(retrofit: Retrofit): AdminInstitutionEventApiService {
         return retrofit.create(AdminInstitutionEventApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNotificationApiService(retrofit: Retrofit): NotificationApiService {
+        return retrofit.create(NotificationApiService::class.java)
     }
 }
 
