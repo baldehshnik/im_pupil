@@ -28,6 +28,7 @@ import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDes
 import com.sparkfusion.navigation.commoncoreport.destination.CircleImageCropDestination
 import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
 import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
+import com.sparkfusion.navigation.commoncoreport.destination.RectangleImageCropDestination
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
 import com.sparkfusion.navigation.core.keys.NEWS_ID_KEY
 
@@ -63,6 +64,14 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
             navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
         if (bitmap != null) {
             ImageCropScreen(imageCropNavigator, ImageCropType.CircleCrop, bitmap)
+        }
+    }
+
+    composable(RectangleImageCropDestination.route) {
+        val bitmap: Bitmap? =
+            navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
+        if (bitmap != null) {
+            ImageCropScreen(imageCropNavigator, ImageCropType.RectangleCrop, bitmap)
         }
     }
 

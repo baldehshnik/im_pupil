@@ -1,6 +1,7 @@
 package com.sparkfusion.data.common.repository
 
 import com.sparkfusion.core.common.api.ApiListResponseHandler
+import com.sparkfusion.core.common.api.ApiResponseHandler
 import com.sparkfusion.core.common.api.safeApiCall
 import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.core.common.result.Answer
@@ -27,6 +28,12 @@ class InstitutionEventRepository @Inject constructor(
                     it.map { model -> institutionEventDataEntityMapper.map(model) }
                 }
         }
+
+    override suspend fun readInstitutionEvent(eventId: Int): Answer<InstitutionEventEntity> = safeApiCall(ioDispatcher) {
+        ApiResponseHandler(institutionEventApiService.readInstitutionEvent(eventId))
+            .handleFetchedData()
+            .suspendMap { institutionEventDataEntityMapper.map(it) }
+    }
 }
 
 

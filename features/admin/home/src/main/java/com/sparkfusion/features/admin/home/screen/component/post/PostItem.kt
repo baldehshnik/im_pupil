@@ -1,6 +1,7 @@
 package com.sparkfusion.features.admin.home.screen.component.post
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -22,12 +23,15 @@ import com.sparkfusion.domain.admin.port.porthome.InstitutionEventModel
 fun PostItem(
     modifier: Modifier = Modifier,
     post: InstitutionEventModel,
-    onDeleteClick: () -> Unit
+    onDeleteClick: () -> Unit,
+    onItemClick: (id: Int) -> Unit
 ) {
     Column(
         modifier = modifier
             .padding(start = 24.dp, end = 24.dp, top = 8.dp, bottom = 8.dp)
             .fillMaxWidth()
+            .clip(RoundedCornerShape(30.dp))
+            .clickable { onItemClick(post.id) }
     ) {
         PostImageIcon(
             imageUrl = post.image,

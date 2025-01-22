@@ -5,6 +5,7 @@ import com.sparkfusion.features.admin.notifications.destination.AdminNotificatio
 import com.sparkfusion.features.admin.post.destination.AdminPostAddingDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostViewingDestination
 import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
+import com.sparkfusion.navigation.core.keys.EVENT_ID_KEY
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 class HomeNavigator(private val navigator: INavigator): IHomeNavigator {
@@ -17,7 +18,8 @@ class HomeNavigator(private val navigator: INavigator): IHomeNavigator {
         navigator.navigateTo(AdminPostAddingDestination)
     }
 
-    override fun navigateToPostViewingScreen() {
+    override fun navigateToPostViewingScreen(id: Int) {
+        navigator.currentBackStackEntry?.savedStateHandle?.set(EVENT_ID_KEY, id)
         navigator.navigateTo(AdminPostViewingDestination)
     }
 

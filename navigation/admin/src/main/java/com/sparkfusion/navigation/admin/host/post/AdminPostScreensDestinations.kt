@@ -2,6 +2,7 @@ package com.sparkfusion.navigation.admin.host.post
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.sparkfusion.core.image_crop.common.CROPPED_KEY
 import com.sparkfusion.features.admin.post.destination.AdminPostAddingDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostEditingDestination
 import com.sparkfusion.features.admin.post.destination.AdminPostPreviewDestination
@@ -18,6 +19,7 @@ import com.sparkfusion.navigation.admin.navigator.post.PostAddingNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostEditingNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostPreviewNavigator
 import com.sparkfusion.navigation.admin.navigator.post.PostViewingNavigator
+import com.sparkfusion.navigation.core.keys.EVENT_ID_KEY
 import com.sparkfusion.navigation.core.navigator.INavigator
 
 fun NavGraphBuilder.adminPostScreensDestinations(navigator: INavigator) {
@@ -26,15 +28,21 @@ fun NavGraphBuilder.adminPostScreensDestinations(navigator: INavigator) {
     val postAddingNavigator = PostAddingNavigator(navigator)
     val postEditingNavigator = PostEditingNavigator(navigator)
 
-    postViewing(postViewingNavigator)
+    postViewing(postViewingNavigator, navigator)
     postPreview(postPreviewNavigator)
-    postAdding(postAddingNavigator)
-    postEditing(postEditingNavigator)
+    postAdding(postAddingNavigator, navigator)
+    postEditing(postEditingNavigator, navigator)
 }
 
-fun NavGraphBuilder.postViewing(navigator: IPostViewingNavigator) {
+fun NavGraphBuilder.postViewing(navigator: IPostViewingNavigator, iNavigator: INavigator) {
     composable(AdminPostViewingDestination.route) {
-        PostViewingScreen(navigator)
+        val id = iNavigator.previousBackStackEntry?.savedStateHandle?.get<Int>(EVENT_ID_KEY)
+        id?.let {
+            PostViewingScreen(
+                navigator = navigator,
+                id = it
+            )
+        }
     }
 }
 
@@ -44,14 +52,50 @@ fun NavGraphBuilder.postPreview(navigator: IPostPreviewNavigator) {
     }
 }
 
-fun NavGraphBuilder.postAdding(navigator: IPostAddingNavigator) {
+fun NavGraphBuilder.postAdding(navigator: IPostAddingNavigator, defaultNavigator: INavigator) {
     composable(AdminPostAddingDestination.route) {
-        PostAddingScreen(navigator)
+        PostAddingScreen(
+            navigator = navigator,
+            getCroppedImageBitmap = {
+                defaultNavigator.currentBackStackEntry?.savedStateHandle?.get(CROPPED_KEY)
+            }
+        )
     }
 }
 
-fun NavGraphBuilder.postEditing(navigator: IPostEditingNavigator) {
+fun NavGraphBuilder.postEditing(navigator: IPostEditingNavigator, iNavigator: INavigator) {
     composable(AdminPostEditingDestination.route) {
-        PostEditingScreen(navigator)
+        val id = iNavigator.previousBackStackEntry?.savedStateHandle?.get<Int>(EVENT_ID_KEY)
+        id?.let {
+            PostEditingScreen(
+                navigator = navigator,
+                id = it,
+                getCroppedImageBitmap = {
+                    iNavigator.currentBackStackEntry?.savedStateHandle?.get(CROPPED_KEY)
+                }
+            )
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

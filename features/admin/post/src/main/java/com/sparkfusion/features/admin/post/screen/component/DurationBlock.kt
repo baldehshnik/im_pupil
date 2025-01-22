@@ -18,19 +18,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sparkfusion.core.widget.check.CheckButtonWidget
 import com.sparkfusion.core.widget.spinner.OutlinedDropDownMenu
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.textfield.TextFieldWithoutTitle
 import com.sparkfusion.features.admin.post.R
+import com.sparkfusion.features.admin.post.viewmodel.PostAddingViewModel
 
 @Composable
 fun DurationBlock(
     modifier: Modifier = Modifier,
     durationTypes: Array<String>,
     selectedDurationType: MutableState<String>,
-    duration: MutableState<String>,
-    postOnBehalfOfInstitution: MutableState<Boolean>
+    hoursDurationType: String,
+//    postOnBehalfOfInstitution: MutableState<Boolean>,
+    state: PostAddingViewModel.State,
+    onDurationChange: (Int) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -48,7 +50,12 @@ fun DurationBlock(
             TextFieldWithoutTitle(
                 modifier = Modifier.weight(3f),
                 placeholder = stringResource(id = R.string.enter_here),
-                onValueChange = { duration.value = it },
+                onValueChange = {
+                    val intValue =
+                        it.toInt() * if (selectedDurationType.value == hoursDurationType) 60 else 1
+                    onDurationChange(intValue)
+                },
+                value = state.duration.toString(),
                 keyboardType = KeyboardType.Number
             )
 
@@ -57,17 +64,18 @@ fun DurationBlock(
                     .weight(2f)
                     .padding(end = 24.dp),
                 items = durationTypes,
-                selectedItem = selectedDurationType
+                item = selectedDurationType.value,
+                onValueChange = { selectedDurationType.value = it }
             )
         }
 
-        CheckButtonWidget(
-            leftAlignment = false,
-            modifier = Modifier.padding(start = 12.dp),
-            content = stringResource(id = R.string.post_on_behalf_of_the_institution),
-            checked = postOnBehalfOfInstitution.value,
-            onCheckedChange = { postOnBehalfOfInstitution.value = !postOnBehalfOfInstitution.value }
-        )
+//        CheckButtonWidget(
+//            leftAlignment = false,
+//            modifier = Modifier.padding(start = 12.dp),
+//            content = stringResource(id = R.string.post_on_behalf_of_the_institution),
+//            checked = postOnBehalfOfInstitution.value,
+//            onCheckedChange = { postOnBehalfOfInstitution.value = !postOnBehalfOfInstitution.value }
+//        )
 
         Spacer(modifier = Modifier.height(64.dp))
     }

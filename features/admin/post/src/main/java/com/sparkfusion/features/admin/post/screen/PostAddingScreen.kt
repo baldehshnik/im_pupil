@@ -1,6 +1,9 @@
 package com.sparkfusion.features.admin.post.screen
 
+import android.graphics.Bitmap
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,58 +11,125 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.sparkfusion.core.image_crop.common.IMAGE_CROP_KEY
+import com.sparkfusion.core.image_crop.launcher.rememberLauncherForImageCropping
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.features.admin.post.R
 import com.sparkfusion.features.admin.post.navigator.IPostAddingNavigator
-import com.sparkfusion.features.admin.post.screen.component.AdditionalBlockItem
-import com.sparkfusion.features.admin.post.screen.component.CenteredItemList
 import com.sparkfusion.features.admin.post.screen.component.DurationBlock
 import com.sparkfusion.features.admin.post.screen.component.PostDescriptionBlock
 import com.sparkfusion.features.admin.post.screen.component.PostImageBlock
 import com.sparkfusion.features.admin.post.screen.component.TopBarComponent
-import com.sparkfusion.features.admin.post.utils.getAdditionalBlocks
+import com.sparkfusion.features.admin.post.viewmodel.PostAddingViewModel
 
 @Composable
 fun PostAddingScreen(
     navigator: IPostAddingNavigator,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: PostAddingViewModel = hiltViewModel(),
+    getCroppedImageBitmap: () -> Bitmap?
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.updateImage(getCroppedImageBitmap())
+    }
+
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val addingState by viewModel.addingState.collectAsStateWithLifecycle()
+    val addingCheckState by viewModel.addingCheckState.collectAsStateWithLifecycle()
+
     val scroll = rememberScrollState()
+    val isScrollActive = remember { derivedStateOf { scroll.isScrollInProgress } }
 
-    val duration = rememberSaveable { mutableStateOf("") }
-
-    val postOnBehalfOfInstitution = rememberSaveable { mutableStateOf(true) }
+//    val duration = rememberSaveable { mutableStateOf("") }
+//    val postOnBehalfOfInstitution = rememberSaveable { mutableStateOf(true) }
 
     val postTypes = stringArrayResource(id = R.array.post_types)
-    val selectedPostType = rememberSaveable { mutableStateOf(postTypes[0]) }
 
     val durationTypes = stringArrayResource(id = R.array.duration_types)
     val selectedDurationType = rememberSaveable { mutableStateOf(durationTypes[0]) }
 
-    val additionalBlockEntities = getAdditionalBlocks()
-    val activeAdditionalBlock = remember { mutableStateOf(additionalBlockEntities[0]) }
+//    val additionalBlockEntities = getAdditionalBlocks()
+//    val activeAdditionalBlock = remember { mutableStateOf(additionalBlockEntities[0]) }
+
+    val context = LocalContext.current
+    val galleryLauncher = rememberLauncherForImageCropping(
+        context = context,
+        navigateToImageCrop = { navigator.navigateToCircleImageCropScreen(IMAGE_CROP_KEY, it) }
+    )
+
+    when (addingState) {
+        PostAddingViewModel.AddingState.Error -> {
+            ShowToast(value = "Error")
+            viewModel.clearAddingState()
+        }
+
+        PostAddingViewModel.AddingState.Initial -> {}
+        PostAddingViewModel.AddingState.Progress -> {
+            ShowToast(value = "Saving...")
+        }
+
+        PostAddingViewModel.AddingState.Success -> {
+            ShowToast(value = "Success")
+            navigator.popBackStack()
+        }
+    }
+
+    when (addingCheckState) {
+        PostAddingViewModel.AddingCheckState.DescriptionTooShort -> {
+            ShowToast(value = "Description too short")
+            viewModel.clearAddingCheckState()
+        }
+
+        PostAddingViewModel.AddingCheckState.DurationNotSelected -> {
+            ShowToast(value = "Duration not selected")
+            viewModel.clearAddingCheckState()
+        }
+
+        PostAddingViewModel.AddingCheckState.ImageNotSelected -> {
+            ShowToast(value = "Image not selected")
+            viewModel.clearAddingCheckState()
+        }
+
+        PostAddingViewModel.AddingCheckState.Initial -> {}
+        PostAddingViewModel.AddingCheckState.TitleTooShort -> {
+            ShowToast(value = "Title too short")
+            viewModel.clearAddingCheckState()
+        }
+
+        PostAddingViewModel.AddingCheckState.TypeNotSelected -> {
+            ShowToast(value = "Type not selected")
+            viewModel.clearAddingCheckState()
+        }
+
+        PostAddingViewModel.AddingCheckState.TitleTooLong -> {
+            ShowToast(value = "Title too long")
+            viewModel.clearAddingCheckState()
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -72,64 +142,79 @@ fun PostAddingScreen(
                 onBackClick = navigator::popBackStack
             )
 
-            PostImageBlock()
+            PostImageBlock(
+                image = state.image,
+                onImageChangeClick = {
+                    galleryLauncher.launch("image/*")
+                }
+            )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             PostDescriptionBlock(
                 postTypes = postTypes,
-                selectedPostType = selectedPostType
+                state = state,
+                onTitleChange = { viewModel.updateTitle(it) },
+                onDescriptionChange = { viewModel.updateDescription(it) },
+                onPostTypeChange = { viewModel.updateType(it) }
             )
+
+//            Spacer(modifier = Modifier.height(12.dp))
+//
+//            Column(
+//                modifier = modifier
+//                    .clip(RoundedCornerShape(30.dp))
+//                    .background(Color.White)
+//            ) {
+//                LazyRow(
+//                    modifier = Modifier.padding(
+//                        start = 24.dp,
+//                        end = 24.dp,
+//                        top = 12.dp,
+//                        bottom = 18.dp
+//                    ),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    items(additionalBlockEntities.size) {
+//                        val item = additionalBlockEntities[it]
+//                        AdditionalBlockItem(
+//                            iconId = item.iconId,
+//                            contentDescription = item.contentDescription,
+//                            content = item.title,
+//                            isActive = item == activeAdditionalBlock.value
+//                        )
+//
+//                        if (item != additionalBlockEntities[additionalBlockEntities.size - 1]) {
+//                            Spacer(modifier = Modifier.width(8.dp))
+//                        }
+//                    }
+//                }
+//
+//                CenteredItemList()
+//            }
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            Column(
-                modifier = modifier
-                    .clip(RoundedCornerShape(30.dp))
-                    .background(Color.White)
-            ) {
-                LazyRow(
-                    modifier = Modifier.padding(
-                        start = 24.dp,
-                        end = 24.dp,
-                        top = 12.dp,
-                        bottom = 18.dp
-                    ),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    items(additionalBlockEntities.size) {
-                        val item = additionalBlockEntities[it]
-                        AdditionalBlockItem(
-                            iconId = item.iconId,
-                            contentDescription = item.contentDescription,
-                            content = item.title,
-                            isActive = item == activeAdditionalBlock.value
-                        )
-
-                        if (item != additionalBlockEntities[additionalBlockEntities.size - 1]) {
-                            Spacer(modifier = Modifier.width(8.dp))
-                        }
-                    }
-                }
-
-                CenteredItemList()
+            if (state.type != 1) {
+                DurationBlock(
+                    durationTypes = durationTypes,
+                    selectedDurationType = selectedDurationType,
+                    hoursDurationType = durationTypes[0],
+                    onDurationChange = {
+                        viewModel.updateDuration(it)
+                    },
+                    state = state
+                )
             }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            DurationBlock(
-                durationTypes = durationTypes,
-                selectedDurationType = selectedDurationType,
-                duration = duration,
-                postOnBehalfOfInstitution = postOnBehalfOfInstitution
-            )
         }
 
         AnimatedVisibility(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(end = 16.dp, bottom = 16.dp),
-            visible = !scroll.isScrollInProgress
+            visible = !isScrollActive.value,
+            enter = fadeIn(),
+            exit = fadeOut()
         ) {
             ExtendedFloatingActionButton(
                 text = {
@@ -147,19 +232,10 @@ fun PostAddingScreen(
                         contentDescription = stringResource(id = R.string.create_post_button_icon_description)
                     )
                 },
-                onClick = { }
+                onClick = { viewModel.saveEvent() }
             )
         }
     }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun PostAddingScreenPreview() {
-    PostAddingScreen(navigator = object : IPostAddingNavigator {
-        override fun navigateToPostPreviewScreen() {}
-        override fun popBackStack() {}
-    })
 }
 
 

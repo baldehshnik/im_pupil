@@ -2,8 +2,6 @@ package com.sparkfusion.features.admin.post.widget
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -16,10 +14,10 @@ fun AddingTextField(
     modifier: Modifier = Modifier,
     singleLine: Boolean = true,
     title: String,
-    placeholder: String
+    placeholder: String,
+    value: String,
+    onValueUpdate: (String) -> Unit
 ) {
-    val content = remember { mutableStateOf("") }
-
     SFProRoundedText(
         modifier = Modifier.padding(start = 24.dp, top = 16.dp, bottom = 2.dp),
         content = title,
@@ -30,8 +28,8 @@ fun AddingTextField(
     TextFieldWithoutTitle(
         modifier = modifier,
         singleLine = singleLine,
-        value = content.value,
-        onValueChange = { content.value = it },
+        value = value,
+        onValueChange = onValueUpdate,
         placeholder = placeholder
     )
 }

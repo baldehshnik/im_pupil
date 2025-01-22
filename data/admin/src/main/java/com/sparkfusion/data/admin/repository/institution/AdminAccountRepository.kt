@@ -4,6 +4,7 @@ import com.sparkfusion.core.common.api.ApiListResponseHandler
 import com.sparkfusion.core.common.api.ApiResponseHandler
 import com.sparkfusion.core.common.api.safeApiCall
 import com.sparkfusion.core.common.dispatchers.IODispatcher
+import com.sparkfusion.core.common.image.FileToMultipartWorker
 import com.sparkfusion.core.common.result.Answer
 import com.sparkfusion.data.admin.source.AccountApiService
 import com.sparkfusion.dataPort.admin.portaccount.AdminEntity
@@ -21,7 +22,8 @@ import javax.inject.Singleton
 @Singleton
 class AdminAccountRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val accountApiService: AccountApiService
+    private val accountApiService: AccountApiService,
+    private val fileToMultipartWorker: FileToMultipartWorker
 ): IAdminAccountRepository {
 
     override suspend fun readAdminAccount(): Answer<AdminEntity> = safeApiCall(ioDispatcher) {
@@ -35,9 +37,7 @@ class AdminAccountRepository @Inject constructor(
     }
 
     override suspend fun updateAccountImage(image: File): Answer<AdminNewImageEntity> = safeApiCall(ioDispatcher) {
-        val body = RequestBody.create(MediaType.parse("image/jpeg"), image)
-        val part = MultipartBody.Part.createFormData("image", image.name, body)
-        ApiResponseHandler(accountApiService.updateAccountImage(part))
+        ApiResponseHandler(accountApiService.updateAccountImage(fileToMultipartWorker.convert(image)))
             .handleFetchedData()
     }
 }

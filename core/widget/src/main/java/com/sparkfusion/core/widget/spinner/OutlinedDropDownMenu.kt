@@ -15,7 +15,6 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -39,7 +38,8 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 fun OutlinedDropDownMenu(
     modifier: Modifier = Modifier,
     items: Array<String>,
-    selectedItem: MutableState<String>
+    item: String,
+    onValueChange: (String) -> Unit
 ) {
     val expanded = remember { mutableStateOf(false) }
     val isDarkTheme = isSystemInDarkTheme()
@@ -71,7 +71,7 @@ fun OutlinedDropDownMenu(
                 .fillMaxWidth()
         ) {
             SFProRoundedText(
-                content = selectedItem.value,
+                content = item,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium
             )
@@ -96,7 +96,7 @@ fun OutlinedDropDownMenu(
                 DropdownMenuItem(
                     text = { SFProRoundedText(content = item) },
                     onClick = {
-                        selectedItem.value = item
+                        onValueChange(item)
                         expanded.value = false
                     }
                 )
@@ -112,6 +112,7 @@ private fun OutlinedDropDownMenuPreview() {
     OutlinedDropDownMenu(
         modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp),
         items = arrayOf("Test1", "Test2"),
-        selectedItem = mutableState
+        item = mutableState.value,
+        onValueChange = {}
     )
 }

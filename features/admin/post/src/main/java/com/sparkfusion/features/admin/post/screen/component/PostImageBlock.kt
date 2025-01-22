@@ -1,5 +1,6 @@
 package com.sparkfusion.features.admin.post.screen.component
 
+import android.graphics.Bitmap
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +28,9 @@ import com.sparkfusion.features.admin.post.R
 
 @Composable
 fun PostImageBlock(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    image: Bitmap?,
+    onImageChangeClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -52,7 +55,7 @@ fun PostImageBlock(
             SFProRoundedText(
                 modifier = Modifier
                     .clip(RoundedCornerShape(20.dp))
-                    .clickable { },
+                    .clickable { onImageChangeClick() },
                 fontSize = 14.sp,
                 content = stringResource(id = R.string.change),
                 fontWeight = FontWeight.Medium,
@@ -62,12 +65,24 @@ fun PostImageBlock(
 
         AsyncImage(
             modifier = Modifier
-                .clip(RoundedCornerShape(20.dp))
-                .padding(start = 24.dp, end = 24.dp, top = 6.dp, bottom = 12.dp)
+                .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
+                .clickable { onImageChangeClick() }
                 .fillMaxWidth(),
             contentScale = ContentScale.Crop,
-            model = R.drawable.date_icon,
+            model = image ?: R.drawable.date_icon,
             contentDescription = stringResource(id = R.string.post_image_description)
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

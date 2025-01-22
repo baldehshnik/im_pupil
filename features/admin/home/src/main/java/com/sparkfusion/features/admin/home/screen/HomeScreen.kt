@@ -95,7 +95,8 @@ fun HomeScreen(
                     items(state) {
                         PostItem(
                             post = it,
-                            onDeleteClick = { viewModel.deleteInstitutionEvent(it.id) }
+                            onDeleteClick = { viewModel.deleteInstitutionEvent(it.id) },
+                            onItemClick = { navigator.navigateToPostViewingScreen(it) }
                         )
                     }
                 }
@@ -127,7 +128,7 @@ private fun HomeScreenPreview() {
         navigator = object : IHomeNavigator {
             override fun navigateToNotificationsScreen() {}
             override fun navigateToPostAddingScreen() {}
-            override fun navigateToPostViewingScreen() {}
+            override fun navigateToPostViewingScreen(id: Int) {}
             override fun navigateToFiltersScreen() {}
         }
     )
