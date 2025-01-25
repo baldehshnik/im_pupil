@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":features:admin:post"))
     implementation(project(":features:admin:services"))
     implementation(project(":features:admin:sign_up"))
+    implementation(project(":features:admin:confirmation"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)

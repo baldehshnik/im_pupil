@@ -1,5 +1,6 @@
 package com.sparkfusion.features.admin.notifications.screen.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +30,8 @@ fun NotificationItemComponent(
     isDarkModeEnabled: Boolean,
     title: String,
     description: String,
-    icon: String
+    icon: String,
+    onItemClick: () -> Unit
 ) {
     var isImageLoadingCompleted by remember { mutableStateOf(false) }
     val painter = rememberAsyncImagePainter(
@@ -39,7 +41,7 @@ fun NotificationItemComponent(
         onLoading = { isImageLoadingCompleted = false }
     )
 
-    Row(modifier = modifier) {
+    Row(modifier = modifier.clickable { onItemClick() }) {
         ShimmerImageBox(
             shape = RoundedCornerShape(20.dp),
             contentDescription = stringResource(R.string.notification_item_icon_description),

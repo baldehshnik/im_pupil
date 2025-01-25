@@ -5,6 +5,12 @@ import androidx.navigation.compose.composable
 import com.sparkfusion.features.admin.admin_details.destination.AdminDetailsDestination
 import com.sparkfusion.features.admin.admin_details.navigator.IAdminDetailsNavigator
 import com.sparkfusion.features.admin.admin_details.screen.AdminDetailsScreen
+import com.sparkfusion.features.admin.confirmation.destination.AdminConfirmationDestination
+import com.sparkfusion.features.admin.confirmation.destination.PupilConfirmationDestination
+import com.sparkfusion.features.admin.confirmation.navigator.IAdminConfirmationNavigator
+import com.sparkfusion.features.admin.confirmation.navigator.IPupilConfirmationNavigator
+import com.sparkfusion.features.admin.confirmation.screen.AdminConfirmationScreen
+import com.sparkfusion.features.admin.confirmation.screen.PupilConfirmationScreen
 import com.sparkfusion.features.admin.notifications.destination.AdminNotificationsDestination
 import com.sparkfusion.features.admin.notifications.navigator.INotificationsNavigator
 import com.sparkfusion.features.admin.notifications.screen.NotificationsScreen
@@ -33,6 +39,26 @@ fun NavGraphBuilder.adminDetails(
                 id = id,
                 accessMode = accessMode
             )
+    }
+}
+
+fun NavGraphBuilder.adminConfirmation(
+    navController: IAdminConfirmationNavigator
+) {
+    composable(AdminConfirmationDestination.route) {
+        AdminConfirmationScreen(
+            navigator = navController
+        )
+    }
+}
+
+fun NavGraphBuilder.pupilConfirmation(
+    navController: IPupilConfirmationNavigator
+) {
+    composable(PupilConfirmationDestination.route) {
+        PupilConfirmationScreen(
+            navigator = navController
+        )
     }
 }
 

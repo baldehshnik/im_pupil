@@ -22,9 +22,6 @@ class NotificationsViewModel @Inject constructor(
     private val _readingState = MutableStateFlow<ReadingState>(ReadingState.Initial)
     internal val readingState: StateFlow<ReadingState> = _readingState.asStateFlow()
 
-    private val _updatingState = MutableStateFlow<UpdatingState>(UpdatingState.Initial)
-    internal val updatingState: StateFlow<UpdatingState> = _updatingState.asStateFlow()
-
     fun readNotifications() {
         if (readingState.value == ReadingState.Progress) return
 
@@ -43,11 +40,6 @@ class NotificationsViewModel @Inject constructor(
     }
 
     fun updateNotificationState(id: Int) {
-        if (updatingState.value == UpdatingState.Progress) {
-            return
-        }
-
-        _updatingState.update { UpdatingState.Progress }
         viewModelScope.launch {
             updateNotificationStatusUseCase.updateStatus(id)
                 .onSuccess {
@@ -60,23 +52,11 @@ class NotificationsViewModel @Inject constructor(
                         val newReadList = state.read.toMutableList()
                         newReadList.add(readItem)
 
+                        _readingState.update { ReadingState.Initial }
                         _readingState.update { ReadingState.Success(newUnreadList, newReadList) }
                     }
                 }
-                .onFailure {
-                    _updatingState.update { UpdatingState.Error }
-                }
         }
-    }
-
-    fun clearUpdatingState() {
-        _updatingState.update { UpdatingState.Initial }
-    }
-
-    internal sealed interface UpdatingState {
-        data object Initial : UpdatingState
-        data object Error : UpdatingState
-        data object Progress : UpdatingState
     }
 
     internal sealed interface ReadingState {

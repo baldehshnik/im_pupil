@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -25,6 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
+import com.sparkfusion.domain.admin.port.portnotification.NotificationTypes
 import com.sparkfusion.features.admin.notifications.R
 import com.sparkfusion.features.admin.notifications.navigator.INotificationsNavigator
 import com.sparkfusion.features.admin.notifications.screen.component.NotificationItemComponent
@@ -41,17 +41,6 @@ fun NotificationsScreen(
     }
 
     val readingState by viewModel.readingState.collectAsStateWithLifecycle()
-    val updatingState by viewModel.updatingState.collectAsStateWithLifecycle()
-
-    when (updatingState) {
-        NotificationsViewModel.UpdatingState.Error -> {
-            ShowToast(value = "Error")
-            viewModel.clearUpdatingState()
-        }
-
-        NotificationsViewModel.UpdatingState.Initial -> {}
-        NotificationsViewModel.UpdatingState.Progress -> {}
-    }
 
     when (readingState) {
         NotificationsViewModel.ReadingState.Error -> {
@@ -96,7 +85,15 @@ fun NotificationsScreen(
                         title = it.title,
                         description = it.description,
                         isDarkModeEnabled = isSystemInDarkTheme(),
-                        icon = it.icon
+                        icon = it.icon,
+                        onItemClick = {
+                            viewModel.updateNotificationState(it.id)
+                            when (it.type) {
+                                NotificationTypes.UNKNOWN -> {}
+                                NotificationTypes.NEW_ADMIN -> navigator.navigateToAdminConfirmation()
+                                NotificationTypes.NEW_PUPIL -> navigator.navigateToPupilConfirmation()
+                            }
+                        }
                     )
                 }
 
@@ -121,20 +118,18 @@ fun NotificationsScreen(
                         title = it.title,
                         description = it.description,
                         isDarkModeEnabled = isSystemInDarkTheme(),
-                        icon = it.icon
+                        icon = it.icon,
+                        onItemClick = {
+                            viewModel.updateNotificationState(it.id)
+                            when (it.type) {
+                                NotificationTypes.UNKNOWN -> {}
+                                NotificationTypes.NEW_ADMIN -> navigator.navigateToAdminConfirmation()
+                                NotificationTypes.NEW_PUPIL -> navigator.navigateToPupilConfirmation()
+                            }
+                        }
                     )
                 }
             }
         }
     }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun NotificationsScreenPreview() {
-    NotificationsScreen(
-        navigator = object : INotificationsNavigator {
-            override fun popBackStack() {}
-        }
-    )
 }
