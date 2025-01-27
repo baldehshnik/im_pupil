@@ -1,40 +1,77 @@
 package com.sparkfusion.services.admin.about.screen
 
+import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.sparkfusion.core.image_crop.launcher.rememberLauncherForImageCropping
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.services.admin.about.R
 import com.sparkfusion.services.admin.about.component.AddBlockItem
-import com.sparkfusion.services.admin.about.model.AboutBlockModel
+import com.sparkfusion.services.admin.about.viewmodel.EditAboutViewModel
 
 @Composable
 fun AdminEditAboutServiceScreen(
     modifier: Modifier = Modifier,
-    onBackClick: () -> Unit
+    viewModel: EditAboutViewModel = hiltViewModel(),
+    onBackClick: () -> Unit,
+    onCropNavigate: (Bitmap) -> Unit,
+    getCroppedImageBitmap: () -> Bitmap?
 ) {
-    val items = listOf(
-        AboutBlockModel("", "Desctifjshfbdjhg b sgh sdg dskhfkjdshf hkdsh fhsdjkhf jkhsjdkfkjs d"),
-        AboutBlockModel("2", ""),
-        AboutBlockModel("", "hdf zhz dzf hzdfhdfh zdfh zdfhz fzh"),
-        AboutBlockModel("3", "hdf hdzfhdfh zfh  zfz "),
-        AboutBlockModel("2", "hdfzh dzfhr ehzreh e")
+    LaunchedEffect(Unit) {
+        viewModel.readBlocks()
+        viewModel.updateImage(getCroppedImageBitmap())
+    }
+
+    val readState by viewModel.readState.collectAsStateWithLifecycle()
+    val updateState by viewModel.updateState.collectAsStateWithLifecycle()
+
+    val context = LocalContext.current
+    val galleryLauncher = rememberLauncherForImageCropping(
+        context = context,
+        navigateToImageCrop = {
+            onCropNavigate(it)
+        }
     )
+
+    when (updateState) {
+        EditAboutViewModel.UpdateState.Error -> {
+            ShowToast(value = "Error")
+            viewModel.clearUpdateState()
+        }
+
+        EditAboutViewModel.UpdateState.Initial -> {}
+        EditAboutViewModel.UpdateState.Progress -> {
+            ShowToast(value = "Updating...")
+        }
+
+        EditAboutViewModel.UpdateState.Success -> {
+            onBackClick()
+        }
+    }
 
     Box(
         modifier = modifier.fillMaxSize()
@@ -52,38 +89,64 @@ fun AdminEditAboutServiceScreen(
                 )
             }
 
-            items(items.size) { index ->
-                AddBlockItem(item = items[index])
-            }
+            when (readState) {
+                EditAboutViewModel.ReadState.Error -> {
+                    item { ShowToast(value = "Error") }
+                    viewModel.clearReadingState()
+                }
 
-            item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 6.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    TextButton(onClick = { /*TODO*/ }) {
-                        SFProRoundedText(
-                            content = "Add block",
-                            fontWeight = FontWeight.Medium,
-                            fontSize = 16.sp
+                EditAboutViewModel.ReadState.Initial -> {}
+                EditAboutViewModel.ReadState.Progress -> {
+                    item { CircularProgressIndicator() }
+                }
+
+                is EditAboutViewModel.ReadState.Success -> {
+                    val data = (readState as EditAboutViewModel.ReadState.Success).data
+                    items(data) {
+                        AddBlockItem(
+                            item = it,
+                            onValueChange = { value ->
+                                viewModel.updateDescription(it, value)
+                            },
+                            onImageClick = {
+                                viewModel.currentImageItem = it
+                                galleryLauncher.launch("image/*")
+                            }
                         )
+                    }
+
+                    item {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 6.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            TextButton(onClick = { viewModel.addBlock() }) {
+                                SFProRoundedText(
+                                    content = "Add block",
+                                    fontWeight = FontWeight.Medium,
+                                    fontSize = 16.sp
+                                )
+                            }
+                        }
                     }
                 }
             }
         }
 
-        FloatingActionButton(
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.BottomEnd),
-            onClick = { }
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.check_icon),
-                contentDescription = null
-            )
+        if (readState is EditAboutViewModel.ReadState.Success) {
+            FloatingActionButton(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.BottomEnd),
+                onClick = { viewModel.updateBlocks() }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.check_icon),
+                    contentDescription = null
+                )
+            }
         }
     }
 }
@@ -92,7 +155,9 @@ fun AdminEditAboutServiceScreen(
 @Composable
 private fun AdminEditAboutServiceScreenPreview() {
     AdminEditAboutServiceScreen(
-        onBackClick = {}
+        onBackClick = {},
+        onCropNavigate = {},
+        getCroppedImageBitmap = { null }
     )
 }
 

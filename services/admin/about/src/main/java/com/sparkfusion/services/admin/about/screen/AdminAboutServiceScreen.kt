@@ -4,32 +4,38 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.services.admin.about.R
 import com.sparkfusion.services.admin.about.component.AboutInfoItem
-import com.sparkfusion.services.admin.about.model.AboutBlockModel
+import com.sparkfusion.services.admin.about.viewmodel.AboutViewModel
 
 @Composable
 fun AdminAboutServiceScreen(
     modifier: Modifier = Modifier,
+    viewModel: AboutViewModel = hiltViewModel(),
     onBackClick: () -> Unit,
     onEditClick: () -> Unit
 ) {
-    val items = listOf(
-        AboutBlockModel("", "Desctifjshfbdjhg b sgh sdg dskhfkjdshf hkdsh fhsdjkhf jkhsjdkfkjs d"),
-        AboutBlockModel("2", "gd df gdfgdfg dfg zfgd fgz hzfdhzzfd fdh df hzdfhz hf"),
-        AboutBlockModel("", "hdf zhz dzf hzdfhdfh zdfh zdfhz fzh"),
-        AboutBlockModel("3", "hdf hdzfhdfh zfh  zfz "),
-        AboutBlockModel("2", "hdfzh dzfhr ehzreh e")
-    )
+    LaunchedEffect(Unit) {
+        viewModel.readBlocks()
+    }
+
+    val readState by viewModel.readState.collectAsStateWithLifecycle()
 
     Box(
         modifier = modifier.fillMaxSize()
@@ -39,21 +45,39 @@ fun AdminAboutServiceScreen(
                 TopBar(title = "About", onBackClick = onBackClick)
             }
 
-            items(items.size) { index ->
-                AboutInfoItem(item = items[index])
+            when (readState) {
+                AboutViewModel.ReadState.Error -> {
+                    item { ShowToast(value = "Error") }
+                }
+
+                AboutViewModel.ReadState.Initial -> {}
+                AboutViewModel.ReadState.Progress -> {
+                    item { CircularProgressIndicator() }
+                }
+
+                is AboutViewModel.ReadState.Success -> {
+                    val data = (readState as AboutViewModel.ReadState.Success).data
+                    items(data) {
+                        AboutInfoItem(
+                            item = it
+                        )
+                    }
+                }
             }
         }
 
-        FloatingActionButton(
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.BottomEnd),
-            onClick = onEditClick
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.pencil_icon),
-                contentDescription = null
-            )
+        if (readState is AboutViewModel.ReadState.Success) {
+            FloatingActionButton(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.BottomEnd),
+                onClick = onEditClick
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.pencil_icon),
+                    contentDescription = null
+                )
+            }
         }
     }
 }

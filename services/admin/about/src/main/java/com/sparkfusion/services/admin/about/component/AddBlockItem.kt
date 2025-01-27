@@ -1,8 +1,6 @@
 package com.sparkfusion.services.admin.about.component
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,38 +11,36 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.services.admin.about.R
-import com.sparkfusion.services.admin.about.model.AboutBlockModel
+import com.sparkfusion.services.admin.about.model.EditAboutBlockModel
 
 @Composable
 fun AddBlockItem(
     modifier: Modifier = Modifier,
-    item: AboutBlockModel
+    item: EditAboutBlockModel,
+    onValueChange: (String) -> Unit,
+    onImageClick: () -> Unit
 ) {
     Column(
         modifier = modifier
             .padding(start = 24.dp, end = 24.dp, top = 20.dp)
             .fillMaxWidth()
     ) {
-        if (item.imageUrl.isEmpty()) {
-            Image(
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                painter = painterResource(id = R.drawable.new_image_icon),
-                contentDescription = null
-            )
-        } else {
-            Box(
-                modifier = Modifier
-                    .height(120.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .fillMaxWidth()
-                    .background(Color.Gray)
-            )
-        }
+        AsyncImage(
+            modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally)
+                .clickable { onImageClick() },
+            model = item.bitmap ?: item.icon ?: R.drawable.new_image_icon,
+            contentDescription = null,
+            contentScale = if (item.bitmap == null && item.icon == null) ContentScale.Crop else ContentScale.None
+        )
 
         OutlinedTextField(
             shape = RoundedCornerShape(20.dp),
@@ -52,8 +48,8 @@ fun AddBlockItem(
                 .padding(top = 8.dp, bottom = 8.dp)
                 .fillMaxWidth()
                 .height(120.dp),
-            value = item.info,
-            onValueChange = {},
+            value = item.description ?: "",
+            onValueChange = onValueChange,
             placeholder = {
                 SFProRoundedText(
                     content = "Enter info here..."
@@ -62,3 +58,28 @@ fun AddBlockItem(
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

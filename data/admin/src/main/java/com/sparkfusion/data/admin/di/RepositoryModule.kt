@@ -1,5 +1,6 @@
 package com.sparkfusion.data.admin.di
 
+import com.sparkfusion.data.admin.repository.about.AdminAboutRepository
 import com.sparkfusion.data.admin.repository.auth.AdminAuthRepository
 import com.sparkfusion.data.admin.repository.confirmation.ConfirmationRepository
 import com.sparkfusion.data.admin.repository.institution.AdminAccountRepository
@@ -10,6 +11,7 @@ import com.sparkfusion.data.admin.repository.notification.AdminNotificationRepos
 import com.sparkfusion.dataPort.admin.portAuth.repository.IAdminAuthRepository
 import com.sparkfusion.dataPort.admin.portaccount.IAdminAccountRepository
 import com.sparkfusion.dataPort.admin.portinstitution.IAdminInstitutionRepository
+import com.sparkfusion.dataport.admin.portabout.IAdminAboutRepository
 import com.sparkfusion.dataport.admin.portadmindetails.IAdminDetailsRepository
 import com.sparkfusion.dataport.admin.portconfirmation.IConfirmationRepository
 import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEventRepository
@@ -45,6 +47,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindConfirmationRepositoryToIConfirmationRepository(confirmationRepository: ConfirmationRepository): IConfirmationRepository
+
+    @Binds
+    fun bindAdminAboutRepositoryToIAdminAboutRepository(adminAboutRepository: AdminAboutRepository): IAdminAboutRepository
 }
 
 

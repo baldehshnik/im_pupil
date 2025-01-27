@@ -1,26 +1,24 @@
 package com.sparkfusion.services.admin.about.component
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
-import com.sparkfusion.services.admin.about.model.AboutBlockModel
+import com.sparkfusion.portdomainservices.admin.portabout.AboutModel
 
 @Composable
 fun AboutInfoItem(
     modifier: Modifier = Modifier,
-    item: AboutBlockModel
+    item: AboutModel
 ) {
     Column(
         modifier = modifier
@@ -32,18 +30,17 @@ fun AboutInfoItem(
             )
             .fillMaxWidth()
     ) {
-        if (item.imageUrl.isNotEmpty()) {
-            Box(
-                modifier = Modifier
-                    .height(120.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .fillMaxWidth()
-                    .background(Color.Gray)
-            )
-        }
+        AsyncImage(
+            modifier = Modifier
+                .clip(RoundedCornerShape(16.dp))
+                .fillMaxWidth(),
+            model = item.icon,
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
 
         SFProRoundedText(
-            content = item.info,
+            content = item.description,
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium
         )

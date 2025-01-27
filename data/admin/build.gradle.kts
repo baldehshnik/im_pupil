@@ -49,6 +49,8 @@ dependencies {
     implementation(project(":dataPort:admin:portNotification"))
     implementation(project(":dataPort:admin:portConfirmation"))
 
+    implementation(project(":dataPort:admin:portAbout"))
+
     implementation(project(":data:base"))
     implementation(project(":data:common"))
 

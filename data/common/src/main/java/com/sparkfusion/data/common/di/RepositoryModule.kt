@@ -1,9 +1,11 @@
 package com.sparkfusion.data.common.di
 
+import com.sparkfusion.data.common.repository.AboutRepository
 import com.sparkfusion.data.common.repository.InstitutionEventRepository
 import com.sparkfusion.data.common.repository.NewsRepository
 import com.sparkfusion.dataPort.common.portinstitutionevent.IInstitutionEventRepository
 import com.sparkfusion.dataPort.common.portnews.INewsRepository
+import com.sparkfusion.dataport.common.portabout.IAboutRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,6 +20,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindInstitutionEventRepositoryToIInstitutionEventRepository(institutionEventRepository: InstitutionEventRepository): IInstitutionEventRepository
+
+    @Binds
+    fun bindAboutRepositoryToIAboutRepository(aboutRepository: AboutRepository): IAboutRepository
 }
 
 

@@ -66,6 +66,8 @@ dependencies {
     implementation(project(":domain:admin:notification"))
     implementation(project(":domain:admin:confirmation"))
 
+    implementation(project(":domainAdminServices:about"))
+
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
     implementation(project(":data:common"))
