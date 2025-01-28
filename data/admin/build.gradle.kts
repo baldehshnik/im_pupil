@@ -50,6 +50,7 @@ dependencies {
     implementation(project(":dataPort:admin:portConfirmation"))
 
     implementation(project(":dataPort:admin:portAbout"))
+    implementation(project(":dataPort:admin:portStudents"))
 
     implementation(project(":data:base"))
     implementation(project(":data:common"))

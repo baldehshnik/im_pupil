@@ -11,25 +11,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.services.admin.students.R
 
 @Composable
 fun AccountComponent(
     modifier: Modifier = Modifier,
+    icon: String? = null,
     name: String,
     status: String
 ) {
     Row(modifier = modifier) {
-        Box(
+        AsyncImage(
             modifier = Modifier
                 .padding(start = 24.dp, top = 20.dp)
                 .size(112.dp)
-                .clip(RoundedCornerShape(28.dp))
-                .background(Color.Gray)
+                .clip(RoundedCornerShape(28.dp)),
+            model = icon ?: com.sparkfusion.core.resource.R.drawable.students_service_icon,
+            contentDescription = null,
+            contentScale = ContentScale.Crop
         )
 
         Column(

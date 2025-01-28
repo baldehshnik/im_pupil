@@ -18,10 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.portdomainservices.admin.portstudents.model.GroupModel
 
 @Composable
 fun GroupItem(
     modifier: Modifier = Modifier,
+    item: GroupModel,
+    specialityName: String,
     onItemClick: () -> Unit
 ) {
     Column(
@@ -33,7 +36,6 @@ fun GroupItem(
             .padding(horizontal = 12.dp, vertical = 10.dp)
             .clickable { onItemClick() }
     ) {
-
         Row(
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -41,14 +43,14 @@ fun GroupItem(
         ) {
             SFProRoundedText(
                 modifier = Modifier.padding(start = 12.dp),
-                content = "MS-7",
+                content = item.name,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp
             )
 
             SFProRoundedText(
                 modifier = Modifier.padding(end = 12.dp),
-                content = "3 course",
+                content = "${item.course} course",
                 fontWeight = FontWeight.Medium,
                 fontSize = 16.sp
             )
@@ -56,7 +58,7 @@ fun GroupItem(
 
         SFProRoundedText(
             modifier = Modifier.padding(start = 12.dp),
-            content = "Programmable mobile systems",
+            content = specialityName,
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
             color = descriptionColor()

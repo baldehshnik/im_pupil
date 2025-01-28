@@ -30,7 +30,16 @@ class AuthInterceptor @Inject constructor(
         "/pupil/notConfirmed",
         "/pupil/confirm/",
         "/education/about/update",
-        "/education/about"
+        "/education/about",
+        "/education/faculty/all",
+        "/education/speciality/byFaculty",
+        "/education/group/all",
+        "/education/group/create",
+        "/education/group/update",
+        "/education/group/",
+        "/education/group/member/all",
+        "/education/group/member/",
+        "/education/group/member/prefect/"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {

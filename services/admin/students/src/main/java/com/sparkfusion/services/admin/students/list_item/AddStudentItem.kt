@@ -21,11 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.portdomainservices.admin.portstudents.model.CreateGroupMemberModel
 import com.sparkfusion.services.admin.students.R
 
 @Composable
 fun AddStudentItem(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    model: CreateGroupMemberModel,
+    onDeleteClick: () -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,7 +42,7 @@ fun AddStudentItem(
             modifier = Modifier.padding(top = 12.dp, bottom = 12.dp, start = 16.dp)
         ) {
             SFProRoundedText(
-                content = "Shcherba Vladislav Dmitrievich",
+                content = "${model.lastname} ${model.firstname} ${model.patronymic}",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 maxLines = 1,
@@ -47,7 +50,7 @@ fun AddStudentItem(
             )
 
             SFProRoundedText(
-                content = "Code: 000722",
+                content = "Code: ${model.code}",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 color = descriptionColor()
@@ -58,7 +61,7 @@ fun AddStudentItem(
             modifier = Modifier
                 .padding(horizontal = 8.dp)
                 .align(Alignment.CenterVertically),
-            onClick = { }
+            onClick = onDeleteClick
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.round_close),

@@ -9,6 +9,7 @@ import com.sparkfusion.core.widget.topbar.TopBar
 @Composable
 fun FacultySelectionScreen(
     modifier: Modifier = Modifier,
+    items: List<String> = emptyList(),
     onBackClick: () -> Unit,
     onFacultyClick: (Int) -> Unit
 ) {
@@ -22,10 +23,10 @@ fun FacultySelectionScreen(
             )
         }
 
-        items(4) {
+        items(items.size) { index ->
             FacultyItem(
-                content = "Brest State Technical University",
-                onItemClick = { onFacultyClick(1) }
+                content = items[index],
+                onItemClick = { onFacultyClick(index) }
             )
         }
     }

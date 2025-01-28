@@ -1,6 +1,8 @@
 package com.sparkfusion.data.admin.di
 
 import com.sparkfusion.data.admin.source.AdminAboutApiService
+import com.sparkfusion.data.admin.source.GroupApiService
+import com.sparkfusion.data.admin.source.GroupMemberApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +18,18 @@ object AdminServiceModule {
     @Provides
     fun provideAdminAboutApiService(retrofit: Retrofit): AdminAboutApiService {
         return retrofit.create(AdminAboutApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGroupApiService(retrofit: Retrofit): GroupApiService {
+        return retrofit.create(GroupApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGroupMemberApiService(retrofit: Retrofit): GroupMemberApiService {
+        return retrofit.create(GroupMemberApiService::class.java)
     }
 }
 

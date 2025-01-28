@@ -67,6 +67,7 @@ dependencies {
     implementation(project(":domain:admin:confirmation"))
 
     implementation(project(":domainAdminServices:about"))
+    implementation(project(":domainAdminServices:students"))
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
