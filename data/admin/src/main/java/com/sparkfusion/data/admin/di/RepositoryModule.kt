@@ -3,6 +3,7 @@ package com.sparkfusion.data.admin.di
 import com.sparkfusion.data.admin.repository.about.AdminAboutRepository
 import com.sparkfusion.data.admin.repository.auth.AdminAuthRepository
 import com.sparkfusion.data.admin.repository.confirmation.ConfirmationRepository
+import com.sparkfusion.data.admin.repository.exam.ExamRepository
 import com.sparkfusion.data.admin.repository.institution.AdminAccountRepository
 import com.sparkfusion.data.admin.repository.institution.AdminDetailsRepository
 import com.sparkfusion.data.admin.repository.institution.AdminInstitutionEventRepository
@@ -15,6 +16,7 @@ import com.sparkfusion.dataPort.admin.portinstitution.IAdminInstitutionRepositor
 import com.sparkfusion.dataport.admin.portabout.IAdminAboutRepository
 import com.sparkfusion.dataport.admin.portadmindetails.IAdminDetailsRepository
 import com.sparkfusion.dataport.admin.portconfirmation.IConfirmationRepository
+import com.sparkfusion.dataport.admin.portexam.IExamRepository
 import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEventRepository
 import com.sparkfusion.dataport.admin.portnotification.IAdminNotificationRepository
 import com.sparkfusion.dataport.admin.portstudents.repository.IStudentsServiceRepository
@@ -55,6 +57,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindStudentsServiceRepositoryToIStudentsServiceRepository(studentsServiceRepository: StudentsServiceRepository): IStudentsServiceRepository
+
+    @Binds
+    fun bindExamRepositoryToIExamRepository(examRepository: ExamRepository): IExamRepository
 }
 
 

@@ -38,6 +38,8 @@ dependencies {
 
     implementation(project(":core:common"))
 
+    implementation(project(":data:commonEntity"))
+
     implementation(project(":dataPort:admin:portStudents"))
 
     implementation(project(":portDomainServices:admin:portStudents"))

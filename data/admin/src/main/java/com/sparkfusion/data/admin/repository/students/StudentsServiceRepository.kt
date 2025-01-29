@@ -8,9 +8,9 @@ import com.sparkfusion.core.common.result.Answer
 import com.sparkfusion.data.admin.source.GroupApiService
 import com.sparkfusion.data.admin.source.GroupMemberApiService
 import com.sparkfusion.data.admin.source.InstitutionApiService
+import com.sparkfusion.data.commonentity.CommonGroupDataEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.CreateGroupEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.FacultyEntity
-import com.sparkfusion.dataport.admin.portstudents.entity.GroupEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.ReadGroupMemberEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.ReadGroupWithMembersEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.SpecialityEntity
@@ -56,7 +56,7 @@ class StudentsServiceRepository @Inject constructor(
             .handleFetchedData()
     }
 
-    override suspend fun readGroupBySpeciality(specialityId: Int): Answer<List<GroupEntity>> = safeApiCall(ioDispatcher) {
+    override suspend fun readGroupBySpeciality(specialityId: Int): Answer<List<CommonGroupDataEntity>> = safeApiCall(ioDispatcher) {
         ApiListResponseHandler(groupApiService.readGroupBySpeciality(specialityId))
             .handleFetchedData()
     }

@@ -51,11 +51,13 @@ dependencies {
 
     implementation(project(":dataPort:admin:portAbout"))
     implementation(project(":dataPort:admin:portStudents"))
+    implementation(project(":dataPort:admin:portExam"))
 
     implementation(project(":data:base"))
     implementation(project(":data:common"))
 
     implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.converter.gson)
 
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)

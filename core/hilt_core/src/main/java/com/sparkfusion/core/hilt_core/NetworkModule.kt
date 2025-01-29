@@ -1,5 +1,8 @@
 package com.sparkfusion.core.hilt_core
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.sparkfusion.core.common.api.converter.LocalDateConverter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDate
 import javax.inject.Singleton
 
 @Module
@@ -38,7 +42,31 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGsonConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
+    fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory {
+        return GsonConverterFactory.create(gson)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGsonBuilder(): Gson {
+        return GsonBuilder()
+            .registerTypeAdapter(LocalDate::class.java, LocalDateConverter())
+            .create()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

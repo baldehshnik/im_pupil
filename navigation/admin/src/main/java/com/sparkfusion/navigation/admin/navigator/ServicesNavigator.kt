@@ -6,7 +6,7 @@ import com.sparkfusion.navigation.adminservicesport.magazine.MagazineFacultiesDe
 import com.sparkfusion.navigation.adminservicesport.practice.PracticeListDestination
 import com.sparkfusion.navigation.adminservicesport.schedule.ScheduleFacultiesDestination
 import com.sparkfusion.navigation.adminservicesport.sections.SectionsListDestination
-import com.sparkfusion.navigation.adminservicesport.session.SessionFacultiesDestination
+import com.sparkfusion.navigation.adminservicesport.session.SessionGroupTestsDestination
 import com.sparkfusion.navigation.adminservicesport.statistics.StatisticsFacultiesDestination
 import com.sparkfusion.navigation.adminservicesport.students.StudentsFacultyDestination
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
@@ -38,7 +38,7 @@ class ServicesNavigator(private val navigator: INavigator) : IServicesNavigator 
     }
 
     override fun navigateToSessionService() {
-        navigator.navigateTo(SessionFacultiesDestination)
+        navigator.navigateTo(SessionGroupTestsDestination)
     }
 
     override fun navigateToPracticeService() {

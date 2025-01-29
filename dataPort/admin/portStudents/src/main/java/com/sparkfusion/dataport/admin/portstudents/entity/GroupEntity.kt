@@ -1,7 +1,9 @@
 package com.sparkfusion.dataport.admin.portstudents.entity
 
+import com.sparkfusion.data.commonentity.CommonGroupDataEntity
+
 data class GroupEntity(
-    val id: Int,
-    val name: String,
-    val course: Int
-)
+    override val id: Int,
+    override val name: String,
+    override val course: Int
+): CommonGroupDataEntity

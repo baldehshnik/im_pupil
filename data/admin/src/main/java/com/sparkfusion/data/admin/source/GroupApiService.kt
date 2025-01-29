@@ -1,7 +1,7 @@
 package com.sparkfusion.data.admin.source
 
+import com.sparkfusion.data.admin.entity.GroupDataEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.CreateGroupEntity
-import com.sparkfusion.dataport.admin.portstudents.entity.GroupEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.ReadGroupWithMembersEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.UpdateGroupEntity
 import retrofit2.Response
@@ -17,12 +17,18 @@ interface GroupApiService {
     @GET("/education/group/all")
     suspend fun readGroupBySpeciality(
         @Query("specialityId") specialityId: Int
-    ): Response<List<GroupEntity>>
+    ): Response<List<GroupDataEntity>>
 
     @GET("/education/group/{id}")
     suspend fun readGroupWithMembersById(
         @Path("id") id: Int
     ): Response<ReadGroupWithMembersEntity>
+
+    @GET("/education/group/byNamePart")
+    suspend fun readGroupByNamePart(
+        @Query("institutionId") institutionId: Int,
+        @Query("namePart") namePart: String
+    ): Response<List<GroupDataEntity>>
 
     @POST("/education/group/create")
     suspend fun createGroup(

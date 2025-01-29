@@ -38,6 +38,8 @@ dependencies {
 
     implementation(project(":core:common"))
 
+    implementation(project(":data:commonEntity"))
+
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)
 

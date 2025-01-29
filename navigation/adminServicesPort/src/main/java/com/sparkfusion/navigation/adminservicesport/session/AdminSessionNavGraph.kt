@@ -6,7 +6,6 @@ import androidx.navigation.NavHostController
 fun NavGraphBuilder.adminSessionService(
     navController: NavHostController
 ) {
-    sessionFacultiesScreen(navController)
     sessionGroupTestsScreen(navController)
     sessionTestAddingScreen(navController)
     sessionTestEditingScreen(navController)

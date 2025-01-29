@@ -1,6 +1,9 @@
 package com.sparkfusion.services.admin.session.screen
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,24 +18,101 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.services.admin.session.R
+import com.sparkfusion.services.admin.session.viewmodel.SessionAddingViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @Composable
 fun SessionTestAddingScreen(
     modifier: Modifier = Modifier,
+    viewModel: SessionAddingViewModel = hiltViewModel(),
+    sessionType: Int,
+    groupId: Int,
     onBackClick: () -> Unit
 ) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val checkState by viewModel.checkState.collectAsStateWithLifecycle()
+    val creatingState by viewModel.creatingState.collectAsStateWithLifecycle()
+
+    var showDatePicker by remember { mutableStateOf(false) }
+    var showTimePicker by remember { mutableStateOf(false) }
+
+    when (checkState) {
+        SessionAddingViewModel.CheckState.AudienceIsEmpty -> {
+            ShowToast(value = "Audience is empty")
+            viewModel.clearCheckState()
+        }
+        SessionAddingViewModel.CheckState.Initial -> {}
+        SessionAddingViewModel.CheckState.NameIsEmpty -> {
+            ShowToast(value = "Name is empty")
+            viewModel.clearCheckState()
+        }
+    }
+
+    when (creatingState) {
+        SessionAddingViewModel.CreatingState.Error -> {
+            ShowToast(value = "Error")
+            viewModel.clearCreatingState()
+        }
+        SessionAddingViewModel.CreatingState.Initial -> {}
+        SessionAddingViewModel.CreatingState.Progress -> {
+            ShowToast(value = "Creating...")
+        }
+        SessionAddingViewModel.CreatingState.Success -> {
+            onBackClick()
+        }
+    }
+
+    if (showDatePicker) {
+        val datePickerDialog = DatePickerDialog(
+            LocalContext.current,
+            { _, year, month, dayOfMonth ->
+                state.dateAndTimeCalendar.set(year, month, dayOfMonth)
+                showDatePicker = false
+            },
+            state.dateAndTimeCalendar.get(Calendar.YEAR),
+            state.dateAndTimeCalendar.get(Calendar.MONTH),
+            state.dateAndTimeCalendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
+    if (showTimePicker) {
+        val timePickerDialog = TimePickerDialog(
+            LocalContext.current,
+            { _, hourOfDay, minute ->
+                state.dateAndTimeCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                state.dateAndTimeCalendar.set(Calendar.MINUTE, minute)
+                showTimePicker = false
+            },
+            state.dateAndTimeCalendar.get(Calendar.HOUR_OF_DAY),
+            state.dateAndTimeCalendar.get(Calendar.MINUTE),
+            true
+        )
+        timePickerDialog.show()
+    }
+
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -40,7 +120,7 @@ fun SessionTestAddingScreen(
             modifier = Modifier
                 .padding(20.dp)
                 .align(Alignment.BottomEnd),
-            onClick = { }
+            onClick = { viewModel.create(groupId, sessionType) }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.check_icon),
@@ -63,8 +143,8 @@ fun SessionTestAddingScreen(
                     .fillMaxWidth()
                     .padding(start = 24.dp, end = 24.dp, top = 2.dp),
                 shape = RoundedCornerShape(16.dp),
-                value = "",
-                onValueChange = {},
+                value = state.name,
+                onValueChange = { viewModel.updateName(it) },
                 placeholder = {
                     SFProRoundedText(content = "Enter here...")
                 }
@@ -88,8 +168,8 @@ fun SessionTestAddingScreen(
                     .fillMaxWidth()
                     .padding(start = 24.dp, end = 24.dp, top = 2.dp),
                 shape = RoundedCornerShape(16.dp),
-                value = "",
-                onValueChange = {},
+                value = state.audience,
+                onValueChange = { viewModel.updateAudience(it) },
                 placeholder = {
                     SFProRoundedText(content = "Enter here...")
                 }
@@ -125,14 +205,15 @@ fun SessionTestAddingScreen(
                         modifier = Modifier
                             .clip(RoundedCornerShape(20.dp))
                             .width(160.dp)
-                            .padding(top = 2.dp)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
+                            .padding(top = 4.dp)
+                            .background(MaterialTheme.colorScheme.primaryContainer)
+                            .clickable { showDatePicker = true },
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         SFProRoundedText(
                             modifier = Modifier.padding(start = 20.dp, top = 6.dp, bottom = 6.dp),
-                            content = "No data",
+                            content = formatDate(state.dateAndTimeCalendar),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -162,13 +243,14 @@ fun SessionTestAddingScreen(
                             .clip(RoundedCornerShape(20.dp))
                             .width(160.dp)
                             .padding(top = 2.dp)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
+                            .background(MaterialTheme.colorScheme.primaryContainer)
+                            .clickable { showTimePicker = true },
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         SFProRoundedText(
                             modifier = Modifier.padding(start = 20.dp, top = 6.dp, bottom = 6.dp),
-                            content = "No data",
+                            content = formatTime(state.dateAndTimeCalendar),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -190,11 +272,23 @@ fun SessionTestAddingScreen(
     }
 }
 
+fun formatDate(calendar: Calendar): String {
+    val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+    return dateFormat.format(calendar.time)
+}
+
+fun formatTime(calendar: Calendar): String {
+    val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return timeFormat.format(calendar.time)
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun SessionTestAddingScreenPreview() {
     SessionTestAddingScreen(
-        onBackClick = {}
+        onBackClick = {},
+        groupId = 1,
+        sessionType = 1
     )
 }
 
