@@ -9,6 +9,7 @@ import com.sparkfusion.data.admin.repository.institution.AdminDetailsRepository
 import com.sparkfusion.data.admin.repository.institution.AdminInstitutionEventRepository
 import com.sparkfusion.data.admin.repository.institution.AdminInstitutionRepository
 import com.sparkfusion.data.admin.repository.notification.AdminNotificationRepository
+import com.sparkfusion.data.admin.repository.schedule.ScheduleRepository
 import com.sparkfusion.data.admin.repository.students.StudentsServiceRepository
 import com.sparkfusion.dataPort.admin.portAuth.repository.IAdminAuthRepository
 import com.sparkfusion.dataPort.admin.portaccount.IAdminAccountRepository
@@ -19,6 +20,7 @@ import com.sparkfusion.dataport.admin.portconfirmation.IConfirmationRepository
 import com.sparkfusion.dataport.admin.portexam.IExamRepository
 import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEventRepository
 import com.sparkfusion.dataport.admin.portnotification.IAdminNotificationRepository
+import com.sparkfusion.dataport.admin.portschedule.IScheduleRepository
 import com.sparkfusion.dataport.admin.portstudents.repository.IStudentsServiceRepository
 import dagger.Binds
 import dagger.Module
@@ -60,6 +62,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindExamRepositoryToIExamRepository(examRepository: ExamRepository): IExamRepository
+
+    @Binds
+    fun bindScheduleRepositoryToIScheduleRepository(scheduleRepository: ScheduleRepository): IScheduleRepository
 }
 
 

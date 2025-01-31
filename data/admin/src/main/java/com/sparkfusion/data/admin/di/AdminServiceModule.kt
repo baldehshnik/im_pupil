@@ -4,6 +4,8 @@ import com.sparkfusion.data.admin.source.AdminAboutApiService
 import com.sparkfusion.data.admin.source.ExamApiService
 import com.sparkfusion.data.admin.source.GroupApiService
 import com.sparkfusion.data.admin.source.GroupMemberApiService
+import com.sparkfusion.data.admin.source.schedule.LessonApiService
+import com.sparkfusion.data.admin.source.schedule.ScheduleApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,6 +39,18 @@ object AdminServiceModule {
     @Provides
     fun provideExamApiService(retrofit: Retrofit): ExamApiService {
         return retrofit.create(ExamApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLessonApiService(retrofit: Retrofit): LessonApiService {
+        return retrofit.create(LessonApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideScheduleApiService(retrofit: Retrofit): ScheduleApiService {
+        return retrofit.create(ScheduleApiService::class.java)
     }
 }
 

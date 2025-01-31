@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":services:admin:magazine"))
     implementation(project(":services:admin:schedule"))
 
+    implementation(libs.androidx.hilt.navigation)
     implementation(libs.google.hilt)
     ksp(libs.google.hilt.compiler)
 

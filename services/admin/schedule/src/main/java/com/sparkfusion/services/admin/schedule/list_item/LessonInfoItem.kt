@@ -21,10 +21,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.portdomainservices.admin.portschedule.model.ReadLessonModel
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun LessonInfoItem(
-    color: Color
+    color: Color,
+    model: ReadLessonModel
 ) {
     Row(
         modifier = Modifier
@@ -48,21 +52,26 @@ fun LessonInfoItem(
         ) {
             SFProRoundedText(
                 modifier = Modifier.padding(top = 2.dp),
-                content = "8:30 - 9:50",
+                content = "${formatLocalTimeToString(model.start)} - ${formatLocalTimeToString(model.end)}",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold
             )
 
             SFProRoundedText(
                 modifier = Modifier.padding(top = 4.dp),
-                content = "TRPO (Lection)",
+                content = "${model.name} (" + when(model.type) {
+                    1 -> "Lection"
+                    2 -> "Practice"
+                    else -> "Laboratory"
+                } +
+                        ")",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium
             )
 
             SFProRoundedText(
                 modifier = Modifier.padding(top = 4.dp),
-                content = "Kostyuk D. A.",
+                content = model.teacher,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
                 color = descriptionColor()
@@ -70,7 +79,7 @@ fun LessonInfoItem(
 
             SFProRoundedText(
                 modifier = Modifier.padding(top = 4.dp, bottom = 2.dp),
-                content = "Audience: 2/402",
+                content = "Audience: ${model.audience}",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
                 color = descriptionColor()
@@ -79,3 +88,7 @@ fun LessonInfoItem(
     }
 }
 
+fun formatLocalTimeToString(localTime: LocalTime): String {
+    val formatter = DateTimeFormatter.ofPattern("hh:mm")
+    return localTime.format(formatter)
+}

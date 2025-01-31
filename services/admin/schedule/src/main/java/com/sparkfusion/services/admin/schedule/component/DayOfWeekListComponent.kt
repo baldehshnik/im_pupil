@@ -13,7 +13,9 @@ import com.sparkfusion.services.admin.schedule.list_item.DayOfWeekItem
 @Composable
 fun DayOfWeekListComponent(
     modifier: Modifier = Modifier,
-    daysOfWeek: Array<String>
+    daysOfWeek: Array<String>,
+    currentWeekType: Int,
+    onItemClick: (Int) -> Unit
 ) {
     LazyRow(
         modifier = modifier
@@ -23,7 +25,9 @@ fun DayOfWeekListComponent(
     ) {
         items(daysOfWeek) { day ->
             DayOfWeekItem(
-                day = day
+                isActive = currentWeekType - 1 == daysOfWeek.indexOf(day),
+                day = day,
+                onItemClick = { onItemClick(daysOfWeek.indexOf(day) + 1) }
             )
         }
     }

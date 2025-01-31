@@ -9,8 +9,8 @@ import com.sparkfusion.data.admin.source.GroupApiService
 import com.sparkfusion.data.admin.source.GroupMemberApiService
 import com.sparkfusion.data.admin.source.InstitutionApiService
 import com.sparkfusion.data.commonentity.CommonGroupDataEntity
+import com.sparkfusion.data.commonentity.institution.CommonFacultyDataEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.CreateGroupEntity
-import com.sparkfusion.dataport.admin.portstudents.entity.FacultyEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.ReadGroupMemberEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.ReadGroupWithMembersEntity
 import com.sparkfusion.dataport.admin.portstudents.entity.SpecialityEntity
@@ -28,7 +28,7 @@ class StudentsServiceRepository @Inject constructor(
     private val groupApiService: GroupApiService
 ) : IStudentsServiceRepository {
 
-    override suspend fun readFaculties(): Answer<List<FacultyEntity>> = safeApiCall(ioDispatcher) {
+    override suspend fun readFaculties(): Answer<List<CommonFacultyDataEntity>> = safeApiCall(ioDispatcher) {
         ApiListResponseHandler(institutionApiService.readFaculties())
             .handleFetchedData()
     }

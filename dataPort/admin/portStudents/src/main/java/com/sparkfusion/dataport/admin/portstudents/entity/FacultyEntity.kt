@@ -1,7 +1,9 @@
 package com.sparkfusion.dataport.admin.portstudents.entity
 
+import com.sparkfusion.data.commonentity.institution.CommonFacultyDataEntity
+
 data class FacultyEntity(
-    val id: Int,
-    val name: String,
-    val abbreviation: String
-)
+    override val id: Int,
+    override val name: String,
+    override val abbreviation: String
+) : CommonFacultyDataEntity

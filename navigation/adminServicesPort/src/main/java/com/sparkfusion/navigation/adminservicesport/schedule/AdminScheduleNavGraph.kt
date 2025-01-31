@@ -9,4 +9,8 @@ fun NavGraphBuilder.adminScheduleService(
     scheduleScreen(navController)
     scheduleGroupScreen(navController)
     scheduleFacultiesScreen(navController)
+    scheduleAddingScreen(navController)
+    scheduleEditingScreen(navController)
+    lessonAddingScreen(navController)
+    lessonEditingScreen(navController)
 }
