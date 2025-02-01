@@ -21,10 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
+import com.sparkfusion.portdomainservices.admin.portmagazine.model.ReadLessonModel
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun LessonItem(
     modifier: Modifier = Modifier,
+    number: Int,
+    item: ReadLessonModel,
     onItemClick: () -> Unit
 ) {
     Row(
@@ -39,7 +44,7 @@ fun LessonItem(
     ) {
         SFProRoundedText(
             modifier = Modifier.padding(start = 12.dp, end = 4.dp),
-            content = "1",
+            content = "$number",
             fontWeight = FontWeight.SemiBold,
             fontSize = 22.sp
         )
@@ -49,14 +54,14 @@ fun LessonItem(
         ) {
             SFProRoundedText(
                 modifier = Modifier.padding(start = 24.dp),
-                content = "8:30",
+                content = convertLocalTimeToString(item.start),
                 fontWeight = FontWeight.Medium,
                 fontSize = 16.sp
             )
 
             SFProRoundedText(
                 modifier = Modifier.padding(start = 24.dp),
-                content = "9:50",
+                content = convertLocalTimeToString(item.end),
                 fontWeight = FontWeight.Medium,
                 fontSize = 16.sp
             )
@@ -69,7 +74,7 @@ fun LessonItem(
                 modifier = Modifier
                     .padding(start = 24.dp)
                     .width(140.dp),
-                content = "MSIS",
+                content = item.name,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
                 maxLines = 1,
@@ -78,7 +83,11 @@ fun LessonItem(
 
             SFProRoundedText(
                 modifier = Modifier.padding(start = 24.dp),
-                content = "lection",
+                content = when (item.type) {
+                    1 -> "Lection"
+                    2 -> "Practice"
+                    else -> "Laboratory"
+                },
                 fontWeight = FontWeight.Medium,
                 fontSize = 16.sp,
                 color = descriptionColor()
@@ -92,7 +101,7 @@ fun LessonItem(
                 .align(Alignment.Top)
                 .width(70.dp)
                 .padding(end = 2.dp),
-            content = "2/402",
+            content = item.audience,
             fontWeight = FontWeight.Medium,
             fontSize = 18.sp,
             maxLines = 1,
@@ -102,7 +111,10 @@ fun LessonItem(
     }
 }
 
-
+fun convertLocalTimeToString(time: LocalTime): String {
+    val formatter = DateTimeFormatter.ofPattern("hh:mm")
+    return time.format(formatter)
+}
 
 
 

@@ -1,6 +1,7 @@
 package com.sparkfusion.data.admin.source.schedule
 
 import com.sparkfusion.data.admin.entity.ScheduleDataEntity
+import com.sparkfusion.dataport.admin.portmagazine.entity.ReadLessonWithPassStatusEntity
 import com.sparkfusion.dataport.admin.portschedule.entity.AddScheduleEntity
 import com.sparkfusion.dataport.admin.portschedule.entity.ReadScheduleWithLessonsEntity
 import com.sparkfusion.dataport.admin.portschedule.entity.UpdateScheduleEntity
@@ -9,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.time.LocalDate
 
 interface ScheduleApiService {
 
@@ -21,6 +23,12 @@ interface ScheduleApiService {
     suspend fun readScheduleWithLessons(
         @Query("id") id: Int
     ): Response<ReadScheduleWithLessonsEntity>
+
+    @GET("/education/schedule/withPasses")
+    suspend fun readLessonsWithPassStatus(
+        @Query("groupMemberId") groupMemberId: Int,
+        @Query("date") date: LocalDate
+    ): Response<List<ReadLessonWithPassStatusEntity>>
 
     @POST("/education/schedule/current")
     suspend fun makeScheduleAsACurrent(

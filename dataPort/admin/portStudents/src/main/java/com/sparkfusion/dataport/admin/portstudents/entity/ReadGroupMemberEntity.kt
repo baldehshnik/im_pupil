@@ -1,12 +1,14 @@
 package com.sparkfusion.dataport.admin.portstudents.entity
 
+import com.sparkfusion.data.commonentity.CommonReadGroupMemberDataEntity
+
 data class ReadGroupMemberEntity(
-    val id: Int,
-    val firstname: String,
-    val lastname: String,
-    val patronymic: String,
-    val prefect: Boolean,
-    val code: String,
-    val pupil: PupilEntity?,
-    val educationPlaceDto: EducationPlaceEntity?
-)
+    override val id: Int,
+    override val firstname: String,
+    override val lastname: String,
+    override val patronymic: String,
+    override val prefect: Boolean,
+    override val code: String,
+    override val pupil: PupilEntity?,
+    override val educationPlaceDto: EducationPlaceEntity?
+): CommonReadGroupMemberDataEntity

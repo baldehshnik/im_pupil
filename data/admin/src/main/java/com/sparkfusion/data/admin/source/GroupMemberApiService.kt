@@ -10,6 +10,11 @@ import retrofit2.http.Query
 interface GroupMemberApiService {
 
     @GET("/education/group/member/all")
+    suspend fun readGroupMembersForMagazine(
+        @Query("groupId") groupId: Int
+    ): Response<List<com.sparkfusion.dataport.admin.portmagazine.entity.ReadGroupMemberEntity>>
+
+    @GET("/education/group/member/all")
     suspend fun readGroupMembers(
         @Query("groupId") groupId: Int
     ): Response<List<ReadGroupMemberEntity>>

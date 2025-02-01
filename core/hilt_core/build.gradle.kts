@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":domainAdminServices:students"))
     implementation(project(":domainAdminServices:exam"))
     implementation(project(":domainAdminServices:schedule"))
+    implementation(project(":domainAdminServices:magazine"))
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
