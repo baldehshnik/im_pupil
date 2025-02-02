@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 fun NavGraphBuilder.adminStatisticsService(navController: NavHostController) {
     statisticsTypeScreen(navController)
     statisticsGroupScreen(navController)
+    statisticsGroupPassesDestination(navController)
     statisticsStudentScreen(navController)
-    statisticsFacultiesScreen(navController)
     statisticsGroupSearchScreen(navController)
 }

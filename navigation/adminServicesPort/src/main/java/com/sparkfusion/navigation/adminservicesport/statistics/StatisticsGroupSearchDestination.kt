@@ -2,7 +2,7 @@ package com.sparkfusion.navigation.adminservicesport.statistics
 
 import com.sparkfusion.navigation.core.Destination
 
-object StatisticsFacultiesDestination : Destination() {
+object StatisticsGroupSearchDestination : Destination() {
     override val route: String
-        get() = "statistics faculties destination"
+        get() = "statistics group search destination"
 }

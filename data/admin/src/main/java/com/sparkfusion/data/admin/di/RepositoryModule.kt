@@ -11,6 +11,7 @@ import com.sparkfusion.data.admin.repository.institution.AdminInstitutionReposit
 import com.sparkfusion.data.admin.repository.magazine.MagazineRepository
 import com.sparkfusion.data.admin.repository.notification.AdminNotificationRepository
 import com.sparkfusion.data.admin.repository.schedule.ScheduleRepository
+import com.sparkfusion.data.admin.repository.statistics.StatisticsRepository
 import com.sparkfusion.data.admin.repository.students.StudentsServiceRepository
 import com.sparkfusion.dataPort.admin.portAuth.repository.IAdminAuthRepository
 import com.sparkfusion.dataPort.admin.portaccount.IAdminAccountRepository
@@ -23,6 +24,7 @@ import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEven
 import com.sparkfusion.dataport.admin.portmagazine.IMagazineRepository
 import com.sparkfusion.dataport.admin.portnotification.IAdminNotificationRepository
 import com.sparkfusion.dataport.admin.portschedule.IScheduleRepository
+import com.sparkfusion.dataport.admin.portstatistics.IStatisticsRepository
 import com.sparkfusion.dataport.admin.portstudents.repository.IStudentsServiceRepository
 import dagger.Binds
 import dagger.Module
@@ -70,6 +72,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindMagazineRepositoryToIMagazineRepository(magazineRepository: MagazineRepository): IMagazineRepository
+
+    @Binds
+    fun bindStatisticsRepositoryToIStatisticsRepository(statisticsRepository: StatisticsRepository): IStatisticsRepository
 }
 
 

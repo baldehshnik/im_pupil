@@ -15,6 +15,11 @@ interface GroupMemberApiService {
     ): Response<List<com.sparkfusion.dataport.admin.portmagazine.entity.ReadGroupMemberEntity>>
 
     @GET("/education/group/member/all")
+    suspend fun readGroupMembersForStatistics(
+        @Query("groupId") groupId: Int
+    ): Response<List<com.sparkfusion.dataport.admin.portstatistics.entity.ReadGroupMemberEntity>>
+
+    @GET("/education/group/member/all")
     suspend fun readGroupMembers(
         @Query("groupId") groupId: Int
     ): Response<List<ReadGroupMemberEntity>>

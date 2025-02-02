@@ -71,6 +71,7 @@ dependencies {
     implementation(project(":domainAdminServices:exam"))
     implementation(project(":domainAdminServices:schedule"))
     implementation(project(":domainAdminServices:magazine"))
+    implementation(project(":domainAdminServices:statistics"))
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))

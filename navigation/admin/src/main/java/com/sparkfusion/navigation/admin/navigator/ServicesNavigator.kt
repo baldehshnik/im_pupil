@@ -7,7 +7,7 @@ import com.sparkfusion.navigation.adminservicesport.practice.PracticeListDestina
 import com.sparkfusion.navigation.adminservicesport.schedule.ScheduleFacultiesDestination
 import com.sparkfusion.navigation.adminservicesport.sections.SectionsListDestination
 import com.sparkfusion.navigation.adminservicesport.session.SessionGroupTestsDestination
-import com.sparkfusion.navigation.adminservicesport.statistics.StatisticsFacultiesDestination
+import com.sparkfusion.navigation.adminservicesport.statistics.StatisticsGroupSearchDestination
 import com.sparkfusion.navigation.adminservicesport.students.StudentsFacultyDestination
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
 import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
@@ -30,7 +30,7 @@ class ServicesNavigator(private val navigator: INavigator) : IServicesNavigator 
     }
 
     override fun navigateToStatisticsService() {
-        navigator.navigateTo(StatisticsFacultiesDestination)
+        navigator.navigateTo(StatisticsGroupSearchDestination)
     }
 
     override fun navigateToAboutService() {
