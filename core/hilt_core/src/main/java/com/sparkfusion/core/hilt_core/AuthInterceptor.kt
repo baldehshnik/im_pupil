@@ -60,7 +60,11 @@ class AuthInterceptor @Inject constructor(
         "/education/schedule/lesson/passes/week",
         "/education/schedule/lesson/passes/month",
         "/education/schedule/lesson/passes/semester",
-        "/education/schedule/lesson/passes/group/month"
+        "/education/schedule/lesson/passes/group/month",
+        "/education/section/all",
+        "/education/section/create",
+        "/education/section/update",
+        "/education/section/"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {

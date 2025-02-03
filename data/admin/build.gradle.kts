@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":dataPort:admin:portSchedule"))
     implementation(project(":dataPort:admin:portMagazine"))
     implementation(project(":dataPort:admin:portStatistics"))
+    implementation(project(":dataPort:admin:portSections"))
 
     implementation(project(":data:base"))
     implementation(project(":data:common"))

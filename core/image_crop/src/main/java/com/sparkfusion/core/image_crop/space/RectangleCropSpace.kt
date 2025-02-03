@@ -18,7 +18,7 @@ fun RectangleCropSpace(
     onTransformChange: ((Offset) -> Unit)? = null
 ) {
     val initialScaleFactor = 1.5f
-    val minScale = calculateMinScale(image.width, image.height, cropWidth, cropHeight)
+    val minScale = calculateRectangleMinScale(image.width, image.height, cropWidth, cropHeight)
     val scale = remember { mutableFloatStateOf(minScale * initialScaleFactor) }
 
     CropSpaceBox(
@@ -34,7 +34,7 @@ fun RectangleCropSpace(
     )
 }
 
-private fun calculateMinScale(imageWidth: Int, imageHeight: Int, cropWidth: Float, cropHeight: Float): Float {
+internal fun calculateRectangleMinScale(imageWidth: Int, imageHeight: Int, cropWidth: Float, cropHeight: Float): Float {
     val minWidthScale = cropWidth / imageWidth.toFloat()
     val minHeightScale = cropHeight / imageHeight.toFloat()
     return maxOf(minWidthScale, minHeightScale)

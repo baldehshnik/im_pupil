@@ -25,10 +25,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.sparkfusion.core.image_crop.R
-import com.sparkfusion.core.image_crop.crop.BitmapSizeReducer
 import com.sparkfusion.core.image_crop.crop.ImageCropper
 import com.sparkfusion.core.image_crop.navigator.IImageCropNavigator
 import com.sparkfusion.core.image_crop.space.CircleCropSpace
+import com.sparkfusion.core.image_crop.space.DynamicRectangleCropSpace
 import com.sparkfusion.core.image_crop.space.RectangleCropSpace
 import com.sparkfusion.core.image_crop.type.ImageCropType
 import com.sparkfusion.core.resource.theme.backgroundDark
@@ -36,10 +36,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ImageCropScreen(
-    navController: IImageCropNavigator,
+    modifier: Modifier = Modifier,
     cropType: ImageCropType,
     bitmap: Bitmap,
-    modifier: Modifier = Modifier
+    navController: IImageCropNavigator,
 ) {
     val image = bitmap.asImageBitmap()
     val coroutineScope = rememberCoroutineScope()
@@ -56,10 +56,7 @@ fun ImageCropScreen(
 
     LaunchedEffect(croppedImage) {
         croppedImage?.let {
-            val reducer = BitmapSizeReducer(it.asAndroidBitmap())
-            navController.navigateToPreviousScreen(
-                reducer.compressImageToTargetSize() ?: return@let
-            )
+            navController.navigateToPreviousScreen(it.asAndroidBitmap())
         }
     }
 
@@ -68,32 +65,57 @@ fun ImageCropScreen(
             .fillMaxSize()
             .background(backgroundDark)
     ) {
-        val (cropWidth, cropHeight) = if (cropType == ImageCropType.RectangleCrop) {
-            val cropRectangleWidth = minOf(screenWidthPx, minSide)
-            val cropRectangleHeight = cropRectangleWidth * 2 / 3
+        val (cropWidth, cropHeight) = when (cropType) {
+            ImageCropType.RectangleCrop -> {
+                val cropRectangleWidth = minOf(screenWidthPx, minSide)
+                val cropRectangleHeight = cropRectangleWidth * 2 / 3
 
-            RectangleCropSpace(
-                modifier = Modifier.fillMaxSize(),
-                cropWidth = cropRectangleWidth,
-                cropHeight = cropRectangleHeight,
-                image = image,
-                onScaleChange = { scale = it },
-                onTransformChange = { transform = it }
-            )
+                RectangleCropSpace(
+                    modifier = Modifier.fillMaxSize(),
+                    cropWidth = cropRectangleWidth,
+                    cropHeight = cropRectangleHeight,
+                    image = image,
+                    onScaleChange = { scale = it },
+                    onTransformChange = { transform = it }
+                )
 
-            Pair(cropRectangleWidth, cropRectangleHeight)
-        } else {
-            val cropCircleDiameter = if (screenWidthPx < minSide) screenWidthPx else minSide
+                Pair(cropRectangleWidth, cropRectangleHeight)
+            }
 
-            CircleCropSpace(
-                modifier = Modifier.fillMaxSize(),
-                cropCircleDiameter = cropCircleDiameter,
-                image = image,
-                onScaleChange = { scale = it },
-                onTransformChange = { transform = it }
-            )
+            is ImageCropType.DynamicRectangleCrop -> {
+                val cropRectangleWidthDp = cropType.widthDp
+                val cropRectangleHeightDp = cropType.heightDp
 
-            Pair(cropCircleDiameter, cropCircleDiameter)
+                DynamicRectangleCropSpace(
+                    modifier = Modifier.fillMaxSize(),
+                    cropWidthDp = cropRectangleWidthDp,
+                    cropHeightDp = cropRectangleHeightDp,
+                    image = image,
+                    onScaleChange = { scale = it },
+                    onTransformChange = { transform = it }
+                )
+
+                with(LocalDensity.current) {
+                    Pair(
+                        cropRectangleWidthDp.toPx(),
+                        cropRectangleHeightDp.toPx()
+                    )
+                }
+            }
+
+            else -> {
+                val cropCircleDiameter = if (screenWidthPx < minSide) screenWidthPx else minSide
+
+                CircleCropSpace(
+                    modifier = Modifier.fillMaxSize(),
+                    cropCircleDiameter = cropCircleDiameter,
+                    image = image,
+                    onScaleChange = { scale = it },
+                    onTransformChange = { transform = it }
+                )
+
+                Pair(cropCircleDiameter, cropCircleDiameter)
+            }
         }
 
         ActionButton(

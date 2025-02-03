@@ -6,8 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.sparkfusion.core.image_crop.common.IMAGE_CROP_KEY
+import com.sparkfusion.core.image_crop.common.IMAGE_CROP_TYPE_KEY
 import com.sparkfusion.core.image_crop.screen.ImageCropScreen
 import com.sparkfusion.core.image_crop.type.ImageCropType
+import com.sparkfusion.core.image_crop.type.getImageCropType
 import com.sparkfusion.features.common.about.screen.AboutApplicationScreen
 import com.sparkfusion.features.common.filters.screen.FiltersScreen
 import com.sparkfusion.features.common.news.screen.NewsScreen
@@ -26,6 +28,7 @@ import com.sparkfusion.navigation.common.navigator.WelcomeNavigator
 import com.sparkfusion.navigation.common.navigator.crop.ImageCropNavigator
 import com.sparkfusion.navigation.commoncoreport.destination.AboutApplicationDestination
 import com.sparkfusion.navigation.commoncoreport.destination.CircleImageCropDestination
+import com.sparkfusion.navigation.commoncoreport.destination.DynamicRectangleCropDestination
 import com.sparkfusion.navigation.commoncoreport.destination.FiltersDestination
 import com.sparkfusion.navigation.commoncoreport.destination.NewsDestination
 import com.sparkfusion.navigation.commoncoreport.destination.RectangleImageCropDestination
@@ -63,7 +66,11 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
         val bitmap: Bitmap? =
             navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
         if (bitmap != null) {
-            ImageCropScreen(imageCropNavigator, ImageCropType.CircleCrop, bitmap)
+            ImageCropScreen(
+                navController = imageCropNavigator,
+                cropType = ImageCropType.CircleCrop,
+                bitmap = bitmap
+            )
         }
     }
 
@@ -71,7 +78,28 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
         val bitmap: Bitmap? =
             navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
         if (bitmap != null) {
-            ImageCropScreen(imageCropNavigator, ImageCropType.RectangleCrop, bitmap)
+            ImageCropScreen(
+                navController = imageCropNavigator,
+                cropType = ImageCropType.RectangleCrop,
+                bitmap = bitmap
+            )
+        }
+    }
+
+    composable(DynamicRectangleCropDestination.route) {
+        val bitmap: Bitmap? =
+            navController.previousBackStackEntry?.savedStateHandle?.get<Bitmap>(IMAGE_CROP_KEY)
+        val imageCropType =
+            navController.previousBackStackEntry?.savedStateHandle?.getImageCropType(
+                IMAGE_CROP_TYPE_KEY
+            )
+
+        if (bitmap != null && imageCropType != null) {
+            ImageCropScreen(
+                navController = imageCropNavigator,
+                cropType = imageCropType,
+                bitmap = bitmap
+            )
         }
     }
 
@@ -79,3 +107,24 @@ fun NavGraphBuilder.commonNavHost(navController: NavHostController) {
         passwordRecoveryNavHost(commonNavigator)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

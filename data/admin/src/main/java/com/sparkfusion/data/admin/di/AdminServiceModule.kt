@@ -4,6 +4,7 @@ import com.sparkfusion.data.admin.source.AdminAboutApiService
 import com.sparkfusion.data.admin.source.ExamApiService
 import com.sparkfusion.data.admin.source.GroupApiService
 import com.sparkfusion.data.admin.source.GroupMemberApiService
+import com.sparkfusion.data.admin.source.SectionApiService
 import com.sparkfusion.data.admin.source.schedule.LessonApiService
 import com.sparkfusion.data.admin.source.schedule.PassApiService
 import com.sparkfusion.data.admin.source.schedule.ScheduleApiService
@@ -58,6 +59,12 @@ object AdminServiceModule {
     @Provides
     fun providePassApiService(retrofit: Retrofit): PassApiService {
         return retrofit.create(PassApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSectionApiService(retrofit: Retrofit): SectionApiService {
+        return retrofit.create(SectionApiService::class.java)
     }
 }
 

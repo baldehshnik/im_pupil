@@ -11,6 +11,7 @@ import com.sparkfusion.data.admin.repository.institution.AdminInstitutionReposit
 import com.sparkfusion.data.admin.repository.magazine.MagazineRepository
 import com.sparkfusion.data.admin.repository.notification.AdminNotificationRepository
 import com.sparkfusion.data.admin.repository.schedule.ScheduleRepository
+import com.sparkfusion.data.admin.repository.section.SectionRepository
 import com.sparkfusion.data.admin.repository.statistics.StatisticsRepository
 import com.sparkfusion.data.admin.repository.students.StudentsServiceRepository
 import com.sparkfusion.dataPort.admin.portAuth.repository.IAdminAuthRepository
@@ -24,6 +25,7 @@ import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEven
 import com.sparkfusion.dataport.admin.portmagazine.IMagazineRepository
 import com.sparkfusion.dataport.admin.portnotification.IAdminNotificationRepository
 import com.sparkfusion.dataport.admin.portschedule.IScheduleRepository
+import com.sparkfusion.dataport.admin.portsections.ISectionsRepository
 import com.sparkfusion.dataport.admin.portstatistics.IStatisticsRepository
 import com.sparkfusion.dataport.admin.portstudents.repository.IStudentsServiceRepository
 import dagger.Binds
@@ -48,9 +50,7 @@ interface RepositoryModule {
     fun bindAdminDetailsRepositoryToIAdminDetailsRepository(adminDetailsRepository: AdminDetailsRepository): IAdminDetailsRepository
 
     @Binds
-    fun bindAdminInstitutionEventRepositoryToIAdminInstitutionEventRepository(
-        adminInstitutionEventRepository: AdminInstitutionEventRepository
-    ): IAdminInstitutionEventRepository
+    fun bindAdminInstitutionEventRepositoryToIAdminInstitutionEventRepository(adminInstitutionEventRepository: AdminInstitutionEventRepository): IAdminInstitutionEventRepository
 
     @Binds
     fun bindAdminNotificationRepositoryToIAdminNotificationRepository(adminNotificationRepository: AdminNotificationRepository): IAdminNotificationRepository
@@ -75,6 +75,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindStatisticsRepositoryToIStatisticsRepository(statisticsRepository: StatisticsRepository): IStatisticsRepository
+
+    @Binds
+    fun bindSectionRepositoryToISectionRepository(sectionRepository: SectionRepository): ISectionsRepository
 }
 
 
