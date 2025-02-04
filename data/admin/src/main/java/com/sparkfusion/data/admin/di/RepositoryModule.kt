@@ -10,6 +10,7 @@ import com.sparkfusion.data.admin.repository.institution.AdminInstitutionEventRe
 import com.sparkfusion.data.admin.repository.institution.AdminInstitutionRepository
 import com.sparkfusion.data.admin.repository.magazine.MagazineRepository
 import com.sparkfusion.data.admin.repository.notification.AdminNotificationRepository
+import com.sparkfusion.data.admin.repository.practice.PracticeRepository
 import com.sparkfusion.data.admin.repository.schedule.ScheduleRepository
 import com.sparkfusion.data.admin.repository.section.SectionRepository
 import com.sparkfusion.data.admin.repository.statistics.StatisticsRepository
@@ -24,6 +25,7 @@ import com.sparkfusion.dataport.admin.portexam.IExamRepository
 import com.sparkfusion.dataport.admin.portinstitutionevent.IAdminInstitutionEventRepository
 import com.sparkfusion.dataport.admin.portmagazine.IMagazineRepository
 import com.sparkfusion.dataport.admin.portnotification.IAdminNotificationRepository
+import com.sparkfusion.dataport.admin.portpractice.IPracticeRepository
 import com.sparkfusion.dataport.admin.portschedule.IScheduleRepository
 import com.sparkfusion.dataport.admin.portsections.ISectionsRepository
 import com.sparkfusion.dataport.admin.portstatistics.IStatisticsRepository
@@ -78,6 +80,9 @@ interface RepositoryModule {
 
     @Binds
     fun bindSectionRepositoryToISectionRepository(sectionRepository: SectionRepository): ISectionsRepository
+
+    @Binds
+    fun bindPracticeRepositoryToIPracticeRepository(practiceRepository: PracticeRepository): IPracticeRepository
 }
 
 
