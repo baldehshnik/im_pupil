@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadInstitutionUseCase @Inject constructor(
+internal class ReadInstitutionUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val institutionRepository: IAdminInstitutionRepository,
     private val institutionEntityMapper: InstitutionEntityMapper

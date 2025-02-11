@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.ReadLessonWithPassStat
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.ReadLessonWithPassStatusModel
 import javax.inject.Inject
 
-class ReadLessonWithPassStatusEntityMapper @Inject constructor(
+internal class ReadLessonWithPassStatusEntityMapper @Inject constructor(
     private val readLessonEntityMapper: ReadLessonEntityMapper,
     private val readPassEntityMapper: ReadPassEntityMapper
 ): Mapper<ReadLessonWithPassStatusEntity, ReadLessonWithPassStatusModel> {

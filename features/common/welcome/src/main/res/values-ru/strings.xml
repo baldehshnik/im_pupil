@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="select_your_role">Выберите вашу роль, пожалуйста</string>
+    <string name="administrator">Администратор</string>
+    <string name="pupil">Ученик</string>
+    <string name="or">Или</string>
+    <string name="verification">Подтверждение данных…</string>
+</resources>

@@ -7,7 +7,7 @@ import com.sparkfusion.portdomainservices.admin.portmagazine.model.UpdatePassesS
 import com.sparkfusion.portdomainservices.admin.portmagazine.usecase.IUpdatePassesOfGroupMemberUseCase
 import javax.inject.Inject
 
-class UpdatePassesOfGroupMemberUseCase @Inject constructor(
+internal class UpdatePassesOfGroupMemberUseCase @Inject constructor(
     private val magazineRepository: IMagazineRepository,
     private val updatePassesStatusModelMapper: UpdatePassesStatusModelMapper
 ): IUpdatePassesOfGroupMemberUseCase {

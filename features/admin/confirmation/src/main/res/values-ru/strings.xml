@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="code">Код - </string>
+    <string name="error">Ошибка</string>
+    <string name="confirmation">Подтверждение…</string>
+    <string name="are_you_sure">Вы уверены?</string>
+    <string name="really_want_confirm_pupil">Вы действительно хотите подтвердить регистрацию этого ученика?</string>
+    <string name="really_want_confirm_admin">Вы действительно хотите подтвердить регистрацию этого администратора?</string>
+    <string name="confirm">Подтвердить</string>
+</resources>

@@ -17,12 +17,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.domain.admin.port.portservices.ServiceDestination
+import com.sparkfusion.features.admin.services.R
 import com.sparkfusion.features.admin.services.navigator.IServicesNavigator
 import com.sparkfusion.features.admin.services.screen.component.AboutApplicationBlock
 import com.sparkfusion.features.admin.services.screen.component.NewsBlock
@@ -52,7 +54,7 @@ fun ServicesScreen(
 
             when (servicesState) {
                 AdminServicesViewModel.ServicesState.Error -> {
-                    ShowToast(value = "Error")
+                    ShowToast(value = stringResource(id = R.string.error))
                 }
 
                 AdminServicesViewModel.ServicesState.Initial -> {}
@@ -104,11 +106,11 @@ fun ServicesScreen(
 
             when (newsState) {
                 AdminServicesViewModel.NewsState.ConnectionError -> {
-                    ShowToast(value = "Connection error")
+                    ShowToast(value = stringResource(id = R.string.connection_error))
                 }
 
                 AdminServicesViewModel.NewsState.Error -> {
-                    ShowToast(value = "Error")
+                    ShowToast(value = stringResource(id = R.string.error))
                 }
 
                 AdminServicesViewModel.NewsState.Initial -> {}

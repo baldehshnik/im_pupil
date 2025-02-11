@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="access_mode">
+        <item>Администратор</item>
+        <item>Преподаватель</item>
+        <item>Помощник</item>
+    </string-array>
+</resources>

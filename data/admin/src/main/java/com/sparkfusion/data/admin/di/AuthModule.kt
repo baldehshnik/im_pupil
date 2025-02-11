@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AuthModule {
+internal object AuthModule {
 
     @Singleton
     @Provides
-    fun provideAuthApiService(retrofit: Retrofit): AuthApiService {
+    internal fun provideAuthApiService(retrofit: Retrofit): AuthApiService {
         return retrofit.create(AuthApiService::class.java)
     }
 }

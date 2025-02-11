@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="management">Управление</string>
+    <string name="name">Название</string>
+    <string name="address">Адрес</string>
+    <string name="phone">Номер телефона</string>
+    <string name="administrators">Администраторы</string>
+    <string name="show_more">Показать…</string>
+    <string name="hide">Скрыть</string>
+    <string name="favorites">Избранное</string>
+    <string name="no_favorites">Пока не добавлено ни одного избранного</string>
+    <string name="no_administrators">На данный момент администраторов, кроме вас, нет!</string>
+    <string name="failed_image_uploading">Не удалось обновить изображение.…</string>
+    <string name="error">Ошибка</string>
+    <string name="not_found">Не найдено</string>
+    <string name="assistant">Помощник</string>
+    <string name="teacher">Преподаватель</string>
+    <string name="administrator">Администратор</string>
+</resources>

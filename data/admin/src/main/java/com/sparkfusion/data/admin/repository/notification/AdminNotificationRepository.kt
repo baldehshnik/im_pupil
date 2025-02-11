@@ -13,7 +13,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminNotificationRepository @Inject constructor(
+internal class AdminNotificationRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val notificationApiService: NotificationApiService
 ): IAdminNotificationRepository {

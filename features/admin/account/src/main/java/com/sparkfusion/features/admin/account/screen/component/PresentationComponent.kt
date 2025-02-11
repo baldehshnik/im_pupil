@@ -1,7 +1,6 @@
 package com.sparkfusion.features.admin.account.screen.component
 
 import android.net.Uri
-import android.util.Log
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,14 +34,14 @@ import com.sparkfusion.features.admin.account.R
 import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 
 @Composable
-fun PresentationComponent(
+internal fun PresentationComponent(
     modifier: Modifier = Modifier,
     state: AccountViewModel.AccountState,
     launcher: ManagedActivityResultLauncher<String, Uri?>
 ) {
     when (state) {
         AccountViewModel.AccountState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
         }
 
         AccountViewModel.AccountState.Initial -> {}
@@ -51,7 +50,6 @@ fun PresentationComponent(
         }
 
         is AccountViewModel.AccountState.Success -> {
-            Log.i("TAGTAG", state.data.icon.toString())
             var isAccountImageLoadingCompleted by remember { mutableStateOf(false) }
             val accountImagePainter = rememberAsyncImagePainter(
                 model = state.data.icon,

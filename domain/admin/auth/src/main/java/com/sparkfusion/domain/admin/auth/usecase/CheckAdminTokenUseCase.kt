@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class CheckAdminTokenUseCase @Inject constructor(
+internal class CheckAdminTokenUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminAuthRepository: IAdminAuthRepository
 ): ICheckAdminTokenUseCase {

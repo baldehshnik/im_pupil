@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portpractice.entity.UpdateRelocationEntity
 import com.sparkfusion.portdomainservices.admin.portpractice.model.UpdateRelocationModel
 import javax.inject.Inject
 
-class UpdateRelocationModelMapper @Inject constructor(
+internal class UpdateRelocationModelMapper @Inject constructor(
 ) : Mapper<UpdateRelocationModel, UpdateRelocationEntity> {
 
     override suspend fun map(input: UpdateRelocationModel): UpdateRelocationEntity = with(input) {

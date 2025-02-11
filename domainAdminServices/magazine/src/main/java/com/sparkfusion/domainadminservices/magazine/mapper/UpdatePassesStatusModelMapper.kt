@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.UpdatePassesStatusEnti
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.UpdatePassesStatusModel
 import javax.inject.Inject
 
-class UpdatePassesStatusModelMapper @Inject constructor(
+internal class UpdatePassesStatusModelMapper @Inject constructor(
     private val updateInfoModelMapper: UpdateInfoModelMapper
 ) : Mapper<UpdatePassesStatusModel, UpdatePassesStatusEntity> {
 

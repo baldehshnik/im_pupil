@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ConfirmAdminUseCase @Inject constructor(
+internal class ConfirmAdminUseCase @Inject constructor(
     private val confirmationRepository: IConfirmationRepository
 ): IConfirmAdminUseCase {
 

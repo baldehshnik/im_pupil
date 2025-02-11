@@ -9,7 +9,7 @@ import com.sparkfusion.portdomainservices.admin.portmagazine.usecase.IReadPasses
 import java.time.LocalDate
 import javax.inject.Inject
 
-class ReadPassesUseCase @Inject constructor(
+internal class ReadPassesUseCase @Inject constructor(
     private val magazineRepository: IMagazineRepository,
     private val readGroupMemberWithPassesEntityMapper: ReadGroupMemberWithPassesEntityMapper
 ): IReadPassesUseCase {

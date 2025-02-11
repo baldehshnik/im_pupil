@@ -15,11 +15,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideImPupilDatabase(
+    internal fun provideImPupilDatabase(
         @ApplicationContext context: Context,
         callback: ServicesTableInitializer
     ): ImPupilDatabase {
@@ -34,7 +34,25 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideServicesDao(database: ImPupilDatabase): ServiceDao {
+    internal fun provideServicesDao(database: ImPupilDatabase): ServiceDao {
         return database.serviceDao
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

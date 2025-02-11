@@ -1,6 +1,7 @@
 package com.sparkfusion.data.common.di
 
 import com.sparkfusion.data.common.service.AboutApiService
+import com.sparkfusion.data.common.service.AppServicesApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,11 +11,17 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object ServiceModule {
+internal object ServiceModule {
 
     @Provides
     @Singleton
-    fun provideAboutApiService(retrofit: Retrofit): AboutApiService {
+    internal fun provideAppServicesApiService(retrofit: Retrofit): AppServicesApiService {
+        return retrofit.create(AppServicesApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideAboutApiService(retrofit: Retrofit): AboutApiService {
         return retrofit.create(AboutApiService::class.java)
     }
 }

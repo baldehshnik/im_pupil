@@ -5,7 +5,7 @@ import com.sparkfusion.dataPort.admin.portAuth.entity.JwtAuthenticationResponseE
 import com.sparkfusion.domain.admin.port.portauth.JwtAuthenticationModel
 import javax.inject.Inject
 
-class JwtAuthenticationResponseEntityMapper @Inject constructor(
+internal class JwtAuthenticationResponseEntityMapper @Inject constructor(
 ): Mapper<JwtAuthenticationResponseEntity, JwtAuthenticationModel> {
 
     override suspend fun map(input: JwtAuthenticationResponseEntity): JwtAuthenticationModel = with(input) {

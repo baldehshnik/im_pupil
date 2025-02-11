@@ -27,7 +27,7 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-interface UseCaseModule {
+internal interface UseCaseModule {
 
     @Binds
     fun bindCreateGroupUseCaseToICreateGroupUseCase(createGroupUseCase: CreateGroupUseCase): ICreateGroupUseCase

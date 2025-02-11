@@ -5,7 +5,7 @@ import com.sparkfusion.dataPort.admin.portaccount.AdminNewImageEntity
 import com.sparkfusion.domain.admin.port.portaccount.AdminNewImageModel
 import javax.inject.Inject
 
-class AdminNewImageEntityMapper @Inject constructor(
+internal class AdminNewImageEntityMapper @Inject constructor(
 ): Mapper<AdminNewImageEntity, AdminNewImageModel> {
 
     override suspend fun map(input: AdminNewImageEntity): AdminNewImageModel {

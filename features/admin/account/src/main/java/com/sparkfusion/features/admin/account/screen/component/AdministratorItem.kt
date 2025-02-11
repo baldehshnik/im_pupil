@@ -1,9 +1,12 @@
 package com.sparkfusion.features.admin.account.screen.component
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -14,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,11 +32,11 @@ import com.sparkfusion.domain.admin.port.portaccount.InstitutionAdminModel
 import com.sparkfusion.features.admin.account.R
 
 @Composable
-fun AdministratorItem(
+internal fun AdministratorItem(
     modifier: Modifier = Modifier,
-    isDarkModeEnabled: Boolean,
+    admin: InstitutionAdminModel,
     onMoreInfoClick: () -> Unit,
-    admin: InstitutionAdminModel
+    onItemClick: () -> Unit
 ) {
     var isImageLoadingCompleted by remember { mutableStateOf(false) }
     val painter = rememberAsyncImagePainter(
@@ -42,14 +46,17 @@ fun AdministratorItem(
     )
 
     Row(
-        modifier = modifier.padding(start = 24.dp, end = 24.dp, top = 8.dp, bottom = 4.dp),
+        modifier = modifier
+            .padding(start = 24.dp, end = 24.dp, top = 8.dp, bottom = 4.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .clickable { onItemClick() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         ShimmerImageBox(
             contentDescription = stringResource(R.string.another_administrator_image_description),
             size = DpSize(56.dp, 56.dp),
             painter = painter,
-            isDarkModeEnabled = isDarkModeEnabled,
+            isDarkModeEnabled = isSystemInDarkTheme(),
             isImageAnimationCompleted = isImageLoadingCompleted
         )
 
@@ -65,9 +72,9 @@ fun AdministratorItem(
 
             SFProRoundedText(
                 content = when (admin.accessMode) {
-                    1 -> "Assistant"
-                    2 -> "Teacher"
-                    else -> "Administrator"
+                    1 -> stringResource(id = R.string.assistant)
+                    2 -> stringResource(id = R.string.teacher)
+                    else -> stringResource(id = R.string.administrator)
                 },
                 fontWeight = FontWeight.Medium,
                 fontSize = 14.sp,

@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portinstitutionevent.AddInstitutionEventEn
 import com.sparkfusion.domain.admin.port.portpost.AddInstitutionEventModel
 import javax.inject.Inject
 
-class AddInstitutionEventModelMapper @Inject constructor(
+internal class AddInstitutionEventModelMapper @Inject constructor(
 ): Mapper<AddInstitutionEventModel, AddInstitutionEventEntity> {
 
     override suspend fun map(input: AddInstitutionEventModel): AddInstitutionEventEntity = with(input) {

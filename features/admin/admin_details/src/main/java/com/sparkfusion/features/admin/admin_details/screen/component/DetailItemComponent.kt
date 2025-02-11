@@ -21,7 +21,7 @@ import com.sparkfusion.core.resource.color.descriptionColor
 import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
-fun DetailItemComponent(
+internal fun DetailItemComponent(
     modifier: Modifier = Modifier,
     title: String,
     textContent: String,

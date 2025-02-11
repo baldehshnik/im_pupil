@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateExamUseCase @Inject constructor(
+internal class UpdateExamUseCase @Inject constructor(
     private val examRepository: IExamRepository,
     private val updateExamModelMapper: UpdateExamModelMapper
 ): IUpdateExamUseCase {

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="duration_types">
+        <item>Часы</item>
+        <item>Минуты</item>
+    </string-array>
+</resources>

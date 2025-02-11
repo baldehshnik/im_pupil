@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadGroupMembersForStatisticsUseCase @Inject constructor(
+internal class ReadGroupMembersForStatisticsUseCase @Inject constructor(
     private val statisticsRepository: IStatisticsRepository,
     private val readGroupMemberEntityMapper: ReadGroupMemberEntityMapper
 ): IReadGroupMembersForStatisticsUseCase {

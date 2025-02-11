@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.ReadGroupMemberEntity
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.ReadGroupMemberModel
 import javax.inject.Inject
 
-class ReadGroupMemberEntityMapper @Inject constructor(
+internal class ReadGroupMemberEntityMapper @Inject constructor(
 ): Mapper<ReadGroupMemberEntity, ReadGroupMemberModel> {
 
     override suspend fun map(input: ReadGroupMemberEntity): ReadGroupMemberModel = with(input) {

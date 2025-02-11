@@ -10,4 +10,26 @@
     <string name="favorites">Favorites</string>
     <string name="no_favorites">No favorites have been added yet</string>
     <string name="no_administrators">At the moment there are no administrators except you!</string>
+    <string name="failed_image_uploading">Failed image updating…</string>
+    <string name="error">Error</string>
+    <string name="not_found">Not found</string>
+    <string name="assistant">Assistant</string>
+    <string name="teacher">Teacher</string>
+    <string name="administrator">Administrator</string>
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

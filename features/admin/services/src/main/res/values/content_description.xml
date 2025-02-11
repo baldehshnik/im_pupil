@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_icon_description">Icon of settings button</string>
-    <string name="service_image_description">Image of service</string>
-    <string name="account_image_description">Image of current account</string>
-    <string name="news_image_description">Image of the news</string>
+    <string name="settings_icon_description" translatable="false">Icon of settings button</string>
+    <string name="service_image_description" translatable="false">Image of service</string>
+    <string name="account_image_description" translatable="false">Image of current account</string>
+    <string name="news_image_description" translatable="false">Image of the news</string>
 </resources>

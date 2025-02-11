@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstudents.entity.UpdateGroupEntity
 import com.sparkfusion.portdomainservices.admin.portstudents.model.UpdateGroupModel
 import javax.inject.Inject
 
-class UpdateGroupModelMapper @Inject constructor(
+internal class UpdateGroupModelMapper @Inject constructor(
     private val updateGroupMemberModelMapper: UpdateGroupMemberModelMapper
 ) : Mapper<UpdateGroupModel, UpdateGroupEntity> {
 

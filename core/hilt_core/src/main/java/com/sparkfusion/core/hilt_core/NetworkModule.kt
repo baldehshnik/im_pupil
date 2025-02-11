@@ -15,11 +15,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+internal object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
+    internal fun provideRetrofit(
         gsonConverterFactory: GsonConverterFactory,
         client: OkHttpClient
     ): Retrofit {
@@ -32,7 +32,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
+    internal fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(NetworkTimeout.CONNECTION.value, NetworkTimeout.CONNECTION.type)
             .writeTimeout(NetworkTimeout.WRITE.value, NetworkTimeout.WRITE.type)
@@ -42,13 +42,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory {
+    internal fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory {
         return GsonConverterFactory.create(gson)
     }
 
     @Provides
     @Singleton
-    fun provideGsonBuilder(): Gson {
+    internal fun provideGsonBuilder(): Gson {
         return GsonBuilder()
             .registerTypeAdapter(LocalDate::class.java, LocalDateConverter())
             .create()

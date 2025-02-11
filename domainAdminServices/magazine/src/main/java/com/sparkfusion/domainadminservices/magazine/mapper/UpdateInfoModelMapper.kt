@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.UpdateInfoEntity
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.UpdateInfoModel
 import javax.inject.Inject
 
-class UpdateInfoModelMapper @Inject constructor(
+internal class UpdateInfoModelMapper @Inject constructor(
 ) : Mapper<UpdateInfoModel, UpdateInfoEntity> {
 
     override suspend fun map(input: UpdateInfoModel): UpdateInfoEntity = with(input) {

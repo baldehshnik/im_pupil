@@ -11,7 +11,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadAboutBlocksUseCase @Inject constructor(
+internal class ReadAboutBlocksUseCase @Inject constructor(
     private val aboutRepository: IAboutRepository,
     private val adminInstitutionRepository: IAdminInstitutionRepository,
     private val readAboutEntityMapper: ReadAboutEntityMapper

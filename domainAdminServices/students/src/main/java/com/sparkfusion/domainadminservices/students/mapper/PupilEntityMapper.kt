@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstudents.entity.PupilEntity
 import com.sparkfusion.portdomainservices.admin.portstudents.model.PupilModel
 import javax.inject.Inject
 
-class PupilEntityMapper @Inject constructor(
+internal class PupilEntityMapper @Inject constructor(
 ) : Mapper<PupilEntity, PupilModel> {
 
     override suspend fun map(input: PupilEntity): PupilModel = with(input) {

@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeleteGroupUseCase @Inject constructor(
+internal class DeleteGroupUseCase @Inject constructor(
     private val studentsServiceRepository: IStudentsServiceRepository
 ): IDeleteGroupUseCase {
 

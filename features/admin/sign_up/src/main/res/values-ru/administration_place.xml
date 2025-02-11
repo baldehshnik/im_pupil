@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="administration_place">
+        <item>Университет</item>
+        <item>Колледж</item>
+    </string-array>
+</resources>

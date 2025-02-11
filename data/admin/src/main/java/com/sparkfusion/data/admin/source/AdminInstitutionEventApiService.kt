@@ -9,7 +9,7 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
 
-interface AdminInstitutionEventApiService {
+internal interface AdminInstitutionEventApiService {
 
     @DELETE("/education/event/delete/{id}")
     suspend fun deleteEventById(@Path("id") id: Int): Response<Unit>

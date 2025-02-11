@@ -5,4 +5,11 @@
     <string name="email">Email</string>
     <string name="phone">Phone</string>
     <string name="delete_administrator">Delete administrator</string>
+    <string name="error">Error</string>
+    <string name="deleting">Deleting…</string>
+    <string name="updating">Updating…</string>
+    <string name="success">Success</string>
+    <string name="assistant">Assistant</string>
+    <string name="teacher">Teacher</string>
+    <string name="administrator">Administrator</string>
 </resources>

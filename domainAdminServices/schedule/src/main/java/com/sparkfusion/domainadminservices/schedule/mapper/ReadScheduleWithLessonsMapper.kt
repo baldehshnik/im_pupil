@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portschedule.entity.ReadScheduleWithLesson
 import com.sparkfusion.portdomainservices.admin.portschedule.model.ReadScheduleWithLessonsModel
 import javax.inject.Inject
 
-class ReadScheduleWithLessonsMapper @Inject constructor(
+internal class ReadScheduleWithLessonsMapper @Inject constructor(
     private val readLessonEntityMapper: ReadLessonEntityMapper
 ): Mapper<ReadScheduleWithLessonsEntity, ReadScheduleWithLessonsModel> {
 

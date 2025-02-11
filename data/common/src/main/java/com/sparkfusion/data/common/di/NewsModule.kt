@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NewsModule {
+internal object NewsModule {
 
     @Provides
     @Singleton
-    fun provideNewsImPupilApiService(retrofit: Retrofit): NewsImPupilApiService {
+    internal fun provideNewsImPupilApiService(retrofit: Retrofit): NewsImPupilApiService {
         return retrofit.create(NewsImPupilApiService::class.java)
     }
 }

@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portpractice.entity.UpdatePracticeEntity
 import com.sparkfusion.portdomainservices.admin.portpractice.model.UpdatePracticeModel
 import javax.inject.Inject
 
-class UpdatePracticeModelMapper @Inject constructor(
+internal class UpdatePracticeModelMapper @Inject constructor(
     private val updateInformationBlockModelMapper: UpdateInformationBlockModelMapper,
     private val updateRelocationModelMapper: UpdateRelocationModelMapper
 ) : Mapper<UpdatePracticeModel, UpdatePracticeEntity> {

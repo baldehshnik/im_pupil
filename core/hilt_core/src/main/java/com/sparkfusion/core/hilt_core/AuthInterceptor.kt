@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AuthInterceptor @Inject constructor(
+internal class AuthInterceptor @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) : Interceptor {
 
@@ -67,7 +67,8 @@ class AuthInterceptor @Inject constructor(
         "/education/section/",
         "/education/practice/update",
         "/education/practice/register",
-        "/education/practice/"
+        "/education/practice/",
+        "/services"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {

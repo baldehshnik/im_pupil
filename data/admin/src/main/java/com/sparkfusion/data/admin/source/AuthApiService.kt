@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface AuthApiService {
+internal interface AuthApiService {
 
     @POST("/auth/admin/sign-up")
     suspend fun adminSignUp(@Body request: SignUpAdminEntity): Response<Unit>

@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadInstitutionEventUseCase @Inject constructor(
+internal class ReadInstitutionEventUseCase @Inject constructor(
     private val institutionEventRepository: IInstitutionEventRepository,
     private val institutionEventEntityMapper: InstitutionEventEntityMapper
 ): IReadInstitutionEventUseCase {

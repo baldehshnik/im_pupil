@@ -16,7 +16,7 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.portdomainservices.admin.portabout.AboutModel
 
 @Composable
-fun AboutInfoItem(
+internal fun AboutInfoItem(
     modifier: Modifier = Modifier,
     item: AboutModel
 ) {

@@ -11,7 +11,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadGroupByNamePartUseCase @Inject constructor(
+internal class ReadGroupByNamePartUseCase @Inject constructor(
     private val examRepository: IExamRepository,
     private val institutionRepository: IAdminInstitutionRepository,
     private val groupEntityMapper: GroupEntityMapper

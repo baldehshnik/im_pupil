@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abbreviation_button_description">Icon of abbreviation button to show or hide spinner list</string>
-    <string name="settings_button_description">Icon of settings button</string>
-    <string name="account_image_description">Image of account</string>
-    <string name="empty_administrators_image_description">Image showing that there are no administrators</string>
-    <string name="empty_favorite_posts_image_description">Image showing that there are no favorite posts</string>
-    <string name="change_account_image_button_description">Icon of account image changing button</string>
-    <string name="another_administrator_image_description">Image of another administrator account</string>
-    <string name="more_info_about_administrator_button_description">Icon of button that shows more info about another administrator</string>
-    <string name="delete_icon_button_description">Icon of button that delete post from favorite</string>
+    <string name="abbreviation_button_description" translatable="false">Icon of abbreviation button to show or hide spinner list</string>
+    <string name="settings_button_description" translatable="false">Icon of settings button</string>
+    <string name="account_image_description" translatable="false">Image of account</string>
+    <string name="empty_administrators_image_description" translatable="false">Image showing that there are no administrators</string>
+    <string name="empty_favorite_posts_image_description" translatable="false">Image showing that there are no favorite posts</string>
+    <string name="change_account_image_button_description" translatable="false">Icon of account image changing button</string>
+    <string name="another_administrator_image_description" translatable="false">Image of another administrator account</string>
+    <string name="more_info_about_administrator_button_description" translatable="false">Icon of button that shows more info about another administrator</string>
+    <string name="delete_icon_button_description" translatable="false">Icon of button that delete post from favorite</string>
 </resources>

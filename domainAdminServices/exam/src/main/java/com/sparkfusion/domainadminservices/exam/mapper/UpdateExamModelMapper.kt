@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portexam.UpdateExamEntity
 import com.sparkfusion.portdomainservices.admin.portexam.model.UpdateExamModel
 import javax.inject.Inject
 
-class UpdateExamModelMapper @Inject constructor(
+internal class UpdateExamModelMapper @Inject constructor(
 ): Mapper<UpdateExamModel, UpdateExamEntity> {
 
     override suspend fun map(input: UpdateExamModel): UpdateExamEntity = with(input) {

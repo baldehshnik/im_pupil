@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateNotificationStatusUseCase @Inject constructor(
+internal class UpdateNotificationStatusUseCase @Inject constructor(
     private val adminNotificationRepository: IAdminNotificationRepository
 ): IUpdateNotificationStatusUseCase {
 

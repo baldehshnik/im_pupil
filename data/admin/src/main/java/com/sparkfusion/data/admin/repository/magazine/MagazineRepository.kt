@@ -27,7 +27,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MagazineRepository @Inject constructor(
+internal class MagazineRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val institutionApiService: InstitutionApiService,
     private val groupMemberApiService: GroupMemberApiService,

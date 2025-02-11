@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstatistics.entity.ReadGroupMemberEntit
 import com.sparkfusion.portdomainservices.admin.portstatistics.model.ReadGroupMemberModel
 import javax.inject.Inject
 
-class ReadGroupMemberEntityMapper @Inject constructor(
+internal class ReadGroupMemberEntityMapper @Inject constructor(
     private val pupilEntityMapper: PupilEntityMapper
 ): Mapper<ReadGroupMemberEntity, ReadGroupMemberModel> {
 

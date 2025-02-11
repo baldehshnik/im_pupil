@@ -44,7 +44,7 @@ fun NotificationsScreen(
 
     when (readingState) {
         NotificationsViewModel.ReadingState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
         }
 
         NotificationsViewModel.ReadingState.Initial -> {}
@@ -71,7 +71,7 @@ fun NotificationsScreen(
                     ) {
                         SFProRoundedText(
                             modifier = Modifier.padding(bottom = 4.dp),
-                            content = "Unread",
+                            content = stringResource(id = R.string.unread),
                             fontWeight = FontWeight.Bold,
                             fontSize = 18.sp,
                             color = MaterialTheme.colorScheme.primary
@@ -104,7 +104,7 @@ fun NotificationsScreen(
                     ) {
                         SFProRoundedText(
                             modifier = Modifier.padding(top = 24.dp, bottom = 4.dp),
-                            content = "Read",
+                            content = stringResource(id = R.string.read),
                             fontWeight = FontWeight.Bold,
                             fontSize = 18.sp,
                             color = Color.Gray

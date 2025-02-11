@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstudents.entity.CreateGroupMemberEntit
 import com.sparkfusion.portdomainservices.admin.portstudents.model.CreateGroupMemberModel
 import javax.inject.Inject
 
-class CreateGroupMemberModelMapper @Inject constructor(
+internal class CreateGroupMemberModelMapper @Inject constructor(
 ): Mapper<CreateGroupMemberModel, CreateGroupMemberEntity> {
 
     override suspend fun map(input: CreateGroupMemberModel): CreateGroupMemberEntity = with(input) {

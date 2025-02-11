@@ -12,15 +12,12 @@ import com.sparkfusion.dataPort.admin.portaccount.AdminNewImageEntity
 import com.sparkfusion.dataPort.admin.portaccount.IAdminAccountRepository
 import com.sparkfusion.dataPort.admin.portaccount.InstitutionAdminEntity
 import kotlinx.coroutines.CoroutineDispatcher
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminAccountRepository @Inject constructor(
+internal class AdminAccountRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val accountApiService: AccountApiService,
     private val fileToMultipartWorker: FileToMultipartWorker

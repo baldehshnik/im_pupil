@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeletePracticeByIdUseCase @Inject constructor(
+internal class DeletePracticeByIdUseCase @Inject constructor(
     private val practiceRepository: IPracticeRepository
 ): IDeletePracticeByIdUseCase {
 

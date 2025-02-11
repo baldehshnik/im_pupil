@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadAdminAccountUseCase @Inject constructor(
+internal class ReadAdminAccountUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminAccountRepository: IAdminAccountRepository,
     private val adminEntityMapper: AdminEntityMapper

@@ -18,59 +18,59 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AdminServiceModule {
+internal object AdminServiceModule {
 
     @Singleton
     @Provides
-    fun provideAdminAboutApiService(retrofit: Retrofit): AdminAboutApiService {
+    internal fun provideAdminAboutApiService(retrofit: Retrofit): AdminAboutApiService {
         return retrofit.create(AdminAboutApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideGroupApiService(retrofit: Retrofit): GroupApiService {
+    internal fun provideGroupApiService(retrofit: Retrofit): GroupApiService {
         return retrofit.create(GroupApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideGroupMemberApiService(retrofit: Retrofit): GroupMemberApiService {
+    internal fun provideGroupMemberApiService(retrofit: Retrofit): GroupMemberApiService {
         return retrofit.create(GroupMemberApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideExamApiService(retrofit: Retrofit): ExamApiService {
+    internal fun provideExamApiService(retrofit: Retrofit): ExamApiService {
         return retrofit.create(ExamApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideLessonApiService(retrofit: Retrofit): LessonApiService {
+    internal fun provideLessonApiService(retrofit: Retrofit): LessonApiService {
         return retrofit.create(LessonApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideScheduleApiService(retrofit: Retrofit): ScheduleApiService {
+    internal fun provideScheduleApiService(retrofit: Retrofit): ScheduleApiService {
         return retrofit.create(ScheduleApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun providePassApiService(retrofit: Retrofit): PassApiService {
+    internal fun providePassApiService(retrofit: Retrofit): PassApiService {
         return retrofit.create(PassApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideSectionApiService(retrofit: Retrofit): SectionApiService {
+    internal fun provideSectionApiService(retrofit: Retrofit): SectionApiService {
         return retrofit.create(SectionApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun providePracticeApiService(retrofit: Retrofit): PracticeApiService {
+    internal fun providePracticeApiService(retrofit: Retrofit): PracticeApiService {
         return retrofit.create(PracticeApiService::class.java)
     }
 }

@@ -5,7 +5,7 @@ import com.sparkfusion.dataPort.admin.portaccount.AdminEntity
 import com.sparkfusion.domain.admin.port.portaccount.AdminAccountModel
 import javax.inject.Inject
 
-class AdminEntityMapper @Inject constructor(
+internal class AdminEntityMapper @Inject constructor(
 ) : Mapper<AdminEntity, AdminAccountModel> {
 
     override suspend fun map(input: AdminEntity): AdminAccountModel = with(input) {

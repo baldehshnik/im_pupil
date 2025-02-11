@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
-fun AccountScreenBlock(
+internal fun AccountScreenBlock(
     modifier: Modifier = Modifier,
     shape: RoundedCornerShape = RoundedCornerShape(30.dp),
     title: String,

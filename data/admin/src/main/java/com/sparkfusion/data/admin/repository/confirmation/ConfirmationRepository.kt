@@ -14,7 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ConfirmationRepository @Inject constructor(
+internal class ConfirmationRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val confirmationApiService: ConfirmationApiService
 ): IConfirmationRepository {

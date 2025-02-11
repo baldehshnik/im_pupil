@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portpractice.entity.InformationBlockEntity
 import com.sparkfusion.portdomainservices.admin.portpractice.model.InformationBlockModel
 import javax.inject.Inject
 
-class InformationBlockModelMapper @Inject constructor(
+internal class InformationBlockModelMapper @Inject constructor(
 ): Mapper<InformationBlockModel, InformationBlockEntity> {
 
     override suspend fun map(input: InformationBlockModel): InformationBlockEntity = with(input) {

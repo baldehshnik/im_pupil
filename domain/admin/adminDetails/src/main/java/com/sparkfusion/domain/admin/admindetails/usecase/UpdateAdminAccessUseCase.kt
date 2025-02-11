@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateAdminAccessUseCase @Inject constructor(
+internal class UpdateAdminAccessUseCase @Inject constructor(
     private val adminDetailsRepository: IAdminDetailsRepository
 ): IUpdateAdminAccessUseCase {
 

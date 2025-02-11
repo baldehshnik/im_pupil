@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,6 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
+import com.sparkfusion.features.admin.confirmation.R
 import com.sparkfusion.features.admin.confirmation.navigator.IAdminConfirmationNavigator
 import com.sparkfusion.features.admin.confirmation.viewModel.AdminConfirmationViewModel
 
@@ -52,13 +54,13 @@ fun AdminConfirmationScreen(
 
     when (confirmState) {
         AdminConfirmationViewModel.ConfirmState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
             viewModel.clearConfirmState()
         }
 
         AdminConfirmationViewModel.ConfirmState.Initial -> {}
         AdminConfirmationViewModel.ConfirmState.Progress -> {
-            ShowToast(value = "Confirmation...")
+            ShowToast(value = stringResource(id = R.string.confirmation))
         }
     }
 
@@ -71,14 +73,14 @@ fun AdminConfirmationScreen(
             onDismissRequest = { showDialog = false },
             title = {
                 SFProRoundedText(
-                    content = "Are you sure?",
+                    content = stringResource(id = R.string.are_you_sure),
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
                 )
             },
             text = {
                 SFProRoundedText(
-                    content = "Do you really want to confirm the registration of this administrator?",
+                    content = stringResource(id = R.string.really_want_confirm_admin),
                     fontWeight = FontWeight.Medium
                 )
             },
@@ -93,7 +95,7 @@ fun AdminConfirmationScreen(
                         showDialog = false
                     }
                 ) {
-                    SFProRoundedText(content = "Confirm")
+                    SFProRoundedText(content = stringResource(id = R.string.confirm))
                 }
             },
             modifier = Modifier.padding(16.dp)
@@ -127,7 +129,7 @@ fun AdminConfirmationScreen(
 
         when (readingState) {
             AdminConfirmationViewModel.ReadingState.Error -> {
-                item { ShowToast(value = "Error") }
+                item { ShowToast(value = stringResource(id = R.string.error)) }
                 viewModel.clearReadingState()
             }
 

@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadAdminDetailsUseCase @Inject constructor(
+internal class ReadAdminDetailsUseCase @Inject constructor(
     private val readIAdminDetailsRepository: IAdminDetailsRepository,
     private val adminDetailsEntityMapper: AdminDetailsEntityMapper
 ): IReadAdminDetailsUseCase {

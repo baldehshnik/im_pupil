@@ -5,7 +5,7 @@ import com.sparkfusion.dataPort.admin.portAuth.entity.EducationalInstitutionEnti
 import com.sparkfusion.domain.admin.port.portauth.InstitutionModel
 import javax.inject.Inject
 
-class EducationInstitutionEntityMapper @Inject constructor(
+internal class EducationInstitutionEntityMapper @Inject constructor(
 ) : Mapper<EducationalInstitutionEntity, InstitutionModel> {
 
     override suspend fun map(input: EducationalInstitutionEntity): InstitutionModel = with(input) {

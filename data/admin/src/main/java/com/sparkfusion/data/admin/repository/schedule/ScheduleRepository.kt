@@ -22,7 +22,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ScheduleRepository @Inject constructor(
+internal class ScheduleRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val scheduleApiService: ScheduleApiService,
     private val lessonApiService: LessonApiService,

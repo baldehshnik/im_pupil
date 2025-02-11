@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.sparkfusion.features.admin.account.R
 
 @Composable
-fun ManagementComponent(
+internal fun ManagementComponent(
     modifier: Modifier = Modifier,
     name: String,
     address: String,

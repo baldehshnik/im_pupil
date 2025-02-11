@@ -14,7 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class InstitutionEventRepository @Inject constructor(
+internal class InstitutionEventRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val institutionEventApiService: InstitutionEventApiService,
     private val institutionEventDataEntityMapper: InstitutionEventDataEntityMapper

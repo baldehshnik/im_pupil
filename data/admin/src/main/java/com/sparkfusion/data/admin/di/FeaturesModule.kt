@@ -9,7 +9,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface FeaturesModule {
+internal interface FeaturesModule {
 
     @Binds
     fun bindAdminServicesRepositoryToIAdminServicesRepository(

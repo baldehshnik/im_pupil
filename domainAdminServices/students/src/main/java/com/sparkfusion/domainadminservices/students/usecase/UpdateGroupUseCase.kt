@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateGroupUseCase @Inject constructor(
+internal class UpdateGroupUseCase @Inject constructor(
     private val studentsServiceRepository: IStudentsServiceRepository,
     private val updateGroupModelMapper: UpdateGroupModelMapper
 ) : IUpdateGroupUseCase {

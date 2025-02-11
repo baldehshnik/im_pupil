@@ -12,7 +12,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 import java.time.LocalDate
 
-interface ScheduleApiService {
+internal interface ScheduleApiService {
 
     @GET("/education/schedule/all")
     suspend fun readScheduleByGroupId(

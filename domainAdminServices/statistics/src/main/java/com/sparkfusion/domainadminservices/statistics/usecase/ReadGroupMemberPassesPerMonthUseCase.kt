@@ -10,7 +10,7 @@ import java.time.LocalDate
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadGroupMemberPassesPerMonthUseCase @Inject constructor(
+internal class ReadGroupMemberPassesPerMonthUseCase @Inject constructor(
     private val statisticsRepository: IStatisticsRepository,
     private val readFullPassEntityMapper: ReadFullPassEntityMapper
 ) : IReadGroupMemberPassesPerMonthUseCase {

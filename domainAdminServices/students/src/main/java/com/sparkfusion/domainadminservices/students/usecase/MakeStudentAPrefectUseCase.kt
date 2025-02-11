@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class MakeStudentAPrefectUseCase @Inject constructor(
+internal class MakeStudentAPrefectUseCase @Inject constructor(
     private val studentsServiceRepository: IStudentsServiceRepository
 ): IMakeStudentAPrefectUseCase {
 

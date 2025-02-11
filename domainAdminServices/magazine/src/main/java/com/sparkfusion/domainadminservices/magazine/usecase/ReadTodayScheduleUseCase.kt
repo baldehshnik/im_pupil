@@ -8,7 +8,7 @@ import com.sparkfusion.portdomainservices.admin.portmagazine.usecase.IReadTodayS
 import java.time.LocalDate
 import javax.inject.Inject
 
-class ReadTodayScheduleUseCase @Inject constructor(
+internal class ReadTodayScheduleUseCase @Inject constructor(
     private val magazineRepository: IMagazineRepository,
     private val readLessonEntityMapper: ReadLessonEntityMapper
 ): IReadTodayScheduleUseCase {

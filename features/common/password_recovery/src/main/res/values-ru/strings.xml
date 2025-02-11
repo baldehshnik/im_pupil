@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password_recovery">Восстановление пароля</string>
+    <string name="email">Почта</string>
+    <string name="enter_here">Введите здесь…</string>
+    <string name="email_enter_description_info">На этот адрес электронной почты будет отправлен код, необходимый для подтверждения права собственности на аккаунт.</string>
+    <string name="request_code">Запросить код</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="confirmation_code">Код подтверждения</string>
+    <string name="code_enter_description_info">Если код не пришел или произошла ошибка. Вернитесь на предыдущую страницу и повторите операцию!</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_password">Подтвердить пароль</string>
+    <string name="restore">Восстановить</string>
+</resources>

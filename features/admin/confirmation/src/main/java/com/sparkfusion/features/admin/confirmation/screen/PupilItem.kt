@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -20,6 +21,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.sparkfusion.core.widget.image.ShimmerImageBox
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.domain.admin.port.portconfirmation.PupilModel
+import com.sparkfusion.features.admin.confirmation.R
 import com.sparkfusion.features.admin.confirmation.utils.PUPIL_ICON_URL
 
 @Composable
@@ -57,7 +59,7 @@ fun PupilItem(
                 .align(Alignment.Top)
         ) {
             SFProRoundedText(
-                content = "Code - ${pupil.code}",
+                content = stringResource(id = R.string.code) + pupil.code,
                 fontWeight = FontWeight.SemiBold,
             )
         }

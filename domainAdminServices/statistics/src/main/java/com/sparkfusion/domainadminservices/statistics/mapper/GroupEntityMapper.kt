@@ -5,7 +5,7 @@ import com.sparkfusion.data.commonentity.CommonGroupDataEntity
 import com.sparkfusion.portdomainservices.admin.portstatistics.model.GroupModel
 import javax.inject.Inject
 
-class GroupEntityMapper @Inject constructor(
+internal class GroupEntityMapper @Inject constructor(
 ): Mapper<CommonGroupDataEntity, GroupModel> {
 
     override suspend fun map(input: CommonGroupDataEntity): GroupModel = with(input) {

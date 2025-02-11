@@ -1,7 +1,6 @@
 package com.sparkfusion.data.admin.repository.statistics
 
 import com.sparkfusion.core.common.api.ApiListResponseHandler
-import com.sparkfusion.core.common.api.ApiResponseHandler
 import com.sparkfusion.core.common.api.safeApiCall
 import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.core.common.result.Answer
@@ -19,7 +18,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StatisticsRepository @Inject constructor(
+internal class StatisticsRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val groupMemberApiService: GroupMemberApiService,
     private val passApiService: PassApiService,

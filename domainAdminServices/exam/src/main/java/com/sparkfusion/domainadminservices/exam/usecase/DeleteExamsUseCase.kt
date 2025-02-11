@@ -8,7 +8,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeleteExamsUseCase @Inject constructor(
+internal class DeleteExamsUseCase @Inject constructor(
     private val examRepository: IExamRepository
 ): IDeleteExamsUseCase {
 

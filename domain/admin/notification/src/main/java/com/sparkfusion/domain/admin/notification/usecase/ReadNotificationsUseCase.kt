@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadNotificationsUseCase @Inject constructor(
+internal class ReadNotificationsUseCase @Inject constructor(
     private val adminNotificationRepository: IAdminNotificationRepository,
     private val notificationEntityMapper: NotificationEntityMapper
 ): IReadNotificationsUseCase {

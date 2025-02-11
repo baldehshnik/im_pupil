@@ -7,7 +7,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface GroupMemberApiService {
+internal interface GroupMemberApiService {
 
     @GET("/education/group/member/all")
     suspend fun readGroupMembersForMagazine(

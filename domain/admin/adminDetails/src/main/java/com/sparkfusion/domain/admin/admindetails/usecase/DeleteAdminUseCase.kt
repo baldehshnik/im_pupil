@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeleteAdminUseCase @Inject constructor(
+internal class DeleteAdminUseCase @Inject constructor(
     private val adminDetailsRepository: IAdminDetailsRepository
 ): IDeleteAdminUseCase {
 

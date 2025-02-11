@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sparkfusion.core.widget.text.SFProRoundedText
@@ -20,7 +20,7 @@ import com.sparkfusion.services.admin.about.R
 import com.sparkfusion.services.admin.about.model.EditAboutBlockModel
 
 @Composable
-fun AddBlockItem(
+internal fun AddBlockItem(
     modifier: Modifier = Modifier,
     item: EditAboutBlockModel,
     onValueChange: (String) -> Unit,
@@ -39,7 +39,7 @@ fun AddBlockItem(
                 .clickable { onImageClick() },
             model = item.bitmap ?: item.icon ?: R.drawable.new_image_icon,
             contentDescription = null,
-            contentScale = if (item.bitmap == null && item.icon == null) ContentScale.Crop else ContentScale.None
+            contentScale = if (item.bitmap == null && item.icon == null) ContentScale.Crop else ContentScale.FillBounds
         )
 
         OutlinedTextField(
@@ -52,7 +52,7 @@ fun AddBlockItem(
             onValueChange = onValueChange,
             placeholder = {
                 SFProRoundedText(
-                    content = "Enter info here..."
+                    content = stringResource(id = R.string.enter_here)
                 )
             }
         )

@@ -5,7 +5,7 @@ import com.sparkfusion.data.commonentity.CommonEducationPlaceDataEntity
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.EducationPlaceModel
 import javax.inject.Inject
 
-class EducationPlaceEntityMapper @Inject constructor(
+internal class EducationPlaceEntityMapper @Inject constructor(
 ): Mapper<CommonEducationPlaceDataEntity, EducationPlaceModel> {
 
     override suspend fun map(input: CommonEducationPlaceDataEntity): EducationPlaceModel = with(input) {

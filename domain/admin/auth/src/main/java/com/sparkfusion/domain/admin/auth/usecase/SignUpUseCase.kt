@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class SignUpUseCase @Inject constructor(
+internal class SignUpUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminAuthRepository: IAdminAuthRepository,
     private val signUpModelMapper: SignUpModelMapper

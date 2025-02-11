@@ -13,29 +13,29 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object InstitutionModule {
+internal object InstitutionModule {
 
     @Provides
     @Singleton
-    fun provideInstitutionApiService(retrofit: Retrofit): InstitutionApiService {
+    internal fun provideInstitutionApiService(retrofit: Retrofit): InstitutionApiService {
         return retrofit.create(InstitutionApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideAdminInstitutionEventApiService(retrofit: Retrofit): AdminInstitutionEventApiService {
+    internal fun provideAdminInstitutionEventApiService(retrofit: Retrofit): AdminInstitutionEventApiService {
         return retrofit.create(AdminInstitutionEventApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideNotificationApiService(retrofit: Retrofit): NotificationApiService {
+    internal fun provideNotificationApiService(retrofit: Retrofit): NotificationApiService {
         return retrofit.create(NotificationApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideConfirmationApiService(retrofit: Retrofit): ConfirmationApiService {
+    internal fun provideConfirmationApiService(retrofit: Retrofit): ConfirmationApiService {
         return retrofit.create(ConfirmationApiService::class.java)
     }
 }

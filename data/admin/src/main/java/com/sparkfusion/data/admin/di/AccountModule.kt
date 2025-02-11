@@ -10,11 +10,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AccountModule {
+internal object AccountModule {
 
     @Provides
     @Singleton
-    fun provideAccountApiService(retrofit: Retrofit): AccountApiService {
+    internal fun provideAccountApiService(retrofit: Retrofit): AccountApiService {
         return retrofit.create(AccountApiService::class.java)
     }
 }

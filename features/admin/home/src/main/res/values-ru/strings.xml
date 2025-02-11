@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hi_with_name">Привет, %1$s</string>
+    <string name="congratulations">Поздравляем.</string>
+    <string name="you_are_now_with_us">Теперь вы с нами!</string>
+    <string name="now_you_can_see_description">Теперь вы можете использовать все возможности нашего приложения: отслеживать отсутствия, создавать свежие новости, просматривать текущие групповые мероприятия и многое другое!</string>
+    <string name="delete">Удалить</string>
+    <string name="error">Ошибка</string>
+    <string name="deleting">Удаление…</string>
+    <string name="event_deleted">Событие удалено</string>
+</resources>

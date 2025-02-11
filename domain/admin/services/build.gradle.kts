@@ -39,6 +39,7 @@ dependencies {
     implementation(project(":core:common"))
 
     implementation(project(":dataPort:admin:portServices"))
+    implementation(project(":dataPort:common:portServices"))
 
     implementation(project(":data:commonEntity"))
 

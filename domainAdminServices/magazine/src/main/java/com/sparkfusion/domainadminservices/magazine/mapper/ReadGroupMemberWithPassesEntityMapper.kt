@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.ReadGroupMemberWithPas
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.ReadGroupMemberWithPassesModel
 import javax.inject.Inject
 
-class ReadGroupMemberWithPassesEntityMapper @Inject constructor(
+internal class ReadGroupMemberWithPassesEntityMapper @Inject constructor(
     private val readGroupMemberEntityMapper: ReadGroupMemberEntityMapper,
     private val readPassEntityMapper: ReadPassEntityMapper
 ): Mapper<ReadGroupMemberWithPassesEntity, ReadGroupMemberWithPassesModel> {

@@ -8,7 +8,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateAboutBlockUseCase @Inject constructor(
+internal class UpdateAboutBlockUseCase @Inject constructor(
     private val adminAboutRepository: IAdminAboutRepository
 ) : IUpdateAboutBlockUseCase {
 

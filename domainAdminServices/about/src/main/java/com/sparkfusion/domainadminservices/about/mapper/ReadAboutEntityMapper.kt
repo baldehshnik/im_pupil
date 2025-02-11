@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.common.portabout.ReadAboutEntity
 import com.sparkfusion.portdomainservices.admin.portabout.AboutModel
 import javax.inject.Inject
 
-class ReadAboutEntityMapper @Inject constructor(
+internal class ReadAboutEntityMapper @Inject constructor(
 ) : Mapper<ReadAboutEntity, AboutModel> {
 
     override suspend fun map(input: ReadAboutEntity): AboutModel = with(input) {

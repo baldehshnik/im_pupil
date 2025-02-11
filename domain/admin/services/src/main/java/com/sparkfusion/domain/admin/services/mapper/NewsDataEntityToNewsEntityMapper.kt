@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class NewsDataEntityToNewsEntityMapper @Inject constructor(
+internal class NewsDataEntityToNewsEntityMapper @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher
 ) : Mapper<CommonNewsDataEntity, NewsEntity> {
 

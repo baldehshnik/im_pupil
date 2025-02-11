@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portschedule.entity.UpdateScheduleEntity
 import com.sparkfusion.portdomainservices.admin.portschedule.model.UpdateScheduleModel
 import javax.inject.Inject
 
-class UpdateScheduleModelMapper @Inject constructor(
+internal class UpdateScheduleModelMapper @Inject constructor(
     private val updateLessonModelMapper: UpdateLessonModelMapper
 ) : Mapper<UpdateScheduleModel, UpdateScheduleEntity> {
 

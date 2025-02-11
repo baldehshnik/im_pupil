@@ -10,7 +10,7 @@ import java.io.File
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateAccountImageUseCase @Inject constructor(
+internal class UpdateAccountImageUseCase @Inject constructor(
     private val adminAccountRepository: IAdminAccountRepository,
     private val adminNewImageEntityMapper: AdminNewImageEntityMapper
 ): IUpdateAccountImageUseCase {

@@ -10,7 +10,7 @@ import java.time.LocalDate
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadExamsUseCase @Inject constructor(
+internal class ReadExamsUseCase @Inject constructor(
     private val examRepository: IExamRepository,
     private val readExamEntityMapper: ReadExamEntityMapper
 ) : IReadExamsUseCase {

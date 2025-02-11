@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class AdminSignInUseCase @Inject constructor(
+internal class AdminSignInUseCase @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminAuthRepository: IAdminAuthRepository,
     private val signInModelMapper: SignInModelMapper,

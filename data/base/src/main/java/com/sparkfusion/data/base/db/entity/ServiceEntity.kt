@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-const val SERVICES_TABLE = "services"
+internal const val SERVICES_TABLE = "services"
 
 @Entity(
     tableName = SERVICES_TABLE,

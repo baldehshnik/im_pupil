@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">About</string>
+    <string name="error">Error</string>
+    <string name="enter_here">Enter here…</string>
+    <string name="updating">Updating…</string>
+    <string name="edit">Edit</string>
+    <string name="edit_info_text">There are two ways to describe: adding an image and adding a text description. This is done using blocks, the number of which is as many as you wish. You can combine text and image, or add just one option (empty blocks will not be added).</string>
+    <string name="add_block">Add block</string>
+</resources>

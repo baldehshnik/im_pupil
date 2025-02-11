@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portmagazine.entity.ReadPassEntity
 import com.sparkfusion.portdomainservices.admin.portmagazine.model.ReadPassModel
 import javax.inject.Inject
 
-class ReadPassEntityMapper @Inject constructor(
+internal class ReadPassEntityMapper @Inject constructor(
 ): Mapper<ReadPassEntity, ReadPassModel> {
 
     override suspend fun map(input: ReadPassEntity): ReadPassModel = with(input) {

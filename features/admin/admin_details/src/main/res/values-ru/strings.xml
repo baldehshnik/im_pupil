@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="details">Подробнее</string>
+    <string name="job_title">Должность</string>
+    <string name="email">Почта</string>
+    <string name="phone">Номер телефона</string>
+    <string name="delete_administrator">Удалить администратора</string>
+    <string name="error">Ошибка</string>
+    <string name="deleting">Удаление…</string>
+    <string name="updating">Обновление…</string>
+    <string name="success">Успешно!</string>
+    <string name="assistant">Помощник</string>
+    <string name="teacher">Преподаваатель</string>
+    <string name="administrator">Администратор</string>
+</resources>

@@ -7,7 +7,7 @@ import com.sparkfusion.domain.admin.port.portnotification.NotificationModel
 import com.sparkfusion.domain.admin.port.portnotification.NotificationTypes
 import javax.inject.Inject
 
-class NotificationEntityMapper @Inject constructor(
+internal class NotificationEntityMapper @Inject constructor(
 ) : Mapper<NotificationEntity, NotificationModel> {
 
     override suspend fun map(input: NotificationEntity): NotificationModel = with(input) {

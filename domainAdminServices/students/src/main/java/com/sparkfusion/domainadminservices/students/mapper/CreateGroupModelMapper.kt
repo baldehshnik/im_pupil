@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstudents.entity.CreateGroupEntity
 import com.sparkfusion.portdomainservices.admin.portstudents.model.CreateGroupModel
 import javax.inject.Inject
 
-class CreateGroupModelMapper @Inject constructor(
+internal class CreateGroupModelMapper @Inject constructor(
     private val createGroupMemberModelMapper: CreateGroupMemberModelMapper
 ) : Mapper<CreateGroupModel, CreateGroupEntity> {
 

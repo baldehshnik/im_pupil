@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,6 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
+import com.sparkfusion.features.admin.confirmation.R
 import com.sparkfusion.features.admin.confirmation.navigator.IPupilConfirmationNavigator
 import com.sparkfusion.features.admin.confirmation.viewModel.PupilConfirmationViewModel
 
@@ -52,12 +54,12 @@ fun PupilConfirmationScreen(
 
     when (confirmState) {
         PupilConfirmationViewModel.ConfirmState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
             viewModel.clearConfirmState()
         }
         PupilConfirmationViewModel.ConfirmState.Initial -> {}
         PupilConfirmationViewModel.ConfirmState.Progress -> {
-            ShowToast(value = "Confirmation...")
+            ShowToast(value = stringResource(id = R.string.confirmation))
         }
     }
 
@@ -70,14 +72,14 @@ fun PupilConfirmationScreen(
             onDismissRequest = { showDialog = false },
             title = {
                 SFProRoundedText(
-                    content = "Are you sure?",
+                    content = stringResource(id = R.string.are_you_sure),
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
                 )
             },
             text = {
                 SFProRoundedText(
-                    content = "Do you really want to confirm the registration of this pupil?",
+                    content = stringResource(id = R.string.really_want_confirm_pupil),
                     fontWeight = FontWeight.Medium
                 )
             },
@@ -92,7 +94,7 @@ fun PupilConfirmationScreen(
                         showDialog = false
                     }
                 ) {
-                    SFProRoundedText(content = "Confirm")
+                    SFProRoundedText(content = stringResource(id = R.string.confirm))
                 }
             },
             modifier = Modifier.padding(16.dp)
@@ -126,7 +128,7 @@ fun PupilConfirmationScreen(
 
         when (readingState) {
             PupilConfirmationViewModel.ReadingState.Error -> {
-                item { ShowToast(value = "Error") }
+                item { ShowToast(value = stringResource(id = R.string.error)) }
                 viewModel.clearReadingState()
             }
 

@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 import com.sparkfusion.core.widget.text.SFProRoundedText
 
 @Composable
-fun ManagementInfoComponent(
+internal fun ManagementInfoComponent(
     modifier: Modifier = Modifier,
     title: String,
     content: String

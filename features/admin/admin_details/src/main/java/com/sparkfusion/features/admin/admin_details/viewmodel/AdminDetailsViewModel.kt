@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminDetailsViewModel @Inject constructor(
+internal class AdminDetailsViewModel @Inject constructor(
     private val readAdminDetailsUseCase: IReadAdminDetailsUseCase,
     private val updateAdminAccessUseCase: IUpdateAdminAccessUseCase,
     private val deleteAdminUseCase: IDeleteAdminUseCase
@@ -23,16 +23,16 @@ class AdminDetailsViewModel @Inject constructor(
 
     private val _adminDetailsState =
         MutableStateFlow<ReadAdminDetailsState>(ReadAdminDetailsState.Initial)
-    val adminDetailsState: StateFlow<ReadAdminDetailsState> = _adminDetailsState.asStateFlow()
+    internal val adminDetailsState: StateFlow<ReadAdminDetailsState> = _adminDetailsState.asStateFlow()
 
     private val _adminAccessState =
         MutableStateFlow<UpdateAdminAccessState>(UpdateAdminAccessState.Initial)
-    val adminAccessState: StateFlow<UpdateAdminAccessState> = _adminAccessState.asStateFlow()
+    internal val adminAccessState: StateFlow<UpdateAdminAccessState> = _adminAccessState.asStateFlow()
 
     private val _adminDeletingState = MutableStateFlow<DeleteAdminState>(DeleteAdminState.Initial)
-    val adminDeletingState: StateFlow<DeleteAdminState> = _adminDeletingState.asStateFlow()
+    internal val adminDeletingState: StateFlow<DeleteAdminState> = _adminDeletingState.asStateFlow()
 
-    fun readAdminDetails(id: Int) {
+    internal fun readAdminDetails(id: Int) {
         _adminDetailsState.update { ReadAdminDetailsState.Progress }
         viewModelScope.launch {
             readAdminDetailsUseCase.readAdminDetailsById(id)
@@ -45,7 +45,7 @@ class AdminDetailsViewModel @Inject constructor(
         }
     }
 
-    fun updateAdminAccess() {
+    internal fun updateAdminAccess() {
         val state = adminDetailsState.value
         if (state is ReadAdminDetailsState.Success) {
             if (adminAccessState.value == UpdateAdminAccessState.Progress) return
@@ -66,7 +66,7 @@ class AdminDetailsViewModel @Inject constructor(
         }
     }
 
-    fun deleteAdmin() {
+    internal fun deleteAdmin() {
         val state = adminDetailsState.value
         if (state is ReadAdminDetailsState.Success) {
             if (adminDeletingState.value == DeleteAdminState.Progress) return
@@ -84,21 +84,21 @@ class AdminDetailsViewModel @Inject constructor(
         }
     }
 
-    sealed interface DeleteAdminState {
+    internal sealed interface DeleteAdminState {
         data object Initial : DeleteAdminState
         data object Error : DeleteAdminState
         data object Progress : DeleteAdminState
         data object Success : DeleteAdminState
     }
 
-    sealed interface UpdateAdminAccessState {
+    internal sealed interface UpdateAdminAccessState {
         data object Initial : UpdateAdminAccessState
         data object Error : UpdateAdminAccessState
         data object Progress : UpdateAdminAccessState
         data object Success : UpdateAdminAccessState
     }
 
-    sealed interface ReadAdminDetailsState {
+    internal sealed interface ReadAdminDetailsState {
         data object Initial : ReadAdminDetailsState
         data object Error : ReadAdminDetailsState
         data object Progress : ReadAdminDetailsState

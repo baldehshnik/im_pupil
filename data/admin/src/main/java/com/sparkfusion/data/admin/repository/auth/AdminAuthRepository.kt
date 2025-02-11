@@ -16,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminAuthRepository @Inject constructor(
+internal class AdminAuthRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val authApiService: AuthApiService
 ): IAdminAuthRepository {

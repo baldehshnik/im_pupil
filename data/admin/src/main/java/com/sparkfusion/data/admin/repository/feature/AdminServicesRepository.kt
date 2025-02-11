@@ -17,7 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminServicesRepository @Inject constructor(
+internal class AdminServicesRepository @Inject constructor(
     private val serviceDao: ServiceDao,
     private val newsService: NewsImPupilApiService,
     private val servicesMapper: ServicesMapper,

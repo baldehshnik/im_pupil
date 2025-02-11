@@ -1,7 +1,6 @@
 package com.sparkfusion.services.admin.about.viewmodel
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sparkfusion.core.common.image.BitmapToFileWorker
@@ -19,21 +18,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class EditAboutViewModel @Inject constructor(
+internal class EditAboutViewModel @Inject constructor(
     private val readAboutBlocksUseCase: IReadAboutBlocksUseCase,
     private val updateAboutBlockUseCase: IUpdateAboutBlockUseCase,
     private val bitmapToFileWorker: BitmapToFileWorker
-): ViewModel() {
+) : ViewModel() {
 
-    var currentImageItem: EditAboutBlockModel? = null
+    internal var currentImageItem: EditAboutBlockModel? = null
 
     private val _readState = MutableStateFlow<ReadState>(ReadState.Initial)
-    val readState: StateFlow<ReadState> = _readState.asStateFlow()
+    internal val readState: StateFlow<ReadState> = _readState.asStateFlow()
 
     private val _updateState = MutableStateFlow<UpdateState>(UpdateState.Initial)
-    val updateState: StateFlow<UpdateState> = _updateState.asStateFlow()
+    internal val updateState: StateFlow<UpdateState> = _updateState.asStateFlow()
 
-    fun readBlocks() {
+    internal fun readBlocks() {
         if (readState.value is ReadState.Success) return
         if (readState.value == ReadState.Progress) return
 
@@ -50,7 +49,7 @@ class EditAboutViewModel @Inject constructor(
         }
     }
 
-    fun updateBlocks() {
+    internal fun updateBlocks() {
         val state = readState.value
         if (state is ReadState.Success) {
             if (updateState.value == UpdateState.Success) return
@@ -75,7 +74,7 @@ class EditAboutViewModel @Inject constructor(
         }
     }
 
-    fun addBlock() {
+    internal fun addBlock() {
         if (readState.value is ReadState.Success) {
             val oldData = (readState.value as ReadState.Success).data
             val newData = oldData.toMutableList()
@@ -85,7 +84,7 @@ class EditAboutViewModel @Inject constructor(
         }
     }
 
-    fun updateDescription(block: EditAboutBlockModel, value: String) {
+    internal fun updateDescription(block: EditAboutBlockModel, value: String) {
         if (readState.value is ReadState.Success) {
             val data = (readState.value as ReadState.Success).data.toMutableList()
             val index = data.indexOf(block)
@@ -95,9 +94,8 @@ class EditAboutViewModel @Inject constructor(
         }
     }
 
-    fun updateImage(bitmap: Bitmap?) {
+    internal fun updateImage(bitmap: Bitmap?) {
         if (bitmap == null || currentImageItem == null) return
-        Log.d("TAGTAG", "fjsdkfhdsjfkskjdfsdfsd")
         if (readState.value is ReadState.Success) {
             val data = (readState.value as ReadState.Success).data.toMutableList()
             val index = data.indexOf(currentImageItem)
@@ -109,22 +107,22 @@ class EditAboutViewModel @Inject constructor(
         currentImageItem = null
     }
 
-    fun clearUpdateState() {
+    internal fun clearUpdateState() {
         _updateState.update { UpdateState.Initial }
     }
 
-    fun clearReadingState() {
+    internal fun clearReadingState() {
         _readState.update { ReadState.Initial }
     }
 
-    sealed interface UpdateState {
+    internal sealed interface UpdateState {
         data object Initial : UpdateState
         data object Error : UpdateState
         data object Progress : UpdateState
         data object Success : UpdateState
     }
 
-    sealed interface ReadState {
+    internal sealed interface ReadState {
         data object Initial : ReadState
         data object Error : ReadState
         data object Progress : ReadState

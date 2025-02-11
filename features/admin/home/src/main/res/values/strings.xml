@@ -4,4 +4,8 @@
     <string name="congratulations">Congratulations.</string>
     <string name="you_are_now_with_us">You are now with us!</string>
     <string name="now_you_can_see_description">Now you can use all the features of our application: keep track of absences, create fresh news, view current group events and much more!</string>
+    <string name="delete">Delete</string>
+    <string name="error">Error</string>
+    <string name="deleting">Deleting…</string>
+    <string name="event_deleted">Event deleted</string>
 </resources>

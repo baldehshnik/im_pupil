@@ -8,7 +8,7 @@ import com.sparkfusion.portdomainservices.admin.portmagazine.usecase.IReadPassOf
 import java.time.LocalDate
 import javax.inject.Inject
 
-class ReadPassOfGroupMemberUseCase @Inject constructor(
+internal class ReadPassOfGroupMemberUseCase @Inject constructor(
     private val magazineRepository: IMagazineRepository,
     private val readGroupMemberWithPassesEntityMapper: ReadGroupMemberWithPassesEntityMapper
 ): IReadPassOfGroupMemberUseCase {

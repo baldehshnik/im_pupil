@@ -21,7 +21,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class StudentsServiceRepository @Inject constructor(
+internal class StudentsServiceRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val institutionApiService: InstitutionApiService,
     private val groupMemberApiService: GroupMemberApiService,

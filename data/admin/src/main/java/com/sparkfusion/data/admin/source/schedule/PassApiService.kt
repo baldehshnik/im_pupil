@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.time.LocalDate
 
-interface PassApiService {
+internal interface PassApiService {
 
     @GET("/education/schedule/lesson/passes/week")
     suspend fun readWeekStatistics(

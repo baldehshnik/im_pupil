@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface InstitutionEventApiService {
+internal interface InstitutionEventApiService {
 
     @GET("/education/event/all")
     suspend fun readInstitutionEvents(@Query("institutionId") institutionId: Int): Response<List<InstitutionEventDataEntity>>

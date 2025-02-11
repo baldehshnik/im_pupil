@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="adding">Добавление</string>
+    <string name="information_image">Информационное изображение</string>
+    <string name="change">Изменить</string>
+    <string name="title">Заголовок*</string>
+    <string name="description">Описание*</string>
+    <string name="type">Тип мероприятия*</string>
+    <string name="enter_here">Введите здесь</string>
+    <string name="enter_here_max_32">Введите здесь (макс. 32 символа)</string>
+    <string name="date">Дата</string>
+    <string name="place">Место проведения</string>
+    <string name="reward">Вознаграждение</string>
+    <string name="sorting">Сортировка</string>
+    <string name="event_date">Дата события</string>
+    <string name="event_time">Время события</string>
+    <string name="meeting_time">Время встречи</string>
+    <string name="no_date_selected">Дата не выбрана</string>
+    <string name="no_time_selected">Время не выбрано</string>
+    <string name="only_selected_will_be_displayed">Будет отображено только то, что выбрано.</string>
+    <string name="duration">Продолжительность*</string>
+    <string name="post_on_behalf_of_the_institution">Опубликовать от имени учреждения</string>
+    <string name="address">Адрес</string>
+    <string name="enter_address_here">Введите адрес здесь</string>
+    <string name="enter_place_here">Введите место здесь</string>
+    <string name="public_hours">Общественные часы</string>
+    <string name="work_hours">Рабочие часы</string>
+    <string name="gender">Пол</string>
+    <string name="age_restrictions">Возрастные ограничения</string>
+    <string name="maximum_amount">Максимальное количество</string>
+    <string name="add">Добавить</string>
+    <string name="error">Ошибка</string>
+    <string name="deleting">Удаление…</string>
+    <string name="event_duration_about">Продолжительность события составляет около %1$s минут.</string>
+    <string name="description_too_short">Описание слишком короткое</string>
+    <string name="duration_not_selected">Продолжительность не выбрана</string>
+    <string name="title_too_long">Слишком длинное название</string>
+    <string name="title_too_short">Название слишком короткое</string>
+    <string name="type_not_selected">Тип не выбран</string>
+    <string name="updating">Обновление…</string>
+    <string name="editing">Редактирование</string>
+    <string name="update">Обновить</string>
+    <string name="saving">Сохранение…</string>
+    <string name="success">Успешно!</string>
+    <string name="image_not_selected">Изображение не выбрано</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

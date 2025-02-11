@@ -11,7 +11,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadUnconfirmedPupilsUseCase @Inject constructor(
+internal class ReadUnconfirmedPupilsUseCase @Inject constructor(
     private val pupilEntityMapper: PupilEntityMapper,
     private val confirmationRepository: IConfirmationRepository,
     private val institutionRepository: IAdminInstitutionRepository
@@ -20,9 +20,7 @@ class ReadUnconfirmedPupilsUseCase @Inject constructor(
     override suspend fun readUnconfirmedPupils(): Answer<List<PupilModel>> {
         var error: ImPupilException? = null
         val result = institutionRepository.readInstitutionOfAdmin()
-            .onFailure {
-                error = it
-            }
+            .onFailure { error = it }
 
         if (error != null) return Answer.Failure(error!!)
         return confirmationRepository.readNotConfirmedPupils(result.unwrap().id)

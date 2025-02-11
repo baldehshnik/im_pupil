@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="registration">Регистрация</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="access_mode">Режим доступа</string>
+    <string name="login_details">Данные для входа</string>
+    <string name="personal_information">Персональная информация</string>
+    <string name="enter_name_here">Введите название здесь…</string>
+    <string name="enter">Введите…</string>
+    <string name="place_of_administration">Место управления</string>
+    <string name="firstname">Имя</string>
+    <string name="lastname">Фамилия</string>
+    <string name="patronymic">Отчество</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="after_submit_info">После отправки запроса на регистрацию, запрос должен быть обработан администратором для проверки вашей личности. Результат успешной регистрации вы получите по электронной почте, указанной выше.</string>
+    <string name="error">Ошибка</string>
+    <string name="registration_with_dots">Регистрация…</string>
+    <string name="university">Университет</string>
+    <string name="enter_name">Введите название…</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

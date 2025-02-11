@@ -2,11 +2,11 @@ package com.sparkfusion.core.resource.color
 
 import androidx.compose.ui.graphics.Color
 
-data class ShimmerAnimationModeColors(
+internal data class ShimmerAnimationModeColors(
     private val isDarkTheme: Boolean
 ) {
 
-    fun getColors(): List<Color> {
+    internal fun getColors(): List<Color> {
         val color = if (isDarkTheme) Color.Black else Color.White
         return listOf(
             color.copy(alpha = 0.3f),

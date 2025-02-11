@@ -10,7 +10,7 @@ import java.io.File
 import javax.inject.Inject
 
 @ViewModelScoped
-class AddInstitutionEventUseCase @Inject constructor(
+internal class AddInstitutionEventUseCase @Inject constructor(
     private val institutionEventRepository: IAdminInstitutionEventRepository,
     private val addInstitutionEventModelMapper: AddInstitutionEventModelMapper
 ): IAddInstitutionEventUseCase {

@@ -5,7 +5,7 @@ import com.sparkfusion.core.common.api.adapter.InstantAdapter
 import com.sparkfusion.data.commonentity.exam.CommonExamDataEntity
 import java.time.Instant
 
-data class ExamDataEntity(
+internal data class ExamDataEntity(
     override val id: Int,
     override val type: Int,
     override val name: String,

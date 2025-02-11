@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface NotificationApiService {
+internal interface NotificationApiService {
 
     @GET("/notifications/admin")
     suspend fun readAdminNotifications(): Response<List<NotificationEntity>>

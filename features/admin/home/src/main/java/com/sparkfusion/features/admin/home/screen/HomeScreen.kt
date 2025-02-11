@@ -47,16 +47,16 @@ fun HomeScreen(
 
     when (deleteEventState) {
         HomeViewModel.DeleteEventState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
         }
 
         HomeViewModel.DeleteEventState.Initial -> {}
         HomeViewModel.DeleteEventState.Progress -> {
-            ShowToast(value = "Deleting...")
+            ShowToast(value = stringResource(id = R.string.deleting))
         }
 
         HomeViewModel.DeleteEventState.Success -> {
-            ShowToast(value = "Event deleted")
+            ShowToast(value = stringResource(id = R.string.event_deleted))
         }
     }
 
@@ -79,7 +79,7 @@ fun HomeScreen(
 
             when (institutionEventState) {
                 HomeViewModel.InstitutionEventState.Error -> {
-                    item { ShowToast(value = "Error") }
+                    item { ShowToast(value = stringResource(id = R.string.error)) }
                 }
 
                 HomeViewModel.InstitutionEventState.Initial -> {}

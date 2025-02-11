@@ -5,7 +5,7 @@ import com.sparkfusion.data.commonentity.CommonNewsInfoDataEntity
 import com.sparkfusion.domain.common.portnews.NewsInfoModel
 import javax.inject.Inject
 
-class NewsInfoEntityMapper @Inject constructor(
+internal class NewsInfoEntityMapper @Inject constructor(
     private val newsGuideEntityMapper: NewsGuideEntityMapper
 ): Mapper<CommonNewsInfoDataEntity, NewsInfoModel> {
 

@@ -6,4 +6,6 @@
     <string name="try_again">Try again</string>
     <string name="read">Read</string>
     <string name="new_word">New</string>
+    <string name="error">Error</string>
+    <string name="unread">Unread</string>
 </resources>

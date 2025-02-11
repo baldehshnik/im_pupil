@@ -18,7 +18,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SectionRepository @Inject constructor(
+internal class SectionRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val sectionApiService: SectionApiService,
     private val fileToMultipartWorker: FileToMultipartWorker,

@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface ConfirmationApiService {
+internal interface ConfirmationApiService {
 
     @GET("/admin/notConfirmed")
     suspend fun readNotConfirmedAdmins(): Response<List<AdminEntity>>

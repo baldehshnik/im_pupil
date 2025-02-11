@@ -61,7 +61,7 @@ fun MoreVertButton(
                 DropdownMenuItem(
                     modifier = Modifier.align(Alignment.End),
                     text = {
-                        SFProRoundedText(content = "Delete")
+                        SFProRoundedText(content = stringResource(id = R.string.delete))
                     },
                     onClick = {
                         showMenu = false
@@ -72,3 +72,20 @@ fun MoreVertButton(
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

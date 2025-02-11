@@ -5,7 +5,7 @@ import com.sparkfusion.data.common.entity.InstitutionEventDataEntity
 import com.sparkfusion.dataPort.common.portinstitutionevent.InstitutionEventEntity
 import javax.inject.Inject
 
-class InstitutionEventDataEntityMapper @Inject constructor(
+internal class InstitutionEventDataEntityMapper @Inject constructor(
 ): Mapper<InstitutionEventDataEntity, InstitutionEventEntity> {
 
     override suspend fun map(input: InstitutionEventDataEntity): InstitutionEventEntity = with(input) {

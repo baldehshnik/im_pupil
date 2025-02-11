@@ -19,7 +19,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ExamRepository @Inject constructor(
+internal class ExamRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val groupApiService: GroupApiService,
     private val examApiService: ExamApiService

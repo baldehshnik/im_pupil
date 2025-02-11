@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="welcome_image">Image of welcome screen</string>
+    <string name="welcome_image" translatable="false">Image of welcome screen</string>
 </resources>

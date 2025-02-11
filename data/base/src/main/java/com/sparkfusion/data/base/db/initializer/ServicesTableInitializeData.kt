@@ -4,7 +4,7 @@ import android.content.Context
 import com.sparkfusion.core.resource.R
 import com.sparkfusion.data.base.db.entity.ServiceEntity
 
-fun getInitializeServicesList(context: Context): List<ServiceEntity> {
+internal fun getInitializeServicesList(context: Context): List<ServiceEntity> {
     return listOf(
         ServiceEntity(title = "Magazine", imagePath = getResourceName(context, R.drawable.magazine_service_icon), position =  1, isEnabled =  true, destination = 1),
 //        ServiceEntity(title = "Notifications", imagePath = getResourceName(context, R.drawable.notifications_service_icon), position =  2, isEnabled =  true, destination = 2),

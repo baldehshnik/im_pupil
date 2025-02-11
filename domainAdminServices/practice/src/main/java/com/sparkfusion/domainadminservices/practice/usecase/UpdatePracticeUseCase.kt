@@ -10,7 +10,7 @@ import java.io.File
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdatePracticeUseCase @Inject constructor(
+internal class UpdatePracticeUseCase @Inject constructor(
     private val practiceRepository: IPracticeRepository,
     private val updatePracticeModelMapper: UpdatePracticeModelMapper
 ) : IUpdatePracticeUseCase {

@@ -55,13 +55,13 @@ fun SignUpScreen(
 
     when (signUpState) {
         SingUpViewModel.SignUpState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
             viewModel.clearSignUpState()
         }
 
         SingUpViewModel.SignUpState.Initial -> {}
         SingUpViewModel.SignUpState.Progress -> {
-            ShowToast(value = "Registration...")
+            ShowToast(value = stringResource(id = R.string.registration_with_dots))
             viewModel.clearSignUpState()
         }
 
@@ -87,7 +87,7 @@ fun SignUpScreen(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .align(Alignment.Start),
-            content = "University",
+            content = stringResource(id = R.string.university),
             fontWeight = FontWeight.Medium,
             fontSize = 20.sp
         )

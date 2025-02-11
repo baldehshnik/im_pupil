@@ -75,7 +75,7 @@ fun OutlinedDropDownMenu(
                 textState.value = it
                 onValueChange(textState.value)
             },
-            placeholder = { SFProRoundedText(content = "Enter name...") },
+            placeholder = { SFProRoundedText(content = stringResource(id = com.sparkfusion.features.admin.sign_up.R.string.enter_name)) },
             modifier = Modifier
                 .fillMaxWidth()
                 .onGloballyPositioned { layoutCoordinates ->

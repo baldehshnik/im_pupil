@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadScheduleByGroupIdUseCase @Inject constructor(
+internal class ReadScheduleByGroupIdUseCase @Inject constructor(
     private val scheduleRepository: IScheduleRepository,
     private val scheduleEntityMapper: ScheduleEntityMapper
 ): IReadScheduleByGroupIdUseCase {

@@ -24,7 +24,7 @@ import com.sparkfusion.features.admin.account.R
 import com.sparkfusion.features.admin.account.viewModel.AccountViewModel
 
 @Composable
-fun TopComponent(
+internal fun TopComponent(
     modifier: Modifier = Modifier,
     state: AccountViewModel.InstitutionState,
     onSettingsClick: () -> Unit
@@ -49,14 +49,6 @@ fun TopComponent(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.ExtraBold
                 )
-
-//            Icon(
-//                modifier = Modifier
-//                    .clip(CircleShape)
-//                    .clickable { },
-//                painter = painterResource(R.drawable.round_keyboard_arrow_down),
-//                contentDescription = stringResource(R.string.abbreviation_button_description)
-//            )
             }
         }
 
@@ -75,3 +67,22 @@ fun TopComponent(
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

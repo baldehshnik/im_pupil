@@ -13,7 +13,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminAboutRepository @Inject constructor(
+internal class AdminAboutRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminAboutApiService: AdminAboutApiService,
     private val fileToMultipartWorker: FileToMultipartWorker

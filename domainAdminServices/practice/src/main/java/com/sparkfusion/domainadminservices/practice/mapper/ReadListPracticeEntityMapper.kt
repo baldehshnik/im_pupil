@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portpractice.entity.ReadListPracticeEntity
 import com.sparkfusion.portdomainservices.admin.portpractice.model.ReadListPracticeModel
 import javax.inject.Inject
 
-class ReadListPracticeEntityMapper @Inject constructor(
+internal class ReadListPracticeEntityMapper @Inject constructor(
 ): Mapper<ReadListPracticeEntity, ReadListPracticeModel> {
 
     override suspend fun map(input: ReadListPracticeEntity): ReadListPracticeModel = with(input) {

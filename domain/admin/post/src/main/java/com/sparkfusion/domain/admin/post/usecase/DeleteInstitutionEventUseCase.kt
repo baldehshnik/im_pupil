@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeleteInstitutionEventUseCase @Inject constructor(
+internal class DeleteInstitutionEventUseCase @Inject constructor(
     private val adminInstitutionEventRepository: IAdminInstitutionEventRepository
 ): IDeleteInstitutionEventUseCase {
 

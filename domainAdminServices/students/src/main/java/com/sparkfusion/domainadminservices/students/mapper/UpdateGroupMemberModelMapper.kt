@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstudents.entity.UpdateGroupMemberEntit
 import com.sparkfusion.portdomainservices.admin.portstudents.model.UpdateGroupMemberModel
 import javax.inject.Inject
 
-class UpdateGroupMemberModelMapper @Inject constructor(
+internal class UpdateGroupMemberModelMapper @Inject constructor(
 ): Mapper<UpdateGroupMemberModel, UpdateGroupMemberEntity> {
 
     override suspend fun map(input: UpdateGroupMemberModel): UpdateGroupMemberEntity = with(input) {

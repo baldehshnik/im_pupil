@@ -10,7 +10,7 @@ import java.io.File
 import javax.inject.Inject
 
 @ViewModelScoped
-class CreateSectionUseCase @Inject constructor(
+internal class CreateSectionUseCase @Inject constructor(
     private val sectionsRepository: ISectionsRepository,
     private val createSectionModelMapper: CreateSectionModelMapper
 ): ICreateSectionUseCase {

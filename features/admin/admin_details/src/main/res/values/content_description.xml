@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="call_phone_number_description">Icon of button to call by phone number</string>
-    <string name="change_admin_type_description">Icon of button to open dialog to change admin type</string>
-    <string name="admin_icon_description">Image of admin account</string>
+    <string name="call_phone_number_description" translatable="false">Icon of button to call by phone number</string>
+    <string name="change_admin_type_description" translatable="false">Icon of button to open dialog to change admin type</string>
+    <string name="admin_icon_description" translatable="false">Image of admin account</string>
 </resources>

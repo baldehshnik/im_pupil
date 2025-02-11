@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ClearScheduleStatusUseCase @Inject constructor(
+internal class ClearScheduleStatusUseCase @Inject constructor(
     private val scheduleRepository: IScheduleRepository
 ): IClearScheduleStatusUseCase {
 

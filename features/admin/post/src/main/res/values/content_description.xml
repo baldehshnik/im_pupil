@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="preview_button_description">Icon of button to navigate to preview post screen</string>
-    <string name="post_image_description">Image of the post</string>
-    <string name="post_type_button_icon_description">Icon of the button to show or hide spinner of the post type list</string>
-    <string name="post_type_info_button_icon_description">Icon of the button to show more info about post type</string>
-    <string name="duration_unit_type_button_icon_description">Icon of the button to show or hide spinner of the duration unit type list</string>
-    <string name="create_post_button_icon_description">Icon of the button that creates the post</string>
-    <string name="event_date_icon_description">Trailing icon of the event date text field</string>
-    <string name="event_time_icon_description">Trailing icon of the event time text field</string>
-    <string name="meeting_time_icon_description">Trailing icon of the meeting time text field</string>
-    <string name="date_block_icon_description">Icon of the date block</string>
-    <string name="place_block_icon_description">Icon of the place block</string>
-    <string name="reward_block_icon_description">Icon of the reward block</string>
-    <string name="sorting_block_icon_description">Icon of the sorting block</string>
-    <string name="address_icon_description">Trailing icon of the address text field</string>
+    <string name="preview_button_description" translatable="false">Icon of button to navigate to preview post screen</string>
+    <string name="post_image_description" translatable="false">Image of the post</string>
+    <string name="post_type_button_icon_description" translatable="false">Icon of the button to show or hide spinner of the post type list</string>
+    <string name="post_type_info_button_icon_description" translatable="false">Icon of the button to show more info about post type</string>
+    <string name="duration_unit_type_button_icon_description" translatable="false">Icon of the button to show or hide spinner of the duration unit type list</string>
+    <string name="create_post_button_icon_description" translatable="false">Icon of the button that creates the post</string>
+    <string name="event_date_icon_description" translatable="false">Trailing icon of the event date text field</string>
+    <string name="event_time_icon_description" translatable="false">Trailing icon of the event time text field</string>
+    <string name="meeting_time_icon_description" translatable="false">Trailing icon of the meeting time text field</string>
+    <string name="date_block_icon_description" translatable="false">Icon of the date block</string>
+    <string name="place_block_icon_description" translatable="false">Icon of the place block</string>
+    <string name="reward_block_icon_description" translatable="false">Icon of the reward block</string>
+    <string name="sorting_block_icon_description" translatable="false">Icon of the sorting block</string>
+    <string name="address_icon_description" translatable="false">Trailing icon of the address text field</string>
 </resources>

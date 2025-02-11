@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class UpdateScheduleUseCase @Inject constructor(
+internal class UpdateScheduleUseCase @Inject constructor(
     private val scheduleRepository: IScheduleRepository,
     private val updateScheduleModelMapper: UpdateScheduleModelMapper
 ): IUpdateScheduleUseCase {

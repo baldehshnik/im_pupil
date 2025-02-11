@@ -10,4 +10,6 @@
     <string name="save_login">Save login</string>
     <string name="saved_accounts">Saved Accounts</string>
     <string name="or">Or</string>
+    <string name="error">Error</string>
+    <string name="login_in_progress">Login in progress…</string>
 </resources>

@@ -61,7 +61,7 @@ fun WelcomeScreen(
         }
 
         WelcomeViewModel.CheckState.Progress -> {
-            ShowToast(value = "Verification...")
+            ShowToast(value = stringResource(id = R.string.verification))
         }
     }
 

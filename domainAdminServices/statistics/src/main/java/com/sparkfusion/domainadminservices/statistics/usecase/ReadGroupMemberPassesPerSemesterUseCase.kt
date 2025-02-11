@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadGroupMemberPassesPerSemesterUseCase @Inject constructor(
+internal class ReadGroupMemberPassesPerSemesterUseCase @Inject constructor(
     private val statisticsRepository: IStatisticsRepository,
     private val readFullPassEntityMapper: ReadFullPassEntityMapper
 ): IReadGroupMemberPassesPerSemesterUseCase {

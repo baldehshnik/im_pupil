@@ -12,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminInstitutionRepository @Inject constructor(
+internal class AdminInstitutionRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val institutionApiService: InstitutionApiService
 ): IAdminInstitutionRepository {

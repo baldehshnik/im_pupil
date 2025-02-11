@@ -100,7 +100,7 @@ fun PostEditingScreen(
         }
 
         PostEditingViewModel.UpdatingCheckState.TitleTooShort -> {
-            ShowToast(value = "Title to short")
+            ShowToast(value = "Title too short")
             viewModel.clearUpdatingCheckState()
         }
 

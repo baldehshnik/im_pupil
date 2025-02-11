@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portsections.entity.UpdateSectionEntity
 import com.sparkfusion.portdomainservices.admin.portsections.model.UpdateSectionModel
 import javax.inject.Inject
 
-class UpdateSectionModelMapper @Inject constructor(
+internal class UpdateSectionModelMapper @Inject constructor(
 ): Mapper<UpdateSectionModel, UpdateSectionEntity> {
 
     override suspend fun map(input: UpdateSectionModel): UpdateSectionEntity = with(input) {

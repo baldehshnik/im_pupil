@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portstatistics.entity.ReadFullPassWithGrou
 import com.sparkfusion.portdomainservices.admin.portstatistics.model.ReadFullPassWithGroupMemberModel
 import javax.inject.Inject
 
-class ReadFullPassWithGroupMemberEntityMapper @Inject constructor(
+internal class ReadFullPassWithGroupMemberEntityMapper @Inject constructor(
     private val lessonEntityMapper: ReadLessonEntityMapper,
     private val readGroupMemberPersonalInfoEntityMapper: ReadGroupMemberPersonalInfoEntityMapper
 ) : Mapper<ReadFullPassWithGroupMemberEntity, ReadFullPassWithGroupMemberModel> {

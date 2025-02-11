@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">Об университете</string>
+    <string name="error">Ошибка</string>
+    <string name="enter_here">Введите здесь…</string>
+    <string name="updating">Обновление…</string>
+    <string name="edit">Редактирование</string>
+    <string name="edit_info_text">Существует два способа описания: добавление изображения и добавление текстового описания. Это делается с помощью блоков, количество которых может быть любым. Вы можете объединить текст и изображение или добавить только один вариант (пустые блоки не будут добавлены).</string>
+    <string name="add_block">Добавить блок</string>
+</resources>

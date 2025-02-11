@@ -9,7 +9,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadUnconfirmedAdminsUseCase @Inject constructor(
+internal class ReadUnconfirmedAdminsUseCase @Inject constructor(
     private val adminEntityMapper: AdminEntityMapper,
     private val confirmationRepository: IConfirmationRepository
 ): IReadUnconfirmedAdminsUseCase {

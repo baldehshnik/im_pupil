@@ -49,12 +49,12 @@ fun PostViewingScreen(
 
     when (deletingState) {
         PostViewingViewModel.DeletingState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
         }
 
         PostViewingViewModel.DeletingState.Initial -> {}
         PostViewingViewModel.DeletingState.Progress -> {
-            ShowToast(value = "Deleting...")
+            ShowToast(value = stringResource(id = R.string.deleting))
         }
 
         PostViewingViewModel.DeletingState.Success -> {
@@ -64,7 +64,7 @@ fun PostViewingScreen(
 
     when (eventState) {
         PostViewingViewModel.EventState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
             viewModel.clearEventState()
         }
 
@@ -145,7 +145,7 @@ fun PostViewingScreen(
                             top = 4.dp,
                             bottom = 12.dp
                         ),
-                        content = "Event duration is about ${state.duration} minutes.",
+                        content = stringResource(id = R.string.event_duration_about, state.duration.toString()),
                         fontWeight = FontWeight.Medium,
                         fontSize = 16.sp
                     )

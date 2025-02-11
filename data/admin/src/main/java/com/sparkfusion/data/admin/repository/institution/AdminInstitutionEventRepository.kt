@@ -16,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdminInstitutionEventRepository @Inject constructor(
+internal class AdminInstitutionEventRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val adminInstitutionEventApiService: AdminInstitutionEventApiService,
     private val fileToMultipartWorker: FileToMultipartWorker,

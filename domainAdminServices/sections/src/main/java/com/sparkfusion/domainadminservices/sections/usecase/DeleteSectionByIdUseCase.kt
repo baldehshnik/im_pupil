@@ -7,7 +7,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class DeleteSectionByIdUseCase @Inject constructor(
+internal class DeleteSectionByIdUseCase @Inject constructor(
     private val sectionsRepository: ISectionsRepository
 ): IDeleteSectionByIdUseCase {
 

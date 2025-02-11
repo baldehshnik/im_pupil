@@ -19,7 +19,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PracticeRepository @Inject constructor(
+internal class PracticeRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val practiceApiService: PracticeApiService,
     private val fileToMultipartWorker: FileToMultipartWorker,

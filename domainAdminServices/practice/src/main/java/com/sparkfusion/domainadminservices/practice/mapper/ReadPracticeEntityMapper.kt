@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portpractice.entity.ReadPracticeEntity
 import com.sparkfusion.portdomainservices.admin.portpractice.model.ReadPracticeModel
 import javax.inject.Inject
 
-class ReadPracticeEntityMapper @Inject constructor(
+internal class ReadPracticeEntityMapper @Inject constructor(
     private val informationBlockEntityMapper: InformationBlockEntityMapper,
     private val relocationEntityMapper: RelocationEntityMapper
 ): Mapper<ReadPracticeEntity, ReadPracticeModel> {

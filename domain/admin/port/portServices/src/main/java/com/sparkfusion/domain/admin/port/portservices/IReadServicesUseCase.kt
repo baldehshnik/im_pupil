@@ -1,8 +1,8 @@
 package com.sparkfusion.domain.admin.port.portservices
 
-import kotlinx.coroutines.flow.Flow
+import com.sparkfusion.core.common.result.Answer
 
 interface IReadServicesUseCase {
 
-    val enabledServices: Flow<List<ServiceEntity>>
+    suspend fun readServices(): Answer<List<ServiceEntity>>
 }

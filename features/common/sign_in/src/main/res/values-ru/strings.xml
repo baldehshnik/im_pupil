@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Войти</string>
+    <string name="forget_password">Забыли пароль?</string>
+    <string name="enter_login_details">Введите данные для входа</string>
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="enter">Введите</string>
+    <string name="register_new_account">Создать новую учетную запись</string>
+    <string name="save_login">Сохранить логин</string>
+    <string name="saved_accounts">Сохраненные аккаунты</string>
+    <string name="or">Либо</string>
+    <string name="error">Ошибка</string>
+    <string name="login_in_progress">Вход в процессе…</string>
+</resources>

@@ -5,7 +5,7 @@ import com.sparkfusion.data.commonentity.exam.CommonExamDataEntity
 import com.sparkfusion.portdomainservices.admin.portexam.model.ReadExamModel
 import javax.inject.Inject
 
-class ReadExamEntityMapper @Inject constructor(
+internal class ReadExamEntityMapper @Inject constructor(
 ): Mapper<CommonExamDataEntity, ReadExamModel> {
 
     override suspend fun map(input: CommonExamDataEntity): ReadExamModel = with(input) {

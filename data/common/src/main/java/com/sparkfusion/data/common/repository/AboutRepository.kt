@@ -12,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AboutRepository @Inject constructor(
+internal class AboutRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val aboutApiService: AboutApiService
 ) : IAboutRepository {

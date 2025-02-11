@@ -11,7 +11,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
 @ViewModelScoped
-class ReadPracticesUseCase @Inject constructor(
+internal class ReadPracticesUseCase @Inject constructor(
     private val practiceRepository: IPracticeRepository,
     private val institutionRepository: IAdminInstitutionRepository,
     private val readListPracticeEntityMapper: ReadListPracticeEntityMapper

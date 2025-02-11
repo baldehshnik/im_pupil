@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portsections.entity.ReadSectionEntity
 import com.sparkfusion.portdomainservices.admin.portsections.model.ReadSectionModel
 import javax.inject.Inject
 
-class ReadSectionEntityMapper @Inject constructor(
+internal class ReadSectionEntityMapper @Inject constructor(
 ): Mapper<ReadSectionEntity, ReadSectionModel> {
 
     override suspend fun map(input: ReadSectionEntity): ReadSectionModel = with(input) {

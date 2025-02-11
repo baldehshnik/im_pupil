@@ -12,7 +12,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface GroupApiService {
+internal interface GroupApiService {
 
     @GET("/education/group/all")
     suspend fun readGroupBySpeciality(

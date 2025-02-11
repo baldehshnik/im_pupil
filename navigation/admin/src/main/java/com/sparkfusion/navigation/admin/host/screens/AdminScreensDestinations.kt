@@ -4,7 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.sparkfusion.features.admin.admin_details.destination.AdminDetailsDestination
 import com.sparkfusion.features.admin.admin_details.navigator.IAdminDetailsNavigator
-import com.sparkfusion.features.admin.admin_details.screen.AdminDetailsScreen
+import com.sparkfusion.features.admin.admin_details.screen.AdminDetailsScreenEnter
 import com.sparkfusion.features.admin.confirmation.destination.AdminConfirmationDestination
 import com.sparkfusion.features.admin.confirmation.destination.PupilConfirmationDestination
 import com.sparkfusion.features.admin.confirmation.navigator.IAdminConfirmationNavigator
@@ -34,7 +34,7 @@ fun NavGraphBuilder.adminDetails(
         val accessMode =
             navigator.previousNavBackStackEntry?.savedStateHandle?.get<Int>(ADMIN_ACCESS_KEY)
         if (id != null && accessMode != null)
-            AdminDetailsScreen(
+            AdminDetailsScreenEnter(
                 navigator = navigator,
                 id = id,
                 accessMode = accessMode

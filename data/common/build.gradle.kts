@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":dataPort:common:portNews"))
     implementation(project(":dataPort:common:portInstitutionEvent"))
     implementation(project(":dataPort:common:portAbout"))
+    implementation(project(":dataPort:common:portServices"))
 
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.retrofit.converter.gson)

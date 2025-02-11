@@ -70,13 +70,13 @@ fun SignInScreen(
 
     when (signInState) {
         SignInViewModel.SignInState.Error -> {
-            ShowToast(value = "Error")
+            ShowToast(value = stringResource(id = R.string.error))
             viewModel.clearSignInState()
         }
 
         SignInViewModel.SignInState.Initial -> {}
         SignInViewModel.SignInState.Progress -> {
-            ShowToast(value = "Login in progress...")
+            ShowToast(value = stringResource(id = R.string.login_in_progress))
             viewModel.clearSignInState()
         }
 

@@ -5,7 +5,7 @@ import com.sparkfusion.dataport.admin.portschedule.entity.ReadLessonEntity
 import com.sparkfusion.portdomainservices.admin.portschedule.model.ReadLessonModel
 import javax.inject.Inject
 
-class ReadLessonEntityMapper @Inject constructor(
+internal class ReadLessonEntityMapper @Inject constructor(
 ): Mapper<ReadLessonEntity, ReadLessonModel> {
 
     override suspend fun map(input: ReadLessonEntity): ReadLessonModel = with(input) {

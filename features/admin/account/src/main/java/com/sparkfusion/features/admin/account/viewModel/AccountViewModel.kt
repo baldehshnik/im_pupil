@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AccountViewModel @Inject constructor(
+internal class AccountViewModel @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
     private val bitmapToFileWorker: BitmapToFileWorker,
     private val readInstitutionUseCase: IReadInstitutionUseCase,
@@ -35,18 +35,18 @@ class AccountViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _institutionState = MutableStateFlow<InstitutionState>(InstitutionState.Initial)
-    val institutionState: StateFlow<InstitutionState> = _institutionState.asStateFlow()
+    internal val institutionState: StateFlow<InstitutionState> = _institutionState.asStateFlow()
 
     private val _adminsState = MutableStateFlow<AdminsState>(AdminsState.Initial)
-    val adminsState: StateFlow<AdminsState> = _adminsState.asStateFlow()
+    internal val adminsState: StateFlow<AdminsState> = _adminsState.asStateFlow()
 
     private val _accountState = MutableStateFlow<AccountState>(AccountState.Initial)
-    val accountState: StateFlow<AccountState> = _accountState.asStateFlow()
+    internal val accountState: StateFlow<AccountState> = _accountState.asStateFlow()
 
     private val _imageState = MutableStateFlow<ImageState>(ImageState.Initial)
-    val imageState: StateFlow<ImageState> = _imageState.asStateFlow()
+    internal val imageState: StateFlow<ImageState> = _imageState.asStateFlow()
 
-    fun updateAccountImage(image: Bitmap?) {
+    internal fun updateAccountImage(image: Bitmap?) {
         if (image == null) return
         viewModelScope.launch(ioDispatcher) {
             val state = accountState.value
@@ -70,7 +70,7 @@ class AccountViewModel @Inject constructor(
         }
     }
 
-    fun readInstitutionInfo() {
+    internal fun readInstitutionInfo() {
         _institutionState.update { InstitutionState.Progress }
         viewModelScope.launch(ioDispatcher) {
             readInstitutionUseCase.readInstitution()
@@ -85,7 +85,7 @@ class AccountViewModel @Inject constructor(
         }
     }
 
-    fun readAccountInfo() {
+    internal fun readAccountInfo() {
         _accountState.update { AccountState.Progress }
         viewModelScope.launch(ioDispatcher) {
             readAdminAccountUseCase.readAdminAccount()
@@ -100,7 +100,7 @@ class AccountViewModel @Inject constructor(
         }
     }
 
-    fun readAdmins() {
+    internal fun readAdmins() {
         _adminsState.update { AdminsState.Progress }
         viewModelScope.launch(ioDispatcher) {
             readAllAdminsOfInstitutionUseCase.readAdminsOfInstitution()
@@ -115,26 +115,26 @@ class AccountViewModel @Inject constructor(
         }
     }
 
-    sealed interface ImageState {
+    internal sealed interface ImageState {
         data object Initial : ImageState
         data object Error : ImageState
     }
 
-    sealed interface AdminsState {
+    internal sealed interface AdminsState {
         data object Initial : AdminsState
         data object Error : AdminsState
         data object Progress : AdminsState
         data class Success(val data: List<InstitutionAdminModel>) : AdminsState
     }
 
-    sealed interface AccountState {
+    internal sealed interface AccountState {
         data object Initial : AccountState
         data object Error : AccountState
         data object Progress : AccountState
         data class Success(val data: AdminAccountModel) : AccountState
     }
 
-    sealed interface InstitutionState {
+    internal sealed interface InstitutionState {
         data object Initial : InstitutionState
         data object Error : InstitutionState
         data object Progress : InstitutionState
