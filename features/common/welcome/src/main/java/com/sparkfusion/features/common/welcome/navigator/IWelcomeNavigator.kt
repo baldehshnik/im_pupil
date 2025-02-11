@@ -4,4 +4,5 @@ interface IWelcomeNavigator {
 
     fun navigateToSignInScreen()
     fun navigateToAdminHomeScreen()
+    fun navigateToPupilHomeScreen()
 }

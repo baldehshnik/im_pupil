@@ -41,6 +41,7 @@ android {
 dependencies {
 
     implementation(project(":domain:admin:port:portAuth"))
+    implementation(project(":domain:pupil:port:portAuth"))
 
     implementation(project(":core:common"))
     implementation(project(":core:widget"))

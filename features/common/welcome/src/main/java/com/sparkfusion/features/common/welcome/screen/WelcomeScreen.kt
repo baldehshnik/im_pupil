@@ -54,7 +54,7 @@ fun WelcomeScreen(
             if (CurrentUserTypeHolder.type == UserType.Admin) {
                 navigator.navigateToAdminHomeScreen()
             } else {
-
+                navigator.navigateToPupilHomeScreen()
             }
 
             viewModel.clearCheckState()
@@ -122,6 +122,7 @@ private fun WelcomeScreenPreview() {
         navigator = object : IWelcomeNavigator {
             override fun navigateToSignInScreen() {}
             override fun navigateToAdminHomeScreen() {}
+            override fun navigateToPupilHomeScreen() {}
         },
         viewModel = hiltViewModel(),
         modifier = Modifier

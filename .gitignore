@@ -3,6 +3,14 @@
 .gradle
 /local.properties
 /.idea
+/.idea/.name
+/.idea/appInsightsSettings.xml
+/.idea/compiler.xml
+/.idea/deploymentTargetSelector.xml
+/.idea/kotlinc.xml
+/.idea/migrations.xml
+/.idea/vcs.xml
+/.idea/misc.xml
 /.idea/gradle.xml
 /.idea/other.xml
 /.idea/caches

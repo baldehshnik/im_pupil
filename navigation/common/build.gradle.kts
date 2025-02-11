@@ -45,6 +45,7 @@ dependencies {
     implementation(project(":navigation:admin"))
     implementation(project(":navigation:pupil"))
     implementation(project(":navigation:adminCorePort"))
+    implementation(project(":navigation:pupilCorePort"))
     implementation(project(":navigation:commonCorePort"))
 
     implementation(project(":features:common:welcome"))

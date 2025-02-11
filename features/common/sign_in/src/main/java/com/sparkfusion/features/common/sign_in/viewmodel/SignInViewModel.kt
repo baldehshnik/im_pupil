@@ -3,9 +3,11 @@ package com.sparkfusion.features.common.sign_in.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sparkfusion.core.common.dispatchers.IODispatcher
+import com.sparkfusion.core.common.user_type.CurrentUserTypeHolder
+import com.sparkfusion.core.common.user_type.UserType
 import com.sparkfusion.domain.admin.port.portauth.IAdminSignInUseCase
-import com.sparkfusion.domain.admin.port.portauth.JwtAuthenticationModel
 import com.sparkfusion.domain.admin.port.portauth.SignInModel
+import com.sparkfusion.domain.pupil.port.portauth.usecase.ILoginPupilUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,11 +16,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.sparkfusion.domain.pupil.port.portauth.model.SignInModel as PupilSignInModel
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val signInUseCase: IAdminSignInUseCase
+    private val adminSignInUseCase: IAdminSignInUseCase,
+    private val pupilSignInUseCase: ILoginPupilUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(State())
@@ -45,14 +49,39 @@ class SignInViewModel @Inject constructor(
 
         _signInState.update { SignInState.Progress }
         viewModelScope.launch(ioDispatcher) {
-            val model = SignInModel(state.value.email, state.value.password)
-            signInUseCase.signIn(model)
-                .onSuccess { m ->
-                    _signInState.update { SignInState.Success(m) }
+            when (CurrentUserTypeHolder.type) {
+                UserType.Admin -> {
+                    val model = SignInModel(state.value.email, state.value.password)
+                    adminSignInUseCase.signIn(model)
+                        .onSuccess { m ->
+                            _signInState.update {
+                                SignInState.Success(
+                                    m.accessToken,
+                                    m.refreshToken
+                                )
+                            }
+                        }
+                        .onFailure {
+                            _signInState.update { SignInState.Error }
+                        }
                 }
-                .onFailure {
-                    _signInState.update { SignInState.Error }
+
+                UserType.Pupil -> {
+                    val model = PupilSignInModel(state.value.email, state.value.password)
+                    pupilSignInUseCase.signInPupil(model)
+                        .onSuccess { m ->
+                            _signInState.update {
+                                SignInState.Success(
+                                    m.accessToken,
+                                    m.refreshToken
+                                )
+                            }
+                        }
+                        .onFailure {
+                            _signInState.update { SignInState.Error }
+                        }
                 }
+            }
         }
     }
 
@@ -99,7 +128,7 @@ class SignInViewModel @Inject constructor(
 
     sealed interface SignInState {
         data object Initial : SignInState
-        data class Success(val response: JwtAuthenticationModel) : SignInState
+        data class Success(val accessToken: String, val refreshToken: String) : SignInState
         data object Error : SignInState
         data object Progress : SignInState
     }

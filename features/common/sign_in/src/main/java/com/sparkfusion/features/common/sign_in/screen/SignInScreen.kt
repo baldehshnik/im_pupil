@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
@@ -18,25 +19,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import com.sparkfusion.core.common.user_type.CurrentUserTypeHolder
 import com.sparkfusion.core.common.user_type.UserType
 import com.sparkfusion.core.widget.check.CheckButtonWidget
-import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
-import com.sparkfusion.domain.admin.port.portauth.JwtAuthenticationModel
 import com.sparkfusion.features.common.sign_in.R
 import com.sparkfusion.features.common.sign_in.navigator.ISignInNavigator
 import com.sparkfusion.features.common.sign_in.screen.component.LoginButtons
@@ -81,14 +79,16 @@ fun SignInScreen(
         }
 
         is SignInViewModel.SignInState.Success -> {
-            val model: JwtAuthenticationModel =
-                (signInState as SignInViewModel.SignInState.Success).response
-            if (state.saveLogin) sharedPreferencesHelper.saveLoginDataForAdmin(model)
+            val accessToken = (signInState as SignInViewModel.SignInState.Success).accessToken
+            val refreshToken = (signInState as SignInViewModel.SignInState.Success).refreshToken
+            if (state.saveLogin) sharedPreferencesHelper.saveLoginData(
+                accessToken,
+                refreshToken
+            )
 
             val userType = CurrentUserTypeHolder.type
             if (userType == UserType.Admin) navigator.navigateToAdminHomeScreen()
-            else { // navigate to pupil screen
-            }
+            else navigator.navigateToPupilHomeScreen()
         }
     }
 
@@ -103,12 +103,14 @@ fun SignInScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        SFProRoundedText(
-            modifier = Modifier.padding(top = 10.dp, bottom = 10.dp),
-            content = stringResource(R.string.enter_login_details),
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Medium
+        AsyncImage(
+            modifier = Modifier.size(200.dp),
+            model = R.drawable.sign_in_preview,
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds
         )
+
+        Spacer(modifier = Modifier.height(10.dp))
 
         LoginTextField(
             value = state.email,
@@ -157,21 +159,33 @@ fun SignInScreen(
 
         LoginButtons(
             onPasswordRecoveryClick = navigator::navigateToPasswordRecoveryScreen,
-            onRegisterClick = navigator::navigateToAdminRegistrationScreen,
+            onRegisterClick = {
+                when (CurrentUserTypeHolder.type) {
+                    UserType.Admin -> navigator.navigateToAdminRegistrationScreen()
+                    UserType.Pupil -> navigator.navigateToPupilRegistrationScreen()
+                }
+            },
             onLoginClick = viewModel::signIn
         )
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-private fun SignInScreenPreview() {
-    SignInScreen(
-        navigator = object : ISignInNavigator {
-            override fun navigateToPasswordRecoveryScreen() {}
-            override fun navigateToAdminRegistrationScreen() {}
-            override fun navigateToAdminHomeScreen() {}
-            override fun popBackStack() {}
-        }
-    )
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import com.sparkfusion.features.common.welcome.navigator.IWelcomeNavigator
 import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
 import com.sparkfusion.navigation.core.navigator.INavigator
+import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
 
 class WelcomeNavigator(private val navigator: INavigator) : IWelcomeNavigator {
 
@@ -15,5 +16,10 @@ class WelcomeNavigator(private val navigator: INavigator) : IWelcomeNavigator {
     override fun navigateToAdminHomeScreen() {
         navigator.popBackStackInclusive(WelcomeScreenDestination)
         navigator.navigateTo(AdminHomeDestination)
+    }
+
+    override fun navigateToPupilHomeScreen() {
+        navigator.popBackStackInclusive(WelcomeScreenDestination)
+        navigator.navigateTo(PupilHomeDestination)
     }
 }

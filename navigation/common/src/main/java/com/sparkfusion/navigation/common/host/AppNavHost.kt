@@ -26,6 +26,8 @@ import com.sparkfusion.navigation.common.host.screens.commonNavHost
 import com.sparkfusion.navigation.common.type.AccountType
 import com.sparkfusion.navigation.common.utils.ChangeNavigationBarColor
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
+import com.sparkfusion.navigation.pupil.pupilNavHost
+import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
 
 @Composable
 fun AppNavHost(navController: NavHostController, accountType: AccountType) {
@@ -54,8 +56,8 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
             modifier = Modifier.padding(paddingValues),
             navController = navController,
             startDestination = accountType.type,
-            enterTransition = { fadeIn(tween(NavigationAnimationDurationMillis)) },
-            exitTransition = { fadeOut(tween(NavigationAnimationDurationMillis)) }
+            enterTransition = { fadeIn(tween(NavigationAnimationDurationMillis, 300)) },
+            exitTransition = { fadeOut(tween(NavigationAnimationDurationMillis, 300)) }
         ) {
             navigation(WelcomeScreenDestination.route, AccountType.Common.type) {
                 commonNavHost(navController)
@@ -63,6 +65,24 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
             navigation(AdminHomeDestination.route, AccountType.Admin.type) {
                 adminNavHost(navController)
             }
+            navigation(PupilHomeDestination.route, AccountType.Pupil.type) {
+                pupilNavHost(navController)
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

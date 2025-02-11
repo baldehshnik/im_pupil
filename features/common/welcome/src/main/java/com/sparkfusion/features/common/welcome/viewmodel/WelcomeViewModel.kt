@@ -2,12 +2,11 @@ package com.sparkfusion.features.common.welcome.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sparkfusion.core.common.dispatchers.IODispatcher
 import com.sparkfusion.core.common.user_type.CurrentUserTypeHolder
 import com.sparkfusion.core.common.user_type.UserType
 import com.sparkfusion.domain.admin.port.portauth.ICheckAdminTokenUseCase
+import com.sparkfusion.domain.pupil.port.portauth.usecase.ICheckAccessTokenUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,8 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WelcomeViewModel @Inject constructor(
-    @IODispatcher private val ioDispatcher: CoroutineDispatcher,
-    private val checkAdminTokenUseCase: ICheckAdminTokenUseCase
+    private val checkAdminTokenUseCase: ICheckAdminTokenUseCase,
+    private val checkPupilTokenUseCase: ICheckAccessTokenUseCase
 ) : ViewModel() {
 
     private val _checkState = MutableStateFlow<CheckState>(CheckState.Initial)
@@ -33,7 +32,7 @@ class WelcomeViewModel @Inject constructor(
         }
 
         _checkState.update { CheckState.Progress }
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch {
             val userType = CurrentUserTypeHolder.type
             if (userType == UserType.Admin) {
                 checkAdminTokenUseCase.checkAccessToken()
@@ -44,7 +43,13 @@ class WelcomeViewModel @Inject constructor(
                         _checkState.update { CheckState.Failure("Network error") }
                     }
             } else {
-
+                checkPupilTokenUseCase.checkAccessToken()
+                    .onSuccess {
+                        _checkState.update { CheckState.Success }
+                    }
+                    .onFailure {
+                        _checkState.update { CheckState.Failure("Network error") }
+                    }
             }
         }
     }

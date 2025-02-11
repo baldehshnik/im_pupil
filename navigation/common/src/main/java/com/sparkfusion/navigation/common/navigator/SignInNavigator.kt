@@ -6,6 +6,8 @@ import com.sparkfusion.navigation.admincoreport.destination.AdminHomeDestination
 import com.sparkfusion.navigation.admincoreport.destination.AdminSignUpDestination
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
 import com.sparkfusion.navigation.core.navigator.INavigator
+import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
+import com.sparkfusion.navigation.pupilcoreport.PupilSignUpDestination
 
 class SignInNavigator(private val navigator: INavigator): ISignInNavigator {
 
@@ -22,7 +24,35 @@ class SignInNavigator(private val navigator: INavigator): ISignInNavigator {
         navigator.navigateTo(AdminHomeDestination)
     }
 
+    override fun navigateToPupilRegistrationScreen() {
+        navigator.navigateTo(PupilSignUpDestination)
+    }
+
+    override fun navigateToPupilHomeScreen() {
+        navigator.popBackStackInclusive(WelcomeScreenDestination)
+        navigator.navigateTo(PupilHomeDestination)
+    }
+
     override fun popBackStack() {
         navigator.popBackStack()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -66,6 +66,8 @@ dependencies {
     implementation(project(":domain:admin:notification"))
     implementation(project(":domain:admin:confirmation"))
 
+    implementation(project(":domain:pupil:auth"))
+
     implementation(project(":domainAdminServices:about"))
     implementation(project(":domainAdminServices:students"))
     implementation(project(":domainAdminServices:exam"))
@@ -78,6 +80,7 @@ dependencies {
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
     implementation(project(":data:common"))
+    implementation(project(":data:pupil"))
 
     implementation(libs.squareup.okhttp)
 
