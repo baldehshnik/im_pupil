@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="services">Services</string>
+    <string name="news">News</string>
+    <string name="about_application">About application</string>
+    <string name="welcome_presentation_text">Welcome to our mobile app, specifically designed for educational institutions and dormitories! We aim to simplify and enhance the lives of students, teachers, and everyone involved in the educational process.</string>
+    <string name="read_more">Read more…</string>
+    <string name="error">Error</string>
+    <string name="connection_error">Connection error</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -57,6 +57,7 @@ dependencies {
 
     implementation(project(":core:image_crop"))
     implementation(project(":core:resource"))
+    implementation(project(":core:common"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)

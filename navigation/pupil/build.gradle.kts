@@ -48,6 +48,10 @@ dependencies {
     implementation(project(":navigation:commonCorePort"))
 
     implementation(project(":features:pupil:sign-up"))
+    implementation(project(":features:pupil:home"))
+    implementation(project(":features:pupil:eventDetails"))
+    implementation(project(":features:pupil:account"))
+    implementation(project(":features:pupil:services"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)

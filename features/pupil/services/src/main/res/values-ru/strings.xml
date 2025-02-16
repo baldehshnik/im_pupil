@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="services">Услуги</string>
+    <string name="news">Новости</string>
+    <string name="about_application">О приложении</string>
+    <string name="welcome_presentation_text">Добро пожаловать в наше мобильное приложение, специально разработанное для учебных заведений и общежитий! Мы стремимся упростить и улучшить жизнь студентов, преподавателей и всех, кто участвует в образовательном процессе.</string>
+    <string name="read_more">Больше…</string>
+    <string name="error">Ошибка</string>
+    <string name="connection_error">Ошибка сети!</string>
+</resources>

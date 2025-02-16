@@ -1,5 +1,6 @@
 package com.sparkfusion.core.common.result
 
+import android.util.Log
 import com.sparkfusion.core.common.exception.AnswerHasNoMapperException
 import com.sparkfusion.core.common.exception.AnswerMappingException
 import com.sparkfusion.core.common.exception.ImPupilException
@@ -18,6 +19,7 @@ sealed class Answer<out T> {
             else try {
                 Success(mapper(unwrap()))
             } catch (e: Exception) {
+                Log.d("TAGTAG", e.message.toString())
                 Failure(AnswerMappingException())
             }
         }

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import com.sparkfusion.data.commonentity.CommonNewsDataEntity
 
 data class NewsEntity(
+
     @SerializedName("id")
     override val id: Int,
 

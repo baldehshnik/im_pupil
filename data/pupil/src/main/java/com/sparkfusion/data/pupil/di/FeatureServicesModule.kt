@@ -1,6 +1,8 @@
 package com.sparkfusion.data.pupil.di
 
+import com.sparkfusion.data.pupil.source.AccountApiService
 import com.sparkfusion.data.pupil.source.AuthApiService
+import com.sparkfusion.data.pupil.source.InstitutionEventApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,6 +18,18 @@ internal object FeatureServicesModule {
     @Provides
     fun provideAuthApiService(retrofit: Retrofit): AuthApiService {
         return retrofit.create(AuthApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideInstitutionEventApiService(retrofit: Retrofit): InstitutionEventApiService {
+        return retrofit.create(InstitutionEventApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAccountApiService(retrofit: Retrofit): AccountApiService {
+        return retrofit.create(AccountApiService::class.java)
     }
 }
 

@@ -17,6 +17,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
+import com.sparkfusion.core.common.user_type.CurrentUserTypeHolder
+import com.sparkfusion.core.common.user_type.UserType
 import com.sparkfusion.core.resource.animation.NavigationAnimationDurationMillis
 import com.sparkfusion.navigation.admin.bottombar.AdminBottomAppBar
 import com.sparkfusion.navigation.admin.host.adminNavHost
@@ -26,18 +28,33 @@ import com.sparkfusion.navigation.common.host.screens.commonNavHost
 import com.sparkfusion.navigation.common.type.AccountType
 import com.sparkfusion.navigation.common.utils.ChangeNavigationBarColor
 import com.sparkfusion.navigation.commoncoreport.destination.WelcomeScreenDestination
+import com.sparkfusion.navigation.pupil.bottombar.PupilBottomAppBar
+import com.sparkfusion.navigation.pupil.host.getPupilBottomBarItemRoutes
 import com.sparkfusion.navigation.pupil.pupilNavHost
 import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
 
 @Composable
-fun AppNavHost(navController: NavHostController, accountType: AccountType) {
-    val adminBottomBarItemRoutes = getAdminBottomBarItemRoutes()
+fun AppNavHost(navController: NavHostController) {
+    val accountType: AccountType = remember(
+        try { CurrentUserTypeHolder.type }
+        catch (_: IllegalArgumentException) { null }
+    ) {
+        try {
+            if (CurrentUserTypeHolder.type == UserType.Admin) AccountType.Admin
+            else AccountType.Pupil
+        } catch (_: IllegalArgumentException) { AccountType.Common }
+    }
+    val bottomBarItemRoutes = when (accountType) {
+        AccountType.Admin -> getAdminBottomBarItemRoutes()
+        AccountType.Pupil -> getPupilBottomBarItemRoutes()
+        else -> emptyList()
+    }
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute by remember(backStackEntry) {
         derivedStateOf { backStackEntry?.destination?.route }
     }
 
-    val showBottomBar = currentRoute in adminBottomBarItemRoutes
+    val showBottomBar = currentRoute in bottomBarItemRoutes
 
     ChangeNavigationBarColor(showBottomBar)
 
@@ -48,7 +65,11 @@ fun AppNavHost(navController: NavHostController, accountType: AccountType) {
                 enter = slideInVertically(initialOffsetY = { it }),
                 exit = slideOutVertically(targetOffsetY = { it })
             ) {
-                AdminBottomAppBar(navController, currentRoute)
+                if (accountType == AccountType.Admin) {
+                    AdminBottomAppBar(navController, currentRoute)
+                } else if (accountType == AccountType.Pupil) {
+                    PupilBottomAppBar(navController = navController, currentRoute = currentRoute)
+                }
             }
         }
     ) { paddingValues ->

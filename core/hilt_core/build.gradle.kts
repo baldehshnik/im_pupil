@@ -67,6 +67,10 @@ dependencies {
     implementation(project(":domain:admin:confirmation"))
 
     implementation(project(":domain:pupil:auth"))
+    implementation(project(":domain:pupil:account"))
+    implementation(project(":domain:pupil:home"))
+    implementation(project(":domain:pupil:eventDetails"))
+    implementation(project(":domain:pupil:services"))
 
     implementation(project(":domainAdminServices:about"))
     implementation(project(":domainAdminServices:students"))

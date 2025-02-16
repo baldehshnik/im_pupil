@@ -2,6 +2,9 @@ package com.sparkfusion.core.hilt_core
 
 import android.content.SharedPreferences
 import com.sparkfusion.core.common.shared_preferences.ADMIN_ACCESS_TOKEN_KEY
+import com.sparkfusion.core.common.shared_preferences.PUPIL_ACCESS_TOKEN_KEY
+import com.sparkfusion.core.common.user_type.CurrentUserTypeHolder
+import com.sparkfusion.core.common.user_type.UserType
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
@@ -68,7 +71,8 @@ internal class AuthInterceptor @Inject constructor(
         "/education/practice/update",
         "/education/practice/register",
         "/education/practice/",
-        "/services"
+        "/services",
+        "/pupil"
     )
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -77,7 +81,10 @@ internal class AuthInterceptor @Inject constructor(
 
         val path: String = originalRequest.url.encodedPath
         if (pathsPartsWithAuth.any { path.startsWith(it) }) {
-            val token = sharedPreferences.getString(ADMIN_ACCESS_TOKEN_KEY, null)
+            val token = sharedPreferences.getString(
+                if (CurrentUserTypeHolder.type == UserType.Admin) ADMIN_ACCESS_TOKEN_KEY else PUPIL_ACCESS_TOKEN_KEY,
+                null
+            )
             token?.let {
                 builder.addHeader("Authorization", "Bearer $it")
             }

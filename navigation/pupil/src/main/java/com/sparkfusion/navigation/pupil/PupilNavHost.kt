@@ -6,6 +6,9 @@ import androidx.navigation.NavHostController
 fun NavGraphBuilder.pupilNavHost(navController: NavHostController) {
     pupilSignUp(navController)
     pupilHome(navController)
+    pupilAccount(navController)
+    pupilServices(navController)
+    pupilEventDetails(navController)
 }
 
 

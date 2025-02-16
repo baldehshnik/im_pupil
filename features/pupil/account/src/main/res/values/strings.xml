@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="management">Management</string>
+    <string name="group_info">Group info</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="speciality">Speciality</string>
+    <string name="group">Group</string>
+    <string name="members">Members</string>
+</resources>

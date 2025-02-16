@@ -6,6 +6,8 @@ import com.sparkfusion.data.commonentity.CommonNewsInfoDataEntity
 interface INewsRepository {
 
     suspend fun loadNewsById(id: Int): Answer<CommonNewsInfoDataEntity>
+
+    suspend fun loadNews(): Answer<List<NewsEntity>>
 }
 
 
