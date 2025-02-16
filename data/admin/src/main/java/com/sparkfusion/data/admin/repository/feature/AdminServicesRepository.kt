@@ -9,10 +9,7 @@ import com.sparkfusion.data.base.db.dao.ServiceDao
 import com.sparkfusion.data.common.service.NewsImPupilApiService
 import com.sparkfusion.data.commonentity.CommonNewsDataEntity
 import com.sparkfusion.dataport.admin.portservices.IAdminServicesRepository
-import com.sparkfusion.dataport.admin.portservices.ServiceEntity
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,10 +21,10 @@ internal class AdminServicesRepository @Inject constructor(
     @IODispatcher private val ioDispatcher: CoroutineDispatcher
 ) : IAdminServicesRepository {
 
-    override val enabledServices: Flow<List<ServiceEntity>>
-        get() = serviceDao.readEnabledServices().map { services ->
-            services.map { servicesMapper.map(it) }
-        }
+//    override val enabledServices: Flow<List<ServiceEntity>>
+//        get() = serviceDao.readEnabledServices().map { services ->
+//            services.map { servicesMapper.map(it) }
+//        }
 
     override suspend fun loadNews(): Answer<List<CommonNewsDataEntity>> =
         safeApiCall(ioDispatcher) {

@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.devtools.ksp)
-    alias(libs.plugins.google.hilt)
 }
 
 android {
@@ -41,14 +39,4 @@ dependencies {
     implementation(project(":data:commonEntity"))
 
     implementation(libs.squareup.retrofit.converter.gson)
-
-    implementation(libs.google.hilt)
-    ksp(libs.google.hilt.compiler)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
