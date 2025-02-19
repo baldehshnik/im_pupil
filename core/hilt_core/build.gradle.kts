@@ -81,6 +81,11 @@ dependencies {
     implementation(project(":domainAdminServices:sections"))
     implementation(project(":domainAdminServices:practice"))
 
+    implementation(project(":domainPupilServices:about"))
+    implementation(project(":domainPupilServices:practice"))
+    implementation(project(":domainPupilServices:section"))
+    implementation(project(":domainPupilServices:students"))
+
     implementation(project(":data:admin"))
     implementation(project(":data:base"))
     implementation(project(":data:common"))

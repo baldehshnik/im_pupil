@@ -45,6 +45,7 @@ dependencies {
 
     implementation(project(":navigation:core"))
     implementation(project(":navigation:pupilCorePort"))
+    implementation(project(":navigation:pupilServicesPort"))
     implementation(project(":navigation:commonCorePort"))
 
     implementation(project(":features:pupil:sign-up"))

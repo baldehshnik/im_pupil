@@ -21,6 +21,10 @@ import com.sparkfusion.navigation.pupilcoreport.PupilAccountDestination
 import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
 import com.sparkfusion.navigation.pupilcoreport.PupilServicesDestination
 import com.sparkfusion.navigation.pupilcoreport.PupilSignUpDestination
+import com.sparkfusion.navigation.pupilservicesport.about.AboutDestination
+import com.sparkfusion.navigation.pupilservicesport.practice.PracticeDestination
+import com.sparkfusion.navigation.pupilservicesport.section.SectionDestination
+import com.sparkfusion.navigation.pupilservicesport.students.StudentsDestination
 
 fun NavGraphBuilder.pupilSignUp(navController: NavController) {
     composable(PupilSignUpDestination.route) {
@@ -68,17 +72,29 @@ fun NavGraphBuilder.pupilServices(navController: NavController) {
             onAboutScreenNavigate = {
                 navController.navigate(AboutApplicationDestination.route)
             },
-            onNavigateToMagazineService = {  },
-            onNavigateToScheduleService = {  },
-            onNavigateToStatisticsService = {  },
-            onNavigateToSectionsService = {  },
-            onNavigateToSessionService = {  },
-            onNavigateToPracticeService = {  },
-            onNavigateToAboutService = {
+            onNavigateToMagazineService = {
 
             },
-            onNavigateToStudentsService = {
+            onNavigateToScheduleService = {
 
+            },
+            onNavigateToStatisticsService = {
+
+            },
+            onNavigateToSectionsService = {
+                navController.navigate(SectionDestination.route)
+            },
+            onNavigateToSessionService = {
+
+            },
+            onNavigateToPracticeService = {
+                navController.navigate(PracticeDestination.route)
+            },
+            onNavigateToAboutService = {
+                navController.navigate(AboutDestination.route)
+            },
+            onNavigateToStudentsService = {
+                navController.navigate(StudentsDestination.route)
             }
         )
     }

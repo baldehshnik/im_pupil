@@ -44,6 +44,10 @@ dependencies {
     implementation(project(":dataPort:pupil:portHome"))
     implementation(project(":dataPort:pupil:portEventDetails"))
     implementation(project(":dataPort:pupil:portAccount"))
+    implementation(project(":dataPort:pupil:portPractice"))
+    implementation(project(":dataPort:pupil:portAbout"))
+    implementation(project(":dataPort:pupil:portSection"))
+    implementation(project(":dataPort:pupil:portStudents"))
 
     implementation(project(":data:base"))
     implementation(project(":data:common"))
