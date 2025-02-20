@@ -1,0 +1,58 @@
+package com.sparkfusion.domainpupilservices.statistics.di
+
+import com.sparkfusion.domainpupilservices.statistics.usecase.ReadGroupMemberByIdUseCase
+import com.sparkfusion.domainpupilservices.statistics.usecase.ReadGroupMemberPassesPerMonthUseCase
+import com.sparkfusion.domainpupilservices.statistics.usecase.ReadGroupMemberPassesPerSemesterUseCase
+import com.sparkfusion.domainpupilservices.statistics.usecase.ReadGroupMembersForStatisticsUseCase
+import com.sparkfusion.domainpupilservices.statistics.usecase.ReadPassesOfGroupPerMonthUseCase
+import com.sparkfusion.portdomainservices.pupil.portstatistics.usecase.IReadGroupMemberByIdUseCase
+import com.sparkfusion.portdomainservices.pupil.portstatistics.usecase.IReadGroupMemberPassesPerMonthUseCase
+import com.sparkfusion.portdomainservices.pupil.portstatistics.usecase.IReadGroupMemberPassesPerSemesterUseCase
+import com.sparkfusion.portdomainservices.pupil.portstatistics.usecase.IReadGroupMembersForStatisticsUseCase
+import com.sparkfusion.portdomainservices.pupil.portstatistics.usecase.IReadPassesOfGroupPerMonthUseCase
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+
+@Module
+@InstallIn(ViewModelComponent::class)
+internal interface UseCaseModule {
+
+    @Binds
+    fun bindReadGroupMemberByIdUseCaseToIReadGroupMemberByIdUseCase(readGroupMemberByIdUseCase: ReadGroupMemberByIdUseCase): IReadGroupMemberByIdUseCase
+
+    @Binds
+    fun bindReadGroupMemberPassesPerMonthUseCaseToIReadGroupMemberPassesPerMonthUseCase(readGroupMemberPassesPerMonthUseCase: ReadGroupMemberPassesPerMonthUseCase): IReadGroupMemberPassesPerMonthUseCase
+
+    @Binds
+    fun bindReadGroupMemberPassesPerSemesterUseCaseToIReadGroupMemberPassesPerSemesterUseCase(readGroupMemberPassesPerSemesterUseCase: ReadGroupMemberPassesPerSemesterUseCase): IReadGroupMemberPassesPerSemesterUseCase
+
+    @Binds
+    fun bindReadGroupMembersForStatisticsUseCaseToIReadGroupMembersForStatisticsUseCase(readGroupMembersForStatisticsUseCase: ReadGroupMembersForStatisticsUseCase): IReadGroupMembersForStatisticsUseCase
+
+    @Binds
+    fun bindReadPassesOfGroupPerMonthUseCaseToIReadPassesOfGroupPerMonthUseCase(readPassesOfGroupPerMonthUseCase: ReadPassesOfGroupPerMonthUseCase): IReadPassesOfGroupPerMonthUseCase
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

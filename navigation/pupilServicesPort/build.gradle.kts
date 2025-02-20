@@ -45,6 +45,10 @@ dependencies {
     implementation(project(":services:pupil:section"))
     implementation(project(":services:pupil:practice"))
     implementation(project(":services:pupil:students"))
+    implementation(project(":services:pupil:session"))
+    implementation(project(":services:pupil:schedule"))
+    implementation(project(":services:pupil:statistics"))
+    implementation(project(":services:pupil:magazine"))
 
     implementation(libs.androidx.hilt.navigation)
     implementation(libs.google.hilt)

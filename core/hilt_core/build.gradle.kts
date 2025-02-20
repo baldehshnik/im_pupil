@@ -85,6 +85,10 @@ dependencies {
     implementation(project(":domainPupilServices:practice"))
     implementation(project(":domainPupilServices:section"))
     implementation(project(":domainPupilServices:students"))
+    implementation(project(":domainPupilServices:session"))
+    implementation(project(":domainPupilServices:statistics"))
+    implementation(project(":domainPupilServices:schedule"))
+    implementation(project(":domainPupilServices:magazine"))
 
     implementation(project(":data:admin"))
     implementation(project(":data:base"))

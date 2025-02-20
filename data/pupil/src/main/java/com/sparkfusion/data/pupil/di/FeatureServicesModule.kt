@@ -5,8 +5,12 @@ import com.sparkfusion.data.pupil.source.AccountApiService
 import com.sparkfusion.data.pupil.source.AuthApiService
 import com.sparkfusion.data.pupil.source.GroupMemberApiService
 import com.sparkfusion.data.pupil.source.InstitutionEventApiService
+import com.sparkfusion.data.pupil.source.MagazineApiService
 import com.sparkfusion.data.pupil.source.PracticeApiService
+import com.sparkfusion.data.pupil.source.ScheduleApiService
 import com.sparkfusion.data.pupil.source.SectionApiService
+import com.sparkfusion.data.pupil.source.SessionApiService
+import com.sparkfusion.data.pupil.source.StatisticsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,6 +62,30 @@ internal object FeatureServicesModule {
     @Provides
     fun provideGroupMemberApiService(retrofit: Retrofit): GroupMemberApiService {
         return retrofit.create(GroupMemberApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSessionApiService(retrofit: Retrofit): SessionApiService {
+        return retrofit.create(SessionApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideScheduleApiService(retrofit: Retrofit): ScheduleApiService {
+        return retrofit.create(ScheduleApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideStatisticsApiService(retrofit: Retrofit): StatisticsApiService {
+        return retrofit.create(StatisticsApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMagazineApiService(retrofit: Retrofit): MagazineApiService {
+        return retrofit.create(MagazineApiService::class.java)
     }
 }
 

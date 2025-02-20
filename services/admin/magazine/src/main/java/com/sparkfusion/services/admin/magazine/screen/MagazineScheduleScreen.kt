@@ -29,7 +29,6 @@ import com.sparkfusion.services.admin.magazine.viewmodel.ScheduleViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatterBuilder
 
-
 @Composable
 fun MagazineScheduleScreen(
     modifier: Modifier = Modifier,

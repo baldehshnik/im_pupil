@@ -12,7 +12,7 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.services.admin.magazine.component.SpinnerWithTitleComponent
 
 @Composable
-fun DialogExample(
+fun AdminDialogExample(
     isOpen: Boolean,
     changeOpenValue: (Boolean) -> Unit,
     onUpdateClick: (Int) -> Unit

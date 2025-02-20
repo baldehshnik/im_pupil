@@ -40,7 +40,7 @@ import com.sparkfusion.core.widget.text.SFProRoundedText
 import com.sparkfusion.core.widget.toast.ShowToast
 import com.sparkfusion.core.widget.topbar.TopBar
 import com.sparkfusion.services.admin.magazine.R
-import com.sparkfusion.services.admin.magazine.dialog.DialogExample
+import com.sparkfusion.services.admin.magazine.dialog.AdminDialogExample
 import com.sparkfusion.services.admin.magazine.viewmodel.StudentsListViewModel
 
 @Composable
@@ -63,7 +63,7 @@ fun MagazineStudentsListScreen(
     var isSelectionMode by remember { mutableStateOf(false) }
     var isDialogOpen by remember { mutableStateOf(false) }
 
-    DialogExample(
+    AdminDialogExample(
         isOpen = isDialogOpen,
         changeOpenValue = {
             isDialogOpen = it

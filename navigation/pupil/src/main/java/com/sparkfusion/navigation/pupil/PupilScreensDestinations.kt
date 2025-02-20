@@ -22,8 +22,12 @@ import com.sparkfusion.navigation.pupilcoreport.PupilHomeDestination
 import com.sparkfusion.navigation.pupilcoreport.PupilServicesDestination
 import com.sparkfusion.navigation.pupilcoreport.PupilSignUpDestination
 import com.sparkfusion.navigation.pupilservicesport.about.AboutDestination
+import com.sparkfusion.navigation.pupilservicesport.magazine.MagazineDestination
 import com.sparkfusion.navigation.pupilservicesport.practice.PracticeDestination
+import com.sparkfusion.navigation.pupilservicesport.schedule.ScheduleDestination
 import com.sparkfusion.navigation.pupilservicesport.section.SectionDestination
+import com.sparkfusion.navigation.pupilservicesport.session.SessionDestination
+import com.sparkfusion.navigation.pupilservicesport.statistics.StatisticsDestination
 import com.sparkfusion.navigation.pupilservicesport.students.StudentsDestination
 
 fun NavGraphBuilder.pupilSignUp(navController: NavController) {
@@ -73,19 +77,19 @@ fun NavGraphBuilder.pupilServices(navController: NavController) {
                 navController.navigate(AboutApplicationDestination.route)
             },
             onNavigateToMagazineService = {
-
+                navController.navigate(MagazineDestination.route)
             },
             onNavigateToScheduleService = {
-
+                navController.navigate(ScheduleDestination.route)
             },
             onNavigateToStatisticsService = {
-
+                navController.navigate(StatisticsDestination.route)
             },
             onNavigateToSectionsService = {
                 navController.navigate(SectionDestination.route)
             },
             onNavigateToSessionService = {
-
+                navController.navigate(SessionDestination.route)
             },
             onNavigateToPracticeService = {
                 navController.navigate(PracticeDestination.route)
